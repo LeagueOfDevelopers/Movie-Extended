@@ -19,6 +19,7 @@
         </activity>
 
         <activity android:name=".uil.activity.QrCodeReaderActivity" />
+        <activity android:name=".uil.activity.NewActivity" />
 
     </application>
 

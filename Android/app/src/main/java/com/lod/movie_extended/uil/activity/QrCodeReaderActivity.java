@@ -37,12 +37,12 @@ public class QrCodeReaderActivity extends AppCompatActivity implements ZXingScan
 
     @Override
     public void handleResult(Result result) {
-        Intent intent = new Intent();
-        Bundle bundle = new Bundle();
-        bundle.putString(MainActivity.QR_RESULT,result.getText());
-        intent.putExtras(bundle);
 
-        setResult(RESULT_OK,intent);
+        startActivity(new Intent(this,NewActivity.class));
         finish();
+    }
+
+    private boolean checkQRCodeResult(Result result) {
+        return true;
     }
 }
