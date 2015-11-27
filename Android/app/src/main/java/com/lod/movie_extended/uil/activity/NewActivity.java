@@ -18,6 +18,7 @@ import javax.inject.Inject;
 
 public class NewActivity extends AppCompatActivity {
 
+    public  final static int LAYOUT = R.layout.activity_new;
 
     public ActionBar toolbar;
 
@@ -27,7 +28,7 @@ public class NewActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_new);
+        setContentView(LAYOUT);
 
         MyApp.get(this).getComponent().inject(this);
 

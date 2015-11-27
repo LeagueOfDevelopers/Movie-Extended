@@ -9,6 +9,8 @@ public class ServerMock implements IServer {
 
     private static final String TAG = "MyApplication";
 
+
+
     @Override
     public void sendCode(int code) {
 

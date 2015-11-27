@@ -4,25 +4,22 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
 
 import com.lod.movie_extended.R;
-import com.lod.movie_extended.dbl.DbHelperImpl;
-import com.lod.movie_extended.dbl.IDbHelper;
 
-import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class MainActivity extends AppCompatActivity{
 
-    public static final boolean OMIT_QR_CODE = true;
+    public  final static int LAYOUT = R.layout.activity_main;
+
+    public static final boolean OMIT_QR_CODE_READING = false;
 
     @Override
     public void onCreate(Bundle state) {
         super.onCreate(state);
-        setContentView(R.layout.activity_main);
+        setContentView(LAYOUT);
         ButterKnife.bind(this);
     }
 
@@ -30,7 +27,7 @@ public class MainActivity extends AppCompatActivity{
     protected void OnQrReadButtonClick(View v){
         Intent intent;
 
-        if(OMIT_QR_CODE) {
+        if(OMIT_QR_CODE_READING) {
             intent = new Intent(this, NewActivity.class);
         }
         else {

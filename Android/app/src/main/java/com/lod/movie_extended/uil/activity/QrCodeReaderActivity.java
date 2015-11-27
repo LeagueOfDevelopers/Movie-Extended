@@ -5,6 +5,9 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
 import com.google.zxing.Result;
+import com.lod.movie_extended.injection.MyApp;
+
+import javax.inject.Inject;
 
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
 
@@ -13,12 +16,13 @@ import me.dm7.barcodescanner.zxing.ZXingScannerView;
  */
 public class QrCodeReaderActivity extends AppCompatActivity implements ZXingScannerView.ResultHandler {
 
-    private ZXingScannerView scannerView;
+    @Inject
+    public ZXingScannerView scannerView;
 
     @Override
     public void onCreate(Bundle state) {
         super.onCreate(state);
-        scannerView = new ZXingScannerView(this);
+        MyApp.get(this).getComponent().inject(this);
         setContentView(scannerView);
     }
 
@@ -37,12 +41,7 @@ public class QrCodeReaderActivity extends AppCompatActivity implements ZXingScan
 
     @Override
     public void handleResult(Result result) {
-
         startActivity(new Intent(this,NewActivity.class));
         finish();
-    }
-
-    private boolean checkQRCodeResult(Result result) {
-        return true;
     }
 }
