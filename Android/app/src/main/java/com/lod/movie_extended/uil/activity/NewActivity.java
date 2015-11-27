@@ -8,7 +8,9 @@ import android.support.v7.widget.Toolbar;
 
 import com.lod.movie_extended.R;
 import com.lod.movie_extended.bll.IServer;
-import com.lod.movie_extended.bll.ServerMock;
+import com.lod.movie_extended.injection.MyApp;
+
+import javax.inject.Inject;
 
 /**
  * Created by Жамбыл on 25.11.2015.
@@ -16,22 +18,20 @@ import com.lod.movie_extended.bll.ServerMock;
 
 public class NewActivity extends AppCompatActivity {
 
-    private ActionBar toolbar;
 
-    private IServer server;
+    public ActionBar toolbar;
+
+    @Inject
+    public IServer server;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new);
 
+        MyApp.get(this).getComponent().inject(this);
+
         initToolbar();
-        initServer();
-
-    }
-
-    private void initServer() {
-        server = new ServerMock();
     }
 
     private void initToolbar() {

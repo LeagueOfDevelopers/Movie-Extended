@@ -1,12 +1,16 @@
 package com.lod.movie_extended.dbl;
 
+import com.lod.movie_extended.model.Language;
+
+import java.util.ArrayList;
+
 /**
  * Created by Жамбыл on 26.11.2015.
  */
 public class DbHelperMock implements IDbHelper {
 
     @Override
-    public void saveData(int data) {
+    public void saveFilmData(int data) {
 
     }
 
@@ -16,17 +20,22 @@ public class DbHelperMock implements IDbHelper {
     }
 
     @Override
-    public int getCachedLanguages() {
+    public void saveLanguages(ArrayList<Language> languages) {
+
+    }
+
+    @Override
+    public ArrayList<Language> getLanguages() {
+        return null;
+    }
+
+    @Override
+    public int getFilmData() {
         return 0;
     }
 
     @Override
-    public int getCachedFilmData() {
-        return 0;
-    }
-
-    @Override
-    public int getCachedCode() {
+    public int getCode() {
         return 0;
     }
 }

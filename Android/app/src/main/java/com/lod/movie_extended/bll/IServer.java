@@ -1,7 +1,5 @@
 package com.lod.movie_extended.bll;
 
-import dagger.Component;
-
 /**
  * Created by Жамбыл on 26.11.2015.
  */
