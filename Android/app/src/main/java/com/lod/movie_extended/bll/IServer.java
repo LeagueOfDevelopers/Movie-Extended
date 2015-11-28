@@ -1,18 +1,22 @@
 package com.lod.movie_extended.bll;
 
+import com.lod.movie_extended.model.Token;
+
 /**
  * Created by Жамбыл on 26.11.2015.
  */
 
 public interface IServer {
 
-    void sendCode(int code);
+    void sendCode(String code);
 
     void getLanguages();
 
-    void chooseLanguage();
+    String getExactTime();
 
-    int getAudio();
+    Token getToken();
+
+    int loadAudioFromTime();
 
     int getFilmData();
 

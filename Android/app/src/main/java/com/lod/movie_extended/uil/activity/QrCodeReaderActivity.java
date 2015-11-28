@@ -16,13 +16,15 @@ import me.dm7.barcodescanner.zxing.ZXingScannerView;
  */
 public class QrCodeReaderActivity extends AppCompatActivity implements ZXingScannerView.ResultHandler {
 
+    public static final String QR_CODE_RESULT = "QR_CODE_RESULT";
+
     @Inject
     public ZXingScannerView scannerView;
 
     @Override
     public void onCreate(Bundle state) {
         super.onCreate(state);
-        MyApp.get(this).getComponent().inject(this);
+        MyApp.get(this).getAppComponent().inject(this);
         setContentView(scannerView);
     }
 
@@ -41,7 +43,11 @@ public class QrCodeReaderActivity extends AppCompatActivity implements ZXingScan
 
     @Override
     public void handleResult(Result result) {
-        startActivity(new Intent(this,NewActivity.class));
+        Intent intent = new Intent(this,FilmPreparationActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putString(QR_CODE_RESULT,result.getText());
+        intent.putExtras(bundle);
+        startActivity(intent);
         finish();
     }
 }

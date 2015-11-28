@@ -1,11 +1,13 @@
 package com.lod.movie_extended.bll;
 
+import com.lod.movie_extended.model.Token;
+
 /**
  * Created by Жамбыл on 26.11.2015.
  */
 public class ServerImpl implements IServer {
     @Override
-    public void sendCode(int code) {
+    public void sendCode(String code) {
 
     }
 
@@ -15,12 +17,17 @@ public class ServerImpl implements IServer {
     }
 
     @Override
-    public void chooseLanguage() {
-
+    public String getExactTime() {
+        return null;
     }
 
     @Override
-    public int getAudio() {
+    public Token getToken() {
+        return null;
+    }
+
+    @Override
+    public int loadAudioFromTime() {
         return 0;
     }
 

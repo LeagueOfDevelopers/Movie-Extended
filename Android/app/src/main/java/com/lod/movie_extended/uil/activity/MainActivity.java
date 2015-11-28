@@ -12,9 +12,10 @@ import butterknife.OnClick;
 
 public class MainActivity extends AppCompatActivity{
 
-    public  final static int LAYOUT = R.layout.activity_main;
+    private final static int LAYOUT = R.layout.activity_main;
 
     public static final boolean OMIT_QR_CODE_READING = false;
+
 
     @Override
     public void onCreate(Bundle state) {
@@ -28,7 +29,7 @@ public class MainActivity extends AppCompatActivity{
         Intent intent;
 
         if(OMIT_QR_CODE_READING) {
-            intent = new Intent(this, NewActivity.class);
+            intent = new Intent(this, FilmPreparationActivity.class);
         }
         else {
             intent = new Intent(this, QrCodeReaderActivity.class);

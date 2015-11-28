@@ -1,13 +1,16 @@
 package com.lod.movie_extended.injection;
 
 
+import android.annotation.TargetApi;
 import android.content.Context;
 
 import com.lod.movie_extended.bll.IServer;
 import com.lod.movie_extended.bll.ServerMock;
 import com.lod.movie_extended.uil.activity.QrCodeReaderActivity;
+import com.squareup.otto.Bus;
 
 import javax.inject.Named;
+import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
@@ -29,13 +32,10 @@ public class MyAppModule {
     MyApp provideMyApp() {
         return app;
     }
-    @Provides
-    IServer provideServer(){
-        return new ServerMock();
-    }
 
     @Provides
     ZXingScannerView provideZXingScannerView(){
         return new ZXingScannerView(app);
     }
+
 }
