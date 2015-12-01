@@ -4,3 +4,38 @@ body {
   margin: 0;
   padding: 0;
 }
+
+.header {
+  width: 100% !important;
+  position: relative;
+  padding-left: 30px;
+  border-bottom: 1px solid #1de9b6;
+  z-index: 1000;
+  height: 150px;
+}
+
+.header__logo {
+  font-size: 24px;
+  display: inline-block;
+  padding: 15px;
+}
+
+.header__logo-title {
+  text-decoration: none;
+  color: #000000;
+  text-transform: uppercase;
+  letter-spacing: 2.1px;
+  font-weight: bold;
+  border: 3px solid #20ddc0;
+  padding: 12px;
+  border-radius: 10px;
+}
+
+.form__wrapper {
+  background-color: #c72626;
+  margin: 0;
+  height: auto;
+  margin-top: 50px;
+  padding: 30px !important;
+  padding-bottom: 0 !important;
+}
