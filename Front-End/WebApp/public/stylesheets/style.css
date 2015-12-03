@@ -8,16 +8,16 @@ body {
 .header {
   width: 100% !important;
   position: relative;
-  padding-left: 30px;
   border-bottom: 1px solid #1de9b6;
   z-index: 1000;
-  height: 150px;
+  height: auto;
 }
 
 .header__logo {
   font-size: 24px;
   display: inline-block;
   padding: 15px;
+  margin-left: 30px;
 }
 
 .header__logo-title {
@@ -38,4 +38,28 @@ body {
   margin-top: 50px;
   padding: 30px !important;
   padding-bottom: 0 !important;
+}
+
+.header__menu__wrapper {
+  margin: 0 !important;
+  margin-bottom: -15px !important;
+}
+
+.header__menu li {
+  display: inline-block;
+  height: 40px;
+  margin-right: 10px;
+  font-size: 20px;
+  border-bottom: 0px solid rgba(16, 170, 149, 0);
+  -webkit-transition: all 0.2s ease-in;
+          transition: all 0.2s ease-in;
+}
+
+.header__menu a {
+  color: #000;
+}
+
+li:hover {
+  border-bottom: 3px solid rgba(9, 148, 129, 0.5);
+  border-radius: 1px;
 }
