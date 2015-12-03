@@ -22,10 +22,10 @@ body {
 
 .header__logo-title {
   text-decoration: none;
-  color: #000000;
+  color: #121111;
   text-transform: uppercase;
   letter-spacing: 2.1px;
-  font-weight: bold;
+  font-weight: bolder;
   border: 3px solid #20ddc0;
   padding: 12px;
   border-radius: 10px;
