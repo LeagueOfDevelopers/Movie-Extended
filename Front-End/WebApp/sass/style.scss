@@ -1,24 +1,38 @@
+$headerColor: #fff;
+
+
 body {
   height: 100% !important;
   min-height: 100%;
   margin: 0;
   padding: 0;
+  background-color: #e8e8e8;
 }
 
 .header {
   width: 100% !important;
-  position: relative;
-  border-bottom: 1px solid #1de9b6;
-  z-index: 1000;
   height: auto;
+  background-color: $headerColor;
 
 }
 
+.page_content {
+  height: 100%;
+}
+
+.footer {
+  width: 100%;
+}
+
+.header_wrapper {
+  border-bottom: 1px solid #1de9b6;
+  height: 100%;
+}
 
 .header__logo {
-  font-size: 24px;
+  font-size: 18px;
   display: inline-block;
-  padding: 15px;
+  padding: 10px;
   margin-left: 30px;
 }
 .header__logo-title {
@@ -33,12 +47,12 @@ body {
 }
 
 .form__wrapper {
-  background-color: #c72626;
   margin: 0;
   height: auto;
   margin-top: 50px;
   padding: 30px !important;
   padding-bottom: 0 !important;
+  background-color: #fff;
 }
 
 .header__menu__wrapper {
@@ -60,13 +74,24 @@ body {
   color: #000;
 }
 li:hover {
-    border-bottom: 3px solid rgba(#099481, 0.5);
     border-radius: 1px;
 }
 
-.left__bar {
-  z-index: 1000;
-  width: 300px !important;
-  height: 100%;
+.side_bar {
+height: 100% !important;
+}
 
+.content_field {
+  background-color: #fff;
+}
+
+.side_bar li {
+  margin: 0;
+  padding: 0;
+  height: 35px;
+  padding-left: 5px;
+}
+
+.side_bar li:hover {
+  background-color: #10aa95;
 }

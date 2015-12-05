@@ -8,11 +8,8 @@ body {
   width: 100% !important;
   position: relative;
   padding-left: 30px;
-  border-bottom: 1px solid #1de9b6; }
+  border-bottom: 1px solid #1de9b6;
+}
 
-  .left__bar {
-    height: 400px;
-    width: 400px;
-    position: fixed;
 
-  }
+rgba(9, 148, 129, 0.5)

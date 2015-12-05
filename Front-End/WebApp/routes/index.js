@@ -7,6 +7,6 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/registry', function(req, res, next) {
-  res.render('header');
+  res.render('registry');
 });
 module.exports = router;
