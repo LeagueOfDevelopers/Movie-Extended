@@ -4,31 +4,15 @@ block header
 block content 
   section.page_content
     div.row
-      div.profile_content
-        div.row
-          div.col.s2.side_bar.content_field
-            div.side_bar_menu_list
-              ul
-                li 
-                  a(href="#") Фильмы и кинотеатры
-                li  
-                  a(href="#") Расписание показов
-                li
-                  a(href="#") Как пользоваться          
-          div.col.s5.movies__contaier.content_field
-            div.movies_list_header
-              span Ваши фильмы
-            div.movies__toolbar
-              button.btn.add__movie__button
-            div.movies__list__wrapper
-              ul.movies__list      
-          div.col.s5.cinemas__container.content_field 
-            div.cinemas_list_header
-              span Ваши кинотеатры
-            div.cinemas__toolbar
-              button.btn.add__cinema__button
-            div.cinemas__list__wrapper
-              ul.cinemas__list
+      div.profile_content.col.offset-m2
+      div.col.m3.side_menu
+        ul
+          li 
+            a(href="#") Фильмы
+          li
+            a(href="#") Кинотеатры  
+      div.col.m5.profile_content_field
+        block field
 block footer              
   section.footer
                   
