@@ -1,6 +1,4 @@
-extends layout
-block header
-  include header
+extends profile
 block content 
   section.page_content
     div.row.profile_content
@@ -12,7 +10,7 @@ block content
             a(href="#") Кинотеатры  
       div.col.m10.profile_content_field
         div.field_header
-          span.field_title Ваши фильмы
+          span.field_title Ваши кинотеатры
           button.btn.add_button +
         div.movies_list
           ul
@@ -25,6 +23,4 @@ block content
                 div.movie_description
                     p   Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic dolore quaerat nam cumque incidunt, vero eos nisi consequatur. Facere, ullam atque. Ducimus nesciunt perspiciatis, iste odit ab quo ipsa animi.
               
-block footer              
-  section.footer
-                  
+    
