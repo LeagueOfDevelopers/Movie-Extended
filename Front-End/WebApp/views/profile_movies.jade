@@ -1,8 +1,14 @@
-extends profile
-block field
-  div.add_button_wrapper
-    button(type="", ="", name="addMovie", ="")
-  div.movies_list    
-    ul
-      li 
+div.field_header
+  span.field_title Ваши фильмы 
+  button.btn.add_button +
+div.movies_list
+  ul
+    li(ng-repeat="movie in movies").card.lighten-2
+      div.movie_container
+        div.row
+          div.col.m2.movie_picture
+          div.col.m9.movie_title
+            span {{movie.name}}
+        div.movie_description
+            p {{movie.description}}
       

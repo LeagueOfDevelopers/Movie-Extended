@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="extendedMovie">
   <head>
     <meta name="viewport" content="width=device-width" initial-scale="1">
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="../public/stylesheets/style.css">
-    <link rel="stylesheet" href="../public/stylesheets/materialize.min.css">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <link rel="stylesheet" href="/stylesheets/materialize.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700">
     <title></title>
   </head>
   <body>
@@ -15,8 +16,8 @@
       <div class="container">
         <div class="col s6 m12 header__menu__wrapper">
           <ul class="header__menu">
-            <li> <a href="#">Главная</a></li>
-            <li><a href="#">Личный кабинет</a></li>
+            <li> <a href="/registry">Главная</a></li>
+            <li><a href="/profile">Личный кабинет</a></li>
           </ul>
         </div>
       </div>
@@ -52,5 +53,9 @@
       </div>
     </section>
     <section class="footer"></section>
+    <script type="text/javascript" src="angular/angular.min.js"></script>
+    <script type="text/javascript" src="angular/angular-route.min.js"></script>
+    <script type="text/javascript" src="js/extendedMovie.js"></script>
+    <script type="text/javascript" src="angular/angular-ui-router.min.js"></script>
   </body>
 </html>

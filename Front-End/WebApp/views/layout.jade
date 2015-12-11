@@ -1,12 +1,22 @@
 doctype html
-html
+html(ng-app='extendedMovie')
   head
     meta(name="viewport", content="width=device-width", initial-scale=1.0)
     meta(charset="UTF-8")
-    link(rel='stylesheet', href='../public/stylesheets/style.css')
-    link(rel="stylesheet", href="../public/stylesheets/materialize.min.css")
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel="stylesheet", href="/stylesheets/materialize.min.css")
+    link(rel="stylesheet", href='https://fonts.googleapis.com/css?family=Roboto:400,700')
+      
+      
     title= djiediew  
   body
     block header
     block content  
-    block footer  
+    block footer 
+       
+    script(type="text/javascript", src="angular/angular.min.js")
+    script(type="text/javascript", src="angular/angular-route.min.js")
+    script(type="text/javascript", src="js/extendedMovie.js")
+    script(type="text/javascript", src="angular/angular-ui-router.min.js")
+      
+      

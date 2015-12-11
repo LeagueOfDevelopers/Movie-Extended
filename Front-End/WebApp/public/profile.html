@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html ng-app="extendedMovie">
+  <head>
+    <meta name="viewport" content="width=device-width" initial-scale="1">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <link rel="stylesheet" href="/stylesheets/materialize.min.css">
+    <title>Extended Movie</title>
+  </head>
+  <body>
+    <section class="header">
+      <div class="header__logo col offset-s6 offset-m1">
+        <p class="header__logo-title">extended movie</p>
+      </div>
+      <div class="container">
+        <div class="col s6 m12 header__menu__wrapper">
+          <ul class="header__menu">
+            <li> <a href="#">Главная</a></li>
+            <li><a href="#">Личный кабинет</a></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+    <section class="page_content">
+      <div class="row profile_content">
+        <div class="col m2 side_menu z-depth-2">
+          <ul class="side_menu_list">
+            <li> <a href="#">Фильмы</a></li>
+            <li><a href="#">Кинотеатры  </a></li>
+          </ul>
+        </div>
+        <div class="col m10 profile_content_field" ui-view>
+        </div>
+      </div>
+    </section>
+    <section class="footer"></section>
+  </body>
+</html>
