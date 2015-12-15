@@ -2,7 +2,8 @@
 
 .config(["$routeProvider", function ($routeProvider) {
   $routeProvider.when("/movies", {
-    templateUrl: "/partials/profile_movies.html"
+    templateUrl: "/partials/profile_movies.html",
+    controller: "MoviesCtrl"
   })
     .when('/cinemas', {
           templateUrl: "/partials/profile_cinemas.html",

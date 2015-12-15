@@ -4,7 +4,7 @@ var BASE_URI = 'localhost:3000';
 
 module.exports = {
     Companies: Companies,
-    Cinemas: Cinemas
+    Movies: Movies
 };
 
 function Companies(method, data, callback) {
@@ -44,7 +44,7 @@ function Companies(method, data, callback) {
     }
 }
 
-function Cinemas(method, data, callback) {
+function Movies(method, data, callback) {
     var url = BASE_URI;
     console.log(data);
     switch (method) {
