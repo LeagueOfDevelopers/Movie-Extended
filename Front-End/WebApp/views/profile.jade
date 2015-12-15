@@ -3,14 +3,16 @@ block header
   include header
 block content 
   section.page_content
-    div(ng-controller="MoviesCtrl").row.profile_content
+    div.row.profile_content
       div.col.m2.side_menu.z-depth-2
         ul.side_menu_list
           li 
-            a(href="#") Фильмы
+              a(href="#/movies") 
+                span Фильмы
           li
-            a(href="#") Кинотеатры  
-          li {{some}}
+              a(href="#/cinemas")
+                 span Кинотеатры  
+          li {{3+2}}
       div(ng-view).col.m10.profile_content_field
 block footer              
   section.footer

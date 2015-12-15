@@ -1,21 +1,13 @@
-angular.module("extendedMovie",['ng','ngRoute'])
-  .controller("MoviesCtrl", ['$scope', '$http', function($scope, $http) {
+ var extendedMovie = angular.module("extendedMovie", ['ngRoute', 'extendedMovie.controllers'])
 
-      $scope.movies = [{
-        Id: 1,
-        name: 'starwars',
-        description: 'Loremdwdwdwdwdwdwdwdw',
-        photoUri: 'https://www.npmjs.com/static/images/npm-logo.svg'
-    },
-    {
-        Id: 2,
-        name: 'Пять звезд',
-        description: 'loremdkwokdkdwd',
-        photoUri: 'https://www.npmjs.com/static/images/npm-logo.svg'
-    }];
+.config(["$routeProvider", function ($routeProvider) {
+  $routeProvider.when("/movies", {
+    templateUrl: "/partials/profile_movies.html"
+  })
+    .when('/cinemas', {
+          templateUrl: "/partials/profile_cinemas.html",
+          controller: "MoviesCtrl"
 
-    $http.get('/getsome').success(function(data) {
-      $scope.some = data;
-      console.log(data);
-    })
-  }]);
+          })
+
+}]);
