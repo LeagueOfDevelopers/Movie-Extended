@@ -1,5 +1,6 @@
 <div class="field_header" ng-cloak><span class="field_title">Ваши фильмы</span>
-  <button class="btn add_button" ng-click="addNewMovie()">+</button>
+  <button class="btn add_button" ui-sref="movies.create_movie" ng-click="showPopup = !showPopup">+</button>
+  <button class="btn" ui-sref="movies.about_movie" ng-click="showPopup = !showPopup">about</button>
 </div>
 <div class="movies_list">
   <ul>
@@ -16,3 +17,4 @@
     </li>
   </ul>
 </div>
+<div class="popup valign-wrapper" ng-show="showPopup" ui-view></div>

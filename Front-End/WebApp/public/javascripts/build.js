@@ -1,8 +1,9 @@
 angular.module("extendedMovie.controllers", [])
 
   .controller("MoviesCtrl", ['$scope', '$http', function($scope, $http) {
-    
+
     getMovies();
+    $scope.showPopup = false;
 
 
     $scope.addNewMovie = function () {
@@ -29,6 +30,14 @@ angular.module("extendedMovie.controllers", [])
     templateUrl: "/partials/profile_movies.html",
     controller: "MoviesCtrl"
   })
+      .state("movies.create_movie", {
+        url:"/movies",
+        templateUrl: "/partials/create_movie.html"
+      })
+      .state("movies.about_movie", {
+        url:"/movies",
+        templateUrl: "/partials/about_movie.html"
+      })
     .state('cinemas', {
           url: "/cinemas",
           templateUrl: "/partials/profile_cinemas.html",

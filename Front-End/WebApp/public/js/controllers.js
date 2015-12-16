@@ -1,8 +1,9 @@
 angular.module("extendedMovie.controllers", [])
 
   .controller("MoviesCtrl", ['$scope', '$http', function($scope, $http) {
-    
+
     getMovies();
+    $scope.showPopup = false;
 
 
     $scope.addNewMovie = function () {
