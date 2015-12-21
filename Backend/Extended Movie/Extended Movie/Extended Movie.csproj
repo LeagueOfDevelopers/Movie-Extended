@@ -107,6 +107,7 @@
     <Compile Include="Mappings\FileMapping.cs" />
     <Compile Include="Models\File.cs" />
     <Compile Include="Models\Session.cs" />
+    <Compile Include="Models\SessionKeeper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
