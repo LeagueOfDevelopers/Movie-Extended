@@ -6,6 +6,7 @@ using NHibernate.Mapping.ByCode;
 using NHibernate.Mapping.ByCode.Conformist;
 using Extended_Movie.Models;
 
+
 namespace Extended_Movie.Mappings
 {
     public class FileMapping:ClassMapping<File>
