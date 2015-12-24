@@ -102,10 +102,14 @@
     <Compile Include="Controllers\AndroidClient\LanguageController.cs" />
     <Compile Include="Controllers\AndroidClient\SessionController.cs" />
     <Compile Include="Controllers\FileController.cs" />
+    <Compile Include="Controllers\WebClient\MovieController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Mappings\CinemaMapping.cs" />
     <Compile Include="Mappings\FileMapping.cs" />
+    <Compile Include="Mappings\LanguageMapping.cs" />
+    <Compile Include="Mappings\MovieMapping.cs" />
     <Compile Include="Models\Cinema.cs" />
     <Compile Include="Models\File.cs" />
     <Compile Include="Models\Language.cs" />
@@ -118,6 +122,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+    <None Include="Properties\PublishProfiles\MovieExtendedApplication - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\MovieExtendedBackend - Web Deploy.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -127,7 +133,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Controllers\WebClient\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

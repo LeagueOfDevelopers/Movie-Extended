@@ -11,6 +11,15 @@ namespace Extended_Movie.Visitor_Repository
     public class VisitorRepository : IVisitorRepository
     {
         private readonly ISession _session;
+        public VisitorRepository(ISession session)
+        {
+            _session = session; 
+        }
+
+        public VisitorRepository()
+        {
+            
+        }
         
         public void SaveCinemaData(Cinema cinema)
         {

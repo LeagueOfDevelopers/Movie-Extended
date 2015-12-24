@@ -7,11 +7,11 @@ namespace Extended_Movie.Models
 {
     public class Movie
     {
-        public Movie(Guid? id, string name, Guid cinemaId)
+        public Movie(Guid? id, string name, Guid cinemaId , int year)
         {
             Id = id;
-            Name = name;
-            CinemaId = cinemaId;
+            _name = name;
+            _cinemaId = cinemaId;
         }
 
         protected Movie()
@@ -20,8 +20,10 @@ namespace Extended_Movie.Models
 
         public virtual Guid? Id { get; protected set; }
 
-        public virtual string Name { get; protected set; }
+        public virtual string _name { get; protected set; }
 
-        public virtual Guid CinemaId { get; protected set; }
+        public virtual Guid _cinemaId { get; protected set; }
+
+        public virtual int Year { get; protected set; }
     }
 }

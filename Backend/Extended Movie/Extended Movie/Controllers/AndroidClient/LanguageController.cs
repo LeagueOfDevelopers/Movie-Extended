@@ -35,5 +35,15 @@ namespace Extended_Movie.Controllers.AndroidClient
             var movieId = _keeper.GetMovieId(sessionId);
             return _session.Query<Language>().Where(lang => lang.MovieId == movieId);
         }
+
+        [Route("api/Languages/Delete/{movieId}")]
+        [HttpGet]
+        
+        public void DeleteMovieFromLanguageById(Guid movieId)
+        {
+            var checkIfMovieExists = _session.Query<Language>().SingleOrDefault<Language>(lang => lang.MovieId == movieId);
+            if (checkIfMovieExists != null)
+                _session.Delete(checkIfMovieExists);
+        }
     }
 }

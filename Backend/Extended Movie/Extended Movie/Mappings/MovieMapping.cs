@@ -13,8 +13,8 @@ namespace Extended_Movie.Mappings
                 mapper.Column("Id");
                 mapper.Generator(Generators.Guid);
             });
-            Property(model => model.Name, mapper => mapper.Column("Name"));
-            Property(model => model.CinemaId, mapper => mapper.Column("CinemaId"));
+            Property(model => model._name, mapper => mapper.Column("Name"));
+            Property(model => model._cinemaId, mapper => mapper.Column("CinemaId"));
         }
     }
 }
