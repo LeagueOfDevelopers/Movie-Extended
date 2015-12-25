@@ -7,5 +7,9 @@ namespace Extended_Movie.Models
 {
     public class Company
     {
+        public Company()
+        {
+            
+        }
     }
 }
