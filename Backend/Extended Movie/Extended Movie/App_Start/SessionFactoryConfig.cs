@@ -20,6 +20,7 @@ namespace Extended_Movie.App_Start
             mapper.AddMapping<FileMapping>();
             mapper.AddMapping<CinemaMapping>();
             mapper.AddMapping<LanguageMapping>();
+            mapper.AddMapping<CompanyMapping>();
             configuration.AddDeserializedMapping(mapper.CompileMappingForAllExplicitlyAddedEntities(), null);
             var factory = configuration.BuildSessionFactory();
             new SchemaUpdate(configuration).Execute(false, true);

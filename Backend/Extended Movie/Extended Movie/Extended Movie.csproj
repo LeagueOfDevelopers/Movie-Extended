@@ -107,6 +107,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Mappings\CinemaMapping.cs" />
+    <Compile Include="Mappings\CompanyMapping.cs" />
     <Compile Include="Mappings\FileMapping.cs" />
     <Compile Include="Mappings\LanguageMapping.cs" />
     <Compile Include="Mappings\MovieMapping.cs" />
@@ -118,8 +119,11 @@
     <Compile Include="Models\Session.cs" />
     <Compile Include="Models\SessionKeeper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Visitor Repository\IVisitorRepository.cs" />
-    <Compile Include="Visitor Repository\VisitorRepository.cs" />
+    <Compile Include="Visitor Repository\ICinemaRepository.cs" />
+    <Compile Include="Visitor Repository\ICompanyRepository.cs" />
+    <Compile Include="Visitor Repository\IFileRepository.cs" />
+    <Compile Include="Visitor Repository\ILanguageRepository.cs" />
+    <Compile Include="Visitor Repository\IMovieRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

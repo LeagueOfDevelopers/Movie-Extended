@@ -7,11 +7,8 @@ using Extended_Movie.Models;
 
 namespace Extended_Movie.Visitor_Repository
 {
-    interface IVisitorRepository
+    interface ILanguageRepository
     {
-        void SaveFileData(File file);
-        void SaveMovieData(Movie movie);
-        void SaveCinemaData(Cinema cinema);
-        void SaveLanguageData(Language language);
+        IEnumerable<Language> GetAllLanguages();
     }
 }
