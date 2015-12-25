@@ -34,15 +34,15 @@ namespace Extended_Movie.Controllers.AndroidClient
         [HttpGet]
         public string GetMovieStartTime(Guid sessionId)
         {
-            if (!_sessionKeeper.CheckIfSessionExists(sessionId))
+            if (!_keeper.CheckIfSessionExists(sessionId))
             {
                 throw new HttpResponseException(HttpStatusCode.Unauthorized);
             }
-            if (_sessionKeeper.GetSessionState(sessionId) != SessionState.Active)
+            if (_keeper.GetSessionState(sessionId) != SessionState.Active)
             {
                 throw new HttpResponseException(HttpStatusCode.NotAcceptable);
             }
-            var datetime = _sessionKeeper.GetMovieStartTime(sessionId);
+            var datetime = _keeper.GetMovieStartTime(sessionId);
             return ConvertToUnixTimestamp(datetime).ToString();
         }
 

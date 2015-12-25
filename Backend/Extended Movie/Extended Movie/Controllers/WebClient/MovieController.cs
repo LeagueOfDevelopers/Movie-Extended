@@ -35,6 +35,14 @@ namespace Extended_Movie.Controllers.WebClient
                     _session.Delete(checkIfMovieExists);
         }
 
-        [Route("api/Cinema/{cinemaId}")]
+        [Route("api/Cinema/{cinemaId}/Movie/{movieId}")]
+        [HttpGet]
+        public Movie GetMovieByMovieIdAndCinemaId(Guid cinemaId , Guid movieId)
+        {
+            return _session
+                .Query<Movie>()
+                .Where(movie => movie._cinemaId == cinemaId)
+                .SingleOrDefault(movie => movie.Id == movieId);
+        }
     }
 }
