@@ -7,10 +7,11 @@ namespace Extended_Movie
 {
     public static class WebApiConfig
     {
+        // qw  qw  q
         public static void Register(HttpConfiguration config)
         {
             // Конфигурация и службы веб-API
-
+            var q = "test";
             // Маршруты веб-API
             config.MapHttpAttributeRoutes();
 
