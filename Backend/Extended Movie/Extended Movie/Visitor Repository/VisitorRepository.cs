@@ -6,6 +6,7 @@ using Extended_Movie.Models;
 using NHibernate;
 using NHibernate.Linq;
 
+
 namespace Extended_Movie.Visitor_Repository
 {
     public class VisitorRepository : IVisitorRepository

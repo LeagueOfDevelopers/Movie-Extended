@@ -13,6 +13,5 @@ namespace Extended_Movie.Visitor_Repository
         void SaveMovieData(Movie movie);
         void SaveCinemaData(Cinema cinema);
         void SaveLanguageData(Language language);
-        
     }
 }
