@@ -37,7 +37,7 @@ namespace Extended_Movie.Visitor_Repository
         public void DeleteLanguageByMovieId(Guid movieId)
         {
             var checkIfExists = session.Query<Language>().Where(language => language.MovieId == movieId);
-            if (checkIfExists != null) session.Delete(checkIfExists);
+            if (checkIfExists != null) session.Delete(checkIfExists);   
         }
     }
 }
