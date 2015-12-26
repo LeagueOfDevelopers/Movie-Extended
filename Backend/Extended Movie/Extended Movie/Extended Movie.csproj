@@ -118,6 +118,7 @@
     <Compile Include="Models\Session.cs" />
     <Compile Include="Models\SessionKeeper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Visitor Repository\CinemaRepository.cs" />
     <Compile Include="Visitor Repository\ICinemaRepository.cs" />
     <Compile Include="Visitor Repository\ICompanyRepository.cs" />
     <Compile Include="Visitor Repository\IFileRepository.cs" />
