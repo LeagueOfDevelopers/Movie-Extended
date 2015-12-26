@@ -10,5 +10,6 @@ namespace Extended_Movie.Visitor_Repository
     interface IFileRepository
     {
         IEnumerable<File> GetAllFiles();
+
     }
 }

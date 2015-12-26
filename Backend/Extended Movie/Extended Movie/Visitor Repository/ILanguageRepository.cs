@@ -13,6 +13,6 @@ namespace Extended_Movie.Visitor_Repository
         void SaveLanguage(Language language);
         IEnumerable<Language> GetLanguagesByMovieId(Guid movieId);
         void DeleteLanguageByLanguageId(Guid? languageID);
-
+        void DeleteLanguageByMovieId(Guid movieId);
     }
 }
