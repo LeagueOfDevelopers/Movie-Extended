@@ -12,7 +12,9 @@ namespace Extended_Movie.Visitor_Repository
         IEnumerable<Cinema> GetAllCinemas();
         void SaveCinemaData(Cinema cinema);
         Cinema GetCinemaByCompanyId(Guid companyId);
-        
+        void DeleteCinemaByCinemaId(Guid? cinemaId);
+        void DeleteCinemaByCompanyId(Guid companyId);
+        Cinema GetCinemaByCinemaId(Guid? cinemaId);
 
     }
 }
