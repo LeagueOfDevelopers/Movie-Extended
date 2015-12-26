@@ -32,12 +32,14 @@ namespace Extended_Movie.Visitor_Repository
 
         public void DeleteCinemaByCinemaId(Guid? cinemaId)
         {
-            throw new NotImplementedException();
+            var checkIfExists = session.Query<Cinema>().Where(cinema => cinema.Id == cinemaId);
+            if (checkIfExists != null) session.Delete(checkIfExists);
         }
 
         public void DeleteCinemaByCompanyId(Guid companyId)
         {
-            throw new NotImplementedException();
+            var checkIfExists = session.Query<Cinema>().Where(cinema => cinema.CompanyId == companyId);
+            if (checkIfExists != null) session.Delete(checkIfExists);
         }
 
         public Cinema GetCinemaByCinemaId(Guid? cinemaId)
