@@ -111,6 +111,7 @@
     <Compile Include="Mappings\LanguageMapping.cs" />
     <Compile Include="Mappings\MovieMapping.cs" />
     <Compile Include="Models\Cinema.cs" />
+    <Compile Include="Models\Company.cs" />
     <Compile Include="Models\File.cs" />
     <Compile Include="Models\Language.cs" />
     <Compile Include="Models\Movie.cs" />
