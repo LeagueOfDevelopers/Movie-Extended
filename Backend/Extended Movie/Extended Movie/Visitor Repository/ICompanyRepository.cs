@@ -12,7 +12,7 @@ namespace Extended_Movie.Visitor_Repository
         IEnumerable<Company> GetAllCompanies();
         Company GetCompanyByCompanyId(Guid? companyId);
         void deleteCompanyById(Guid? companyId);
-
+        void SaveCompany(Company company);
 
     }
 }

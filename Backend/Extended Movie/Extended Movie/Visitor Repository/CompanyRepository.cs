@@ -26,5 +26,12 @@ namespace Extended_Movie.Visitor_Repository
             var checkIfExists = session.Query<Company>().SingleOrDefault(company => company.Id == companyId);
             if (checkIfExists != null) session.Delete(checkIfExists);
         }
+
+        public void SaveCompany(Company company)
+        {
+            session.BeginTransaction();
+            session.SaveOrUpdate(company);
+            session.Transaction.Commit();
+        }
     }
 }

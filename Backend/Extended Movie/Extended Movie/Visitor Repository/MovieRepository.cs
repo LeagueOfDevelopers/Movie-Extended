@@ -37,5 +37,12 @@ namespace Extended_Movie.Visitor_Repository
             var checkIfExists = session.Query<Movie>().Where(movie => movie._cinemaId == cinemaId);
             if (checkIfExists != null) session.Delete(checkIfExists);
         }
+
+        public void SaveMovie(Movie movie)
+        {
+            session.BeginTransaction();
+            session.SaveOrUpdate(movie);
+            session.Transaction.Commit();
+        }
     }
 }

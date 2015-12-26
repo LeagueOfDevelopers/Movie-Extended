@@ -125,6 +125,7 @@
     <Compile Include="Visitor Repository\IFileRepository.cs" />
     <Compile Include="Visitor Repository\ILanguageRepository.cs" />
     <Compile Include="Visitor Repository\IMovieRepository.cs" />
+    <Compile Include="Visitor Repository\LanguageRepository.cs" />
     <Compile Include="Visitor Repository\MovieRepository.cs" />
   </ItemGroup>
   <ItemGroup>
