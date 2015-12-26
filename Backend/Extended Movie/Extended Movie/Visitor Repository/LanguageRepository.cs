@@ -3,34 +3,41 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using Extended_Movie.Models;
+using NHibernate;
+using NHibernate.Linq;
 
 namespace Extended_Movie.Visitor_Repository
 {
     public class LanguageRepository:ILanguageRepository
     {
+        private readonly ISession session;
         public IEnumerable<Language> GetAllLanguages()
         {
-            throw new NotImplementedException();
+            return session.Query<Language>();
         }
 
         public void SaveLanguage(Language language)
         {
-            throw new NotImplementedException();
+            session.BeginTransaction();
+            session.SaveOrUpdate(language);
+            session.Transaction.Commit();
         }
 
         public IEnumerable<Language> GetLanguagesByMovieId(Guid movieId)
         {
-            throw new NotImplementedException();
+            return session.Query<Language>().Where(language => language.MovieId == movieId);
         }
 
         public void DeleteLanguageByLanguageId(Guid? languageID)
         {
-            throw new NotImplementedException();
+            var checkIfExists = session.Query<Language>().SingleOrDefault(language => language.Id == languageID);
+            if (checkIfExists != null) session.Delete((checkIfExists));
         }
 
         public void DeleteLanguageByMovieId(Guid movieId)
         {
-            throw new NotImplementedException();
+            var checkIfExists = session.Query<Language>().Where(language => language.MovieId == movieId);
+            if (checkIfExists != null) session.Delete(checkIfExists);
         }
     }
 }
