@@ -5,44 +5,64 @@ using System.Web;
 using System.Web.Http;
 using NHibernate;
 using Extended_Movie.Models;
+using Extended_Movie.Visitor_Repository;
+using Newtonsoft.Json;
 using NHibernate.Linq;
 namespace Extended_Movie.Controllers.WebClient
 {
     public class MovieController : ApiController
     {
-        private readonly ISession _session;
+        private readonly MovieRepository movieRepository;
 
-        public MovieController(ISession session)
+        public MovieController()
         {
-            _session = session;
+            movieRepository = new MovieRepository();
         }
 
-        [Route("api/Cinema/{cinemaId}/Movies")]
-        [HttpGet]
-
-        public IEnumerable<Movie> GetMoviesByCinemaId(Guid cinemaId)
-        {
-            return _session.Query<Movie>().Where(movie => movie.Id == cinemaId);
-        }
         
-        [Route("api/Movies/Delete/{movieId")]
+        [Route("api/Movie/new/{json}")]
         [HttpGet]
 
-        public void DeleteMovieById(Guid movieId)
+        public void SaveMovie(string json)
         {
-            var checkIfMovieExists = _session.Query<Movie>().SingleOrDefault<Movie>(movie => movie.Id == movieId);
-            if(checkIfMovieExists!= null)
-                    _session.Delete(checkIfMovieExists);
+            var newMovie = JsonConvert.DeserializeObject<Movie>(json);
+            movieRepository.SaveMovie(newMovie);
         }
 
-        [Route("api/Cinema/{cinemaId}/Movie/{movieId}")]
+        [Route("api/Movie/All")]
         [HttpGet]
-        public Movie GetMovieByMovieIdAndCinemaId(Guid cinemaId , Guid movieId)
+        public IEnumerable<Movie> GetAllMoviesFromDatabase()
         {
-            return _session
-                .Query<Movie>()
-                .Where(movie => movie._cinemaId == cinemaId)
-                .SingleOrDefault(movie => movie.Id == movieId);
+            return movieRepository.GetAllMovies();
+        } 
+
+        [Route("api/Movie/{movieId}")]
+        [HttpGet]
+        public Movie GetMovieByMovieId(Guid? movieId)
+        {
+          return  movieRepository.GetMovieByMovieId(movieId);
         }
+
+        [Route("api/Movie/Cinema/{cinemaId}")]
+        [HttpGet]
+        public Movie GetMovieByCinemaId(Guid cinemaId)
+        {
+            return movieRepository.GetMovieByCinemaId(cinemaId);
+        }
+
+        [Route("api/Movie/Delete/{movieId}")]
+        [HttpGet]
+        public void DeleteMovieByMovieId(Guid? movieId)
+        {
+            movieRepository.DeleteMovieByMovieId(movieId);
+        }
+
+        [Route("api/Movie/Delete/Cinema/{cinemaId}")]
+        [HttpGet]
+        public void DeleteMovieByCinemaId(Guid cinemaId)
+        {
+            movieRepository.GetMovieByCinemaId(cinemaId);
+        }
+
     }
 }
