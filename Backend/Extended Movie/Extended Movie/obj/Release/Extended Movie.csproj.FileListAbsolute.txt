@@ -38,3 +38,37 @@ C:\Users\дшшр\Documents\Movie-Extended\Backend\Extended Movie\Extended Movie
 C:\Users\дшшр\Documents\MovieExtended\Movie-Extended\Backend\Extended Movie\Extended Movie\obj\Release\Extended Movie.csprojResolveAssemblyReference.cache
 C:\Users\дшшр\Documents\MovieExtended\Movie-Extended\Backend\Extended Movie\Extended Movie\obj\Release\Extended Movie.dll
 C:\Users\дшшр\Documents\MovieExtended\Movie-Extended\Backend\Extended Movie\Extended Movie\obj\Release\Extended Movie.pdb
+C:\Users\дшшр\Documents\MovieExtended\Movie-Extended\Backend\Extended Movie\Extended Movie\bin\roslyn\csc.exe
+C:\Users\дшшр\Documents\MovieExtended\Movie-Extended\Backend\Extended Movie\Extended Movie\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\дшшр\Documents\MovieExtended\Movie-Extended\Backend\Extended Movie\Extended Movie\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\дшшр\Documents\MovieExtended\Movie-Extended\Backend\Extended Movie\Extended Movie\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\дшшр\Documents\MovieExtended\Movie-Extended\Backend\Extended Movie\Extended Movie\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\дшшр\Documents\MovieExtended\Movie-Extended\Backend\Extended Movie\Extended Movie\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\дшшр\Documents\MovieExtended\Movie-Extended\Backend\Extended Movie\Extended Movie\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\дшшр\Documents\MovieExtended\Movie-Extended\Backend\Extended Movie\Extended Movie\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\дшшр\Documents\MovieExtended\Movie-Extended\Backend\Extended Movie\Extended Movie\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\дшшр\Documents\MovieExtended\Movie-Extended\Backend\Extended Movie\Extended Movie\bin\roslyn\vbc.exe
+C:\Users\дшшр\Documents\MovieExtended\Movie-Extended\Backend\Extended Movie\Extended Movie\bin\roslyn\VBCSCompiler.exe
+C:\Users\дшшр\Documents\MovieExtended\Movie-Extended\Backend\Extended Movie\Extended Movie\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\дшшр\Documents\MovieExtended\Movie-Extended\Backend\Extended Movie\Extended Movie\bin\Extended Movie.dll.config
+C:\Users\дшшр\Documents\MovieExtended\Movie-Extended\Backend\Extended Movie\Extended Movie\bin\Extended Movie.dll
+C:\Users\дшшр\Documents\MovieExtended\Movie-Extended\Backend\Extended Movie\Extended Movie\bin\Extended Movie.pdb
+C:\Users\дшшр\Documents\MovieExtended\Movie-Extended\Backend\Extended Movie\Extended Movie\bin\Iesi.Collections.dll
+C:\Users\дшшр\Documents\MovieExtended\Movie-Extended\Backend\Extended Movie\Extended Movie\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\дшшр\Documents\MovieExtended\Movie-Extended\Backend\Extended Movie\Extended Movie\bin\Newtonsoft.Json.dll
+C:\Users\дшшр\Documents\MovieExtended\Movie-Extended\Backend\Extended Movie\Extended Movie\bin\NHibernate.dll
+C:\Users\дшшр\Documents\MovieExtended\Movie-Extended\Backend\Extended Movie\Extended Movie\bin\SimpleInjector.dll
+C:\Users\дшшр\Documents\MovieExtended\Movie-Extended\Backend\Extended Movie\Extended Movie\bin\System.Net.Http.Formatting.dll
+C:\Users\дшшр\Documents\MovieExtended\Movie-Extended\Backend\Extended Movie\Extended Movie\bin\System.Web.Http.dll
+C:\Users\дшшр\Documents\MovieExtended\Movie-Extended\Backend\Extended Movie\Extended Movie\bin\System.Web.Http.WebHost.dll
+C:\Users\дшшр\Documents\MovieExtended\Movie-Extended\Backend\Extended Movie\Extended Movie\bin\Iesi.Collections.xml
+C:\Users\дшшр\Documents\MovieExtended\Movie-Extended\Backend\Extended Movie\Extended Movie\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\дшшр\Documents\MovieExtended\Movie-Extended\Backend\Extended Movie\Extended Movie\bin\NHibernate.xml
+C:\Users\дшшр\Documents\MovieExtended\Movie-Extended\Backend\Extended Movie\Extended Movie\bin\SimpleInjector.xml
+C:\Users\дшшр\Documents\MovieExtended\Movie-Extended\Backend\Extended Movie\Extended Movie\bin\Newtonsoft.Json.xml
+C:\Users\дшшр\Documents\MovieExtended\Movie-Extended\Backend\Extended Movie\Extended Movie\bin\System.Net.Http.Formatting.xml
+C:\Users\дшшр\Documents\MovieExtended\Movie-Extended\Backend\Extended Movie\Extended Movie\bin\System.Web.Http.xml
+C:\Users\дшшр\Documents\MovieExtended\Movie-Extended\Backend\Extended Movie\Extended Movie\bin\System.Web.Http.WebHost.xml
+C:\Users\дшшр\Documents\MovieExtended\Movie-Extended\Backend\Extended Movie\Extended Movie\bin\ru\System.Net.Http.Formatting.resources.dll
+C:\Users\дшшр\Documents\MovieExtended\Movie-Extended\Backend\Extended Movie\Extended Movie\bin\ru\System.Web.Http.resources.dll
+C:\Users\дшшр\Documents\MovieExtended\Movie-Extended\Backend\Extended Movie\Extended Movie\bin\ru\System.Web.Http.WebHost.resources.dll
