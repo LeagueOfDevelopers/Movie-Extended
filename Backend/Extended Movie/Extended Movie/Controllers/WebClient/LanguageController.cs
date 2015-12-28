@@ -18,7 +18,7 @@ namespace Extended_Movie.Controllers.WebClient
             this.languageRepository = languageRepository;
         }
 
-        [Route("api/Languages/Delete/{movieId}")]
+        [Route("api/Languages/DeleteByMovie/{movieId}")]
         [HttpGet]
 
         public void DeleteMovieFromLanguageById(Guid movieId)
@@ -26,7 +26,7 @@ namespace Extended_Movie.Controllers.WebClient
             languageRepository.DeleteLanguageByMovieId(movieId);
         }
 
-        [Route("api/Languages/{languageId}/Delete")]
+        [Route("api/Languages/DeleteByLang/{languageId}")]
         [HttpGet]
 
         public void DeleteLanguageByLanguageId(Guid? languageId)
@@ -34,7 +34,7 @@ namespace Extended_Movie.Controllers.WebClient
             languageRepository.DeleteLanguageByLanguageId(languageId);
         }
 
-        [Route("api/Languages")]
+        [Route("api/Languages/All")]
         [HttpGet]
 
         public IEnumerable<Language> GetAllLanguages()

@@ -35,3 +35,6 @@ C:\Users\дшшр\Documents\Movie-Extended\Backend\Extended Movie\Extended Movie
 C:\Users\дшшр\Documents\Movie-Extended\Backend\Extended Movie\Extended Movie\obj\Release\Extended Movie.csprojResolveAssemblyReference.cache
 C:\Users\дшшр\Documents\Movie-Extended\Backend\Extended Movie\Extended Movie\obj\Release\Extended Movie.dll
 C:\Users\дшшр\Documents\Movie-Extended\Backend\Extended Movie\Extended Movie\obj\Release\Extended Movie.pdb
+C:\Users\дшшр\Documents\MovieExtended\Movie-Extended\Backend\Extended Movie\Extended Movie\obj\Release\Extended Movie.csprojResolveAssemblyReference.cache
+C:\Users\дшшр\Documents\MovieExtended\Movie-Extended\Backend\Extended Movie\Extended Movie\obj\Release\Extended Movie.dll
+C:\Users\дшшр\Documents\MovieExtended\Movie-Extended\Backend\Extended Movie\Extended Movie\obj\Release\Extended Movie.pdb
