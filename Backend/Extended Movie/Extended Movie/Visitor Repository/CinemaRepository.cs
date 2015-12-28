@@ -13,6 +13,8 @@ namespace Extended_Movie.Visitor_Repository
 
         private readonly ISession session;
 
+        
+
         public IEnumerable<Cinema> GetAllCinemas()
         {
             return session.Query<Cinema>();
