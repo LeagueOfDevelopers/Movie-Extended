@@ -117,6 +117,7 @@
     <Compile Include="Models\Company.cs" />
     <Compile Include="Models\File.cs" />
     <Compile Include="Models\FileSizeAttribute.cs" />
+    <Compile Include="Models\FileTypesAttribute.cs" />
     <Compile Include="Models\Language.cs" />
     <Compile Include="Models\Movie.cs" />
     <Compile Include="Models\Session.cs" />
