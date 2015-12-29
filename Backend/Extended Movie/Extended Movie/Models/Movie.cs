@@ -10,8 +10,8 @@ namespace Extended_Movie.Models
         public Movie(Guid? id, string name, Guid cinemaId )
         {
             Id = id;
-            _name = name;
-            _cinemaId = cinemaId;
+            Name = name;
+            CinemaId = cinemaId;
 
         }
 
@@ -21,9 +21,9 @@ namespace Extended_Movie.Models
 
         public virtual Guid? Id { get; protected set; }
 
-        public virtual string _name { get; protected set; }
+        public virtual string Name { get; protected set; }
 
-        public virtual Guid _cinemaId { get; protected set; }
+        public virtual Guid CinemaId { get; protected set; }
         
 
         

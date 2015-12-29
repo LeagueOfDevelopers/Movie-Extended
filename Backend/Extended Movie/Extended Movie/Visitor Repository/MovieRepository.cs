@@ -23,7 +23,7 @@ namespace Extended_Movie.Visitor_Repository
 
         public Movie GetMovieByCinemaId(Guid cinemaId)
         {
-            return session.Query<Movie>().SingleOrDefault(movie => movie._cinemaId == cinemaId);
+            return session.Query<Movie>().SingleOrDefault(movie => movie.CinemaId == cinemaId);
         }
 
         public void DeleteMovieByMovieId(Guid? movieId)
@@ -34,7 +34,7 @@ namespace Extended_Movie.Visitor_Repository
 
         public void DeleteMovieByCinemaId(Guid cinemaId)
         {
-            var checkIfExists = session.Query<Movie>().Where(movie => movie._cinemaId == cinemaId);
+            var checkIfExists = session.Query<Movie>().Where(movie => movie.CinemaId == cinemaId);
             if (checkIfExists != null) session.Delete(checkIfExists);
         }
 
