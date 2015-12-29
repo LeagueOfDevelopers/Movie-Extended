@@ -1,18 +1,17 @@
 <div class="field_header" ng-cloak><span class="field_title">Ваши фильмы</span>
   <button class="btn add_button" ui-sref="movies.create_movie" ng-click="showPopup = !showPopup">+</button>
-  <button class="btn" ui-sref="movies.about_movie" ng-click="showPopup = !showPopup">about</button>
 </div>
 <div class="movies_list">
   <ul>
     <li class="card" ng-repeat="movie in movies">
       <div class="movie_container">
         <div class="row">
-          <div class="col m2 movie_picture"><img ng-src="movie.photoUri"></div>
           <div class="col m9 movie_title"><span>{{movie.name}}</span></div>
         </div>
         <div class="movie_description">
           <p>{{movie.description}}</p>
         </div>
+        <a class="btn" ui-sref="movies.about_movie">EDIT</a>
       </div>
     </li>
   </ul>

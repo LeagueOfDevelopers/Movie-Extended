@@ -16,7 +16,6 @@ body {
 .header {
   height: 120px;
   background-color: #fff;
-  border-bottom: 1px solid #1de9b6;
   padding-bottom: 20px; }
 
 .page_content {
@@ -103,7 +102,7 @@ body {
 
 .movies_list {
   overflow-y: auto;
-  max-height: 400px; }
+  max-height: 600px; }
 
 .movies_list li {
   display: block; }

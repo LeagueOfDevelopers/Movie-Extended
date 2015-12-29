@@ -1,16 +1,18 @@
 angular.module("extendedMovie.controllers", [])
 
-  .controller("MoviesCtrl", ['$scope', '$http', function($scope, $http) {
+  .controller("MoviesCtrl", ['$scope', '$http','$rootScope', function($scope, $http) {
 
     getMovies();
     $scope.showPopup = false;
+    $scope.cinema = {};
 
 
-    $scope.addNewMovie = function () {
-      var newMovie = {id:3, name: "dnwndw", description: "dnwndjwd2d2", photoUri: "dnwdjwdwdw"};
+    $scope.createMovie = function () {
+      $scope.showPopup = false;
+      var newMovie = {id:3, name: $scope.cinema.name, description: $scope.cinema.description, photoUri: "dnwdjwdwdw"};
         $http.post('/api/movies', newMovie)
         .success(function (data) {
-            $scope.movies.push(newMovie);
+          getMovies();
             console.log(data);
         })
       };
