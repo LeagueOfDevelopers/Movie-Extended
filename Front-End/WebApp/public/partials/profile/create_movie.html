@@ -1,0 +1,12 @@
+<div class="popup_container">
+  <span>Создание фильма</span>
+  <div class="input-field">
+  <input id="movie_name" type="text" placeholder="Название" ng-model="newMovie.name"></div>
+  <div class="input-field">
+  <label for="movie_description"></label>
+  <input id="movie_description" type="text" ng-model="newMovie.description"></div>
+  <div class="input-field file-field btn"><input type="file" accept="image/jpeg,image/png" id="movie_picture" ng-model="newMovie.photoUri">picture</div>
+  <div>
+  <button class="btn" ng-click="createMovie()">создать</button></div>
+
+</div

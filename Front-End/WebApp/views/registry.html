@@ -22,46 +22,9 @@
         </div>
       </div>
     </section>
-    <div class="container">
-      <div class="row">
-        <div class="col s12 form__wrapper card">
-          <div class="form__title">
-            <h1 class="card-title">Регистрация в системе</h1>
-          </div>
-          <form class="registry__form">
-            <div class="register__form">
-              <div class="row contacts__form">
-                <div class="input-field col s12 m6">
-                  <input ng-model="" type="text" placeholder="Имя компании">
-                </div>
-                <div class="input-field col s12 m6">
-                  <input ng-model="" type="url" placeholder="Адрес компании">
-                </div>
-                <div class="input-field col s12 m6">
-                  <input ng-model="" type="email" placeholder="Email">
-                </div>
-                <div class="input-field col s12 m6">
-                  <input ng-model="" type="text" placeholder="Контактный телефон">
-                </div>
-              </div>
-              <div class="row">
-                <div class="input-field col s12 m4">
-                  <input ng-model="" type="password" placeholder="Пароль">
-                </div>
-                <div class="input-field col s12 m4">
-                  <input ng-model="" type="password" placeholder="Пароль еще раз">
-                </div>
-              </div>
-            </div>
-          </form>
-          <div class="card-action">     
-            <div class="btn waves-effect waves-green right submit__button">
-              <input type="submit" value="Начать" ng-disabled="submitted">
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <section ui-view>
+      
+    </section>
     <script type="text/javascript" src="angular/angular.min.js"></script>
     <script type="text/javascript" src="angular/angular-route.min.js"></script>
     <script type="text/javascript" src="js/extendedMovie.js"></script>

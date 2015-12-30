@@ -138,3 +138,8 @@ body {
   background-color: #fff;
   margin: 0 auto;
   transform: translateY(-40px); }
+
+.movie_picture {
+  width: 80px;
+  height: 80px;
+  background-size: cover; }
