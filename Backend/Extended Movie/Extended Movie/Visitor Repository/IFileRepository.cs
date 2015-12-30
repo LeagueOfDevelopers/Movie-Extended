@@ -10,7 +10,6 @@ namespace Extended_Movie.Visitor_Repository
 {
     interface IFileRepository
     {
-        HttpResponseMessage GetFileToDataBase(Guid? fileId);
         void DownLoadFileFromDataBase(Guid? fileId);
         void DeleteFileByFileId(Guid? fileId);
         File GetFileData(Guid? fileId);

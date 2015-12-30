@@ -30,7 +30,7 @@ namespace Extended_Movie.Controllers
 
         [Route("api/Files/Get/{fileId}")]
         [HttpGet]
-        public HttpResponseMessage ReturnFile(Guid fileId)
+        public HttpResponseMessage DownLoadFileFromDataBase(Guid fileId)
         {
             var returnFile = fileRepository.GetFileData(fileId);
             if (returnFile == null)

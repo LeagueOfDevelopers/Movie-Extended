@@ -18,19 +18,8 @@ namespace Extended_Movie.Visitor_Repository
         {
             
         }
-        public HttpResponseMessage GetFileToDataBase(Guid? fileId)
-        {
-            var downLoadFile = GetFileData(fileId);
-            if (downLoadFile != null)
-            {
-
-            }
-            else
-            {
-                return new HttpResponseMessage(HttpStatusCode.NoContent);
-            }
-        }
-
+        
+        
         public void DownLoadFileFromDataBase(Guid? fileId)
         {
             
