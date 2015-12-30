@@ -40,8 +40,12 @@ namespace Extended_Movie.Visitor_Repository
         {
             var deleteFile = session.Query<File>().SingleOrDefault(file => fileId == file.Id);
             if (deleteFile != null)
+            {
+                System.IO.File.Delete(deleteFile.FilePath.ToString());
                 session.Delete(deleteFile);
-            
+
+            }
+
         }
 
         public File GetFileData(Guid? fileId)

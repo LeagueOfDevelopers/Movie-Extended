@@ -68,12 +68,6 @@ namespace Extended_Movie.Controllers
         [HttpGet]
         public void DeleteFileByFileId(Guid? fileId)
         {
-            var deleteFile = fileRepository.GetFileData(fileId);
-            
-            
-            
-                
-            
             fileRepository.DeleteFileByFileId(fileId);
         }
     }
