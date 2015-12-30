@@ -38,7 +38,10 @@ namespace Extended_Movie.Visitor_Repository
 
         public void DeleteFileByFileId(Guid? fileId)
         {
-            throw new NotImplementedException();
+            var deleteFile = session.Query<File>().SingleOrDefault(file => fileId == file.Id);
+            if (deleteFile != null)
+                session.Delete(deleteFile);
+            
         }
 
         public File GetFileData(Guid? fileId)

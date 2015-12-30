@@ -32,7 +32,7 @@ namespace Extended_Movie.Controllers
         [HttpGet]
         public HttpResponseMessage ReturnFile(Guid fileId)
         {
-            var returnFile = session.Query<File>().SingleOrDefault(file => file.Id == fileId);
+            var returnFile = fileRepository.GetFileData(fileId);
             if (returnFile == null)
             {
                 return new HttpResponseMessage(HttpStatusCode.NoContent);
@@ -47,7 +47,7 @@ namespace Extended_Movie.Controllers
             }
         }
 
-        [Route("api/Files/NewTrack")]
+        [Route("api/Files/NewTrack/{fileId}")]
         [HttpPost]
         public void DownLoadFileToDataBase(HttpPostedFileBase fileUpload, Guid? fileId)
         {
@@ -62,6 +62,13 @@ namespace Extended_Movie.Controllers
                 
                 fileUpload.SaveAs(Path.Combine(directory, fileName));
             }
+        }
+
+        [Route("api/Files/Delete/{fileId}")]
+        [HttpGet]
+        public void DeleteFileByFileId(Guid? fileId)
+        {
+            fileRepository.DeleteFileByFileId(fileId);
         }
     }
 }
