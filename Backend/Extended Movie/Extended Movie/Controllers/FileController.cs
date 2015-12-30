@@ -28,7 +28,7 @@ namespace Extended_Movie.Controllers
             fileRepository = new FileRepository();
         }
 
-        [Route("api/Files/{fileId}")]
+        [Route("api/Files/Get/{fileId}")]
         [HttpGet]
         public HttpResponseMessage ReturnFile(Guid fileId)
         {
