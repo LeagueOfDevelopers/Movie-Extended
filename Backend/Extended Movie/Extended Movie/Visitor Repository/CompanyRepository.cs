@@ -10,6 +10,10 @@ namespace Extended_Movie.Visitor_Repository
 {
     public class CompanyRepository :ICompanyRepository
     {
+        public CompanyRepository()
+        {
+            
+        }
         private readonly ISession session;
         public IEnumerable<Company> GetAllCompanies()
         {

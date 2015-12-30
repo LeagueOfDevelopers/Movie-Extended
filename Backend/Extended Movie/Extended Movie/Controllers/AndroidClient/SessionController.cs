@@ -13,12 +13,12 @@ namespace Extended_Movie.Controllers.AndroidClient
     public class SessionController : ApiController
     {
         private readonly SessionKeeper _keeper;
-        private readonly ISession _session;
+        private readonly ISession Session;
 
         public SessionController(SessionKeeper keeper , ISession session)
         {
             _keeper = keeper;
-            _session = session;
+            Session = session;
         }
 
         [Route("api/Session/Login/qr")]

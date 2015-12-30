@@ -11,6 +11,11 @@ namespace Extended_Movie.Visitor_Repository
     public class MovieRepository:IMovieRepository
     {
         private readonly ISession session;
+
+        public MovieRepository()
+        {
+            
+        }
         public IEnumerable<Movie> GetAllMovies()
         {
             return session.Query<Movie>();

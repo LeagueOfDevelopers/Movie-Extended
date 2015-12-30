@@ -11,9 +11,12 @@ namespace Extended_Movie.Visitor_Repository
     public class CinemaRepository : ICinemaRepository
     {
 
-        private readonly ISession session;
+        private readonly ISession session ;
 
-        
+        public CinemaRepository()
+        {
+            
+        }
 
         public IEnumerable<Cinema> GetAllCinemas()
         {

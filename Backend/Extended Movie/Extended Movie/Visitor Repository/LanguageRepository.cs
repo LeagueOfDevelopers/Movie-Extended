@@ -11,6 +11,11 @@ namespace Extended_Movie.Visitor_Repository
     public class LanguageRepository:ILanguageRepository
     {
         private readonly ISession session;
+
+        public LanguageRepository()
+        {
+            
+        }
         public IEnumerable<Language> GetAllLanguages()
         {
             return session.Query<Language>();

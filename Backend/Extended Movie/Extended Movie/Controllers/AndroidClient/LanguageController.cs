@@ -17,9 +17,9 @@ namespace Extended_Movie.Controllers.AndroidClient
         private readonly LanguageRepository languageRepository;
         private readonly SessionKeeper _keeper;
 
-        public LanguageController(LanguageRepository languageRepository, SessionKeeper keeper)
+        public LanguageController( SessionKeeper keeper)
         {
-            this.languageRepository =languageRepository;
+            languageRepository = new LanguageRepository();
             _keeper = keeper;
         }
         

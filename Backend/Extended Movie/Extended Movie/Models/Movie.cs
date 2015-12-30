@@ -13,6 +13,7 @@ namespace Extended_Movie.Models
             Name = name;
             CinemaId = cinemaId;
 
+
         }
 
         protected Movie()
@@ -24,10 +25,10 @@ namespace Extended_Movie.Models
         public virtual string Name { get; protected set; }
 
         public virtual Guid CinemaId { get; protected set; }
-        
 
         
 
-        
+
+
     }
 }
