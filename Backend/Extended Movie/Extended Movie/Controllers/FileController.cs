@@ -47,7 +47,7 @@ namespace Extended_Movie.Controllers
             }
         }
 
-        [Route("api/Files/New//{fileId}")]
+        [Route("api/Files/NewTrack")]
         [HttpPost]
         public void DownLoadFileToDataBase(HttpPostedFileBase fileUpload, Guid? fileId)
         {
@@ -55,8 +55,11 @@ namespace Extended_Movie.Controllers
             if (fileUpload != null)
             {
                 var directory = @"C:\files\";
+                var uploadedFile = new File(new Guid?(),new Uri(directory+fileUpload.FileName),FileType.Track);
+                fileRepository.SaveFileData(uploadedFile);
                 //var fileExt = System.IO.Path.GetExtension(fileUpload.FileName).Substring(1);
                 var fileName = Path.GetFileName(fileUpload.FileName);
+                
                 fileUpload.SaveAs(Path.Combine(directory, fileName));
             }
         }

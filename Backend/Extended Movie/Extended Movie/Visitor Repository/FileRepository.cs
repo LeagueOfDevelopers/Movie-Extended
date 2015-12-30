@@ -45,5 +45,12 @@ namespace Extended_Movie.Visitor_Repository
         {
             return session.Query<File>().SingleOrDefault(file => file.Id == fileId);
         }
+
+        public void SaveFileData(File file)
+        {
+            session.BeginTransaction();
+            session.SaveOrUpdate(file);
+            session.Transaction.Commit();
+        }
     }
 }

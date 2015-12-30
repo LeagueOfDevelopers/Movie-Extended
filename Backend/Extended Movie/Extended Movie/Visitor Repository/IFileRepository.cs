@@ -14,5 +14,6 @@ namespace Extended_Movie.Visitor_Repository
         void DownLoadFileFromDataBase(Guid? fileId);
         void DeleteFileByFileId(Guid? fileId);
         File GetFileData(Guid? fileId);
+        void SaveFileData(File file);
     }
 }
