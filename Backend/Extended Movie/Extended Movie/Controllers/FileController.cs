@@ -14,20 +14,23 @@ using NHibernate;
 using NHibernate.Linq;
 using NHibernate.Util;
 using System.IO;
+
 namespace Extended_Movie.Controllers
 {
     public class FileController : ApiController
     {
         private readonly ISession session;
         private FileRepository fileRepository;
+
         public FileController(ISession session)
         {
             this.session = session;
             fileRepository = new FileRepository();
         }
+
         [Route("api/Files/{fileId}")]
         [HttpGet]
-        public HttpResponseMessage ReturnFile (Guid fileId)
+        public HttpResponseMessage ReturnFile(Guid fileId)
         {
             var returnFile = session.Query<File>().SingleOrDefault(file => file.Id == fileId);
             if (returnFile == null)
@@ -43,17 +46,19 @@ namespace Extended_Movie.Controllers
                 return result;
             }
         }
+
         [Route("api/Files/New//{fileId}")]
         [HttpPost]
-        public void DownLoadFileToDataBase(HttpPostedFileBase fileUpload , Guid? fileId)
+        public void DownLoadFileToDataBase(HttpPostedFileBase fileUpload, Guid? fileId)
         {
-            
-            if (fileUpload!=null)
+
+            if (fileUpload != null)
             {
                 var directory = @"C:\files\";
                 //var fileExt = System.IO.Path.GetExtension(fileUpload.FileName).Substring(1);
                 var fileName = Path.GetFileName(fileUpload.FileName);
                 fileUpload.SaveAs(Path.Combine(directory, fileName));
             }
+        }
     }
 }
