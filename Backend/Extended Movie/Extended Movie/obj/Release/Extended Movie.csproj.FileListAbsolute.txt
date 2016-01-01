@@ -75,5 +75,8 @@ C:\Users\дшшр\Documents\MovieExtended\Movie-Extended\Backend\Extended Movie\
 C:\Users\дшшр\Documents\MovieExtended\Movie-Extended\Backend\Extended Movie\Extended Movie\bin\System.Web.Razor.dll
 C:\Users\дшшр\Documents\MovieExtended\Movie-Extended\Backend\Extended Movie\Extended Movie\bin\System.Web.WebPages.Razor.dll
 C:\Users\дшшр\Documents\MovieExtended\Movie-Extended\Backend\Extended Movie\Extended Movie\bin\System.Web.WebPages.dll
-C:\Users\дшшр\Documents\MovieExtended\Movie-Extended\Backend\Extended Movie\Extended Movie\bin\Microsoft.Web.Infrastructure.dll
 C:\Users\дшшр\Documents\MovieExtended\Movie-Extended\Backend\Extended Movie\Extended Movie\bin\System.Web.WebPages.Deployment.dll
+C:\Users\дшшр\Documents\MovieExtended\Movie-Extended\Backend\Extended Movie\Extended Movie\bin\SimpleInjector.Integration.Web.dll
+C:\Users\дшшр\Documents\MovieExtended\Movie-Extended\Backend\Extended Movie\Extended Movie\bin\SimpleInjector.Integration.Web.Mvc.dll
+C:\Users\дшшр\Documents\MovieExtended\Movie-Extended\Backend\Extended Movie\Extended Movie\bin\SimpleInjector.Integration.Web.xml
+C:\Users\дшшр\Documents\MovieExtended\Movie-Extended\Backend\Extended Movie\Extended Movie\bin\SimpleInjector.Integration.Web.Mvc.xml

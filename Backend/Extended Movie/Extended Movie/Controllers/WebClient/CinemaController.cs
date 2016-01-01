@@ -18,6 +18,7 @@ namespace Extended_Movie.Controllers.WebClient
         {
             cinemaRepository = new CinemaRepository();
             
+
         }
 
         [Route("api/Cinema/All")]
