@@ -7,6 +7,10 @@ namespace Extended_Movie.Models
 {
     public class SessionKeeper
     {
+        public SessionKeeper()
+        {
+            
+        }
         public Guid CreateSession(Guid movieId)
         {
             var session = new Session(Guid.NewGuid(), movieId);

@@ -17,7 +17,6 @@ namespace Extended_Movie.Controllers.WebClient
         public CinemaController()
         {
             cinemaRepository = new CinemaRepository();
-            
 
         }
 

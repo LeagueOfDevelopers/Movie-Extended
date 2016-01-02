@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="IIS Web Application Name" description="" value="MovieExtendedApplication" tags="IisApp">
+    <parameterEntry kind="ProviderPath" scope="IisApp" match="^C:\\Users\\дшшр\\Documents\\MovieExtended\\Movie-Extended\\Backend\\Extended\ Movie\\Extended\ Movie\\obj\\Release\\Package\\PackageTmp$" />
+    <parameterEntry kind="ProviderPath" scope="setAcl" match="^C:\\Users\\дшшр\\Documents\\MovieExtended\\Movie-Extended\\Backend\\Extended\ Movie\\Extended\ Movie\\obj\\Release\\Package\\PackageTmp$" />
+  </parameter>
+</parameters>

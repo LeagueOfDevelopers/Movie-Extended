@@ -10,18 +10,19 @@ using NHibernate.Linq;
 
 namespace Extended_Movie.Controllers.AndroidClient
 {
-    public class SessionController : ApiController
+    public class SessionController : ApiController , ISessionController
     {
         private readonly SessionKeeper _keeper;
-        private readonly ISession Session;
+        //private readonly ISession Session;
 
-        public SessionController(SessionKeeper keeper , ISession session)
+        public SessionController( )
         {
-            _keeper = keeper;
-            Session = session;
+            _keeper = new SessionKeeper();
+            //Session = session;
+            
         }
 
-        [Route("api/Session/Login/qr")]
+        [Route("api/Session/Login/{qr}")]
         [HttpGet]
 
         public Guid CreateNewSessionByQrCode(string qr)
@@ -30,7 +31,7 @@ namespace Extended_Movie.Controllers.AndroidClient
             _keeper.CreateSession(sessionId);
             return sessionId;
         }
-        [Route("api/Sessions/{sessionId}/StartTime")]
+        [Route("api/Session/{sessionId}/StartTime")]
         [HttpGet]
         public string GetMovieStartTime(Guid sessionId)
         {
