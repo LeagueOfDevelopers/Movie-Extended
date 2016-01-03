@@ -20,7 +20,6 @@ body {
   height: 120px;
   background-color: $headerColor;
   padding-bottom: 20px;
-
 }
 
 .page_content {
@@ -104,6 +103,7 @@ body {
 .side_menu_list li:hover {
   background-color: #6bf9e6;
   color: #fff;
+  cursor: pointer;
 }
 
 .profile_content_field {

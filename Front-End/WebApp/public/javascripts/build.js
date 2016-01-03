@@ -1,7 +1,8 @@
 angular.module('MovieExtended.controllers.profile', [])
 
-  .controller('MoviesCtrl', ['$scope', '$http','$rootScope', function($scope, $http) {
+  .controller('MoviesCtrl', ['$scope', '$http','$rootScope','FileUploader', function($scope, $http, FileUploader) {
 
+    $scope.uploader = new FileUploader();
     getMovies('/api/movies');
     $scope.showPopup = false;
     $scope.newMovie = {};
@@ -60,7 +61,7 @@ angular.module('MovieExtended.controllers.main', [])
 
  var MovieExtended= {
     Main: angular.module('MovieExtended.Main', ['ui.router', 'MovieExtended.controllers.main']),
-    Profile: angular.module('MovieExtended.Profile', ['ui.router', 'MovieExtended.controllers.profile'])
+    Profile: angular.module('MovieExtended.Profile', ['ui.router', 'MovieExtended.controllers.profile', 'angularFileUpload'])
   };
 
 MovieExtended.Profile.config(['$stateProvider','$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
@@ -84,6 +85,7 @@ MovieExtended.Profile.config(['$stateProvider','$urlRouterProvider', function ($
 
             });
         $urlRouterProvider.otherwise('/movies');
+        
 
     }]);
  

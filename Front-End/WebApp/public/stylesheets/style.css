@@ -84,7 +84,8 @@ body {
 
 .side_menu_list li:hover {
   background-color: #6bf9e6;
-  color: #fff; }
+  color: #fff;
+  cursor: pointer; }
 
 .profile_content_field {
   height: 100%; }
