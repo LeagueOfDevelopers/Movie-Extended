@@ -1,8 +1,8 @@
 angular.module('MovieExtended.controllers.profile', [])
 
-  .controller('MoviesCtrl', ['$scope', '$http','$rootScope','FileUploader', function($scope, $http, FileUploader) {
+  .controller('MoviesCtrl', ['$scope', '$http','$rootScope', function($scope, $http) {
 
-    $scope.uploader = new FileUploader();
+    
     getMovies('/api/movies');
     $scope.showPopup = false;
     $scope.newMovie = {};

@@ -1,6 +1,6 @@
  var MovieExtended= {
     Main: angular.module('MovieExtended.Main', ['ui.router', 'MovieExtended.controllers.main']),
-    Profile: angular.module('MovieExtended.Profile', ['ui.router', 'MovieExtended.controllers.profile', 'angularFileUpload'])
+    Profile: angular.module('MovieExtended.Profile', ['ui.router', 'MovieExtended.controllers.profile'])
   };
 
 MovieExtended.Profile.config(['$stateProvider','$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
