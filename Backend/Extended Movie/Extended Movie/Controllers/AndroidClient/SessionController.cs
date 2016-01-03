@@ -25,7 +25,7 @@ namespace Extended_Movie.Controllers.AndroidClient
         [Route("api/Session/Login/{qr}")]
         [HttpGet]
 
-        public Guid CreateNewSessionByQrCode(string qr)
+        public Guid Login(string qr)
         {
             var sessionId = new Guid(qr);
             _keeper.CreateSession(sessionId);

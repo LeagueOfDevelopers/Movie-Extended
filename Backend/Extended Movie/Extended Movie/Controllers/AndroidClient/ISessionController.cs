@@ -8,7 +8,7 @@ namespace Extended_Movie.Controllers.AndroidClient
 {
     interface ISessionController
     {
-         Guid CreateNewSessionByQrCode(string qr);
+         Guid Login(string qr);
         string GetMovieStartTime(Guid sessionId);
         
     }
