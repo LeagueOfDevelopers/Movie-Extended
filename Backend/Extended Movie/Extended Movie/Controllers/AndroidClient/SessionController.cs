@@ -10,7 +10,7 @@ using NHibernate.Linq;
 
 namespace Extended_Movie.Controllers.AndroidClient
 {
-    public class SessionController : ApiController , ISessionController
+    public class SessionController : ApiController 
     {
         private readonly SessionKeeper _keeper;
         //private readonly ISession Session;

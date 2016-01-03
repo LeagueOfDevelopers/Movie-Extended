@@ -23,9 +23,9 @@ namespace Extended_Movie
             container.RegisterWebApiControllers(GlobalConfiguration.Configuration);
             GlobalConfiguration.Configuration.DependencyResolver =
         new SimpleInjectorWebApiDependencyResolver(container);
-            container.Register<ISessionController,SessionController>(Lifestyle.Scoped);
+            container.Register<SessionController>(Lifestyle.Scoped);
             container.Verify();
-            var _sessionController = (ISessionController)container.GetInstance<ISessionController>();
+            var _sessionController =container.GetInstance<SessionController>();
 
 
         }
