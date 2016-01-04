@@ -7,6 +7,7 @@ angular.module('MovieExtended.controllers.profile', ['ui.router'])
     $scope.showPopup = false;
     $scope.newMovie = {};
     $scope.tracksToAdd = {};
+    $scope.showMovieDetail = showMovieDetail;
     
     $scope.createMovie = function () {
       $scope.showPopup = false;
@@ -17,12 +18,14 @@ angular.module('MovieExtended.controllers.profile', ['ui.router'])
             console.log(data);
             console.log(newMovie);
             $scope.newMovie = {};
+            $state.go('movies');
         });
         
       };
 
         function showMovieDetail(id, name) {
           $state.go('movies.detail', {movieId: id, movieName: name});
+          $scope.showPopup = true;
     };
 
        function getMovies(url) {
@@ -31,6 +34,12 @@ angular.module('MovieExtended.controllers.profile', ['ui.router'])
       })
     }
 }])
+
+.controller('movieDetailCtrl', ['$scope', '$http','$state','movieToShowResolve', function($scope, $http, $state, movieToShowResolve) {
+    console.log(movieToShowResolve);
+    $scope.movie = movieToShowResolve.data;
+    console.log($scope.movie);
+  }])
 
 
 .controller('CinemasCtrl', ['$scope', '$http','$state', function($scope, $http, $state) {

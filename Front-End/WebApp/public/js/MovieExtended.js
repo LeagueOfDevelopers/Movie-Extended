@@ -22,12 +22,21 @@ MovieExtended.Profile.config(['$stateProvider','$urlRouterProvider', function ($
             }
           })
         .state('movies.detail', {
-            url:'/:movieName/:movieId',
+            url:'/:movieId',
             views: {
               'popup': {
-                templateUrl: '/partials/profile/about_movie.html'
+                templateUrl: '/partials/profile/about_movie.html',
+                controller: 'movieDetailCtrl',
+                resolve: {
+                      movieToShowResolve: function ($http, $stateParams) {
+                          var url = '/api/movies' + '/' + $stateParams.movieId;
+                          return $http.get(url);
+                          
+                        }  
+                      }
+                    }
               }
-            }
+            
           })
         .state('cinemas', {
               url: '/cinemas',
