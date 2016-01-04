@@ -11,6 +11,32 @@ router.get('/movies' , function(req, res, next) {
   console.log("hey");
 });
 
+router.get('/movies/:id' , function(req, res, next) {	
+  var data = storage.movies.getMovies();
+  var result;
+  data.forEach(function(item) {
+  	if(item.Id = req.params.id) {
+  		result = item;
+  	}
+  })
+  res.end(JSON.stringify(result));
+  console.log("cinema");
+});
+
+router.get('/cinemas' , function(req, res, next) {	
+  var data = storage.cinemas;
+  res.end(JSON.stringify(data));
+  console.log("cinemas");
+});
+
+router.get('/cinemas/:id' , function(req, res, next) {	
+  var data = storage.cinemas[req.params.id];
+  res.end(JSON.stringify(data));
+  console.log("cinema");
+});
+
+
+
 router.post('/movies', function (req, res, next) {
   var data = req.body;
   console.log(data);

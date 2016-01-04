@@ -25,7 +25,16 @@ var movies = {
 
 }
 
-var cinemas = [{},{}]
+var cinemas = {
+ 1:{
+    Id: 1,
+    name: 'Luxor'
+},
+2:{
+    Id: 2,
+    name: 'Karo'
+}
+};
 
 
 module.exports = {

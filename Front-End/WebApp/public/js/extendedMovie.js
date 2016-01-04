@@ -6,23 +6,54 @@
 MovieExtended.Profile.config(['$stateProvider','$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
       $stateProvider.state('movies', {
         url: '/movies',
-        templateUrl: '/partials/profile/profile_movies.html',
-        controller: 'MoviesCtrl'
+         views: {
+                'content@': {
+                    templateUrl: '/partials/profile/profile_movies.html',
+                    controller: 'MoviesCtrl'
+                }
+              }
       })
         .state('movies.create_movie', {
             url:'/create_movie',
-            templateUrl: '/partials/profile/create_movie.html'
+            views: {
+              'popup': {
+                templateUrl: '/partials/profile/create_movie.html'
+              }
+            }
           })
-        .state('movies.about_movie', {
-            url:'/about_movie',
-            templateUrl: '/partials/profile/about_movie.html'
+        .state('movies.detail', {
+            url:'/:movieName/:movieId',
+            views: {
+              'popup': {
+                templateUrl: '/partials/profile/about_movie.html'
+              }
+            }
           })
         .state('cinemas', {
               url: '/cinemas',
-              templateUrl: '/partials/profile/profile_cinemas.html',
-              controller: 'CinemasCtrl'
-
-            });
+              views: {
+                'content@': {
+                    templateUrl: '/partials/profile/cinemas/cinemas_list.html',
+                    controller: 'CinemasCtrl'
+                }
+              }
+            })
+        .state('cinemas.detail', {
+          url:'/:cinemaName/:cinemaId',
+          views: {
+                'content@': {
+                    templateUrl: '/partials/profile/cinemas/cinema_detail.html',
+                    controller: 'cinemaDetailCtrl',
+                    resolve: {
+                      cinemaToShowResolve: function ($http, $stateParams) {
+                          var url = '/api/cinemas' + '/' + $stateParams.cinemaId;
+                          return $http.get(url);
+                        }  
+                      }
+                    }
+                }
+              
+        });
         $urlRouterProvider.otherwise('/movies');
         
 

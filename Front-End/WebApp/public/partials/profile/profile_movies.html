@@ -13,10 +13,10 @@
             <p>{{movie.description}}</p>
           </div>
         </div>
-        <div class="btn file-field input field"  ng-click="addTracks("")"><input type="file" accept="audio/mp3" ng-model="tracksToAdd">tracks</button>
+        <div class="btn" ng-click="showMovieDetail(movie.Id, movie.name)">details</button>
       </div>
     </li>
   </ul>
-  <div class="popup valign-wrapper" ng-show="showPopup" ui-view></div>
+  <div class="popup valign-wrapper" ng-show="showPopup" ui-view="popup"></div>
 
 </div>

@@ -1,6 +1,6 @@
-angular.module('MovieExtended.controllers.profile', [])
+angular.module('MovieExtended.controllers.profile', ['ui.router'])
 
-  .controller('MoviesCtrl', ['$scope', '$http','$rootScope', function($scope, $http) {
+  .controller('MoviesCtrl', ['$scope', '$http','$state', function($scope, $http, $state) {
 
     
     getMovies('/api/movies');
@@ -21,6 +21,10 @@ angular.module('MovieExtended.controllers.profile', [])
         
       };
 
+        function showMovieDetail(id, name) {
+          $state.go('movies.detail', {movieId: id, movieName: name});
+    };
+
        function getMovies(url) {
       $http.get(url).success(function (data) {
         $scope.movies = data;
@@ -29,18 +33,29 @@ angular.module('MovieExtended.controllers.profile', [])
 }])
 
 
-.controller('CinemasCtrl', ['$scope', '$http','$rootScope', function($scope, $http) {
-
+.controller('CinemasCtrl', ['$scope', '$http','$state', function($scope, $http, $state) {
+  var apiUrl = '/api/cinemas';
   $scope.cinemas = {};
+  $scope.showCinemaDetail = showCinemaDetail;
   
-  getCinemas('/api/movies');
+  getCinemas(apiUrl);
 
+  function showCinemaDetail(id, name) {
+    $state.go('cinemas.detail', {cinemaId: id, cinemaName: name});
+  }
 
   function getCinemas(url) {
      $http.get(url).success(function (data) {
         $scope.cinemas = data;
       })
     }
+  }])
+  
+  .controller('cinemaDetailCtrl', ['$scope', '$http','$state','cinemaToShowResolve', function($scope, $http, $state, cinemaToShowResolve) {
+    $scope.cinema = cinemaToShowResolve.data;
+    console.log(cinemaToShowResolve);
+    var apiUrl = '/api/cinemas';
+    
   }]);
 
 
