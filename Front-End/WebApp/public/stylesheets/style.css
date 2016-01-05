@@ -24,22 +24,20 @@ body {
   left: 0; }
 
 .header {
-  height: 80px;
-  background-color: #fff; }
+  height: 80px; }
 
 .page_content {
   height: 90%;
   background-color: #fff; }
 
 .header_logo {
-  margin-top: 15px;
+  margin-left: 15px;
   padding: 0 !important;
   font-size: 18px;
   display: inline-block; }
 
 .header_logo-title {
   font-size: 12px;
-  min-width: 165px;
   text-decoration: none;
   color: #121111;
   text-transform: uppercase;
@@ -49,27 +47,9 @@ body {
   padding: 12px;
   border-radius: 10px; }
 
-.header_menu_wrapper {
-  margin-top: 25px; }
-
-.header_menu li {
-  display: inline-block;
-  height: 30px;
-  box-sizing: border-box;
-  margin-right: 15px;
-  font-size: 18px;
-  transition: all 0.1s ease-in; }
-
-.header_menu li:hover {
-  border-bottom: 3px; }
-
-.header_menu a {
-  color: #000; }
-
-.account {
-  margin-top: 25px;
-  margin-right: 50px;
-  font-size: 16px; }
+.user_name {
+  margin-right: 20px;
+  font-weight: bold; }
 
 .form_wrapper {
   height: auto;
