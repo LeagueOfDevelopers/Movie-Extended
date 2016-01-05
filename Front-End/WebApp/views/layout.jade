@@ -10,10 +10,11 @@ html(ng-app=ngModule)
       
     title= djiediew  
   body
-    block header
-    block content  
-    block footer 
-       
+    div.page_wrapper
+        block header
+        block content  
+        block footer 
+           
     script(type="text/javascript", src="angular/angular.min.js")
     script(type="text/javascript", src="javascripts/build.js")
     script(type="text/javascript", src="angular/angular-ui-router.min.js")
