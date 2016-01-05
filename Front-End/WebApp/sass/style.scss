@@ -20,26 +20,33 @@ body {
 .page_wrapper {
   height: 100%
 }
-
+.header_fixed {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+}
 .header {
   height: 80px;
   background-color: $headerColor;
 }
 
 .page_content {
-  height: 85%;
+  height: 90%;
   background-color: #fff;
 }
 
 
-
 .header_logo {
+  margin-top: 15px;
+  padding: 0 !important;
   font-size: 18px;
   display: inline-block;
-  padding: 10px;
-  margin-left: 30px;
 }
+
 .header_logo-title {
+  font-size: 12px;
+  min-width: 165px;
   text-decoration: none;
   color: #121111;
   text-transform: uppercase;
@@ -50,23 +57,15 @@ body {
   border-radius: 10px;
 }
 
-.form_wrapper {
-  margin: 0;
-  height: auto;
-  margin-top: 50px;
-  padding: 30px !important;
-  padding-bottom: 0 !important;
-  background-color: #fff;
+.header_menu_wrapper {
+  margin-top: 25px;
 }
-
-
 .header_menu li  {
   display: inline-block;
-  height: 36px;
+  height: 30px;
   box-sizing: border-box;
   margin-right: 15px;
-  font-size: 20px;
-  border-bottom: 2px solid rgba(#10aa95, 0);
+  font-size: 18px;
   transition: all 0.1s ease-in;
 
 }
@@ -77,6 +76,20 @@ body {
 
 .header_menu a {
   color: #000;
+}
+
+.account {
+  margin-top: 25px;
+  margin-right: 50px;
+  font-size: 16px;
+}
+
+.form_wrapper {
+  height: auto;
+  margin-top: 50px;
+  padding: 30px !important;
+  padding-bottom: 0 !important;
+  background-color: #fff;
 }
 
 
@@ -112,6 +125,7 @@ body {
 
 .profile_content_field {
   height: 100%;
+  background: $emptyFieldColor;
 }
 .field_header {
   padding-left: 30px;
