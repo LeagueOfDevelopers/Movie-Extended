@@ -1,16 +1,21 @@
 angular.module('MovieExtended.controllers.profile', ['ui.router'])
+  
+  .controller('MoviesCtrl', 
+    ['$scope',
+     '$rootScope',
+     '$http',
+     '$state',
 
-  .controller('MoviesCtrl', ['$scope', '$http','$state', function($scope, $http, $state) {
+     function($scope, $rootScope, $http, $state) {
 
-    
+    $rootScope.showPopup = false;
     getMovies('/api/movies');
-    $scope.showPopup = false;
     $scope.newMovie = {};
     $scope.tracksToAdd = {};
     $scope.showMovieDetail = showMovieDetail;
     
     $scope.createMovie = function () {
-      $scope.showPopup = false;
+      $rootScope.showPopup = false;
       var newMovie = {id:3, name: $scope.newMovie.name, description: $scope.newMovie.description, photoUri: $scope.newMovie.photoUri};
         $http.post('/api/movies', newMovie)
         .success(function (data) {
@@ -25,7 +30,7 @@ angular.module('MovieExtended.controllers.profile', ['ui.router'])
 
         function showMovieDetail(id, name) {
           $state.go('movies.detail', {movieId: id, movieName: name});
-          $scope.showPopup = true;
+          $rootScope.showPopup = true;
     };
 
        function getMovies(url) {
@@ -35,14 +40,43 @@ angular.module('MovieExtended.controllers.profile', ['ui.router'])
     }
 }])
 
-.controller('movieDetailCtrl', ['$scope', '$http','$state','movieToShowResolve', function($scope, $http, $state, movieToShowResolve) {
-    console.log(movieToShowResolve);
+.controller('movieDetailCtrl',
+ ['$scope',
+  '$http',
+  '$state',
+  'movieToShowResolve', 
+
+  function($scope, $http, $state, movieToShowResolve) {
+
     $scope.movie = movieToShowResolve.data;
-    console.log($scope.movie);
+  
   }])
 
+.controller('moviesHeaderCtrl', 
+  ['$scope',
+   '$rootScope', 
+   '$state',
 
-.controller('CinemasCtrl', ['$scope', '$http','$state', function($scope, $http, $state) {
+  function($scope, $rootScope, $state){
+
+    $scope.title = 'Фильмы';
+    $scope.showAddButton = true;
+
+    $scope.createItem = function() {
+      $rootScope.showPopup = true;
+      $state.go('movies.create_movie');
+    }
+  
+}])
+
+
+.controller('CinemasCtrl', 
+  ['$scope', 
+  '$http',
+  '$state', 
+
+  function($scope, $http, $state) {
+
   var apiUrl = '/api/cinemas';
   $scope.cinemas = {};
   $scope.showCinemaDetail = showCinemaDetail;
@@ -60,17 +94,41 @@ angular.module('MovieExtended.controllers.profile', ['ui.router'])
     }
   }])
   
-  .controller('cinemaDetailCtrl', ['$scope', '$http','$state','cinemaToShowResolve', function($scope, $http, $state, cinemaToShowResolve) {
+  .controller('cinemaDetailCtrl', 
+    ['$scope',
+     '$rootScope',
+     '$http',
+     '$state',
+     'cinemaToShowResolve',
+
+      function($scope, $rootScope, $http, $state, cinemaToShowResolve) {
+    $rootScope.showAddButton = false;
     $scope.cinema = cinemaToShowResolve.data;
     console.log(cinemaToShowResolve);
     var apiUrl = '/api/cinemas';
     
+  }])
+
+  .controller('cinemasHeaderCtrl', 
+    ['$scope',
+     '$rootScope',
+     '$state', 
+
+      function($scope, $rootScope, $state){
+        $rootScope.showAddButton = true;
+        $scope.title = 'Кинотеатры';
+        $rootScope.showAddButton;
   }]);
 
 
 angular.module('MovieExtended.controllers.main', [])
 
-.controller('RegistryCtrl', ['$scope', '$http','$rootScope', function($scope, $http) {
+.controller('RegistryCtrl',
+ ['$scope',
+  '$http',
+  '$rootScope', 
+
+  function($scope, $http) {
 
   $scope.newCompany = {};
 
@@ -92,6 +150,10 @@ MovieExtended.Profile.config(['$stateProvider','$urlRouterProvider', function ($
       $stateProvider.state('movies', {
         url: '/movies',
          views: {
+                'header@': {
+                  templateUrl:'/partials/profile/profile_header.html',
+                  controller:'moviesHeaderCtrl'
+                },
                 'content@': {
                     templateUrl: '/partials/profile/profile_movies.html',
                     controller: 'MoviesCtrl'
@@ -126,6 +188,10 @@ MovieExtended.Profile.config(['$stateProvider','$urlRouterProvider', function ($
         .state('cinemas', {
               url: '/cinemas',
               views: {
+                'header@': {
+                  templateUrl:'/partials/profile/profile_header.html',
+                  controller:'cinemasHeaderCtrl'
+                },
                 'content@': {
                     templateUrl: '/partials/profile/cinemas/cinemas_list.html',
                     controller: 'CinemasCtrl'

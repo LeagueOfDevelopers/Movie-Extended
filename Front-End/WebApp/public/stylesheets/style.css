@@ -12,7 +12,7 @@ html {
 body {
   height: 100%;
   background-color: #fafafa;
-  min-width: 960px; }
+  min-width: 400px; }
 
 .page_wrapper {
   height: 100%; }
@@ -21,17 +21,19 @@ body {
   position: fixed;
   top: 0;
   right: 0;
-  left: 0; }
+  left: 0;
+  z-index: 1000; }
 
 .header {
   height: 80px; }
 
 .page_content {
-  height: 90%;
-  background-color: #fff; }
+  height: 100% !important;
+  background-color: #fff;
+  margin-top: 56px; }
 
 .header_logo {
-  margin-left: 15px;
+  margin-left: 30px;
   padding: 0 !important;
   font-size: 18px;
   display: inline-block; }
@@ -47,9 +49,16 @@ body {
   padding: 12px;
   border-radius: 10px; }
 
+.nav_menu a {
+  font-size: 16px; }
+
 .user_name {
-  margin-right: 20px;
+  margin-right: 50px;
   font-weight: bold; }
+
+@media (max-width: 400px) {
+  .user_name {
+    display: none; } }
 
 .form_wrapper {
   height: auto;
@@ -58,14 +67,18 @@ body {
   padding-bottom: 0 !important;
   background-color: #fff; }
 
-.profile_content {
-  height: 100%; }
-
 .side_menu {
   background-color: #50c7b7;
   height: 100%;
+  width: 200px;
   padding: 0 !important;
   align-content: center; }
+
+.side_menu_fixed {
+  position: fixed;
+  left: 0;
+  top: 56px;
+  margin-right: 100%; }
 
 .side_menu_list {
   margin-top: 30px; }
@@ -84,20 +97,29 @@ body {
   color: #fff;
   cursor: pointer; }
 
-.profile_content_field {
-  height: 100%;
-  background: #fafafa; }
-
-.field_header {
-  padding-left: 30px;
-  padding-bottom: 10px;
+.profile_header {
+  margin-left: 200px;
+  background: #fff;
+  position: fixed;
+  right: 0;
+  top: 60px;
+  left: 0;
+  z-index: 999 !important;
   height: 50px;
-  border-bottom: 2px solid #50c7b7; }
+  line-height: 50px;
+  font-size: 16px;
+  color: #ddd;
+  font-weight: bold;
+  padding-left: 30px; }
 
-.field_title {
-  font-weight: bolder;
-  font-size: 30px;
-  margin-right: 20px; }
+.add_button {
+  margin-left: 10px; }
+
+.profile_content {
+  height: 100%;
+  background: #fafafa;
+  margin-top: 120px;
+  margin-left: 200px; }
 
 .movies_list {
   overflow-y: auto;
@@ -120,7 +142,7 @@ body {
   height: auto;
   padding: 10px; }
 
-.popup {
+.popup_background {
   position: fixed;
   top: 0;
   left: 0;
@@ -129,14 +151,14 @@ body {
   min-height: 100%;
   min-width: 100%;
   background-color: rgba(0, 0, 0, 0.5);
-  transition: all .2s; }
+  transition: all .2s;
+  z-index: 1001; }
 
 .popup_container {
   height: 300px;
   width: 500px;
   background-color: #fff;
-  margin: 0 auto;
-  transform: translateY(-40px); }
+  margin: 0 auto; }
 
 .movie_picture {
   width: 80px;

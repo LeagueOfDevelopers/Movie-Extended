@@ -4,7 +4,7 @@ block header
 block content 
   section.page_content
     div.row.profile_content
-      div.col.m2.side_menu.z-depth-1
+      div.side_menu.side_menu_fixed
         ul.side_menu_list
           li 
               a(ui-sref="movies") 
@@ -12,6 +12,7 @@ block content
           li
               a(ui-sref="cinemas")
                  div Кинотеатры  
-      section(ui-view="content").col.m10.profile_content_field
+      div(ui-view="header").profile_header.z-depth-1
+      section(ui-view="content").profile_content
 
                   

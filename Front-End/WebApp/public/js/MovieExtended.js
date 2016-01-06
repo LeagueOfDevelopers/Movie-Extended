@@ -7,6 +7,10 @@ MovieExtended.Profile.config(['$stateProvider','$urlRouterProvider', function ($
       $stateProvider.state('movies', {
         url: '/movies',
          views: {
+                'header@': {
+                  templateUrl:'/partials/profile/profile_header.html',
+                  controller:'moviesHeaderCtrl'
+                },
                 'content@': {
                     templateUrl: '/partials/profile/profile_movies.html',
                     controller: 'MoviesCtrl'
@@ -41,6 +45,10 @@ MovieExtended.Profile.config(['$stateProvider','$urlRouterProvider', function ($
         .state('cinemas', {
               url: '/cinemas',
               views: {
+                'header@': {
+                  templateUrl:'/partials/profile/profile_header.html',
+                  controller:'cinemasHeaderCtrl'
+                },
                 'content@': {
                     templateUrl: '/partials/profile/cinemas/cinemas_list.html',
                     controller: 'CinemasCtrl'
