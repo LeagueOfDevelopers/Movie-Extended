@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 
 import com.lod.movie_extended.data.DataManager;
+import com.lod.movie_extended.data.model.Player;
 import com.lod.movie_extended.injection.scope.PerActivity;
 import com.lod.movie_extended.ui.film.FilmPresenter;
 
@@ -24,7 +25,7 @@ public class FilmModule {
 
     @Provides
     @PerActivity
-    FilmPresenter provideFilmPresenter(DataManager dataManager) {
-        return new FilmPresenter(dataManager,activity);
+    FilmPresenter provideFilmPresenter(DataManager dataManager, Player player) {
+        return new FilmPresenter(dataManager,activity,player);
     }
 }
