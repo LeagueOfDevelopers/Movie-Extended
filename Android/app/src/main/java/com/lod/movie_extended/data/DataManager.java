@@ -29,12 +29,9 @@ public class DataManager {
     }
 
     public Observable<Session> loadSession(String code) {
-        return serverHelper.loadSession(code).map(new Func1<Session, Session>() {
-            @Override
-            public Session call(Session session) {
-                dataBaseHelper.saveSession(session);
-                return session;
-            }
+        return serverHelper.loadSession(code).map(session -> {
+            dataBaseHelper.saveSession(session);
+            return session;
         });
     }
 
