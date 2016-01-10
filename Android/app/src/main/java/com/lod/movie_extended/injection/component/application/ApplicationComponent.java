@@ -27,7 +27,7 @@ import dagger.Component;
                 AudioModule.class
         }
 )
-public interface ApplicationComponent {
+public interface ApplicationComponent{
 
     @ApplicationContext
     Context context();

@@ -31,6 +31,8 @@ import java.util.concurrent.ExecutorService;
 
 import javax.inject.Inject;
 
+import timber.log.Timber;
+
 /**
  * Created by Жамбыл on 09.01.2016.
  */
@@ -68,6 +70,7 @@ public class PlayerNotificationService extends Service implements Player.Listene
     }
 
     private void registerRemoteControlClient() {
+        Timber.v("registerRemoteControlClient");
         Intent intent = new Intent(Intent.ACTION_MEDIA_BUTTON);
         intent.setComponent(mediaButtonReceiverComponent);
         remoteControlClientCompat = new RemoteControlClientCompat(
@@ -122,12 +125,14 @@ public class PlayerNotificationService extends Service implements Player.Listene
 
     @SuppressLint("NewApi")
     public void play() {
+        Timber.v("notification play");
         player.setPlayWhenReady(true);
         createAndShowNotification();
         setPlayOrPauseImage();
     }
 
     public void pause() {
+        Timber.v("notification pause");
         player.setPlayWhenReady(false);
         stopForeground(false);
         setPlayOrPauseImage();

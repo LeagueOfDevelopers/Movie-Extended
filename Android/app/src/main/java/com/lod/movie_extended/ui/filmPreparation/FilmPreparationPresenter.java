@@ -27,10 +27,7 @@ public class FilmPreparationPresenter extends BasePresenter<FilmPreparationMvp> 
         this.dataManager = dataManager;
     }
 
-    @Override
-    public void attachView(FilmPreparationMvp mvpView) {
-        super.attachView(mvpView);
-
+    public void loadSession() {
         dataManager.loadSession("123").subscribe(new Subscriber<Session>() {
             @Override
             public void onCompleted() {
@@ -49,7 +46,6 @@ public class FilmPreparationPresenter extends BasePresenter<FilmPreparationMvp> 
             }
         });
     }
-
     public String getFilmName() {
         return currentSession.getFilm().getName();
     }

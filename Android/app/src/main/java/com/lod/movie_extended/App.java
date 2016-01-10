@@ -8,6 +8,7 @@ import com.lod.movie_extended.injection.component.application.ApplicationCompone
 import com.lod.movie_extended.injection.component.application.DaggerApplicationComponent;
 import com.lod.movie_extended.injection.module.application.ApplicationModule;
 import com.lod.movie_extended.injection.module.application.AudioModule;
+import com.lod.movie_extended.util.Logger;
 
 import io.fabric.sdk.android.Fabric;
 import timber.log.Timber;
@@ -27,7 +28,7 @@ public class App extends Application {
         super.onCreate();
 
         if (BuildConfig.DEBUG) {
-            Timber.plant(new Timber.DebugTree());
+            Timber.plant(new Logger());
             Fabric.with(this, new Crashlytics());
         }
     }

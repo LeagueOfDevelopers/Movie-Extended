@@ -13,7 +13,7 @@ import dagger.Component;
  */
 @PerActivity
 @Component(dependencies = ApplicationComponent.class, modules = FilmModule.class)
-public interface FilmComponent {
+public interface FilmComponent{
 
     void inject(FilmActivity filmActivity);
 }

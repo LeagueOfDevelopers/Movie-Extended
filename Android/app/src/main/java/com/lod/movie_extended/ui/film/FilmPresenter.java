@@ -35,6 +35,8 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
+import timber.log.Timber;
+
 /**
  * Created by Жамбыл on 09.01.2016.
  */
@@ -75,7 +77,8 @@ public class FilmPresenter extends BasePresenter<FilmMvpView> implements
     }
 
 
-    public void startPlayerService() {
+    public void startPlayerNotificationService() {
+        Timber.v("starting PlayerNotificationService");
         startServiceWithAction(Constants.ACTION.START_FOREGROUND_ACTION);
         startServiceWithAction(Constants.ACTION.PLAY_OR_PAUSE);
     }
@@ -88,6 +91,7 @@ public class FilmPresenter extends BasePresenter<FilmMvpView> implements
     }
 
     public void preparePlayer(boolean playWhenReady) {
+        Timber.v("preparing player");
         player.addListener(this);
         player.setCaptionListener(this);
         player.setMetadataListener(this);
@@ -103,6 +107,7 @@ public class FilmPresenter extends BasePresenter<FilmMvpView> implements
     }
 
     private void releasePlayer() {
+        Timber.v("releasing player");
         if (player != null) {
             playerPosition = player.getCurrentPosition();
             player.release();
@@ -272,4 +277,7 @@ public class FilmPresenter extends BasePresenter<FilmMvpView> implements
         return true;
     }
 
+    public void removeListener() {
+        player.removeListener(this);
+    }
 }

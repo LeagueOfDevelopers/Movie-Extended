@@ -16,7 +16,7 @@ import dagger.Component;
  */
 @PerActivity
 @Component(dependencies = ApplicationComponent.class, modules = FilmPreparationModule.class)
-public interface FilmPreparationComponent {
+public interface FilmPreparationComponent{
 
     Context getContext();
     DataManager getDataManager();

@@ -1,12 +1,8 @@
 package com.lod.movie_extended.ui.film;
 
 import android.annotation.TargetApi;
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
-import android.media.MediaCodec;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -16,22 +12,9 @@ import android.view.accessibility.CaptioningManager;
 import android.widget.Button;
 import android.widget.MediaController;
 import android.widget.PopupMenu;
-import android.widget.Toast;
 
-import com.google.android.exoplayer.ExoPlayer;
-import com.google.android.exoplayer.MediaCodecTrackRenderer;
-import com.google.android.exoplayer.MediaFormat;
-import com.google.android.exoplayer.audio.AudioCapabilities;
-import com.google.android.exoplayer.audio.AudioCapabilitiesReceiver;
-import com.google.android.exoplayer.audio.AudioTrack;
-import com.google.android.exoplayer.drm.UnsupportedDrmException;
-import com.google.android.exoplayer.metadata.GeobMetadata;
-import com.google.android.exoplayer.metadata.PrivMetadata;
-import com.google.android.exoplayer.metadata.TxxxMetadata;
 import com.google.android.exoplayer.text.CaptionStyleCompat;
-import com.google.android.exoplayer.text.Cue;
 import com.google.android.exoplayer.text.SubtitleLayout;
-import com.google.android.exoplayer.util.MimeTypes;
 import com.google.android.exoplayer.util.Util;
 import com.lod.movie_extended.App;
 import com.lod.movie_extended.R;
@@ -39,28 +22,21 @@ import com.lod.movie_extended.data.model.Player;
 import com.lod.movie_extended.injection.component.activity.DaggerFilmComponent;
 import com.lod.movie_extended.injection.component.activity.FilmComponent;
 import com.lod.movie_extended.injection.module.activity.FilmModule;
-import com.lod.movie_extended.service.PlayerNotificationService;
 import com.lod.movie_extended.ui.base.ComponentCreator;
-import com.lod.movie_extended.util.Constants;
-
-import java.io.IOException;
-import java.net.CookieHandler;
-import java.net.CookieManager;
-import java.net.CookiePolicy;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
+import com.lod.movie_extended.ui.base.InjectActivityBase;
+import com.lod.movie_extended.ui.base.Presenter;
 
 import javax.inject.Inject;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import timber.log.Timber;
 
 /**
  * Created by Жамбыл on 29.12.2015.
  */
 
-public class FilmActivity extends Activity implements FilmMvpView, ComponentCreator<FilmComponent>{
+public class FilmActivity extends InjectActivityBase implements FilmMvpView, ComponentCreator<FilmComponent>{
 
     private static final int LAYOUT = R.layout.activity_film;
     private MediaController mediaController;
@@ -83,15 +59,9 @@ public class FilmActivity extends Activity implements FilmMvpView, ComponentCrea
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-        setContentView(LAYOUT);
-        ButterKnife.bind(this);
-
         App.get(this).setAudioUrl("http://stream-redirect.hktoolbar.com/radio-HTTP/cr2-hd.3gp/playlist.m3u8");
-
-        createComponent().inject(this);
-        presenter.attachView(this);
+        super.onCreate  (savedInstanceState);
+        Timber.v("onCreate" + presenter.hashCode());
 
         mediaController = new MediaController(this);
         mediaController.setAnchorView(root);
@@ -115,9 +85,19 @@ public class FilmActivity extends Activity implements FilmMvpView, ComponentCrea
     }
 
     @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        presenter.detachView();
+    protected int getContentView() {
+        return LAYOUT;
+    }
+
+    @Override
+    public void inject() {
+        ButterKnife.bind(this);
+        createComponent().inject(this);
+    }
+
+    @Override
+    protected Presenter getPresenter() {
+        return presenter;
     }
 
     @Override
@@ -134,7 +114,7 @@ public class FilmActivity extends Activity implements FilmMvpView, ComponentCrea
         configureSubtitleView();
 
         presenter.preparePlayer(true);
-        presenter.startPlayerService();
+        presenter.startPlayerNotificationService();
     }
 
     // User controls
@@ -219,6 +199,13 @@ public class FilmActivity extends Activity implements FilmMvpView, ComponentCrea
         CaptioningManager captioningManager =
                 (CaptioningManager) getSystemService(Context.CAPTIONING_SERVICE);
         return CaptionStyleCompat.createFromCaptionStyle(captioningManager.getUserStyle());
+    }
+
+    @Override
+    protected void onDestroy() {
+        Timber.v("onDestroy");
+        super.onDestroy();
+        presenter.removeListener();
     }
 }
 
