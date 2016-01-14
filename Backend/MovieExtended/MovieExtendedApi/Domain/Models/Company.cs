@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace Extended_Movie.Models
+namespace Domain.Models
 {
     public class Company
     {
@@ -12,7 +13,6 @@ namespace Extended_Movie.Models
             Id = id;
             Name = name;
             Website = website;
-            PhotoUri = photoUri;
         }
 
         protected Company()
@@ -25,7 +25,5 @@ namespace Extended_Movie.Models
         public virtual string Name { get; protected set; }
 
         public virtual Uri Website { get; protected set; }
-
-        public virtual Uri PhotoUri { get; protected set; }
     }
 }

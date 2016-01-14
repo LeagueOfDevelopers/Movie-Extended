@@ -1,12 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 using Extended_Movie.Models;
-using NHibernate;
-using NHibernate.Linq;
 
 namespace Extended_Movie.Controllers.AndroidClient
 {
@@ -24,13 +19,13 @@ namespace Extended_Movie.Controllers.AndroidClient
 
         [Route("api/Session/Login/{qr}")]
         [HttpGet]
-
         public Guid Login(string qr)
         {
             var sessionId = new Guid(qr);
             _keeper.CreateSession(sessionId);
             return sessionId;
         }
+
         [Route("api/Session/{sessionId}/StartTime")]
         [HttpGet]
         public string GetMovieStartTime(Guid sessionId)
