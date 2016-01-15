@@ -20,10 +20,11 @@ using Newtonsoft.Json;
         [Route("api/Movie/new/{json}")]
         [HttpGet]
 
-        public void SaveMovie(string json)
+        public string SaveMovie(string json)
         {
             var newMovie = JsonConvert.DeserializeObject<Movie>(json);
             movieRepository.SaveMovie(newMovie);
+            return "ok";
         }
 
         [Route("api/Movie/All")]

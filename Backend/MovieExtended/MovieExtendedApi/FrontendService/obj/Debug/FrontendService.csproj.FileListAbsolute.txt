@@ -39,3 +39,7 @@ C:\Users\дшшр\Documents\MovieExtended\Movie-Extended\Backend\MovieExtended\M
 C:\Users\дшшр\Documents\MovieExtended\Movie-Extended\Backend\MovieExtended\MovieExtendedApi\FrontendService\obj\Debug\FrontendService.csprojResolveAssemblyReference.cache
 C:\Users\дшшр\Documents\MovieExtended\Movie-Extended\Backend\MovieExtended\MovieExtendedApi\FrontendService\obj\Debug\FrontendService.dll
 C:\Users\дшшр\Documents\MovieExtended\Movie-Extended\Backend\MovieExtended\MovieExtendedApi\FrontendService\obj\Debug\FrontendService.pdb
+C:\Users\дшшр\Documents\MovieExtended\Movie-Extended\Backend\MovieExtended\MovieExtendedApi\FrontendService\bin\NHibernate.dll
+C:\Users\дшшр\Documents\MovieExtended\Movie-Extended\Backend\MovieExtended\MovieExtendedApi\FrontendService\bin\Iesi.Collections.dll
+C:\Users\дшшр\Documents\MovieExtended\Movie-Extended\Backend\MovieExtended\MovieExtendedApi\FrontendService\bin\NHibernate.xml
+C:\Users\дшшр\Documents\MovieExtended\Movie-Extended\Backend\MovieExtended\MovieExtendedApi\FrontendService\bin\Iesi.Collections.xml

@@ -2,3 +2,8 @@ C:\Users\дшшр\Documents\MovieExtended\Movie-Extended\Backend\MovieExtended\M
 C:\Users\дшшр\Documents\MovieExtended\Movie-Extended\Backend\MovieExtended\MovieExtendedApi\Domain\bin\Debug\Domain.pdb
 C:\Users\дшшр\Documents\MovieExtended\Movie-Extended\Backend\MovieExtended\MovieExtendedApi\Domain\obj\Debug\Domain.dll
 C:\Users\дшшр\Documents\MovieExtended\Movie-Extended\Backend\MovieExtended\MovieExtendedApi\Domain\obj\Debug\Domain.pdb
+C:\Users\дшшр\Documents\MovieExtended\Movie-Extended\Backend\MovieExtended\MovieExtendedApi\Domain\bin\Debug\Iesi.Collections.dll
+C:\Users\дшшр\Documents\MovieExtended\Movie-Extended\Backend\MovieExtended\MovieExtendedApi\Domain\bin\Debug\NHibernate.dll
+C:\Users\дшшр\Documents\MovieExtended\Movie-Extended\Backend\MovieExtended\MovieExtendedApi\Domain\bin\Debug\Iesi.Collections.xml
+C:\Users\дшшр\Documents\MovieExtended\Movie-Extended\Backend\MovieExtended\MovieExtendedApi\Domain\bin\Debug\NHibernate.xml
+C:\Users\дшшр\Documents\MovieExtended\Movie-Extended\Backend\MovieExtended\MovieExtendedApi\Domain\obj\Debug\Domain.csprojResolveAssemblyReference.cache

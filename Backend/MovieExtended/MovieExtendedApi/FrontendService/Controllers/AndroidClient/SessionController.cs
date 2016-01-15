@@ -19,8 +19,8 @@ namespace FrontendService.Controllers.AndroidClient
         [HttpGet]
         public Guid Login(string qr)
         {
-            var sessionId = new Guid(qr);
-            _keeper.CreateSession(sessionId);
+            var sessionId = new Guid();
+            //_keeper.CreateSession(sessionId);
             return sessionId;
         }
 
