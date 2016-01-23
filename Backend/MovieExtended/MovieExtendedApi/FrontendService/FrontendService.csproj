@@ -105,7 +105,7 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="App_Start\SessionFactoryConfig.cs" />
+    <Compile Include="App_Start\SessionProvider.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AndroidClient\SessionController.cs" />
     <Compile Include="Controllers\WebClient\CinemaController.cs" />

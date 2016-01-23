@@ -1,4 +1,5 @@
-﻿using Domain.Mappings;
+﻿using System;
+using Domain.Mappings;
 using Extended_Movie.Mappings;
 using NHibernate;
 using NHibernate.Mapping.ByCode;
@@ -7,9 +8,10 @@ using NHibernate.Cfg;
 
 namespace FrontendService.App_Start
 {
-    public static class SessionFactoryConfig
+    public  class SessionProvider
     {
-        public static void CreateSessionFactory()
+        private readonly ISessionFactory _factory;
+        public   SessionProvider()
         {
             var configuration = new Configuration();
             configuration.Configure();
@@ -25,7 +27,31 @@ namespace FrontendService.App_Start
 
             new SchemaUpdate(configuration).Execute(false, true);
 
-           
+            }
+        public void OpenSession()
+        {
+            if (_session == null || !_session.IsOpen)
+            {
+                _session = _factory.OpenSession();
+            }
+
+            _transaction = _session.BeginTransaction();
         }
+
+        public void CloseSession()
+        {
+            if (_transaction != null && _transaction.IsActive)
+            {
+                _transaction.Commit();
+            }
+
+            _session?.Dispose();
+        }
+
+        [ThreadStatic]
+        private static ISession _session;
+
+        [ThreadStatic]
+        private static ITransaction _transaction;
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Web.Http;
+﻿using System.Diagnostics;
+using System.Web.Http;
 using SimpleInjector;
 using SimpleInjector.Integration.WebApi;
 
@@ -16,6 +17,21 @@ namespace FrontendService
         new SimpleInjectorWebApiDependencyResolver(container);
             
 
+        }
+        protected void Application_BeginRequest()
+        {
+            Debug.WriteLine("Begin request");
+            var sessionProvider = GlobalConfiguration.Configuration.DependencyResolver.GetService(
+                typeof(DatabaseSessionProvider)) as DatabaseSessionProvider;
+            sessionProvider.OpenSession();
+        }
+
+        protected void Application_EndRequest()
+        {
+            Debug.WriteLine("End request");
+            var sessionProvider = GlobalConfiguration.Configuration.DependencyResolver.GetService(
+                typeof(DatabaseSessionProvider)) as DatabaseSessionProvider;
+            sessionProvider.CloseSession();
         }
     }
 }
