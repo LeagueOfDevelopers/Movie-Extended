@@ -23,7 +23,7 @@ namespace Extended_Movie.Visitor_Repository
             modelMapper.AddMapping<FileMapping>();
             configuration.AddDeserializedMapping(modelMapper.CompileMappingForAllExplicitlyAddedEntities(), null);
 
-            var factory = configuration.BuildSessionFactory();
+            _factory = configuration.BuildSessionFactory();
 
             new SchemaUpdate(configuration).Execute(false, true);
 

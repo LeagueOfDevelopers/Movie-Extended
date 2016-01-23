@@ -3,7 +3,6 @@ C:\Users\дшшр\Documents\MovieExtended\Movie-Extended\Backend\MovieExtended\M
 C:\Users\дшшр\Documents\MovieExtended\Movie-Extended\Backend\MovieExtended\MovieExtendedApi\UnitTestProject1\bin\Debug\Domain.dll
 C:\Users\дшшр\Documents\MovieExtended\Movie-Extended\Backend\MovieExtended\MovieExtendedApi\UnitTestProject1\bin\Debug\Infrastructure.dll
 C:\Users\дшшр\Documents\MovieExtended\Movie-Extended\Backend\MovieExtended\MovieExtendedApi\UnitTestProject1\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
-C:\Users\дшшр\Documents\MovieExtended\Movie-Extended\Backend\MovieExtended\MovieExtendedApi\UnitTestProject1\bin\Debug\NHibernate.dll
 C:\Users\дшшр\Documents\MovieExtended\Movie-Extended\Backend\MovieExtended\MovieExtendedApi\UnitTestProject1\bin\Debug\Iesi.Collections.dll
 C:\Users\дшшр\Documents\MovieExtended\Movie-Extended\Backend\MovieExtended\MovieExtendedApi\UnitTestProject1\bin\Debug\Domain.pdb
 C:\Users\дшшр\Documents\MovieExtended\Movie-Extended\Backend\MovieExtended\MovieExtendedApi\UnitTestProject1\bin\Debug\Infrastructure.pdb

@@ -16,11 +16,11 @@ namespace UnitTestProject1
             var cinemaAddress = "address";
             var companyId = new Guid();
             var cinema = new Cinema(cinemaId,cinemaName,cinemaAddress,companyId);
-            var cinemaRepository = new CinemaRepository();
-            cinemaRepository.SaveCinemaData(cinema);
             var provider = new SessionProvider();
+            provider.OpenSession();
             using (var session = provider.GetCurrentSession())
             {
+                var cinemaRepository = new CinemaRepository(session);
                 cinemaRepository.SaveCinemaData(cinema);
             }
         }

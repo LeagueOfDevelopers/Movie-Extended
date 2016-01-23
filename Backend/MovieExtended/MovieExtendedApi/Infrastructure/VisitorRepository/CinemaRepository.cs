@@ -10,45 +10,45 @@ namespace Extended_Movie.Visitor_Repository
     public class CinemaRepository : ICinemaRepository
     {
 
-        private readonly ISession session ;
+        private readonly ISession _session ;
 
-        public CinemaRepository()
+        public CinemaRepository(ISession session)
         {
-           session = new 
+            _session = session;
         }
 
         public IEnumerable<Cinema> GetAllCinemas()
         {
-            return session.Query<Cinema>();
+            return _session.Query<Cinema>();
         }
 
         public void SaveCinemaData(Cinema cinema)
         {
-            session.BeginTransaction();
-            session.SaveOrUpdate(cinema);
-            session.Transaction.Commit();
+            _session.BeginTransaction();
+            _session.SaveOrUpdate(cinema);
+            _session.Transaction.Commit();
         }
 
         public Cinema GetCinemaByCompanyId(Guid companyId)
         {
-            return session.Query<Cinema>().SingleOrDefault(cinema => cinema.CompanyId==companyId);
+            return _session.Query<Cinema>().SingleOrDefault(cinema => cinema.CompanyId==companyId);
         }
 
         public void DeleteCinemaByCinemaId(Guid? cinemaId)
         {
-            var checkIfExists = session.Query<Cinema>().Where(cinema => cinema.Id == cinemaId);
-            if (checkIfExists != null) session.Delete(checkIfExists);
+            var checkIfExists = _session.Query<Cinema>().Where(cinema => cinema.Id == cinemaId);
+            if (checkIfExists != null) _session.Delete(checkIfExists);
         }
 
         public void DeleteCinemaByCompanyId(Guid companyId)
         {
-            var checkIfExists = session.Query<Cinema>().Where(cinema => cinema.CompanyId == companyId);
-            if (checkIfExists != null) session.Delete(checkIfExists);
+            var checkIfExists = _session.Query<Cinema>().Where(cinema => cinema.CompanyId == companyId);
+            if (checkIfExists != null) _session.Delete(checkIfExists);
         }
 
         public Cinema GetCinemaByCinemaId(Guid? cinemaId)
         {
-            return session.Query<Cinema>().SingleOrDefault(cinema => cinema.Id == cinemaId);
+            return _session.Query<Cinema>().SingleOrDefault(cinema => cinema.Id == cinemaId);
         }
     }
 }
