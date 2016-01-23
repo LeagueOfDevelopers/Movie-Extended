@@ -6,7 +6,7 @@ using NHibernate.Mapping.ByCode;
 using NHibernate.Tool.hbm2ddl;
 using NHibernate.Cfg;
 
-namespace FrontendService.App_Start
+namespace Extended_Movie.Visitor_Repository
 {
     public  class SessionProvider
     {

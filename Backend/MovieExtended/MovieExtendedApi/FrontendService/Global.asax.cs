@@ -2,6 +2,7 @@
 using System.Web.Http;
 using SimpleInjector;
 using SimpleInjector.Integration.WebApi;
+using Extended_Movie.Visitor_Repository;
 
 namespace FrontendService
 {
@@ -22,7 +23,7 @@ namespace FrontendService
         {
             Debug.WriteLine("Begin request");
             var sessionProvider = GlobalConfiguration.Configuration.DependencyResolver.GetService(
-                typeof(DatabaseSessionProvider)) as DatabaseSessionProvider;
+                typeof(SessionProvider)) as SessionProvider;
             sessionProvider.OpenSession();
         }
 
@@ -30,7 +31,7 @@ namespace FrontendService
         {
             Debug.WriteLine("End request");
             var sessionProvider = GlobalConfiguration.Configuration.DependencyResolver.GetService(
-                typeof(DatabaseSessionProvider)) as DatabaseSessionProvider;
+                typeof(SessionProvider)) as SessionProvider;
             sessionProvider.CloseSession();
         }
     }

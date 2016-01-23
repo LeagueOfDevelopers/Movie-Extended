@@ -54,6 +54,7 @@
     <Compile Include="VisitorRepository\FileRepository.cs" />
     <Compile Include="VisitorRepository\LanguageRepository.cs" />
     <Compile Include="VisitorRepository\MovieRepository.cs" />
+    <Compile Include="VisitorRepository\SessionProvider.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Domain\Domain.csproj">
