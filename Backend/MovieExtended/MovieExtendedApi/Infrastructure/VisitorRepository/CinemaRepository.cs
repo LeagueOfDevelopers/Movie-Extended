@@ -14,7 +14,7 @@ namespace Extended_Movie.Visitor_Repository
 
         public CinemaRepository()
         {
-           
+           session = new 
         }
 
         public IEnumerable<Cinema> GetAllCinemas()

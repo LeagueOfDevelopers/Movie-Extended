@@ -9,7 +9,7 @@ namespace FrontendService.App_Start
 {
     public static class SessionFactoryConfig
     {
-        public static ISessionFactory CreateSessionFactory()
+        public static void CreateSessionFactory()
         {
             var configuration = new Configuration();
             configuration.Configure();
@@ -25,7 +25,7 @@ namespace FrontendService.App_Start
 
             new SchemaUpdate(configuration).Execute(false, true);
 
-            return factory;
+           
         }
     }
 }
