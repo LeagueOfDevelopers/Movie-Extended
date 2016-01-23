@@ -28,6 +28,13 @@ namespace Extended_Movie.Visitor_Repository
             new SchemaUpdate(configuration).Execute(false, true);
 
             }
+
+        public ISession GetCurrentSession()
+        {
+            return _session;
+        }
+
+
         public void OpenSession()
         {
             if (_session == null || !_session.IsOpen)

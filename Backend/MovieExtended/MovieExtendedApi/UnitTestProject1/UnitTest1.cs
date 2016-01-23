@@ -18,7 +18,7 @@ namespace UnitTestProject1
             var cinema = new Cinema(cinemaId,cinemaName,cinemaAddress,companyId);
             var cinemaRepository = new CinemaRepository();
             cinemaRepository.SaveCinemaData(cinema);
-            var provider = new DatabaseSessionProvider();
+            var provider = new SessionProvider();
             using (var session = provider.GetCurrentSession())
             {
                 cinemaRepository.SaveCinemaData(cinema);
