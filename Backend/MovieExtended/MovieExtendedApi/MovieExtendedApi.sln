@@ -13,6 +13,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestProject1", "UnitTes
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieRepositoryTest", "MovieRepositoryTest\MovieRepositoryTest.csproj", "{84AA737E-1B21-4EA7-A89B-FF2C67E685A8}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{7427DAE7-74CA-495A-98F3-9AABA8648BED}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LanguageRepositoryTests", "LanguageRepositoryTests\LanguageRepositoryTests.csproj", "{7DDF98B8-DB6A-4DC5-B9EF-6B45CED58EDB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,8 +43,17 @@ Global
 		{84AA737E-1B21-4EA7-A89B-FF2C67E685A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{84AA737E-1B21-4EA7-A89B-FF2C67E685A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{84AA737E-1B21-4EA7-A89B-FF2C67E685A8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7DDF98B8-DB6A-4DC5-B9EF-6B45CED58EDB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7DDF98B8-DB6A-4DC5-B9EF-6B45CED58EDB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7DDF98B8-DB6A-4DC5-B9EF-6B45CED58EDB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7DDF98B8-DB6A-4DC5-B9EF-6B45CED58EDB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{FA811C3E-E5EB-42FC-8697-D4C743577CF2} = {7427DAE7-74CA-495A-98F3-9AABA8648BED}
+		{84AA737E-1B21-4EA7-A89B-FF2C67E685A8} = {7427DAE7-74CA-495A-98F3-9AABA8648BED}
+		{7DDF98B8-DB6A-4DC5-B9EF-6B45CED58EDB} = {7427DAE7-74CA-495A-98F3-9AABA8648BED}
 	EndGlobalSection
 EndGlobal
