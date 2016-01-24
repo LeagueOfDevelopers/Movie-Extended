@@ -1,0 +1,15 @@
+C:\Users\дшшр\Documents\MovieExtended\Movie-Extended\Backend\MovieExtended\MovieExtendedApi\LanguageRepositoryTests\bin\Debug\LanguageRepositoryTests.dll
+C:\Users\дшшр\Documents\MovieExtended\Movie-Extended\Backend\MovieExtended\MovieExtendedApi\LanguageRepositoryTests\bin\Debug\LanguageRepositoryTests.pdb
+C:\Users\дшшр\Documents\MovieExtended\Movie-Extended\Backend\MovieExtended\MovieExtendedApi\LanguageRepositoryTests\bin\Debug\Domain.dll
+C:\Users\дшшр\Documents\MovieExtended\Movie-Extended\Backend\MovieExtended\MovieExtendedApi\LanguageRepositoryTests\bin\Debug\Iesi.Collections.dll
+C:\Users\дшшр\Documents\MovieExtended\Movie-Extended\Backend\MovieExtended\MovieExtendedApi\LanguageRepositoryTests\bin\Debug\Infrastructure.dll
+C:\Users\дшшр\Documents\MovieExtended\Movie-Extended\Backend\MovieExtended\MovieExtendedApi\LanguageRepositoryTests\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+C:\Users\дшшр\Documents\MovieExtended\Movie-Extended\Backend\MovieExtended\MovieExtendedApi\LanguageRepositoryTests\bin\Debug\NHibernate.dll
+C:\Users\дшшр\Documents\MovieExtended\Movie-Extended\Backend\MovieExtended\MovieExtendedApi\LanguageRepositoryTests\bin\Debug\Domain.pdb
+C:\Users\дшшр\Documents\MovieExtended\Movie-Extended\Backend\MovieExtended\MovieExtendedApi\LanguageRepositoryTests\bin\Debug\Infrastructure.pdb
+C:\Users\дшшр\Documents\MovieExtended\Movie-Extended\Backend\MovieExtended\MovieExtendedApi\LanguageRepositoryTests\bin\Debug\Iesi.Collections.xml
+C:\Users\дшшр\Documents\MovieExtended\Movie-Extended\Backend\MovieExtended\MovieExtendedApi\LanguageRepositoryTests\bin\Debug\NHibernate.xml
+C:\Users\дшшр\Documents\MovieExtended\Movie-Extended\Backend\MovieExtended\MovieExtendedApi\LanguageRepositoryTests\bin\Debug\ru\Microsoft.VisualStudio.QualityTools.UnitTestFramework.resources.dll
+C:\Users\дшшр\Documents\MovieExtended\Movie-Extended\Backend\MovieExtended\MovieExtendedApi\LanguageRepositoryTests\obj\Debug\LanguageRepositoryTests.csprojResolveAssemblyReference.cache
+C:\Users\дшшр\Documents\MovieExtended\Movie-Extended\Backend\MovieExtended\MovieExtendedApi\LanguageRepositoryTests\obj\Debug\LanguageRepositoryTests.dll
+C:\Users\дшшр\Documents\MovieExtended\Movie-Extended\Backend\MovieExtended\MovieExtendedApi\LanguageRepositoryTests\obj\Debug\LanguageRepositoryTests.pdb

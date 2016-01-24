@@ -24,7 +24,7 @@ namespace Extended_Movie.Visitor_Repository
         public void SaveLanguage(Language language)
         {
             _session.BeginTransaction();
-            _session.SaveOrUpdate(language);
+            _session.Save(language);
             _session.Transaction.Commit();
         }
 
@@ -43,6 +43,11 @@ namespace Extended_Movie.Visitor_Repository
         {
             var checkIfExists = _session.Query<Language>().Where(language => language.MovieId == movieId);
             if (checkIfExists != null) _session.Delete(checkIfExists);   
+        }
+
+        public IEnumerable<Language> GetLanguageByName(string languageName)
+        {
+            return _session.Query<Language>().Where(language => language.Name == languageName);
         }
     }
 }
