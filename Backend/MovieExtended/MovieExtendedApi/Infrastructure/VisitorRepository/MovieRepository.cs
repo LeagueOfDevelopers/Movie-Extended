@@ -48,5 +48,10 @@ namespace Extended_Movie.Visitor_Repository
             _session.Save(movie);
             _session.Transaction.Commit();
         }
+
+        public IEnumerable<Movie> GetMovieByMovieName(string movieName)
+        {
+            return _session.Query<Movie>().Where(movie => movie.Name == movieName);
+        }
     }
 }

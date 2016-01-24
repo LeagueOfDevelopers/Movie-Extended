@@ -59,5 +59,21 @@ namespace MovieRepositoryTest
                     cinemaId);
             }
         }
+
+        [TestMethod]
+        public void GetMovieByMovieName()
+        {
+            var movieId = new Guid();
+            var movieName = "movie";
+            var cinemaId = new Guid();
+            var movie = new Movie(movieId, movieName, cinemaId);
+            var provider = new SessionProvider();
+            provider.OpenSession();
+            using (var session = provider.GetCurrentSession())
+            {
+                var movieRepository = new MovieRepository(session);
+                var movieByName = movieRepository.GetMovieByMovieName(movieName);
+            }
+        }
     }
 }

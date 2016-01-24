@@ -12,5 +12,6 @@ namespace Extended_Movie.Visitor_Repository
         void DeleteMovieByMovieId(Guid? movieId);
         void DeleteMovieByCinemaId(Guid cinemaId);
         void SaveMovie(Movie movie);
+       IEnumerable<Movie> GetMovieByMovieName(string movieName);
     }
 }
