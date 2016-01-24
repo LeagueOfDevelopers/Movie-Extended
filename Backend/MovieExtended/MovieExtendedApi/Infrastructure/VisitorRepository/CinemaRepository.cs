@@ -29,15 +29,22 @@ namespace Extended_Movie.Visitor_Repository
             _session.Transaction.Commit();
         }
 
-        public Cinema GetCinemaByCompanyId(Guid companyId)
+        public IEnumerable<Cinema> GetCinemaByCompanyId(Guid companyId)
         {
-            return _session.Query<Cinema>().SingleOrDefault(cinema => cinema.CompanyId==companyId);
+            var allcinemasById = _session.Query<Cinema>().Where(cinema => cinema.CompanyId==companyId).AsEnumerable<Cinema>();
+            
+            return allcinemasById;
         }
 
         public void DeleteCinemaByCinemaId(Guid? cinemaId)
         {
             var checkIfExists = _session.Query<Cinema>().Where(cinema => cinema.Id == cinemaId);
-            if (checkIfExists != null) _session.Delete(checkIfExists);
+            if (checkIfExists != null)
+            {
+                _session.BeginTransaction();
+                _session.Delete(checkIfExists);
+                _session.Transaction.Commit();
+            }
         }
 
         public void DeleteCinemaByCompanyId(Guid companyId)
