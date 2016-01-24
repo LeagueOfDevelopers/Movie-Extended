@@ -8,7 +8,7 @@ namespace Extended_Movie.Visitor_Repository
     {
         IEnumerable<Movie> GetAllMovies();
         Movie GetMovieByMovieId(Guid? movieId);
-        Movie GetMovieByCinemaId(Guid cinemaId);
+        IEnumerable<Movie> GetMovieByCinemaId(Guid cinemaId);
         void DeleteMovieByMovieId(Guid? movieId);
         void DeleteMovieByCinemaId(Guid cinemaId);
         void SaveMovie(Movie movie);

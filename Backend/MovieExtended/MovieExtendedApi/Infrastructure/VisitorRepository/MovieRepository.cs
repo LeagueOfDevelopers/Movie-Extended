@@ -25,9 +25,9 @@ namespace Extended_Movie.Visitor_Repository
             return _session.Query<Movie>().SingleOrDefault(movie => movie.Id == movieId);
         }
 
-        public Movie GetMovieByCinemaId(Guid cinemaId)
+        public IEnumerable<Movie> GetMovieByCinemaId(Guid cinemaId)
         {
-            return _session.Query<Movie>().SingleOrDefault(movie => movie.CinemaId == cinemaId);
+            return _session.Query<Movie>().Where(movie => movie.CinemaId == cinemaId);
         }
 
         public void DeleteMovieByMovieId(Guid? movieId)
