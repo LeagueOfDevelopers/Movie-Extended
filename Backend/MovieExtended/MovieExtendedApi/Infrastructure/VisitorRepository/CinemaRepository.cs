@@ -25,7 +25,7 @@ namespace Extended_Movie.Visitor_Repository
         public void SaveCinemaData(Cinema cinema)
         {
             _session.BeginTransaction();
-            _session.SaveOrUpdate(cinema);
+            _session.Save(cinema);
             _session.Transaction.Commit();
         }
 
