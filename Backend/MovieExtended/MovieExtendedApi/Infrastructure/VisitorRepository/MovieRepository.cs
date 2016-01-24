@@ -9,44 +9,44 @@ namespace Extended_Movie.Visitor_Repository
 {
     public class MovieRepository:IMovieRepository
     {
-        private readonly ISession session;
+        private readonly ISession _session;
 
-        public MovieRepository()
+        public MovieRepository(ISession session)
         {
-            
+            _session = session;
         }
         public IEnumerable<Movie> GetAllMovies()
         {
-            return session.Query<Movie>();
+            return _session.Query<Movie>();
         }
 
         public Movie GetMovieByMovieId(Guid? movieId)
         {
-            return session.Query<Movie>().SingleOrDefault(movie => movie.Id == movieId);
+            return _session.Query<Movie>().SingleOrDefault(movie => movie.Id == movieId);
         }
 
         public Movie GetMovieByCinemaId(Guid cinemaId)
         {
-            return session.Query<Movie>().SingleOrDefault(movie => movie.CinemaId == cinemaId);
+            return _session.Query<Movie>().SingleOrDefault(movie => movie.CinemaId == cinemaId);
         }
 
         public void DeleteMovieByMovieId(Guid? movieId)
         {
-            var checkIfExists = session.Query<Movie>().SingleOrDefault(movie => movie.Id == movieId);
-            if (checkIfExists != null) session.Delete(checkIfExists);
+            var checkIfExists = _session.Query<Movie>().SingleOrDefault(movie => movie.Id == movieId);
+            if (checkIfExists != null) _session.Delete(checkIfExists);
         }
 
         public void DeleteMovieByCinemaId(Guid cinemaId)
         {
-            var checkIfExists = session.Query<Movie>().Where(movie => movie.CinemaId == cinemaId);
-            if (checkIfExists != null) session.Delete(checkIfExists);
+            var checkIfExists = _session.Query<Movie>().Where(movie => movie.CinemaId == cinemaId);
+            if (checkIfExists != null) _session.Delete(checkIfExists);
         }
 
         public void SaveMovie(Movie movie)
         {
-            session.BeginTransaction();
-            session.SaveOrUpdate(movie);
-            session.Transaction.Commit();
+            _session.BeginTransaction();
+            _session.Save(movie);
+            _session.Transaction.Commit();
         }
     }
 }

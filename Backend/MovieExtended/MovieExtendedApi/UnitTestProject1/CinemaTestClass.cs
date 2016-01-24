@@ -7,7 +7,7 @@ using Extended_Movie.Visitor_Repository;
 namespace UnitTestProject1
 {
     [TestClass]
-    public class UnitTest1
+    public class CinemaTestClass
     {
         [TestMethod]
         public void SaveCinema()
