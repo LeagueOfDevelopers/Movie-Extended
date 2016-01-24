@@ -10,32 +10,37 @@ namespace Extended_Movie.Visitor_Repository
 {
     public class CompanyRepository :ICompanyRepository
     {
-        public CompanyRepository()
+        public CompanyRepository(ISession session)
         {
-            
+            _session = session;
         }
-        private readonly ISession session;
+        private readonly ISession _session;
         public IEnumerable<Company> GetAllCompanies()
         {
-            return session.Query<Company>();
+            return _session.Query<Company>();
         }
 
         public Company GetCompanyByCompanyId(Guid? companyId)
         {
-            return session.Query<Company>().SingleOrDefault(company => company.Id == companyId);
+            return _session.Query<Company>().SingleOrDefault(company => company.Id == companyId);
         }
 
         public void deleteCompanyById(Guid? companyId)
         {
-            var checkIfExists = session.Query<Company>().SingleOrDefault(company => company.Id == companyId);
-            if (checkIfExists != null) session.Delete(checkIfExists);
+            var checkIfExists = _session.Query<Company>().SingleOrDefault(company => company.Id == companyId);
+            if (checkIfExists != null)
+            {
+                _session.BeginTransaction();
+                _session.Delete(checkIfExists);
+                _session.Transaction.Commit();
+            }
         }
 
         public void SaveCompany(Company company)
         {
-            session.BeginTransaction();
-            session.SaveOrUpdate(company);
-            session.Transaction.Commit();
+            _session.BeginTransaction();
+            _session.Save(company);
+            _session.Transaction.Commit();
         }
     }
 }

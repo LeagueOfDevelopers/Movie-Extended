@@ -8,11 +8,11 @@ namespace Extended_Movie.Visitor_Repository
 {
     public class FileRepository : IFileRepository
     {
-        private readonly ISession session;
+        private readonly ISession _session;
 
-        public FileRepository()
+        public FileRepository(ISession session)
         {
-            
+            _session = session;
         }
         
         
@@ -23,11 +23,11 @@ namespace Extended_Movie.Visitor_Repository
 
         public void DeleteFileByFileId(Guid? fileId)
         {
-            var deleteFile = session.Query<File>().SingleOrDefault(file => fileId == file.Id);
+            var deleteFile = _session.Query<File>().SingleOrDefault(file => fileId == file.Id);
             if (deleteFile != null)
             {
                 System.IO.File.Delete(deleteFile.FilePath.ToString());
-                session.Delete(deleteFile);
+                _session.Delete(deleteFile);
 
             }
 
@@ -37,14 +37,14 @@ namespace Extended_Movie.Visitor_Repository
 
         public File GetFileData(Guid? fileId)
         {
-            return session.Query<File>().SingleOrDefault(file => file.Id == fileId);
+            return _session.Query<File>().SingleOrDefault(file => file.Id == fileId);
         }
 
         public void SaveFileData(File file)
         {
-            session.BeginTransaction();
-            session.SaveOrUpdate(file);
-            session.Transaction.Commit();
+            _session.BeginTransaction();
+            _session.Save(file);
+            _session.Transaction.Commit();
         }
     }
 }

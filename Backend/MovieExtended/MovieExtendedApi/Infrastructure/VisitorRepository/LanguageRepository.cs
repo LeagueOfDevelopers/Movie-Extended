@@ -9,40 +9,40 @@ namespace Extended_Movie.Visitor_Repository
 {
     public class LanguageRepository:ILanguageRepository
     {
-        private readonly ISession session;
+        private readonly ISession _session;
         
 
-        public LanguageRepository()
+        public LanguageRepository(ISession session)
         {
-            
+            _session = session;
         }
         public IEnumerable<Language> GetAllLanguages()
         {
-            return session.Query<Language>();
+            return _session.Query<Language>();
         }
 
         public void SaveLanguage(Language language)
         {
-            session.BeginTransaction();
-            session.SaveOrUpdate(language);
-            session.Transaction.Commit();
+            _session.BeginTransaction();
+            _session.SaveOrUpdate(language);
+            _session.Transaction.Commit();
         }
 
         public IEnumerable<Language> GetLanguagesByMovieId(Guid movieId)
         {
-            return session.Query<Language>().Where(language => language.MovieId == movieId);
+            return _session.Query<Language>().Where(language => language.MovieId == movieId);
         }
 
         public void DeleteLanguageByLanguageId(Guid? languageID)
         {
-            var checkIfExists = session.Query<Language>().SingleOrDefault(language => language.Id == languageID);
-            if (checkIfExists != null) session.Delete((checkIfExists));
+            var checkIfExists = _session.Query<Language>().SingleOrDefault(language => language.Id == languageID);
+            if (checkIfExists != null) _session.Delete((checkIfExists));
         }
 
         public void DeleteLanguageByMovieId(Guid movieId)
         {
-            var checkIfExists = session.Query<Language>().Where(language => language.MovieId == movieId);
-            if (checkIfExists != null) session.Delete(checkIfExists);   
+            var checkIfExists = _session.Query<Language>().Where(language => language.MovieId == movieId);
+            if (checkIfExists != null) _session.Delete(checkIfExists);   
         }
     }
 }
