@@ -24,5 +24,18 @@ namespace UnitTestProject1
                 cinemaRepository.SaveCinemaData(cinema);
             }
         }
+
+        [TestMethod]
+        public void GetAll()
+        {
+            var provider = new SessionProvider();
+            provider.OpenSession();
+            using (var session = provider.GetCurrentSession())
+            {
+                var cinemaRepository = new CinemaRepository(session);
+                var allCinemas = cinemaRepository.GetAllCinemas();
+                Console.WriteLine(allCinemas.ToString());
+            }
+        }
     }
 }
