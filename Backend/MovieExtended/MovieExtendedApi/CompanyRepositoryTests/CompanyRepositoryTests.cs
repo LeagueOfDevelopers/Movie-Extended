@@ -25,6 +25,32 @@ namespace CompanyRepositoryTests
                 companyRepository.SaveCompany(company);
             }
         }
+        [TestMethod]
+         public void GetAllCompanies()
+          {
+            var provider = new SessionProvider();
+            provider.OpenSession();
+            using (var session = provider.GetCurrentSession())
+            {
+                var companyRepository = new CompanyRepository(session);
+                var test = companyRepository.GetAllCompanies();
+            }
+
+        }
+
+        [TestMethod]
+        public void GetCompanyByName()
+        {
+            var provider = new SessionProvider();
+            provider.OpenSession();
+            using (var session = provider.GetCurrentSession())
+            {
+                var companyRepository = new CompanyRepository(session);
+                var test =  companyRepository.GetCompanyByName("company");
+            }
+        }
     }
+
+   
     }
 

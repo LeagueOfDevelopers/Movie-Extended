@@ -10,6 +10,7 @@ namespace Extended_Movie.Visitor_Repository
         Company GetCompanyByCompanyId(Guid? companyId);
         void deleteCompanyById(Guid? companyId);
         void SaveCompany(Company company);
+       Company GetCompanyByName(string name);
 
     }
 }

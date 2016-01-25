@@ -42,5 +42,10 @@ namespace Extended_Movie.Visitor_Repository
             _session.Save(company);
             _session.Transaction.Commit();
         }
+
+        public Company GetCompanyByName(string companyName)
+        {
+            return _session.Query<Company>().SingleOrDefault(company => company.Name == companyName);
+        }
     }
 }
