@@ -8,7 +8,7 @@ namespace Domain.Models
 {
     public class Company
     {
-        public Company(Guid? id, string name, Uri website, Uri photoUri)
+        public Company(Guid? id, string name, Uri website)
         {
             Id = id;
             Name = name;
