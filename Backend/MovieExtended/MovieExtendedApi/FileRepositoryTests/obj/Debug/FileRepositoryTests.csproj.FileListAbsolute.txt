@@ -1,0 +1,15 @@
+C:\Users\дшшр\Documents\MovieExtended\Movie-Extended\Backend\MovieExtended\MovieExtendedApi\FileRepositoryTests\bin\Debug\FileRepositoryTests.dll
+C:\Users\дшшр\Documents\MovieExtended\Movie-Extended\Backend\MovieExtended\MovieExtendedApi\FileRepositoryTests\bin\Debug\FileRepositoryTests.pdb
+C:\Users\дшшр\Documents\MovieExtended\Movie-Extended\Backend\MovieExtended\MovieExtendedApi\FileRepositoryTests\bin\Debug\Domain.dll
+C:\Users\дшшр\Documents\MovieExtended\Movie-Extended\Backend\MovieExtended\MovieExtendedApi\FileRepositoryTests\bin\Debug\Iesi.Collections.dll
+C:\Users\дшшр\Documents\MovieExtended\Movie-Extended\Backend\MovieExtended\MovieExtendedApi\FileRepositoryTests\bin\Debug\Infrastructure.dll
+C:\Users\дшшр\Documents\MovieExtended\Movie-Extended\Backend\MovieExtended\MovieExtendedApi\FileRepositoryTests\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+C:\Users\дшшр\Documents\MovieExtended\Movie-Extended\Backend\MovieExtended\MovieExtendedApi\FileRepositoryTests\bin\Debug\NHibernate.dll
+C:\Users\дшшр\Documents\MovieExtended\Movie-Extended\Backend\MovieExtended\MovieExtendedApi\FileRepositoryTests\bin\Debug\Domain.pdb
+C:\Users\дшшр\Documents\MovieExtended\Movie-Extended\Backend\MovieExtended\MovieExtendedApi\FileRepositoryTests\bin\Debug\Infrastructure.pdb
+C:\Users\дшшр\Documents\MovieExtended\Movie-Extended\Backend\MovieExtended\MovieExtendedApi\FileRepositoryTests\bin\Debug\Iesi.Collections.xml
+C:\Users\дшшр\Documents\MovieExtended\Movie-Extended\Backend\MovieExtended\MovieExtendedApi\FileRepositoryTests\bin\Debug\NHibernate.xml
+C:\Users\дшшр\Documents\MovieExtended\Movie-Extended\Backend\MovieExtended\MovieExtendedApi\FileRepositoryTests\bin\Debug\ru\Microsoft.VisualStudio.QualityTools.UnitTestFramework.resources.dll
+C:\Users\дшшр\Documents\MovieExtended\Movie-Extended\Backend\MovieExtended\MovieExtendedApi\FileRepositoryTests\obj\Debug\FileRepositoryTests.csprojResolveAssemblyReference.cache
+C:\Users\дшшр\Documents\MovieExtended\Movie-Extended\Backend\MovieExtended\MovieExtendedApi\FileRepositoryTests\obj\Debug\FileRepositoryTests.dll
+C:\Users\дшшр\Documents\MovieExtended\Movie-Extended\Backend\MovieExtended\MovieExtendedApi\FileRepositoryTests\obj\Debug\FileRepositoryTests.pdb

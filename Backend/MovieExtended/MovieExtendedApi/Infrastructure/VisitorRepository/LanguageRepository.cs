@@ -28,18 +28,20 @@ namespace Extended_Movie.Visitor_Repository
             _session.Transaction.Commit();
         }
 
-        public IEnumerable<Language> GetLanguagesByMovieId(Guid movieId)
+        
+
+        public IEnumerable<Language> GetLanguagesByMovieId(string movieId)
         {
             return _session.Query<Language>().Where(language => language.MovieId == movieId);
         }
 
-        public void DeleteLanguageByLanguageId(Guid? languageID)
+        public void DeleteLanguageByLanguageId(string languageID)
         {
             var checkIfExists = _session.Query<Language>().SingleOrDefault(language => language.Id == languageID);
             if (checkIfExists != null) _session.Delete((checkIfExists));
         }
 
-        public void DeleteLanguageByMovieId(Guid movieId)
+        public void DeleteLanguageByMovieId(string movieId)
         {
             var checkIfExists = _session.Query<Language>().Where(language => language.MovieId == movieId);
             if (checkIfExists != null) _session.Delete(checkIfExists);   
