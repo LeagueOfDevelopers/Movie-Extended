@@ -12,10 +12,10 @@ namespace UnitTestProject1
         [TestMethod]
         public void SaveCinema()
         {
-            var cinemaId = new Guid();
+            var cinemaId = "";
             var cinemaName = "name";
             var cinemaAddress = "address";
-            var companyId = new Guid();
+            var companyId = "id";
             var cinema = new Cinema(cinemaId,cinemaName,cinemaAddress,companyId);
             var provider = new SessionProvider();
             provider.OpenSession();
@@ -44,10 +44,10 @@ namespace UnitTestProject1
         [TestMethod]
         public void GetCinemaByCinemaId()
         {
-            var cinemaId = new Guid();
+            var cinemaId = "id";
             var cinemaName = "name1";
             var cinemaAddress = "address";
-            var companyId = new Guid();
+            var companyId = "dwd1w1m12m";
             var cinema = new Cinema(cinemaId, cinemaName, cinemaAddress, companyId);
             var provider = new SessionProvider();
             provider.OpenSession();
@@ -63,10 +63,10 @@ namespace UnitTestProject1
         [TestMethod]
         public void GetCinemaByCompanyId()
         {
-            var cinemaId = new Guid();
+            var cinemaId = "id";
             var cinemaName = "name1";
             var cinemaAddress = "address";
-            var companyId = new Guid();
+            var companyId = "1nw1w";
             var cinema = new Cinema(cinemaId, cinemaName, cinemaAddress, companyId);
             var provider = new SessionProvider();
             provider.OpenSession();

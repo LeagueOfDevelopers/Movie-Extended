@@ -11,7 +11,7 @@ namespace FileRepositoryTests
         [TestMethod]
         public void SaveFileData()
         {
-            var saveFile = new File(Guid.NewGuid(),"filePath",FileType.Track);
+            var saveFile = new File("id","filePath",FileType.Track);
             
             
             var provider = new SessionProvider();
@@ -20,6 +20,20 @@ namespace FileRepositoryTests
             {
                 var fileRepository = new FileRepository(session);
                 fileRepository.SaveFileData(saveFile);
+            }
+        }
+
+        [TestMethod]
+        public void getFileByFileId()
+        {
+            var provider = new SessionProvider();
+            provider.OpenSession();
+            using (var session = provider.GetCurrentSession())
+            {
+                var fileRepository = new FileRepository(session);
+                var str = "418ff8ec-50ae-4872-be51-3ce12d75be6";
+                
+                var test = fileRepository.GetFileData("418ff8ec-50ae-4872-be51-3ce12d75be6");
             }
         }
     }

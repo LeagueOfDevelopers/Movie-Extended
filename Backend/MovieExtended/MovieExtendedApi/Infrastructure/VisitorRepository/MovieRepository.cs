@@ -20,23 +20,23 @@ namespace Extended_Movie.Visitor_Repository
             return _session.Query<Movie>();
         }
 
-        public Movie GetMovieByMovieId(Guid? movieId)
+        public Movie GetMovieByMovieId(string movieId)
         {
             return _session.Query<Movie>().SingleOrDefault(movie => movie.Id == movieId);
         }
 
-        public IEnumerable<Movie> GetMovieByCinemaId(Guid cinemaId)
+        public IEnumerable<Movie> GetMovieByCinemaId(string cinemaId)
         {
             return _session.Query<Movie>().Where(movie => movie.CinemaId == cinemaId);
         }
 
-        public void DeleteMovieByMovieId(Guid? movieId)
+        public void DeleteMovieByMovieId(string movieId)
         {
             var checkIfExists = _session.Query<Movie>().SingleOrDefault(movie => movie.Id == movieId);
             if (checkIfExists != null) _session.Delete(checkIfExists);
         }
 
-        public void DeleteMovieByCinemaId(Guid cinemaId)
+        public void DeleteMovieByCinemaId(string cinemaId)
         {
             var checkIfExists = _session.Query<Movie>().Where(movie => movie.CinemaId == cinemaId);
             if (checkIfExists != null) _session.Delete(checkIfExists);

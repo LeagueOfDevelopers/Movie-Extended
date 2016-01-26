@@ -7,8 +7,8 @@ namespace Extended_Movie.Visitor_Repository
    public interface ICompanyRepository
     {
         IEnumerable<Company> GetAllCompanies();
-        Company GetCompanyByCompanyId(Guid? companyId);
-        void deleteCompanyById(Guid? companyId);
+        Company GetCompanyByCompanyId(string companyId);
+        void deleteCompanyById(string companyId);
         void SaveCompany(Company company);
        Company GetCompanyByName(string name);
 
