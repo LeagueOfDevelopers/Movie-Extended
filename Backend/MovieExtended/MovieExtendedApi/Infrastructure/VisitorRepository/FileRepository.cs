@@ -14,8 +14,11 @@ namespace Extended_Movie.Visitor_Repository
         {
             _session = session;
         }
-        
-        
+
+        public FileRepository()
+        {
+        }
+
         public void DownLoadFileFromDataBase(Guid? fileId)
         {
             
