@@ -12,6 +12,13 @@ namespace Domain.Models
             CompanyId = companyId;
         }
 
+        public Cinema(string name ,string address, int companyId)
+        {
+            Name = name;
+            Address = address;
+            CompanyId = companyId;
+        }
+
         protected Cinema()
         {
 

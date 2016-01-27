@@ -12,18 +12,17 @@ namespace CompanyRepositoryTests
         [TestMethod]
         public void SaveCompany()
         {
-            var companyId = new Guid();
             var companyName = "company";
             var uri1 = new Uri("http://handynotes.ru/2009/09/uri-url-urn.html");
             
-            var company = new Company(companyId,companyName,uri1);
+            var company = new Company(7,companyName,uri1);
             var provider = new SessionProvider();
             provider.OpenSession();
             using (var session = provider.GetCurrentSession())
             {
                 var companyRepository = new CompanyRepository(session);
                 companyRepository.SaveCompany(company);
-                //effefwfef
+                
             }
         }
     }

@@ -12,11 +12,11 @@ namespace UnitTestProject1
         [TestMethod]
         public void SaveCinema()
         {
-            var cinemaId = "";
+            
             var cinemaName = "name";
             var cinemaAddress = "address";
-            var companyId = "id";
-            var cinema = new Cinema(cinemaId,cinemaName,cinemaAddress,companyId);
+            var companyId = 342;
+            var cinema = new Cinema(cinemaName,cinemaAddress,companyId);
             var provider = new SessionProvider();
             provider.OpenSession();
             using (var session = provider.GetCurrentSession())
@@ -44,18 +44,18 @@ namespace UnitTestProject1
         [TestMethod]
         public void GetCinemaByCinemaId()
         {
-            var cinemaId = "id";
+            
             var cinemaName = "name1";
             var cinemaAddress = "address";
-            var companyId = "dwd1w1m12m";
-            var cinema = new Cinema(cinemaId, cinemaName, cinemaAddress, companyId);
+            var companyId = 232;
+            var cinema = new Cinema( cinemaName, cinemaAddress, companyId);
             var provider = new SessionProvider();
             provider.OpenSession();
             using (var session = provider.GetCurrentSession())
             {
                 var cinemaRepository = new CinemaRepository(session);
                 cinemaRepository.SaveCinemaData(cinema);
-                var test =cinemaRepository.GetCinemaByCinemaId(cinemaId);
+                var test =cinemaRepository.GetCinemaByCinemaId(232);
             }
 
         }
@@ -63,18 +63,18 @@ namespace UnitTestProject1
         [TestMethod]
         public void GetCinemaByCompanyId()
         {
-            var cinemaId = "id";
+            
             var cinemaName = "name1";
             var cinemaAddress = "address";
-            var companyId = "1nw1w";
-            var cinema = new Cinema(cinemaId, cinemaName, cinemaAddress, companyId);
+            var companyId = 89;
+            var cinema = new Cinema(cinemaName, cinemaAddress, companyId);
             var provider = new SessionProvider();
             provider.OpenSession();
             using (var session = provider.GetCurrentSession())
             {
                 var cinemaRepository = new CinemaRepository(session);
                 cinemaRepository.SaveCinemaData(cinema);
-                var test =cinemaRepository.GetCinemaByCompanyId(companyId);
+                var test =cinemaRepository.GetCinemaByCompanyId(89);
                 
             }
 
