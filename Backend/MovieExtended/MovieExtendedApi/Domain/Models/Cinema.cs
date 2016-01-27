@@ -17,12 +17,12 @@ namespace Domain.Models
 
         }
 
-        public virtual string Id { get; protected set; }
+        public virtual Guid? Id { get; protected set; }
 
         public virtual string Name { get; protected set; }
 
         public virtual string Address { get; protected set; }
 
-        public virtual string CompanyId { get; set; }
+        public virtual Guid CompanyId { get; set; }
     }
 }
