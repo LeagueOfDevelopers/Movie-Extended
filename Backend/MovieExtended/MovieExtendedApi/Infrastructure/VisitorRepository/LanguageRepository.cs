@@ -30,18 +30,18 @@ namespace Extended_Movie.Visitor_Repository
 
         
 
-        public IEnumerable<Language> GetLanguagesByMovieId(string movieId)
+        public IEnumerable<Language> GetLanguagesByMovieId(Guid movieId)
         {
             return _session.Query<Language>().Where(language => language.MovieId == movieId);
         }
 
-        public void DeleteLanguageByLanguageId(string languageID)
+        public void DeleteLanguageByLanguageId(Guid languageID)
         {
             var checkIfExists = _session.Query<Language>().SingleOrDefault(language => language.Id == languageID);
             if (checkIfExists != null) _session.Delete((checkIfExists));
         }
 
-        public void DeleteLanguageByMovieId(string movieId)
+        public void DeleteLanguageByMovieId(Guid movieId)
         {
             var checkIfExists = _session.Query<Language>().Where(language => language.MovieId == movieId);
             if (checkIfExists != null) _session.Delete(checkIfExists);   

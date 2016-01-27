@@ -29,14 +29,14 @@ namespace Extended_Movie.Visitor_Repository
             _session.Transaction.Commit();
         }
 
-        public IEnumerable<Cinema> GetCinemaByCompanyId(string companyId)
+        public IEnumerable<Cinema> GetCinemaByCompanyId(Guid companyId)
         {
             var allcinemasById = _session.Query<Cinema>().Where(cinema => cinema.CompanyId==companyId).AsEnumerable<Cinema>();
             
             return allcinemasById;
         }
 
-        public void DeleteCinemaByCinemaId(string cinemaId)
+        public void DeleteCinemaByCinemaId(Guid cinemaId)
         {
             var checkIfExists = _session.Query<Cinema>().Where(cinema => cinema.Id == cinemaId);
             if (checkIfExists != null)
@@ -47,13 +47,13 @@ namespace Extended_Movie.Visitor_Repository
             }
         }
 
-        public void DeleteCinemaByCompanyId(string companyId)
+        public void DeleteCinemaByCompanyId(Guid companyId)
         {
             var checkIfExists = _session.Query<Cinema>().Where(cinema => cinema.CompanyId == companyId);
             if (checkIfExists != null) _session.Delete(checkIfExists);
         }
 
-        public Cinema GetCinemaByCinemaId(string cinemaId)
+        public Cinema GetCinemaByCinemaId(Guid cinemaId)
         {
             return _session.Query<Cinema>().SingleOrDefault(cinema => cinema.Id == cinemaId);
         }

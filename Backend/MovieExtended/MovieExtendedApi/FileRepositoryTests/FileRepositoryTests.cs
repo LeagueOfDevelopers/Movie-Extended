@@ -11,7 +11,7 @@ namespace FileRepositoryTests
         [TestMethod]
         public void SaveFileData()
         {
-            var saveFile = new File("id","filePath",FileType.Track);
+            var saveFile = new File(new Guid(), "filePath",FileType.Track);
             
             
             var provider = new SessionProvider();

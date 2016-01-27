@@ -20,12 +20,12 @@ namespace Extended_Movie.Visitor_Repository
             return _session.Query<Company>();
         }
 
-        public Company GetCompanyByCompanyId(string companyId)
+        public Company GetCompanyByCompanyId(Guid companyId)
         {
             return _session.Query<Company>().SingleOrDefault(company => company.Id == companyId);
         }
 
-        public void deleteCompanyById(string companyId)
+        public void deleteCompanyById(Guid companyId)
         {
             var checkIfExists = _session.Query<Company>().SingleOrDefault(company => company.Id == companyId);
             if (checkIfExists != null)

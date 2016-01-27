@@ -5,9 +5,9 @@ namespace Extended_Movie.Visitor_Repository
 {
    public interface IFileRepository
     {
-        void DownLoadFileFromDataBase(string fileId);
-        void DeleteFileByFileId(string fileId);
-        File GetFileData(string fileId);
+        void DownLoadFileFromDataBase(Guid fileId);
+        void DeleteFileByFileId(Guid fileId);
+        File GetFileData(Guid fileId);
         void SaveFileData(File file);
     }
 }
