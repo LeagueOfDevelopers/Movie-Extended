@@ -19,7 +19,7 @@ namespace FrontendService.Controllers.WebClient
         [Route("api/Languages/DeleteByMovie/{movieId}")]
         [HttpGet]
 
-        public void DeleteMovieFromLanguageById(Guid movieId)
+        public void DeleteMovieFromLanguageById(int movieId)
         {
             languageRepository.DeleteLanguageByMovieId(movieId);
         }
@@ -27,7 +27,7 @@ namespace FrontendService.Controllers.WebClient
         [Route("api/Languages/DeleteByLang/{languageId}")]
         [HttpGet]
 
-        public void DeleteLanguageByLanguageId(Guid? languageId)
+        public void DeleteLanguageByLanguageId(int languageId)
         {
             languageRepository.DeleteLanguageByLanguageId(languageId);
         }

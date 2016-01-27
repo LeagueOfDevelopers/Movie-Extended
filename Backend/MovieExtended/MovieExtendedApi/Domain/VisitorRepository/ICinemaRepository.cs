@@ -8,10 +8,10 @@ namespace Extended_Movie.Visitor_Repository
     {
         IEnumerable<Cinema> GetAllCinemas();
         void SaveCinemaData(Cinema cinema);
-        IEnumerable<Cinema> GetCinemaByCompanyId(Guid companyId);
-        void DeleteCinemaByCinemaId(Guid cinemaId);
-        void DeleteCinemaByCompanyId(Guid companyId);
-        Cinema GetCinemaByCinemaId(Guid cinemaId);
+        IEnumerable<Cinema> GetCinemaByCompanyId(int companyId);
+        void DeleteCinemaByCinemaId(int cinemaId);
+        void DeleteCinemaByCompanyId(int companyId);
+        Cinema GetCinemaByCinemaId(int cinemaId);
 
     }
 }

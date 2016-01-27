@@ -31,9 +31,8 @@ namespace FileRepositoryTests
             using (var session = provider.GetCurrentSession())
             {
                 var fileRepository = new FileRepository(session);
-                var str = "418ff8ec-50ae-4872-be51-3ce12d75be6";
                 
-                var test = fileRepository.GetFileData("418ff8ec-50ae-4872-be51-3ce12d75be6");
+                var test = fileRepository.GetFileData(Guid.Parse("418ff8ec-50ae-4872-be51-3ce12d75be6"));
             }
         }
     }

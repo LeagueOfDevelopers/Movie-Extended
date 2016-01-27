@@ -4,7 +4,7 @@ namespace Domain.Models
 {
     public class Language
     {
-        public Language(Guid id, string name, Guid movieId, Guid trackFileId)
+        public Language(int id, string name, int movieId, int trackFileId)
         {
             Id = id;
             Name = name;
@@ -14,12 +14,12 @@ namespace Domain.Models
 
         protected Language() { }
 
-        public virtual Guid Id { get; protected set; }
+        public virtual int Id { get; protected set; }
 
         public virtual string Name { get; protected set; }
 
-        public virtual Guid MovieId { get; set; }
+        public virtual int MovieId { get; set; }
 
-        public virtual Guid TrackFileId { get; set; }
+        public virtual int TrackFileId { get; set; }
     }
 }

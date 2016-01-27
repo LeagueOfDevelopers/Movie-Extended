@@ -21,12 +21,12 @@ namespace Extended_Movie.Visitor_Repository
 
        
 
-        public void DownLoadFileFromDataBase(Guid fileId)
+        public void DownLoadFileFromDataBase(int fileId)
         {
             throw new NotImplementedException();
         }
 
-        public void DeleteFileByFileId(Guid fileId)
+        public void DeleteFileByFileId(int fileId)
         {
             var deleteFile = _session.Query<File>().SingleOrDefault(file => fileId == file.Id);
             if (deleteFile != null)
@@ -40,7 +40,7 @@ namespace Extended_Movie.Visitor_Repository
 
         
 
-        public File GetFileData(Guid fileId)
+        public File GetFileData(int fileId)
         {
             return _session.Query<File>().SingleOrDefault(file => file.Id == fileId);
         }

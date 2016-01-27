@@ -8,7 +8,7 @@ namespace Domain.Models
 {
     public class File
     {
-        public File(Guid id, string filePath, FileType fileType)
+        public File(int id, string filePath, FileType fileType)
         {
             Id = id;
             FilePath = filePath;
@@ -19,7 +19,7 @@ namespace Domain.Models
         {
         }
 
-        public virtual Guid Id { get; protected set; }
+        public virtual int Id { get; protected set; }
 
         public virtual string FilePath { get; protected set; }
 

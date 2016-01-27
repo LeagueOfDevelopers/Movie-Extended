@@ -36,28 +36,28 @@ using Newtonsoft.Json;
 
         [Route("api/Movie/{movieId}")]
         [HttpGet]
-        public Movie GetMovieByMovieId(Guid? movieId)
+        public Movie GetMovieByMovieId(int movieId)
         {
           return  movieRepository.GetMovieByMovieId(movieId);
         }
 
         [Route("api/Movie/Cinema/{cinemaId}")]
         [HttpGet]
-        public Movie GetMovieByCinemaId(Guid cinemaId)
+        public Movie GetMovieByCinemaId(int cinemaId)
         {
             return movieRepository.GetMovieByCinemaId(cinemaId);
         }
 
         [Route("api/Movie/Delete/{movieId}")]
         [HttpGet]
-        public void DeleteMovieByMovieId(Guid? movieId)
+        public void DeleteMovieByMovieId(int movieId)
         {
             movieRepository.DeleteMovieByMovieId(movieId);
         }
 
         [Route("api/Movie/Delete/Cinema/{cinemaId}")]
         [HttpGet]
-        public void DeleteMovieByCinemaId(Guid cinemaId)
+        public void DeleteMovieByCinemaId(int cinemaId)
         {
             movieRepository.GetMovieByCinemaId(cinemaId);
         }

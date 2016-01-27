@@ -4,7 +4,7 @@ namespace Domain.Models
 {
     public class Cinema
     {
-        public Cinema(Guid id, string name, string address, Guid companyId)
+        public Cinema(int id, string name, string address, int companyId)
         {
             Id = id;
             Name = name;
@@ -17,12 +17,12 @@ namespace Domain.Models
 
         }
 
-        public virtual Guid Id { get; protected set; }
+        public virtual int Id { get; protected set; }
 
         public virtual string Name { get; protected set; }
 
         public virtual string Address { get; protected set; }
 
-        public virtual Guid CompanyId { get; set; }
+        public virtual int CompanyId { get; set; }
     }
 }

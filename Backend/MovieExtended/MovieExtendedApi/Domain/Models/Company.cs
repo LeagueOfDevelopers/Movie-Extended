@@ -8,7 +8,7 @@ namespace Domain.Models
 {
     public class Company
     {
-        public Company(Guid id, string name, Uri website)
+        public Company(int id, string name, Uri website)
         {
             Id = id;
             Name = name;
@@ -20,7 +20,7 @@ namespace Domain.Models
 
         }
 
-        public virtual Guid Id { get; protected set; }
+        public virtual int Id { get; protected set; }
 
         public virtual string Name { get; protected set; }
 

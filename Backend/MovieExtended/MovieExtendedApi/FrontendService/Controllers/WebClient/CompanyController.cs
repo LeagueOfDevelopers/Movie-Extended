@@ -33,14 +33,14 @@ namespace FrontendService.Controllers.WebClient
 
         [Route("api/Company/Get/{companyId}")]
         [HttpGet]
-        public Company GetCompanyById(Guid? companyId)
+        public Company GetCompanyById(int companyId)
         {
             return companyRepository.GetCompanyByCompanyId(companyId);
         }
 
         [Route("api/Company/Delete/{companyId}")]
         [HttpGet]
-        public void DeleteCompanyById(Guid? companyId)
+        public void DeleteCompanyById(int companyId)
         {
             companyRepository.deleteCompanyById(companyId);
         }

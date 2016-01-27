@@ -7,10 +7,10 @@ namespace Extended_Movie.Visitor_Repository
    public interface IMovieRepository
     {
         IEnumerable<Movie> GetAllMovies();
-        Movie GetMovieByMovieId(Guid movieId);
-        IEnumerable<Movie> GetMovieByCinemaId(Guid cinemaId);
-        void DeleteMovieByMovieId(Guid movieId);
-        void DeleteMovieByCinemaId(Guid cinemaId);
+        Movie GetMovieByMovieId(int movieId);
+        IEnumerable<Movie> GetMovieByCinemaId(int cinemaId);
+        void DeleteMovieByMovieId(int movieId);
+        void DeleteMovieByCinemaId(int cinemaId);
         void SaveMovie(Movie movie);
        IEnumerable<Movie> GetMovieByMovieName(string movieName);
     }

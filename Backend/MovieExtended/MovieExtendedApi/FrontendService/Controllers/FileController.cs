@@ -26,7 +26,7 @@ namespace FrontendService.Controllers
 
         [Route("api/Files/Get/{fileId}")]
         [HttpGet]
-        public HttpResponseMessage DownLoadFileFromDataBase(Guid fileId)
+        public HttpResponseMessage DownLoadFileFromDataBase(int fileId)
         {
             var returnFile = fileRepository.GetFileData(fileId);
             if (returnFile == null)
@@ -45,13 +45,13 @@ namespace FrontendService.Controllers
 
         [Route("api/Files/NewTrack/{fileId}")]
         [HttpPost]
-        public void DownLoadFileToDataBase(HttpPostedFileBase fileUpload, Guid? fileId)
+        public void DownLoadFileToDataBase(HttpPostedFileBase fileUpload, int fileId)
         {
 
             if (fileUpload != null)
             {
                 var directory = @"C:\files\";
-                var uploadedFile = new File(new Guid?(), directory + fileUpload.FileName, FileType.Track);
+                var uploadedFile = new File(7, directory + fileUpload.FileName, FileType.Track);
                 fileRepository.SaveFileData(uploadedFile);
                 //var fileExt = System.IO.Path.GetExtension(fileUpload.FileName).Substring(1);
                 var fileName = Path.GetFileName(fileUpload.FileName);

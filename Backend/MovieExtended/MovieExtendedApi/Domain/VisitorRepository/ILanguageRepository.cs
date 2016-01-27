@@ -8,9 +8,9 @@ namespace Extended_Movie.Visitor_Repository
     {
         IEnumerable<Language> GetAllLanguages();
         void SaveLanguage(Language language);
-        IEnumerable<Language> GetLanguagesByMovieId(Guid movieId);
-        void DeleteLanguageByLanguageId(Guid languageID);
-        void DeleteLanguageByMovieId(Guid movieId);
+        IEnumerable<Language> GetLanguagesByMovieId(int movieId);
+        void DeleteLanguageByLanguageId(int languageID);
+        void DeleteLanguageByMovieId(int movieId);
         IEnumerable<Language> GetLanguageByName(string languageName);
     }
 }

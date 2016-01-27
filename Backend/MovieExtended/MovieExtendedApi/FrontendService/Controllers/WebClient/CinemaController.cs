@@ -14,7 +14,7 @@ namespace FrontendService.Controllers.WebClient
 
         public CinemaController()
         {
-            cinemaRepository = new CinemaRepository();
+            cinemaRepository = new CinemaRepository(session);
 
         }
 
@@ -37,7 +37,7 @@ namespace FrontendService.Controllers.WebClient
         [Route("api/Cinema/GetByCinemaId/{cinemaId}")]
         [HttpGet]
 
-        public Cinema GetCinemaByCinemaId(Guid? cinemaId)
+        public Cinema GetCinemaByCinemaId(int cinemaId)
         {
             return cinemaRepository.GetCinemaByCinemaId(cinemaId);
         }
@@ -45,21 +45,21 @@ namespace FrontendService.Controllers.WebClient
         [Route("api/Cinema/GetCinemaByCompanyId/{companyId}")]
         [HttpGet]
 
-        public Cinema GetCinemaByCompanyId(Guid companyId)
+        public Cinema GetCinemaByCompanyId(int companyId)
         {
             return cinemaRepository.GetCinemaByCompanyId(companyId);
         }
 
         [Route("api/Cinema/DeleteByCinemaId/{cinemaId}")]
         [HttpGet]
-        public void DeleteCinemaByCinemaId(Guid? cinemaId)
+        public void DeleteCinemaByCinemaId(int cinemaId)
         {
             cinemaRepository.DeleteCinemaByCinemaId(cinemaId);
         }
 
         [Route("api/Cinema/DeleteByCompany/{companyId}")]
         [HttpGet]
-        public void DeleteCinemaByCompanyId(Guid companyId)
+        public void DeleteCinemaByCompanyId(int companyId)
         {
             cinemaRepository.DeleteCinemaByCompanyId(companyId);
         }
