@@ -3,6 +3,7 @@ using System.Web.Http;
 using SimpleInjector;
 using SimpleInjector.Integration.WebApi;
 using Extended_Movie.Visitor_Repository;
+using FrontendService.App_Start;
 
 namespace FrontendService
 {
@@ -10,13 +11,12 @@ namespace FrontendService
     {
         protected void Application_Start()
         {
-            var container = new Container();
+
+            var container = new Bootstraper().Configure();
+            GlobalConfiguration.Configuration.DependencyResolver = new SimpleInjectorWebApiDependencyResolver(container);
+
             GlobalConfiguration.Configure(WebApiConfig.Register);
-            container.RegisterWebApiControllers(GlobalConfiguration.Configuration);
-           container.Verify();
-            GlobalConfiguration.Configuration.DependencyResolver =
-        new SimpleInjectorWebApiDependencyResolver(container);
-            
+
 
         }
         protected void Application_BeginRequest()
