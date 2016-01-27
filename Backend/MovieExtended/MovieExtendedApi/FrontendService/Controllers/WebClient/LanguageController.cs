@@ -5,7 +5,7 @@ using Domain.Models;
 using Extended_Movie.Visitor_Repository;
 using Newtonsoft.Json;
 
-namespace Extended_Movie.Controllers.WebClient
+namespace FrontendService.Controllers.WebClient
 {
     public class LanguageController : ApiController
     {
