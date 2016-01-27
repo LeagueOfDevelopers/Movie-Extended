@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Http;
+using Domain.VisitorRepository;
 using Extended_Movie.Visitor_Repository;
+using Infrastructure.VisitorRepository;
 using SimpleInjector;
 using SimpleInjector.Integration.WebApi;
 
@@ -15,6 +17,7 @@ namespace FrontendService.App_Start
         {
             var container = new Container();
             container.Options.DefaultScopedLifestyle = new WebApiRequestLifestyle();
+            container.Register<SessionProvider>(Lifestyle.Singleton);
             container.Register<IMovieRepository>(()=>container.GetInstance<MovieRepository>(),Lifestyle.Singleton);
             container.Register<ILanguageRepository>(() => container.GetInstance<LanguageRepository>(), Lifestyle.Singleton);
             container.Register<ICompanyRepository>(() => container.GetInstance<CompanyRepository>(), Lifestyle.Singleton);

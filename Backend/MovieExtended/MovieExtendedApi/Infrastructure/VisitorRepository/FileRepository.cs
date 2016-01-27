@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using Domain.Models;
+using Domain.VisitorRepository;
 using NHibernate;
 using NHibernate.Linq;
 
@@ -15,9 +16,7 @@ namespace Extended_Movie.Visitor_Repository
             _session = session;
         }
 
-        public FileRepository()
-        {
-        }
+        
 
        
 

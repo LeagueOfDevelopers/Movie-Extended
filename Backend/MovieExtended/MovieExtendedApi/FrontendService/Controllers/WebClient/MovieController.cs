@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Web.Http;
 using Domain.Models;
 using Extended_Movie.Visitor_Repository;
+using Infrastructure.VisitorRepository;
 using Newtonsoft.Json;
 
     namespace FrontendService.Controllers.WebClient
@@ -43,7 +44,7 @@ using Newtonsoft.Json;
 
         [Route("api/Movie/Cinema/{cinemaId}")]
         [HttpGet]
-        public Movie GetMovieByCinemaId(int cinemaId)
+        public IEnumerable<Movie> GetMovieByCinemaId(int cinemaId)
         {
             return movieRepository.GetMovieByCinemaId(cinemaId);
         }

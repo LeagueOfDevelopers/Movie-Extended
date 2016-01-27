@@ -12,6 +12,13 @@ namespace Domain.Models
             TrackFileId = trackFileId;
         }
 
+        public Language(string name, int movieId, int trackFileId)
+        {
+            Name = name;
+            MovieId = movieId;
+            TrackFileId = trackFileId;
+        }
+
         protected Language() { }
 
         public virtual int Id { get; protected set; }

@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Domain.Models;
 
-namespace Extended_Movie.Visitor_Repository
+namespace Domain.VisitorRepository
 {
    public interface ICinemaRepository
     {
@@ -12,6 +11,5 @@ namespace Extended_Movie.Visitor_Repository
         void DeleteCinemaByCinemaId(int cinemaId);
         void DeleteCinemaByCompanyId(int companyId);
         Cinema GetCinemaByCinemaId(int cinemaId);
-
     }
 }

@@ -15,6 +15,12 @@ namespace Domain.Models
             Website = website;
         }
 
+        public Company(string name, Uri website)
+        {
+            Name = name;
+            Website = website;
+        }
+
         protected Company()
         {
 

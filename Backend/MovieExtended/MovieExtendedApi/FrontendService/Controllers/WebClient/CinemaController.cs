@@ -4,6 +4,7 @@ using System.Web.Http;
 using System.Web.Routing;
 using Domain.Models;
 using Extended_Movie.Visitor_Repository;
+using Infrastructure.VisitorRepository;
 using Newtonsoft.Json;
 
 namespace FrontendService.Controllers.WebClient
@@ -13,7 +14,9 @@ namespace FrontendService.Controllers.WebClient
         private readonly CinemaRepository cinemaRepository;
 
         public CinemaController()
+
         {
+            
             cinemaRepository = new CinemaRepository(session);
 
         }
@@ -45,7 +48,7 @@ namespace FrontendService.Controllers.WebClient
         [Route("api/Cinema/GetCinemaByCompanyId/{companyId}")]
         [HttpGet]
 
-        public Cinema GetCinemaByCompanyId(int companyId)
+        public IEnumerable<Cinema> GetCinemaByCompanyId(int companyId)
         {
             return cinemaRepository.GetCinemaByCompanyId(companyId);
         }

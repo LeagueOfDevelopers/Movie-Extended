@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Web.Http;
 using Domain.Models;
 using Extended_Movie.Visitor_Repository;
+using Infrastructure.VisitorRepository;
 using Newtonsoft.Json;
 
 namespace FrontendService.Controllers.WebClient

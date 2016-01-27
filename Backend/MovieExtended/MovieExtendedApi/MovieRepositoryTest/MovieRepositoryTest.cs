@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Domain.Models;
 using Extended_Movie.Visitor_Repository;
+using Infrastructure.VisitorRepository;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace MovieRepositoryTest

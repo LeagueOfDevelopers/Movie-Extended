@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Domain.Models;
 
-namespace Extended_Movie.Visitor_Repository
+namespace Domain.VisitorRepository
 {
     public interface ILanguageRepository
     {

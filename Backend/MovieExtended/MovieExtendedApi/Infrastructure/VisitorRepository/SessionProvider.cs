@@ -1,12 +1,11 @@
 ﻿using System;
 using Domain.Mappings;
-using Extended_Movie.Mappings;
 using NHibernate;
+using NHibernate.Cfg;
 using NHibernate.Mapping.ByCode;
 using NHibernate.Tool.hbm2ddl;
-using NHibernate.Cfg;
 
-namespace Extended_Movie.Visitor_Repository
+namespace Infrastructure.VisitorRepository
 {
     public  class SessionProvider
     {

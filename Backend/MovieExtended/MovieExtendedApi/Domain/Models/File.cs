@@ -19,6 +19,12 @@ namespace Domain.Models
         {
         }
 
+        public File(string FilePath, FileType fileType)
+        {
+            FileType = fileType;
+            FileType = fileType;
+        }
+
         public virtual int Id { get; protected set; }
 
         public virtual string FilePath { get; protected set; }

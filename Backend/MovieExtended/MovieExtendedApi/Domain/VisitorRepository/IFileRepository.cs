@@ -1,7 +1,6 @@
-﻿using System;
-using Domain.Models;
+﻿using Domain.Models;
 
-namespace Extended_Movie.Visitor_Repository
+namespace Domain.VisitorRepository
 {
    public interface IFileRepository
     {

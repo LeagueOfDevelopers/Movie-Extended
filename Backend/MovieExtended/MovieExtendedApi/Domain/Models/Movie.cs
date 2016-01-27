@@ -13,9 +13,15 @@ namespace Domain.Models
             Id = id;
             Name = name;
             CinemaId = cinemaId;
-
-
         }
+
+        public Movie(string name, int cinemaId)
+        {
+            Name = name;
+            CinemaId = cinemaId;
+        }
+        
+            
 
         protected Movie()
         {

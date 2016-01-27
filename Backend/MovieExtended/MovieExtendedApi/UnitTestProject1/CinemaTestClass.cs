@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Domain.Models;
 using Extended_Movie.Visitor_Repository;
+using Infrastructure.VisitorRepository;
 
 namespace UnitTestProject1
 {

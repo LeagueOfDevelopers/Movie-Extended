@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using Domain.Models;
+using Domain.VisitorRepository;
 using NHibernate;
 using NHibernate.Linq;
 
-namespace Extended_Movie.Visitor_Repository
+namespace Infrastructure.VisitorRepository
 {
     public class CompanyRepository :ICompanyRepository
     {

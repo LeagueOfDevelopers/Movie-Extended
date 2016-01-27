@@ -2,7 +2,7 @@
 using NHibernate.Mapping.ByCode;
 using NHibernate.Mapping.ByCode.Conformist;
 
-namespace Extended_Movie.Mappings
+namespace Domain.Mappings
 {
     public class MovieMapping : ClassMapping<Movie>
     {

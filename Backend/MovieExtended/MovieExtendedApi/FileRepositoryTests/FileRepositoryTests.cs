@@ -1,7 +1,9 @@
 ﻿using System;
 using Domain.Models;
 using Extended_Movie.Visitor_Repository;
+using Infrastructure.VisitorRepository;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NHibernate.Mapping.ByCode;
 
 namespace FileRepositoryTests
 {
@@ -11,7 +13,7 @@ namespace FileRepositoryTests
         [TestMethod]
         public void SaveFileData()
         {
-            var saveFile = new File(new Guid(), "filePath",FileType.Track);
+            var saveFile = new File(Convert.ToInt32(new Random()), "filePath",FileType.Track);
             
             
             var provider = new SessionProvider();
@@ -26,13 +28,15 @@ namespace FileRepositoryTests
         [TestMethod]
         public void getFileByFileId()
         {
+            //var Id=Convert.ToInt32(new Random());
             var provider = new SessionProvider();
+            var saveFile = new File(10,"d",FileType.Track);
             provider.OpenSession();
             using (var session = provider.GetCurrentSession())
             {
                 var fileRepository = new FileRepository(session);
-                
-                var test = fileRepository.GetFileData(Guid.Parse("418ff8ec-50ae-4872-be51-3ce12d75be6"));
+                fileRepository.SaveFileData(saveFile);
+                var test = fileRepository.GetFileData(10);
             }
         }
     }
