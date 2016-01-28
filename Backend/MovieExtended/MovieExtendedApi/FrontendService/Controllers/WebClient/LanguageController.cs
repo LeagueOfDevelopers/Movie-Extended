@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Web.Http;
 using Domain.Models;
+using Domain.VisitorRepository;
 using Extended_Movie.Visitor_Repository;
 using Infrastructure.VisitorRepository;
 using Newtonsoft.Json;
@@ -10,9 +11,9 @@ namespace FrontendService.Controllers.WebClient
 {
     public class LanguageController : ApiController
     {
-        private readonly LanguageRepository languageRepository;
+        private readonly ILanguageRepository languageRepository;
 
-        public LanguageController(LanguageRepository languageRepository)
+        public LanguageController(ILanguageRepository languageRepository)
         {
             this.languageRepository = languageRepository;
         }

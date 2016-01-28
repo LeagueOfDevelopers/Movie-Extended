@@ -6,6 +6,7 @@ using System.Web.Http;
 using Domain.VisitorRepository;
 using Extended_Movie.Visitor_Repository;
 using Infrastructure.VisitorRepository;
+using NHibernate;
 using SimpleInjector;
 using SimpleInjector.Integration.WebApi;
 

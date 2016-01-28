@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Web.Http;
 using System.Web.Routing;
 using Domain.Models;
+using Domain.VisitorRepository;
 using Extended_Movie.Visitor_Repository;
 using Infrastructure.VisitorRepository;
 using Newtonsoft.Json;
@@ -11,13 +12,13 @@ namespace FrontendService.Controllers.WebClient
 {
     public class CinemaController:ApiController
     {
-        private readonly CinemaRepository cinemaRepository;
+        private readonly ICinemaRepository cinemaRepository;
 
-        public CinemaController()
+        public CinemaController(ICinemaRepository cinemaRepository)
 
         {
-            
-            cinemaRepository = new CinemaRepository(session);
+
+            this.cinemaRepository = cinemaRepository;
 
         }
 

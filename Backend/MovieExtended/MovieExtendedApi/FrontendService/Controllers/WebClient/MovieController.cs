@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Web.Http;
 using Domain.Models;
+using Domain.VisitorRepository;
 using Extended_Movie.Visitor_Repository;
 using Infrastructure.VisitorRepository;
 using Newtonsoft.Json;
@@ -10,11 +11,11 @@ using Newtonsoft.Json;
 {
     public class MovieController : ApiController
     {
-        private readonly MovieRepository movieRepository;
+        private readonly IMovieRepository movieRepository;
 
-        public MovieController()
+        public MovieController(IMovieRepository movieRepository)
         {
-            movieRepository = new MovieRepository();
+            this.movieRepository = movieRepository;
         }
 
         
