@@ -3,7 +3,6 @@ using Domain.Models;
 using Extended_Movie.Visitor_Repository;
 using Infrastructure.VisitorRepository;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using NHibernate.Mapping.ByCode;
 
 namespace FileRepositoryTests
 {
@@ -15,7 +14,6 @@ namespace FileRepositoryTests
         {
             var saveFile = new File(Convert.ToInt32(new Random()), "filePath",FileType.Track);
             
-            
             var provider = new SessionProvider();
             provider.OpenSession();
             using (var session = provider.GetCurrentSession())
@@ -26,7 +24,7 @@ namespace FileRepositoryTests
         }
 
         [TestMethod]
-        public void getFileByFileId()
+        public void GetFileByFileId()
         {
             //var Id=Convert.ToInt32(new Random());
             var provider = new SessionProvider();

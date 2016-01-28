@@ -1,6 +1,4 @@
-﻿using System;
-using Domain.Models;
-using Extended_Movie.Visitor_Repository;
+﻿using Domain.Models;
 using Infrastructure.VisitorRepository;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 

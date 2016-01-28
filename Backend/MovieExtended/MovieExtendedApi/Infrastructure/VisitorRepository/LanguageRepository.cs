@@ -35,9 +35,9 @@ namespace Infrastructure.VisitorRepository
             return _session.Query<Language>().Where(language => language.MovieId == movieId);
         }
 
-        public void DeleteLanguageByLanguageId(int languageID)
+        public void DeleteLanguageByLanguageId(int languageId)
         {
-            var checkIfExists = _session.Query<Language>().SingleOrDefault(language => language.Id == languageID);
+            var checkIfExists = _session.Query<Language>().SingleOrDefault(language => language.Id == languageId);
             if (checkIfExists != null) _session.Delete((checkIfExists));
         }
 

@@ -46,3 +46,4 @@ C:\AndroidNew\Projects\Movie-Extended\Backend\MovieExtended\MovieExtendedApi\Com
 C:\AndroidNew\Projects\Movie-Extended\Backend\MovieExtended\MovieExtendedApi\CompanyRepositoryTests\bin\Debug\System.Net.Http.Primitives.xml
 C:\AndroidNew\Projects\Movie-Extended\Backend\MovieExtended\MovieExtendedApi\CompanyRepositoryTests\bin\Debug\ru\System.Web.Http.resources.dll
 C:\AndroidNew\Projects\Movie-Extended\Backend\MovieExtended\MovieExtendedApi\CompanyRepositoryTests\obj\Debug\CompanyRepositoryTests.csproj.App.config
+C:\AndroidNew\Projects\Movie-Extended\Backend\MovieExtended\MovieExtendedApi\CompanyRepositoryTests\obj\Debug\CompanyRepositoryTests.csprojResolveAssemblyReference.cache

@@ -1,8 +1,6 @@
 ﻿using System.Diagnostics;
 using System.Web.Http;
-using SimpleInjector;
 using SimpleInjector.Integration.WebApi;
-using Extended_Movie.Visitor_Repository;
 using FrontendService.App_Start;
 using Infrastructure.VisitorRepository;
 

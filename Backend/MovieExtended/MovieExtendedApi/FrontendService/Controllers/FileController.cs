@@ -1,5 +1,4 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -7,7 +6,6 @@ using System.Web;
 using System.Web.Http;
 using Domain.Models;
 using Domain.VisitorRepository;
-using Extended_Movie.Visitor_Repository;
 using File = Domain.Models.File;
 using NHibernate;
 
