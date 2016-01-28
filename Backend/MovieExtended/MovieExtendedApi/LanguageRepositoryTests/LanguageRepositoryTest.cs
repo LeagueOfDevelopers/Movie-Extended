@@ -2,7 +2,6 @@
 using Infrastructure.VisitorRepository;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-
 namespace LanguageRepositoryTests
 {
     [TestClass]

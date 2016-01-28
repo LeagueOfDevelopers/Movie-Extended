@@ -1,11 +1,10 @@
 ﻿using System.Web.Http;
 using Domain.VisitorRepository;
-using Extended_Movie.Visitor_Repository;
 using Infrastructure.VisitorRepository;
 using SimpleInjector;
 using SimpleInjector.Integration.WebApi;
 
-namespace FrontendService.App_Start
+namespace FrontendService
 {
     public class Bootstraper
     {

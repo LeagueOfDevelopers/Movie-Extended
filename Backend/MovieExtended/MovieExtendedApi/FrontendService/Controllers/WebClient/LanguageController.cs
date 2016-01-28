@@ -8,11 +8,11 @@ namespace FrontendService.Controllers.WebClient
 {
     public class LanguageController : ApiController
     {
-        private readonly ILanguageRepository languageRepository;
+        private readonly ILanguageRepository _languageRepository;
 
         public LanguageController(ILanguageRepository languageRepository)
         {
-            this.languageRepository = languageRepository;
+            _languageRepository = languageRepository;
         }
 
         [Route("api/Languages/DeleteByMovie/{movieId}")]
@@ -20,7 +20,7 @@ namespace FrontendService.Controllers.WebClient
 
         public void DeleteMovieFromLanguageById(int movieId)
         {
-            languageRepository.DeleteLanguageByMovieId(movieId);
+            _languageRepository.DeleteLanguageByMovieId(movieId);
         }
 
         [Route("api/Languages/DeleteByLang/{languageId}")]
@@ -28,7 +28,7 @@ namespace FrontendService.Controllers.WebClient
 
         public void DeleteLanguageByLanguageId(int languageId)
         {
-            languageRepository.DeleteLanguageByLanguageId(languageId);
+            _languageRepository.DeleteLanguageByLanguageId(languageId);
         }
 
         [Route("api/Languages/All")]
@@ -36,7 +36,7 @@ namespace FrontendService.Controllers.WebClient
 
         public IEnumerable<Language> GetAllLanguages()
         {
-           return languageRepository.GetAllLanguages();
+           return _languageRepository.GetAllLanguages();
         }
 
         [Route("api/Languages/New/{Json}")]
@@ -45,7 +45,7 @@ namespace FrontendService.Controllers.WebClient
         public void SaveNewLanguageToDataBase(string json)
         {
             var newLanguage = JsonConvert.DeserializeObject<Language>(json);
-            languageRepository.SaveLanguage(newLanguage);
+            _languageRepository.SaveLanguage(newLanguage);
 
         }
 

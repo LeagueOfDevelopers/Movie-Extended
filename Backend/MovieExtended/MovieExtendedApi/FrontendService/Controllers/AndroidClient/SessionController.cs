@@ -1,18 +1,17 @@
-﻿using Domain.Models;
-using System;
+﻿using System;
 using System.Net;
 using System.Web.Http;
+using Domain.Models;
 
 namespace FrontendService.Controllers.AndroidClient
 {
     public class SessionController : ApiController 
     {
         private readonly SessionKeeper _keeper;
-        public SessionController( )
+
+        public SessionController()
         {
-            _keeper = new SessionKeeper();
-            
-            
+            _keeper = new SessionKeeper();   
         }
 
         [Route("api/Session/Login/{qr}")]

@@ -2,7 +2,6 @@
 using NHibernate.Mapping.ByCode;
 using NHibernate.Mapping.ByCode.Conformist;
 
-
 namespace Domain.Mappings
 {
     public class FileMapping:ClassMapping<File>

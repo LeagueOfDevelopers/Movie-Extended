@@ -1,12 +1,12 @@
 ﻿using System.Diagnostics;
+using System.Web;
 using System.Web.Http;
-using SimpleInjector.Integration.WebApi;
-using FrontendService.App_Start;
 using Infrastructure.VisitorRepository;
+using SimpleInjector.Integration.WebApi;
 
 namespace FrontendService
 {
-    public class WebApiApplication : System.Web.HttpApplication
+    public class WebApiApplication : HttpApplication
     {
         protected void Application_Start()
         {

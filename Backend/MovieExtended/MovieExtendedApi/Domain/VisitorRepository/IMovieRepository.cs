@@ -11,6 +11,6 @@ namespace Domain.VisitorRepository
         void DeleteMovieByMovieId(int movieId);
         void DeleteMovieByCinemaId(int cinemaId);
         void SaveMovie(Movie movie);
-       IEnumerable<Movie> GetMovieByMovieName(string movieName);
+        IEnumerable<Movie> GetMovieByMovieName(string movieName);
     }
 }

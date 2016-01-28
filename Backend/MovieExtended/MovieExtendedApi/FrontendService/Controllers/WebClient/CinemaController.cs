@@ -8,22 +8,18 @@ namespace FrontendService.Controllers.WebClient
 {
     public class CinemaController:ApiController
     {
-        private readonly ICinemaRepository cinemaRepository;
+        private readonly ICinemaRepository _cinemaRepository;
 
         public CinemaController(ICinemaRepository cinemaRepository)
-
         {
-
-            this.cinemaRepository = cinemaRepository;
-
+            _cinemaRepository = cinemaRepository;
         }
 
         [Route("api/Cinema/All")]
         [HttpGet]
-
         IEnumerable<Cinema> GetAllCinemas()
         {
-            return cinemaRepository.GetAllCinemas();
+            return _cinemaRepository.GetAllCinemas();
         }
 
         [Route("api/Cinema/New/{json}")]
@@ -31,7 +27,7 @@ namespace FrontendService.Controllers.WebClient
         public void SaveNewCinema(string json)
         {
             var newCinema = JsonConvert.DeserializeObject<Cinema>(json);
-            cinemaRepository.SaveCinemaData(newCinema);
+            _cinemaRepository.SaveCinemaData(newCinema);
         }
 
         [Route("api/Cinema/GetByCinemaId/{cinemaId}")]
@@ -39,29 +35,28 @@ namespace FrontendService.Controllers.WebClient
 
         public Cinema GetCinemaByCinemaId(int cinemaId)
         {
-            return cinemaRepository.GetCinemaByCinemaId(cinemaId);
+            return _cinemaRepository.GetCinemaByCinemaId(cinemaId);
         }
 
         [Route("api/Cinema/GetCinemaByCompanyId/{companyId}")]
         [HttpGet]
-
         public IEnumerable<Cinema> GetCinemaByCompanyId(int companyId)
         {
-            return cinemaRepository.GetCinemaByCompanyId(companyId);
+            return _cinemaRepository.GetCinemaByCompanyId(companyId);
         }
 
         [Route("api/Cinema/DeleteByCinemaId/{cinemaId}")]
         [HttpGet]
         public void DeleteCinemaByCinemaId(int cinemaId)
         {
-            cinemaRepository.DeleteCinemaByCinemaId(cinemaId);
+            _cinemaRepository.DeleteCinemaByCinemaId(cinemaId);
         }
 
         [Route("api/Cinema/DeleteByCompany/{companyId}")]
         [HttpGet]
         public void DeleteCinemaByCompanyId(int companyId)
         {
-            cinemaRepository.DeleteCinemaByCompanyId(companyId);
+            _cinemaRepository.DeleteCinemaByCompanyId(companyId);
         }
     }
 }

@@ -31,7 +31,7 @@ namespace Infrastructure.VisitorRepository
 
         public IEnumerable<Cinema> GetCinemaByCompanyId(int companyId)
         {
-            var allcinemasById = _session.Query<Cinema>().Where(cinema => cinema.CompanyId==companyId).AsEnumerable<Cinema>();
+            var allcinemasById = _session.Query<Cinema>().Where(cinema => cinema.CompanyId==companyId).AsEnumerable();
             
             return allcinemasById;
         }

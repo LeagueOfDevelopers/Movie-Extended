@@ -7,7 +7,7 @@ namespace Domain.VisitorRepository
     {
         IEnumerable<Company> GetAllCompanies();
         Company GetCompanyByCompanyId(int companyId);
-        void deleteCompanyById(int companyId);
+        void DeleteCompanyById(int companyId);
         void SaveCompany(Company company);
 
     }

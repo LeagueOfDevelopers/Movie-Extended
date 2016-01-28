@@ -11,7 +11,6 @@ namespace Infrastructure.VisitorRepository
     {
         private readonly ISession _session;
         
-
         public LanguageRepository(ISession session)
         {
             _session = session;
@@ -27,8 +26,6 @@ namespace Infrastructure.VisitorRepository
             _session.Save(language);
             _session.Transaction.Commit();
         }
-
-        
 
         public IEnumerable<Language> GetLanguagesByMovieId(int movieId)
         {

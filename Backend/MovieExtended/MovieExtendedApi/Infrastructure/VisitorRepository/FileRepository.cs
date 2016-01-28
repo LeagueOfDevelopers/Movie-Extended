@@ -5,7 +5,7 @@ using Domain.VisitorRepository;
 using NHibernate;
 using NHibernate.Linq;
 
-namespace Extended_Movie.Visitor_Repository
+namespace Infrastructure.VisitorRepository
 {
     public class FileRepository : IFileRepository
     {
@@ -15,11 +15,7 @@ namespace Extended_Movie.Visitor_Repository
         {
             _session = session;
         }
-
         
-
-       
-
         public void DownLoadFileFromDataBase(int fileId)
         {
             throw new NotImplementedException();
@@ -30,15 +26,11 @@ namespace Extended_Movie.Visitor_Repository
             var deleteFile = _session.Query<File>().SingleOrDefault(file => fileId == file.Id);
             if (deleteFile != null)
             {
-                System.IO.File.Delete(deleteFile.FilePath.ToString());
+                System.IO.File.Delete(deleteFile.FilePath);
                 _session.Delete(deleteFile);
-
             }
-
         }
-
         
-
         public File GetFileData(int fileId)
         {
             return _session.Query<File>().SingleOrDefault(file => file.Id == fileId);

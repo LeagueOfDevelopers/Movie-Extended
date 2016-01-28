@@ -7,10 +7,11 @@ using NHibernate.Tool.hbm2ddl;
 
 namespace Infrastructure.VisitorRepository
 {
-    public  class SessionProvider
+    public class SessionProvider
     {
         private readonly ISessionFactory _factory;
-        public   SessionProvider()
+
+        public SessionProvider()
         {
             var configuration = new Configuration();
             configuration.Configure();
@@ -25,8 +26,7 @@ namespace Infrastructure.VisitorRepository
             _factory = configuration.BuildSessionFactory();
 
             new SchemaUpdate(configuration).Execute(false, true);
-
-            }
+        }
 
         public ISession GetCurrentSession()
         {

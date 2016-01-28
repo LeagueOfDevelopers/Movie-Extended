@@ -24,7 +24,7 @@ namespace Infrastructure.VisitorRepository
             return _session.Query<Company>().SingleOrDefault(company => company.Id == companyId);
         }
 
-        public void deleteCompanyById(int companyId)
+        public void DeleteCompanyById(int companyId)
         {
             var checkIfExists = _session.Query<Company>().SingleOrDefault(company => company.Id == companyId);
             if (checkIfExists != null)

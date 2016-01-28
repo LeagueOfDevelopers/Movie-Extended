@@ -35,3 +35,4 @@ C:\AndroidNew\Projects\Movie-Extended\Backend\MovieExtended\MovieExtendedApi\Dom
 C:\AndroidNew\Projects\Movie-Extended\Backend\MovieExtended\MovieExtendedApi\Domain\bin\Debug\System.Net.Http.Primitives.xml
 C:\AndroidNew\Projects\Movie-Extended\Backend\MovieExtended\MovieExtendedApi\Domain\bin\Debug\ru\System.Web.Http.resources.dll
 C:\AndroidNew\Projects\Movie-Extended\Backend\MovieExtended\MovieExtendedApi\Domain\obj\Debug\Domain.csproj.App.config
+C:\AndroidNew\Projects\Movie-Extended\Backend\MovieExtended\MovieExtendedApi\Domain\obj\Debug\Domain.csprojResolveAssemblyReference.cache
