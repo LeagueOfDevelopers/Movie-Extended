@@ -13,11 +13,11 @@ namespace LanguageRepositoryTests
         [TestMethod]
         public void SaveLanguage()
         {
-            var languageId = new Guid();
+            
             var languageName = "name";
-            var movieId = new Guid();
-            var trackfieldId = new Guid();
-            var language = new Language(languageId,languageName,movieId,trackfieldId);
+            var movieId = 7;
+            var trackfieldId = 7;
+            var language = new Language(languageName,movieId,trackfieldId);
             var provider = new SessionProvider();
             
             provider.OpenSession();
@@ -31,11 +31,11 @@ namespace LanguageRepositoryTests
         [TestMethod]
         public void GetAllLanguages()
         {
-            var languageId = new Guid();
+            
             var languageName = "name";
-            var movieId = new Guid();
-            var trackfieldId = new Guid();
-            var language = new Language(languageId, languageName, movieId, trackfieldId);
+            var movieId = 7;
+            var trackfieldId = 7;
+            var language = new Language( languageName, movieId, trackfieldId);
             var provider = new SessionProvider();
             provider.OpenSession();
             using (var session = provider.GetCurrentSession())
@@ -62,11 +62,11 @@ namespace LanguageRepositoryTests
         [TestMethod]
         public void GetLanguageMovieid()
         {
-            var languageId = new Guid();
+            
             var languageName = "name";
-            var movieId = new Guid();
-            var trackfieldId = new Guid();
-            var language = new Language(languageId, languageName, movieId, trackfieldId);
+            var movieId = 8;
+            var trackfieldId = 8;
+            var language = new Language( languageName, movieId, trackfieldId);
             var provider = new SessionProvider();
             provider.OpenSession();
             using (var session = provider.GetCurrentSession())

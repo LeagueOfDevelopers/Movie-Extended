@@ -13,10 +13,10 @@ namespace MovieRepositoryTest
         [TestMethod]
         public void SaveMovie()
         {
-            var movieId= new Guid();
+            
             var movieName = "movie";
-            var cinemaId = new Guid();
-            var movie = new Movie(movieId,movieName,cinemaId);
+            var cinemaId = 9;
+            var movie = new Movie(movieName,cinemaId);
             var provider = new SessionProvider();
             provider.OpenSession();
             using (var session = provider.GetCurrentSession())
@@ -29,10 +29,10 @@ namespace MovieRepositoryTest
         [TestMethod]
         public void  GetAllMovies()
         {
-            var movieId = new Guid();
+            
             var movieName = "movie";
-            var cinemaId = new Guid();
-            var movie = new Movie(movieId, movieName, cinemaId);
+            var cinemaId = 10;
+            var movie = new Movie( movieName, cinemaId);
             var provider = new SessionProvider();
             provider.OpenSession();
             IEnumerable<Movie> allmovies;
@@ -47,10 +47,10 @@ namespace MovieRepositoryTest
         [TestMethod]
         public void GetMovieByCinemaId()
         {
-            var movieId = new Guid();
+            
             var movieName = "movie";
-            var cinemaId = new Guid();
-            var movie = new Movie(movieId, movieName, cinemaId);
+            var cinemaId = 11;
+            var movie = new Movie( movieName, cinemaId);
             var provider = new SessionProvider();
             provider.OpenSession();
             using (var session = provider.GetCurrentSession())
@@ -64,10 +64,10 @@ namespace MovieRepositoryTest
         [TestMethod]
         public void GetMovieByMovieName()
         {
-            var movieId = new Guid();
+           
             var movieName = "movie";
-            var cinemaId = new Guid();
-            var movie = new Movie(movieId, movieName, cinemaId);
+            var cinemaId = 12;
+            var movie = new Movie( movieName, cinemaId);
             var provider = new SessionProvider();
             provider.OpenSession();
             using (var session = provider.GetCurrentSession())

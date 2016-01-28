@@ -6,6 +6,7 @@ using System.Net.Http.Headers;
 using System.Web;
 using System.Web.Http;
 using Domain.Models;
+using Domain.VisitorRepository;
 using Extended_Movie.Visitor_Repository;
 using File = Domain.Models.File;
 using NHibernate;
@@ -16,12 +17,12 @@ namespace FrontendService.Controllers
     public class FileController : ApiController
     {
         private readonly ISession session;
-        private FileRepository fileRepository;
+        private IFileRepository fileRepository;
 
-        public FileController(ISession session)
+        public FileController(ISession session,IFileRepository fileRepository)
         {
             this.session = session;
-            fileRepository = new FileRepository();
+            this.fileRepository = fileRepository;
         }
 
         [Route("api/Files/Get/{fileId}")]
@@ -62,7 +63,7 @@ namespace FrontendService.Controllers
 
         [Route("api/Files/Delete/{fileId}")]
         [HttpGet]
-        public void DeleteFileByFileId(Guid? fileId)
+        public void DeleteFileByFileId(int fileId)
         {
             fileRepository.DeleteFileByFileId(fileId);
         }

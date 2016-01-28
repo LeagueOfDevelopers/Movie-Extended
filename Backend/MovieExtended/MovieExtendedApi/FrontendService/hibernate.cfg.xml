@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-configuration xmlns="urn:nhibernate-configuration-2.2">
+  <session-factory>
+    <property name="dialect">NHibernate.Dialect.MsSql2008Dialect</property>
+    <property name="connection.driver_class">NHibernate.Driver.SqlClientDriver</property>
+    <property name="connection.connection_string">Server=tcp:second-movie-extended-db.database.windows.net,1433;Database=SecondMovieExtendedDB;User ID=holymosh@second-movie-extended-db;Password=holymo$h4997;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;</property>
+    <property name="connection.provider">NHibernate.Connection.DriverConnectionProvider</property>
+    <property name="show_sql">true</property>
+  </session-factory>
+</hibernate-configuration>

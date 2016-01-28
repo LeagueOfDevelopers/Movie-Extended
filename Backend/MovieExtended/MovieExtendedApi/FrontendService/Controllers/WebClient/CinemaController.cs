@@ -30,7 +30,7 @@ namespace FrontendService.Controllers.WebClient
             return cinemaRepository.GetAllCinemas();
         }
 
-        [Route("api/Cinema/New/{josn}")]
+        [Route("api/Cinema/New/{json}")]
         [HttpGet]
         public void SaveNewCinema(string json)
         {
