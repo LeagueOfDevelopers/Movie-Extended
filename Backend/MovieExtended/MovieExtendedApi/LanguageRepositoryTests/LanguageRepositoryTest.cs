@@ -21,11 +21,10 @@ namespace LanguageRepositoryTests
             var provider = new SessionProvider();
             
             provider.OpenSession();
-            using (var session = provider.GetCurrentSession())
-            {
-                var languageRepository = new LanguageRepository(session);
+           
+                var languageRepository = new LanguageRepository(provider);
                 languageRepository.SaveLanguage(language);
-            }
+            
         }
 
         [TestMethod]
@@ -38,11 +37,10 @@ namespace LanguageRepositoryTests
             var language = new Language( languageName, movieId, trackfieldId);
             var provider = new SessionProvider();
             provider.OpenSession();
-            using (var session = provider.GetCurrentSession())
-            {
-                var languageRepository = new LanguageRepository(session);
+           
+                var languageRepository = new LanguageRepository(provider);
                 var allLanguages = languageRepository.GetAllLanguages();
-            }
+            
         }
 
         [TestMethod]
@@ -52,11 +50,10 @@ namespace LanguageRepositoryTests
 
             provider.OpenSession();
 
-            using (var session = provider.GetCurrentSession())
-            {
-                var languageRepository = new LanguageRepository(session);
+           
+                var languageRepository = new LanguageRepository(provider);
                 var languageByName = languageRepository.GetLanguageByName("name");
-            }
+            
         }
 
         [TestMethod]
@@ -69,11 +66,10 @@ namespace LanguageRepositoryTests
             var language = new Language( languageName, movieId, trackfieldId);
             var provider = new SessionProvider();
             provider.OpenSession();
-            using (var session = provider.GetCurrentSession())
-            {
-                var languageRepository = new LanguageRepository(session);
+           
+                var languageRepository = new LanguageRepository(provider);
                 var allLanguages = languageRepository.GetAllLanguages();
-            }
+            
         }
     }
 }

@@ -4,42 +4,51 @@ using Domain.Models;
 using Domain.VisitorRepository;
 using NHibernate;
 using NHibernate.Linq;
+using Journalist;
 
 namespace Infrastructure.VisitorRepository
 {
     public class CompanyRepository :ICompanyRepository
     {
-        public CompanyRepository(ISession session)
+        private readonly SessionProvider _provider;
+
+        public CompanyRepository(SessionProvider provider)
         {
-            _session = session;
+            Require.NotNull(provider, nameof(SessionProvider));
+            _provider = provider;
         }
-        private readonly ISession _session;
+        
         public IEnumerable<Company> GetAllCompanies()
         {
-            return _session.Query<Company>();
+
+            var session = _provider.GetCurrentSession();
+            return session.Query<Company>();
         }
 
         public Company GetCompanyByCompanyId(int companyId)
         {
-            return _session.Query<Company>().SingleOrDefault(company => company.Id == companyId);
+            var session = _provider.GetCurrentSession();
+            return session.Query<Company>().SingleOrDefault(company => company.Id == companyId);
         }
 
         public void deleteCompanyById(int companyId)
         {
-            var checkIfExists = _session.Query<Company>().SingleOrDefault(company => company.Id == companyId);
+            var session = _provider.GetCurrentSession();
+            var checkIfExists = session.Query<Company>().SingleOrDefault(company => company.Id == companyId);
             if (checkIfExists != null)
             {
-                _session.BeginTransaction();
-                _session.Delete(checkIfExists);
-                _session.Transaction.Commit();
+                session.BeginTransaction();
+                session.Delete(checkIfExists);
+                session.Transaction.Commit();
             }
         }
 
         public void SaveCompany(Company company)
         {
-            _session.BeginTransaction();
-            _session.Save(company);
-            _session.Transaction.Commit();
+            var session = _provider.GetCurrentSession();
+            session.BeginTransaction();
+            session.Save(company);
+            session.Transaction.Commit();
         }
     }
 }

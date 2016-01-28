@@ -20,11 +20,10 @@ namespace UnitTestProject1
             var cinema = new Cinema(cinemaName,cinemaAddress,companyId);
             var provider = new SessionProvider();
             provider.OpenSession();
-            using (var session = provider.GetCurrentSession())
-            {
-                var cinemaRepository = new CinemaRepository(session);
+           
+                var cinemaRepository = new CinemaRepository(provider);
                 cinemaRepository.SaveCinemaData(cinema);
-            }
+            
         }
 
         [TestMethod]
@@ -32,12 +31,11 @@ namespace UnitTestProject1
         {
             var provider = new SessionProvider();
             provider.OpenSession();
-            using (var session = provider.GetCurrentSession())
-            {
-                var cinemaRepository = new CinemaRepository(session);
+            
+                var cinemaRepository = new CinemaRepository(provider);
                 var allCinemas = cinemaRepository.GetAllCinemas();
                
-            }
+            
         }
 
        
@@ -52,12 +50,11 @@ namespace UnitTestProject1
             var cinema = new Cinema( cinemaName, cinemaAddress, companyId);
             var provider = new SessionProvider();
             provider.OpenSession();
-            using (var session = provider.GetCurrentSession())
-            {
-                var cinemaRepository = new CinemaRepository(session);
+            
+                var cinemaRepository = new CinemaRepository(provider);
                 cinemaRepository.SaveCinemaData(cinema);
                 var test =cinemaRepository.GetCinemaByCinemaId(232);
-            }
+            
 
         }
 
@@ -71,13 +68,12 @@ namespace UnitTestProject1
             var cinema = new Cinema(cinemaName, cinemaAddress, companyId);
             var provider = new SessionProvider();
             provider.OpenSession();
-            using (var session = provider.GetCurrentSession())
-            {
-                var cinemaRepository = new CinemaRepository(session);
+            
+                var cinemaRepository = new CinemaRepository(provider);
                 cinemaRepository.SaveCinemaData(cinema);
                 var test =cinemaRepository.GetCinemaByCompanyId(89);
-                
-            }
+               
+            
 
         }
     }

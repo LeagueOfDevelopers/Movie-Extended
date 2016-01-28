@@ -19,12 +19,11 @@ namespace CompanyRepositoryTests
             var company = new Company(7,companyName,uri1);
             var provider = new SessionProvider();
             provider.OpenSession();
-            using (var session = provider.GetCurrentSession())
-            {
-                var companyRepository = new CompanyRepository(session);
+            
+                var companyRepository = new CompanyRepository(provider);
                 companyRepository.SaveCompany(company);
                 
-            }
+            
         }
     }
     }

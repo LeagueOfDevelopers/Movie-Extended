@@ -18,11 +18,10 @@ namespace FileRepositoryTests
             
             var provider = new SessionProvider();
             provider.OpenSession();
-            using (var session = provider.GetCurrentSession())
-            {
-                var fileRepository = new FileRepository(session);
+            
+                var fileRepository = new FileRepository(provider);
                 fileRepository.SaveFileData(saveFile);
-            }
+            
         }
 
         [TestMethod]
@@ -32,12 +31,11 @@ namespace FileRepositoryTests
             var provider = new SessionProvider();
             var saveFile = new File(10,"d",FileType.Track);
             provider.OpenSession();
-            using (var session = provider.GetCurrentSession())
-            {
-                var fileRepository = new FileRepository(session);
+            
+                var fileRepository = new FileRepository(provider);
                 fileRepository.SaveFileData(saveFile);
                 var test = fileRepository.GetFileData(10);
-            }
+            
         }
     }
 }

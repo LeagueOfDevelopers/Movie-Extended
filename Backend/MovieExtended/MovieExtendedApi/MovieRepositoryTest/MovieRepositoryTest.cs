@@ -19,11 +19,10 @@ namespace MovieRepositoryTest
             var movie = new Movie(movieName,cinemaId);
             var provider = new SessionProvider();
             provider.OpenSession();
-            using (var session = provider.GetCurrentSession())
-            {
-                var movieRepository = new MovieRepository(session);
+           
+                var movieRepository = new MovieRepository(provider);
                 movieRepository.SaveMovie(movie);
-            }
+            
         }
 
         [TestMethod]
@@ -36,11 +35,10 @@ namespace MovieRepositoryTest
             var provider = new SessionProvider();
             provider.OpenSession();
             IEnumerable<Movie> allmovies;
-            using (var session = provider.GetCurrentSession())
-            {
-                var movieRepository = new MovieRepository(session);
+            
+                var movieRepository = new MovieRepository(provider);
                 allmovies=  movieRepository.GetAllMovies();
-            }
+            
             
         }
 
@@ -53,12 +51,11 @@ namespace MovieRepositoryTest
             var movie = new Movie( movieName, cinemaId);
             var provider = new SessionProvider();
             provider.OpenSession();
-            using (var session = provider.GetCurrentSession())
-            {
-                var movieRepository = new MovieRepository(session);
+            
+                var movieRepository = new MovieRepository(provider);
                var allmovies = movieRepository.GetMovieByCinemaId(
                     cinemaId);
-            }
+            
         }
 
         [TestMethod]
@@ -70,11 +67,10 @@ namespace MovieRepositoryTest
             var movie = new Movie( movieName, cinemaId);
             var provider = new SessionProvider();
             provider.OpenSession();
-            using (var session = provider.GetCurrentSession())
-            {
-                var movieRepository = new MovieRepository(session);
+           
+                var movieRepository = new MovieRepository(provider);
                 var movieByName = movieRepository.GetMovieByMovieName(movieName);
-            }
+            
         }
     }
 }

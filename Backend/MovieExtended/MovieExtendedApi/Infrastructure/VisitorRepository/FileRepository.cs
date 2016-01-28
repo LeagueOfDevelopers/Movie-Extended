@@ -2,6 +2,8 @@
 using System.Linq;
 using Domain.Models;
 using Domain.VisitorRepository;
+using Infrastructure.VisitorRepository;
+using Journalist;
 using NHibernate;
 using NHibernate.Linq;
 
@@ -9,11 +11,12 @@ namespace Extended_Movie.Visitor_Repository
 {
     public class FileRepository : IFileRepository
     {
-        private readonly ISession _session;
+        private readonly SessionProvider _provider;
 
-        public FileRepository(ISession session)
+        public FileRepository(SessionProvider provider)
         {
-            _session = session;
+            Require.NotNull(provider, nameof(SessionProvider));
+            _provider = provider;
         }
 
         
@@ -27,11 +30,12 @@ namespace Extended_Movie.Visitor_Repository
 
         public void DeleteFileByFileId(int fileId)
         {
-            var deleteFile = _session.Query<File>().SingleOrDefault(file => fileId == file.Id);
+            var session = _provider.GetCurrentSession();
+            var deleteFile = session.Query<File>().SingleOrDefault(file => fileId == file.Id);
             if (deleteFile != null)
             {
                 System.IO.File.Delete(deleteFile.FilePath.ToString());
-                _session.Delete(deleteFile);
+                session.Delete(deleteFile);
 
             }
 
@@ -41,14 +45,16 @@ namespace Extended_Movie.Visitor_Repository
 
         public File GetFileData(int fileId)
         {
-            return _session.Query<File>().SingleOrDefault(file => file.Id == fileId);
+            var session = _provider.GetCurrentSession();
+            return session.Query<File>().SingleOrDefault(file => file.Id == fileId);
         }
 
         public void SaveFileData(File file)
         {
-            _session.BeginTransaction();
-            _session.Save(file);
-            _session.Transaction.Commit();
+            var session = _provider.GetCurrentSession();
+            session.BeginTransaction();
+            session.Save(file);
+            session.Transaction.Commit();
         }
     }
 }

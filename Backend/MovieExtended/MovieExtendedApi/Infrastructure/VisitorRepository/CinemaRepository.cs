@@ -4,58 +4,67 @@ using Domain.Models;
 using Domain.VisitorRepository;
 using NHibernate;
 using NHibernate.Linq;
+using Journalist;
+
 
 namespace Infrastructure.VisitorRepository
 {
     public class CinemaRepository : ICinemaRepository
     {
 
-        private readonly ISession _session ;
+        private readonly SessionProvider _provider ;
 
-        public CinemaRepository(ISession session)
+        public CinemaRepository(SessionProvider provider)
         {
-            _session = session;
+            Require.NotNull(provider, nameof(SessionProvider));
+            _provider = provider;
         }
 
         public IEnumerable<Cinema> GetAllCinemas()
         {
-            return _session.Query<Cinema>();
+            var session = _provider.GetCurrentSession();
+            return session.Query<Cinema>();
         }
 
         public void SaveCinemaData(Cinema cinema)
         {
-            _session.BeginTransaction();
-            _session.Save(cinema);
-            _session.Transaction.Commit();
+            var session = _provider.GetCurrentSession();
+            session.BeginTransaction();
+            session.Save(cinema);
+            session.Transaction.Commit();
         }
 
         public IEnumerable<Cinema> GetCinemaByCompanyId(int companyId)
         {
-            var allcinemasById = _session.Query<Cinema>().Where(cinema => cinema.CompanyId==companyId).AsEnumerable<Cinema>();
+            var session = _provider.GetCurrentSession();
+            var allcinemasById = session.Query<Cinema>().Where(cinema => cinema.CompanyId==companyId).AsEnumerable<Cinema>();
             
             return allcinemasById;
         }
 
         public void DeleteCinemaByCinemaId(int cinemaId)
         {
-            var checkIfExists = _session.Query<Cinema>().Where(cinema => cinema.Id == cinemaId);
+            var session = _provider.GetCurrentSession();
+            var checkIfExists = session.Query<Cinema>().Where(cinema => cinema.Id == cinemaId);
             if (checkIfExists != null)
             {
-                _session.BeginTransaction();
-                _session.Delete(checkIfExists);
-                _session.Transaction.Commit();
+                session.BeginTransaction();
+                session.Delete(checkIfExists);
+                session.Transaction.Commit();
             }
         }
 
         public void DeleteCinemaByCompanyId(int companyId)
         {
-            var checkIfExists = _session.Query<Cinema>().Where(cinema => cinema.CompanyId == companyId);
-            if (checkIfExists != null) _session.Delete(checkIfExists);
+            var session = _provider.GetCurrentSession();
+            var checkIfExists = session.Query<Cinema>().Where(cinema => cinema.CompanyId == companyId);
+            if (checkIfExists != null) session.Delete(checkIfExists);
         }
 
         public Cinema GetCinemaByCinemaId(int cinemaId)
         {
-            return _session.Query<Cinema>().SingleOrDefault(cinema => cinema.Id == cinemaId);
+            var session = _provider.GetCurrentSession();
+            return session.Query<Cinema>().SingleOrDefault(cinema => cinema.Id == cinemaId);
         }
     }
 }
