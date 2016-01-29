@@ -37,6 +37,7 @@ namespace MovieRepositoryTest
             IEnumerable<Movie> allmovies;
             
                 var movieRepository = new MovieRepository(provider);
+                movieRepository.SaveMovie(movie);
                 allmovies=  movieRepository.GetAllMovies();
             
             

@@ -13,3 +13,4 @@ C:\Users\дшшр\Documents\MovieExtended\Movie-Extended\Backend\MovieExtended\M
 C:\Users\дшшр\Documents\MovieExtended\Movie-Extended\Backend\MovieExtended\MovieExtendedApi\CompanyRepositoryTests\bin\Debug\ru\Microsoft.VisualStudio.QualityTools.UnitTestFramework.resources.dll
 C:\Users\дшшр\Documents\MovieExtended\Movie-Extended\Backend\MovieExtended\MovieExtendedApi\CompanyRepositoryTests\obj\Debug\CompanyRepositoryTests.dll
 C:\Users\дшшр\Documents\MovieExtended\Movie-Extended\Backend\MovieExtended\MovieExtendedApi\CompanyRepositoryTests\obj\Debug\CompanyRepositoryTests.pdb
+C:\Users\дшшр\Documents\MovieExtended\Movie-Extended\Backend\MovieExtended\MovieExtendedApi\CompanyRepositoryTests\bin\Debug\Journalist.LanguageExtensions.dll

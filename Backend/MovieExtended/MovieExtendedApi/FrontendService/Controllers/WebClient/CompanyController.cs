@@ -26,7 +26,7 @@ namespace FrontendService.Controllers.WebClient
         }
 
         [Route("api/Company/New/{json}")]
-        [HttpGet]
+        [HttpPost]
         public void SaveNewCompany(string json)
         {
             var newCompany = JsonConvert.DeserializeObject<Company>(json);
@@ -41,7 +41,7 @@ namespace FrontendService.Controllers.WebClient
         }
 
         [Route("api/Company/Delete/{companyId}")]
-        [HttpGet]
+        [HttpPost]
         public void DeleteCompanyById(int companyId)
         {
             companyRepository.deleteCompanyById(companyId);

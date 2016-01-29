@@ -16,12 +16,12 @@ namespace FrontendService.Controllers
 {
     public class FileController : ApiController
     {
-        private readonly ISession session;
+       // private readonly ISession session;
         private IFileRepository fileRepository;
 
-        public FileController(ISession session,IFileRepository fileRepository)
+        public FileController(IFileRepository fileRepository)
         {
-            this.session = session;
+           // this.session = session;
             this.fileRepository = fileRepository;
         }
 
@@ -62,7 +62,7 @@ namespace FrontendService.Controllers
         }
 
         [Route("api/Files/Delete/{fileId}")]
-        [HttpGet]
+        [HttpPost]
         public void DeleteFileByFileId(int fileId)
         {
             fileRepository.DeleteFileByFileId(fileId);

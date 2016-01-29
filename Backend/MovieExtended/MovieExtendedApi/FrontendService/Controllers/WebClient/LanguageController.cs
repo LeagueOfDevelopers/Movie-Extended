@@ -19,7 +19,7 @@ namespace FrontendService.Controllers.WebClient
         }
 
         [Route("api/Languages/DeleteByMovie/{movieId}")]
-        [HttpGet]
+        [HttpPost]
 
         public void DeleteMovieFromLanguageById(int movieId)
         {
@@ -27,7 +27,7 @@ namespace FrontendService.Controllers.WebClient
         }
 
         [Route("api/Languages/DeleteByLang/{languageId}")]
-        [HttpGet]
+        [HttpPost]
 
         public void DeleteLanguageByLanguageId(int languageId)
         {
@@ -43,7 +43,7 @@ namespace FrontendService.Controllers.WebClient
         }
 
         [Route("api/Languages/New/{Json}")]
-        [HttpGet]
+        [HttpPost]
 
         public void SaveNewLanguageToDataBase(string json)
         {

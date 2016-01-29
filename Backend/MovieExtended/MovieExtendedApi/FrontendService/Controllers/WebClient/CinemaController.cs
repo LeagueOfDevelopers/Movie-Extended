@@ -31,7 +31,7 @@ namespace FrontendService.Controllers.WebClient
         }
 
         [Route("api/Cinema/New/{json}")]
-        [HttpGet]
+        [HttpPost]
         public void SaveNewCinema(string json)
         {
             var newCinema = JsonConvert.DeserializeObject<Cinema>(json);
@@ -55,14 +55,14 @@ namespace FrontendService.Controllers.WebClient
         }
 
         [Route("api/Cinema/DeleteByCinemaId/{cinemaId}")]
-        [HttpGet]
+        [HttpPost]
         public void DeleteCinemaByCinemaId(int cinemaId)
         {
             cinemaRepository.DeleteCinemaByCinemaId(cinemaId);
         }
 
         [Route("api/Cinema/DeleteByCompany/{companyId}")]
-        [HttpGet]
+        [HttpPost]
         public void DeleteCinemaByCompanyId(int companyId)
         {
             cinemaRepository.DeleteCinemaByCompanyId(companyId);

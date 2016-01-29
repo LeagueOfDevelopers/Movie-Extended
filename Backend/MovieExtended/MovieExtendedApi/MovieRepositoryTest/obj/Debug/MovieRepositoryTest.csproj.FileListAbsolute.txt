@@ -13,3 +13,4 @@ C:\Users\дшшр\Documents\MovieExtended\Movie-Extended\Backend\MovieExtended\M
 C:\Users\дшшр\Documents\MovieExtended\Movie-Extended\Backend\MovieExtended\MovieExtendedApi\MovieRepositoryTest\obj\Debug\MovieRepositoryTest.csprojResolveAssemblyReference.cache
 C:\Users\дшшр\Documents\MovieExtended\Movie-Extended\Backend\MovieExtended\MovieExtendedApi\MovieRepositoryTest\obj\Debug\MovieRepositoryTest.dll
 C:\Users\дшшр\Documents\MovieExtended\Movie-Extended\Backend\MovieExtended\MovieExtendedApi\MovieRepositoryTest\obj\Debug\MovieRepositoryTest.pdb
+C:\Users\дшшр\Documents\MovieExtended\Movie-Extended\Backend\MovieExtended\MovieExtendedApi\MovieRepositoryTest\bin\Debug\Journalist.LanguageExtensions.dll

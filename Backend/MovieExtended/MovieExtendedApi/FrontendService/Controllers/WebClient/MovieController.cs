@@ -20,7 +20,7 @@ using Newtonsoft.Json;
 
         
         [Route("api/Movie/new/{json}")]
-        [HttpGet]
+        [HttpPost]
 
         public string SaveMovie(string json)
         {
@@ -51,14 +51,14 @@ using Newtonsoft.Json;
         }
 
         [Route("api/Movie/Delete/{movieId}")]
-        [HttpGet]
+        [HttpPost]
         public void DeleteMovieByMovieId(int movieId)
         {
             movieRepository.DeleteMovieByMovieId(movieId);
         }
 
         [Route("api/Movie/Delete/Cinema/{cinemaId}")]
-        [HttpGet]
+        [HttpPost]
         public void DeleteMovieByCinemaId(int cinemaId)
         {
             movieRepository.GetMovieByCinemaId(cinemaId);
