@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Net;
 using System.Net.Http;
@@ -67,5 +68,12 @@ namespace FrontendService.Controllers
         {
             fileRepository.DeleteFileByFileId(fileId);
         }
+
+        [Route("api/Files/All")]
+        [HttpGet]
+        public IEnumerable<File> GettAllFiles()
+        {
+           return fileRepository.GetAllFiles();
+        }  
     }
 }

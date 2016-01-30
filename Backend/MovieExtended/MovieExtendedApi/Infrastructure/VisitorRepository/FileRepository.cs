@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Domain.Models;
 using Domain.VisitorRepository;
@@ -55,6 +56,12 @@ namespace Extended_Movie.Visitor_Repository
             session.BeginTransaction();
             session.Save(file);
             session.Transaction.Commit();
+        }
+
+        public IEnumerable<File> GetAllFiles()
+        {
+            var session = _provider.GetCurrentSession();
+            return session.Query<File>();
         }
     }
 }

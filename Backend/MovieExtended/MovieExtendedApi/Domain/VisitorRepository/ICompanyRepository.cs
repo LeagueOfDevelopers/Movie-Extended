@@ -9,6 +9,7 @@ namespace Domain.VisitorRepository
         Company GetCompanyByCompanyId(int companyId);
         void deleteCompanyById(int companyId);
         void SaveCompany(Company company);
+       void UpdateCompany(string jsonForUpdate);
 
     }
 }

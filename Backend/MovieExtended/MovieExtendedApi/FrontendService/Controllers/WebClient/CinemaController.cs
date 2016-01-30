@@ -25,7 +25,7 @@ namespace FrontendService.Controllers.WebClient
         [Route("api/Cinema/All")]
         [HttpGet]
 
-        IEnumerable<Cinema> GetAllCinemas()
+        public IEnumerable<Cinema> GetAllCinemas()
         {
             return cinemaRepository.GetAllCinemas();
         }

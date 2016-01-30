@@ -59,5 +59,10 @@ namespace Infrastructure.VisitorRepository
             var session = _provider.GetCurrentSession();
             return session.Query<Language>().Where(language => language.Name == languageName);
         }
+
+        public void UpdateLanguage(string jsonForUpdate)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

@@ -50,5 +50,10 @@ namespace Infrastructure.VisitorRepository
             session.Save(company);
             session.Transaction.Commit();
         }
+
+        public void UpdateCompany(string jsonForUpdate)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

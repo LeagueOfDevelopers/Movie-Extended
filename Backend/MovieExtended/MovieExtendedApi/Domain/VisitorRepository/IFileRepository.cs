@@ -1,4 +1,5 @@
-﻿using Domain.Models;
+﻿using System.Collections.Generic;
+using Domain.Models;
 
 namespace Domain.VisitorRepository
 {
@@ -8,5 +9,6 @@ namespace Domain.VisitorRepository
         void DeleteFileByFileId(int fileId);
         File GetFileData(int fileId);
         void SaveFileData(File file);
+       IEnumerable<File> GetAllFiles();
     }
 }

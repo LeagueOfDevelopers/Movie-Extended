@@ -66,5 +66,10 @@ namespace Infrastructure.VisitorRepository
             var session = _provider.GetCurrentSession();
             return session.Query<Cinema>().SingleOrDefault(cinema => cinema.Id == cinemaId);
         }
+
+        public void UpdateCinema(string jsonForUpdate)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

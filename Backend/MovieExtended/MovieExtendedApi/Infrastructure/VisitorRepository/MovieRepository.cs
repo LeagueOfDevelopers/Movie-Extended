@@ -62,5 +62,10 @@ namespace Infrastructure.VisitorRepository
             var session = _provider.GetCurrentSession();
             return session.Query<Movie>().Where(movie => movie.Name == movieName);
         }
+
+        public void UpdateMovie(string jsonForUpdate)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

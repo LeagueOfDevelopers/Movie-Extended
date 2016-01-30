@@ -11,5 +11,6 @@ namespace Domain.VisitorRepository
         void DeleteCinemaByCinemaId(int cinemaId);
         void DeleteCinemaByCompanyId(int companyId);
         Cinema GetCinemaByCinemaId(int cinemaId);
+       void UpdateCinema(string jsonForUpdate);
     }
 }
