@@ -8,18 +8,16 @@ namespace FrontendService.Controllers.AndroidClient
     public class SessionController : ApiController 
     {
         private readonly SessionKeeper _keeper;
-        public SessionController( )
+        public SessionController()
         {
             _keeper = new SessionKeeper();
-            
-            
         }
 
         [Route("api/Session/Login/{qr}")]
         [HttpGet]
         public Guid Login(string qr)
         {
-            var sessionId = new Guid();
+            var sessionId = Guid.NewGuid();
             //_keeper.CreateSession(sessionId);
             return sessionId;
         }

@@ -10,7 +10,7 @@ namespace Infrastructure.VisitorRepository
     public  class SessionProvider
     {
         private readonly ISessionFactory _factory;
-        public   SessionProvider()
+        public SessionProvider()
         {
             var configuration = new Configuration();
             configuration.Configure();

@@ -15,17 +15,15 @@ namespace FileRepositoryTests
         {
             var saveFile = new File(Convert.ToInt32(new Random()), "filePath",FileType.Track);
             
-            
             var provider = new SessionProvider();
             provider.OpenSession();
             
-                var fileRepository = new FileRepository(provider);
-                fileRepository.SaveFileData(saveFile);
-            
+            var fileRepository = new FileRepository(provider);
+            fileRepository.SaveFileData(saveFile);
         }
 
         [TestMethod]
-        public void getFileByFileId()
+        public void GetFileByFileId()
         {
             //var Id=Convert.ToInt32(new Random());
             var provider = new SessionProvider();
