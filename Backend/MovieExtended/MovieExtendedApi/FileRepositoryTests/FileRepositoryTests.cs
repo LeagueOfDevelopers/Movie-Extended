@@ -13,7 +13,7 @@ namespace FileRepositoryTests
         [TestMethod]
         public void SaveFileData()
         {
-            var saveFile = new File(Convert.ToInt32(new Random()), "filePath",FileType.Track);
+            var saveFile = new File( "filePath",FileType.Track);
             
             var provider = new SessionProvider();
             provider.OpenSession();
