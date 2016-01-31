@@ -8,8 +8,7 @@
 # Java class files
 *.class
 
-# C# class files 
-*.cs
+*Constants.cs
 
 # Generated files
 bin/
