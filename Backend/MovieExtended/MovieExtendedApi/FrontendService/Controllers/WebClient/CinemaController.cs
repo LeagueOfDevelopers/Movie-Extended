@@ -36,7 +36,6 @@ namespace FrontendService.Controllers.WebClient
 
         [Route("api/Cinema/GetByCinemaId/{cinemaId}")]
         [HttpGet]
-
         public Cinema GetCinemaByCinemaId(int cinemaId)
         {
             return _cinemaRepository.GetCinemaByCinemaId(cinemaId);
@@ -44,7 +43,6 @@ namespace FrontendService.Controllers.WebClient
 
         [Route("api/Cinema/GetCinemaByCompanyId/{companyId}")]
         [HttpGet]
-
         public IEnumerable<Cinema> GetCinemaByCompanyId(int companyId)
         {
             return _cinemaRepository.GetCinemaByCompanyId(companyId);

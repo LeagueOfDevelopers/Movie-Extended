@@ -12,6 +12,7 @@ namespace Domain.Models
         {
 
         }
+
         public Guid CreateSession(Guid movieId)
         {
             var session = new Session(Guid.NewGuid(), movieId);

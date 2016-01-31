@@ -15,3 +15,4 @@ C:\AndroidNew\Projects\Movie-Extended\Backend\MovieExtended\MovieExtendedApi\Dom
 C:\AndroidNew\Projects\Movie-Extended\Backend\MovieExtended\MovieExtendedApi\Domain\bin\Debug\NHibernate.xml
 C:\AndroidNew\Projects\Movie-Extended\Backend\MovieExtended\MovieExtendedApi\Domain\obj\Debug\Domain.dll
 C:\AndroidNew\Projects\Movie-Extended\Backend\MovieExtended\MovieExtendedApi\Domain\obj\Debug\Domain.pdb
+C:\AndroidNew\Projects\Movie-Extended\Backend\MovieExtended\MovieExtendedApi\Domain\obj\Debug\Domain.csprojResolveAssemblyReference.cache

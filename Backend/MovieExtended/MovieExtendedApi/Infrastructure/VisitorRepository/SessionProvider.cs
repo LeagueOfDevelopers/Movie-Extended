@@ -32,8 +32,7 @@ namespace Infrastructure.VisitorRepository
         {
             return _session;
         }
-
-
+        
         public void OpenSession()
         {
             if (_session == null || !_session.IsOpen)

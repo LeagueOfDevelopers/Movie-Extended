@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Domain.Models
 {
-    class ICodeGenerator
+    interface ITokenGenerator
     {
+        Token Generate(Movie movie, Cinema cinema);
     }
 }

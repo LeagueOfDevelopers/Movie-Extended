@@ -8,5 +8,6 @@ namespace Domain.Models
 {
     interface ICodeGenerator
     {
+        string Generate(Token token);
     }
 }
