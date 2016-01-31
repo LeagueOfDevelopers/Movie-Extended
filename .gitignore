@@ -8,6 +8,9 @@
 # Java class files
 *.class
 
+# C# class files 
+*.cs
+
 # Generated files
 bin/
 gen/
