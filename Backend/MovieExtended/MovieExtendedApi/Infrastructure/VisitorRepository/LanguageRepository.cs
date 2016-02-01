@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Domain.Models;
+using Domain.Models.Entities;
 using Domain.VisitorRepository;
 using Journalist;
 using NHibernate;
@@ -12,7 +13,6 @@ namespace Infrastructure.VisitorRepository
     {
         private readonly SessionProvider _provider;
         
-
         public LanguageRepository(SessionProvider provider)
         {
             Require.NotNull(provider, nameof(SessionProvider));

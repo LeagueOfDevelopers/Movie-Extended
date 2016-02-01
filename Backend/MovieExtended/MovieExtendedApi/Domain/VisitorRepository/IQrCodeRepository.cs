@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain.Models
+namespace Domain.VisitorRepository
 {
-    interface ITokenGenerator
+    public interface IQrCodeRepository
     {
-        Token Generate(Movie movie, Cinema cinema);
+        void SaveQrCodeFingeprint(string qrCodeFingerprint);
     }
 }

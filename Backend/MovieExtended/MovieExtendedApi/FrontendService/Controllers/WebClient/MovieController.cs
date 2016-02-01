@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Web.Http;
 using Domain.Models;
+using Domain.Models.Entities;
 using Domain.VisitorRepository;
-using Extended_Movie.Visitor_Repository;
 using Infrastructure.VisitorRepository;
 using Newtonsoft.Json;
 
@@ -11,11 +11,11 @@ using Newtonsoft.Json;
 {
     public class MovieController : ApiController
     {
-        private readonly IMovieRepository movieRepository;
+        private readonly IMovieRepository _movieRepository;
 
         public MovieController(IMovieRepository movieRepository)
         {
-            this.movieRepository = movieRepository;
+            _movieRepository = movieRepository;
         }
 
         
@@ -25,7 +25,7 @@ using Newtonsoft.Json;
         public string SaveMovie(string json)
         {
             var newMovie = JsonConvert.DeserializeObject<Movie>(json);
-            movieRepository.SaveMovie(newMovie);
+            _movieRepository.SaveMovie(newMovie);
             return "ok";
         }
 
@@ -33,35 +33,35 @@ using Newtonsoft.Json;
         [HttpGet]
         public IEnumerable<Movie> GetAllMoviesFromDatabase()
         {
-            return movieRepository.GetAllMovies();
+            return _movieRepository.GetAllMovies();
         } 
 
         [Route("api/Movie/{movieId}")]
         [HttpGet]
         public Movie GetMovieByMovieId(int movieId)
         {
-          return  movieRepository.GetMovieByMovieId(movieId);
+          return  _movieRepository.GetMovieByMovieId(movieId);
         }
 
         [Route("api/Movie/Cinema/{cinemaId}")]
         [HttpGet]
         public IEnumerable<Movie> GetMovieByCinemaId(int cinemaId)
         {
-            return movieRepository.GetMovieByCinemaId(cinemaId);
+            return _movieRepository.GetMovieByCinemaId(cinemaId);
         }
 
         [Route("api/Movie/Delete/{movieId}")]
         [HttpPost]
         public void DeleteMovieByMovieId(int movieId)
         {
-            movieRepository.DeleteMovieByMovieId(movieId);
+            _movieRepository.DeleteMovieByMovieId(movieId);
         }
 
         [Route("api/Movie/Delete/Cinema/{cinemaId}")]
         [HttpPost]
         public void DeleteMovieByCinemaId(int cinemaId)
         {
-            movieRepository.GetMovieByCinemaId(cinemaId);
+            _movieRepository.GetMovieByCinemaId(cinemaId);
         }
 
     }

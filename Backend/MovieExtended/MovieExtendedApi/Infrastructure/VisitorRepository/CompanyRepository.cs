@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Domain.Models;
+using Domain.Models.Entities;
 using Domain.VisitorRepository;
 using NHibernate;
 using NHibernate.Linq;
@@ -20,7 +21,6 @@ namespace Infrastructure.VisitorRepository
         
         public IEnumerable<Company> GetAllCompanies()
         {
-
             var session = _provider.GetCurrentSession();
             return session.Query<Company>();
         }
@@ -31,7 +31,7 @@ namespace Infrastructure.VisitorRepository
             return session.Query<Company>().SingleOrDefault(company => company.Id == companyId);
         }
 
-        public void deleteCompanyById(int companyId)
+        public void DeleteCompanyById(int companyId)
         {
             var session = _provider.GetCurrentSession();
             var checkIfExists = session.Query<Company>().SingleOrDefault(company => company.Id == companyId);
@@ -54,6 +54,13 @@ namespace Infrastructure.VisitorRepository
         public void UpdateCompany(string jsonForUpdate)
         {
             throw new System.NotImplementedException();
+        }
+
+        public bool Exists(int companyId)
+        {
+            var session = _provider.GetCurrentSession();
+            var checkIfExists = session.Query<Company>().SingleOrDefault(company => company.Id == companyId);
+            return checkIfExists != null;
         }
     }
 }

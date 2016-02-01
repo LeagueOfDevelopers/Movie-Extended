@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.CodeDom.Compiler;
 using System.Web.Http;
 using Domain.VisitorRepository;
-using Extended_Movie.Visitor_Repository;
 using Infrastructure.VisitorRepository;
-using NHibernate;
 using SimpleInjector;
 using SimpleInjector.Integration.WebApi;
 
-namespace FrontendService.App_Start
+namespace FrontendService
 {
     public class Bootstraper
     {
@@ -24,6 +19,9 @@ namespace FrontendService.App_Start
             container.Register<ICompanyRepository>(() => container.GetInstance<CompanyRepository>(), Lifestyle.Singleton);
             container.Register<IFileRepository>(() => container.GetInstance<FileRepository>(), Lifestyle.Singleton);
             container.Register<ICinemaRepository>(() => container.GetInstance<CinemaRepository>(), Lifestyle.Singleton);
+            container.Register<IQrCodeRepository>(() => container.GetInstance<QrCodeRepository>(), Lifestyle.Singleton);
+            container.Register<ICodeGenerator>(() => container.GetInstance<CodeGenerator>());
+            
             container.RegisterWebApiControllers(GlobalConfiguration.Configuration);
             container.Verify();
             return container;

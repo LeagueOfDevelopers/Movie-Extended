@@ -1,5 +1,5 @@
 ﻿using Domain.Models;
-using Extended_Movie.Visitor_Repository;
+using Domain.Models.Entities;
 using Infrastructure.VisitorRepository;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 

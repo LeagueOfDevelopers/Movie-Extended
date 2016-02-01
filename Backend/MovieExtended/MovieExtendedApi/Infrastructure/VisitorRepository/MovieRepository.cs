@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Domain.Models;
+using Domain.Models.Entities;
 using Domain.VisitorRepository;
 using Journalist;
 using NHibernate;
@@ -66,6 +67,13 @@ namespace Infrastructure.VisitorRepository
         public void UpdateMovie(string jsonForUpdate)
         {
             throw new System.NotImplementedException();
+        }
+
+        public bool Exists(int movieId)
+        {
+            var session = _provider.GetCurrentSession();
+            var checkIfExists = session.Query<Movie>().SingleOrDefault(company => company.Id == movieId);
+            return checkIfExists != null;
         }
     }
 }

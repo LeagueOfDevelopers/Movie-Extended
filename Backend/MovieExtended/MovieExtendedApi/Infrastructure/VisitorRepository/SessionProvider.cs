@@ -25,8 +25,7 @@ namespace Infrastructure.VisitorRepository
             _factory = configuration.BuildSessionFactory();
 
             new SchemaUpdate(configuration).Execute(false, true);
-
-            }
+        }
 
         public ISession GetCurrentSession()
         {

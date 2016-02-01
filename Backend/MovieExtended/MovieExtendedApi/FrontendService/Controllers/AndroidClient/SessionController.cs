@@ -2,6 +2,7 @@
 using System;
 using System.Net;
 using System.Web.Http;
+using Domain.Models.Entities;
 
 namespace FrontendService.Controllers.AndroidClient
 {

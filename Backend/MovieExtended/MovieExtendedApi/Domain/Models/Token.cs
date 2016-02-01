@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Domain.Models
 {
-    class Token
+    public class Token
     {
         public Token(string value)
         {
