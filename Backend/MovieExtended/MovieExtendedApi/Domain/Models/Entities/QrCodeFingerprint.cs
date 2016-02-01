@@ -8,8 +8,12 @@ namespace Domain.Models.Entities
 {
     public class QrCodeFingerprint
     {
-        public string Value { get; protected set; }
-        public string Id { get; protected set; }
+        public virtual string Value { get; protected set; }
+        public virtual string Id { get; protected set; }
+
+        protected QrCodeFingerprint()
+        {
+        }
 
         public QrCodeFingerprint(string value)
         {

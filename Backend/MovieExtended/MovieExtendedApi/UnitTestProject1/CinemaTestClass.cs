@@ -33,9 +33,7 @@ namespace UnitTestProject1
             var cinemaRepository = new CinemaRepository(provider);
             var allCinemas = cinemaRepository.GetAllCinemas();
         }
-
-       
-
+        
         [TestMethod]
         public void GetCinemaByCinemaId()
         {
@@ -49,7 +47,7 @@ namespace UnitTestProject1
             var cinemaRepository = new CinemaRepository(provider);
             cinemaRepository.SaveCinemaData(cinema);
             var test =cinemaRepository.GetCinemaByCinemaId(232);
-            }
+        }
 
         [TestMethod]
         public void GetCinemaByCompanyId()

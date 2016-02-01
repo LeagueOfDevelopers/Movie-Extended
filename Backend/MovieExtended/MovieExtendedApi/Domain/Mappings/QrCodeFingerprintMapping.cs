@@ -9,17 +9,16 @@ using NHibernate.Mapping.ByCode.Conformist;
 
 namespace Domain.Mappings
 {
-    class QrCodeFingerprint : ClassMapping<QrCodeFingerprint>
+    public class QrCodeFingerprintMapping : ClassMapping<QrCodeFingerprint>
     {
-        public QrCodeFingerprint()
+        public QrCodeFingerprintMapping()
         {
             Id(model => model.Id, mapper =>
             {
                 mapper.Column("Id");
                 mapper.Generator(Generators.EnhancedTable);
             });
-            Property(model => model.Name, mapper => mapper.Column("Name"));
-            Property(model => model.CinemaId, mapper => mapper.Column("CinemaId"));
+            Property(model => model.Value, mapper => mapper.Column("Value"));
         }
     }
 }

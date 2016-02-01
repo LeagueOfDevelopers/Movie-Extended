@@ -53,7 +53,7 @@
     <Compile Include="Mappings\FileMapping.cs" />
     <Compile Include="Mappings\LanguageMapping.cs" />
     <Compile Include="Mappings\MovieMapping.cs" />
-    <Compile Include="Mappings\QrCodeFingerprint.cs" />
+    <Compile Include="Mappings\QrCodeFingerprintMapping.cs" />
     <Compile Include="Models\Constants.cs" />
     <Compile Include="Models\Entities\Cinema.cs" />
     <Compile Include="Models\Entities\QrCodeFingerprint.cs" />

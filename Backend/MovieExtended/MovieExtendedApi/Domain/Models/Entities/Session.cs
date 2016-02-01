@@ -14,6 +14,7 @@ namespace Domain.Models.Entities
         public Guid MovieId { get; private set; }
         public SessionState SessionState { get; set; }
     }
+    
     public enum SessionState
     {
         Ready,

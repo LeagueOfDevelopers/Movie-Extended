@@ -1,5 +1,6 @@
 ﻿using System;
 using Domain.Mappings;
+using Domain.Models.Entities;
 using NHibernate;
 using NHibernate.Cfg;
 using NHibernate.Mapping.ByCode;
@@ -9,7 +10,14 @@ namespace Infrastructure.VisitorRepository
 {
     public  class SessionProvider
     {
+        [ThreadStatic]
+        private static ISession _session;
+
+        [ThreadStatic]
+        private static ITransaction _transaction;
+
         private readonly ISessionFactory _factory;
+
         public SessionProvider()
         {
             var configuration = new Configuration();
@@ -20,6 +28,7 @@ namespace Infrastructure.VisitorRepository
             modelMapper.AddMapping<MovieMapping>();
             modelMapper.AddMapping<LanguageMapping>();
             modelMapper.AddMapping<FileMapping>();
+            modelMapper.AddMapping<QrCodeFingerprintMapping>();
             configuration.AddDeserializedMapping(modelMapper.CompileMappingForAllExplicitlyAddedEntities(), null);
 
             _factory = configuration.BuildSessionFactory();
@@ -51,11 +60,5 @@ namespace Infrastructure.VisitorRepository
 
             _session?.Dispose();
         }
-
-        [ThreadStatic]
-        private static ISession _session;
-
-        [ThreadStatic]
-        private static ITransaction _transaction;
     }
 }
