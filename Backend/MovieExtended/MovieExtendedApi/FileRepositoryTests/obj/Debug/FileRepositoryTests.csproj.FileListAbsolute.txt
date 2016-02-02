@@ -44,3 +44,4 @@ C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\FileRepositoryTest
 C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\FileRepositoryTests\bin\Debug\Iesi.Collections.xml
 C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\FileRepositoryTests\bin\Debug\NHibernate.xml
 C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\FileRepositoryTests\bin\Debug\ru\Microsoft.VisualStudio.QualityTools.UnitTestFramework.resources.dll
+C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\FileRepositoryTests\obj\Debug\FileRepositoryTests.csprojResolveAssemblyReference.cache

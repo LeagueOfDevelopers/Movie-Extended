@@ -12,7 +12,6 @@ namespace Domain.Mappings
             Table("Files");
             Id(file => file.Id, mapper =>
             {
-                mapper.Generator(Generators.Guid);
                 mapper.Generator(Generators.EnhancedTable);
             });
             Property(file => file.FilePath, mapper => mapper.Column("FilePath"));

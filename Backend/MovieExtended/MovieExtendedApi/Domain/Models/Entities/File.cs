@@ -21,7 +21,7 @@ namespace Domain.Models
 
         public File(string FilePath, FileType fileType)
         {
-            FileType = fileType;
+            this.FilePath = FilePath;
             FileType = fileType;
         }
 
