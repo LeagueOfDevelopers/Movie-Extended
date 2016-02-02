@@ -40,7 +40,7 @@ namespace FrontendService.Controllers
                 var result = new HttpResponseMessage(HttpStatusCode.OK);
                 var stream = new FileStream(returnFile.FilePath, FileMode.Open);
                 result.Content = new StreamContent(stream);
-                result.Content.Headers.ContentType = new MediaTypeHeaderValue("mp3");
+                result.Content.Headers.ContentType = new MediaTypeHeaderValue("application/octet-stream");
                 return result;
             }
         }
@@ -53,7 +53,7 @@ namespace FrontendService.Controllers
             if (fileUpload != null)
             {
                 var directory = @"C:\files\";
-                var uploadedFile = new File(7, directory + fileUpload.FileName, FileType.Track);
+                var uploadedFile = new File( directory + fileUpload.FileName, FileType.Track);
                 fileRepository.SaveFileData(uploadedFile);
                 //var fileExt = System.IO.Path.GetExtension(fileUpload.FileName).Substring(1);
                 var fileName = Path.GetFileName(fileUpload.FileName);
