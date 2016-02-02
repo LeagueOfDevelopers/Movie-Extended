@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Domain.Models
 {
-    class QrCodeGenerator : IQrCodeGenerator
+    public class QrCodeGenerator : IQrCodeGenerator
     {
         public string Generate(int movieId, int companyId)
         {

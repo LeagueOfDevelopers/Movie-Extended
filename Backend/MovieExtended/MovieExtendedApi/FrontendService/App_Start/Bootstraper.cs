@@ -4,7 +4,7 @@ using Domain.VisitorRepository;
 using Infrastructure.VisitorRepository;
 using SimpleInjector;
 using SimpleInjector.Integration.WebApi;
-
+using Domain.Models;
 namespace FrontendService
 {
     public class Bootstraper
@@ -20,7 +20,8 @@ namespace FrontendService
             container.Register<IFileRepository>(() => container.GetInstance<FileRepository>(), Lifestyle.Singleton);
             container.Register<ICinemaRepository>(() => container.GetInstance<CinemaRepository>(), Lifestyle.Singleton);
             container.Register<IQrCodeRepository>(() => container.GetInstance<QrCodeRepository>(), Lifestyle.Singleton);
-            container.Register<ICodeGenerator>(() => container.GetInstance<CodeGenerator>());
+            container.Register<ICodeGenerator>(() => container.GetInstance<CodeGenerator>(),Lifestyle.Singleton);
+            container.Register<IQrCodeGenerator>(()=>container.GetInstance<QrCodeGenerator>(),Lifestyle.Singleton);
             
             container.RegisterWebApiControllers(GlobalConfiguration.Configuration);
             container.Verify();
