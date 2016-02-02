@@ -1,21 +1,24 @@
-﻿using Domain.Models;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using Domain.Models.Entities;
 using NHibernate.Mapping.ByCode;
 using NHibernate.Mapping.ByCode.Conformist;
 
 namespace Domain.Mappings
 {
-    public class CompanyMapping : ClassMapping<Company>
+    public class QrCodeFingerprintMapping : ClassMapping<QrCodeFingerprint>
     {
-        public CompanyMapping()
+        public QrCodeFingerprintMapping()
         {
             Id(model => model.Id, mapper =>
             {
                 mapper.Column("Id");
                 mapper.Generator(Generators.EnhancedTable);
             });
-            Property(model => model.Name, mapper => mapper.Column("Name"));
-            Property(model => model.Website, mapper => mapper.Column("Website"));
+            Property(model => model.Value, mapper => mapper.Column("Value"));
         }
     }
 }

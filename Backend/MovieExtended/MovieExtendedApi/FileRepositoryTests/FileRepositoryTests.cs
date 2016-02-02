@@ -1,5 +1,5 @@
 ﻿using Domain.Models;
-using Extended_Movie.Visitor_Repository;
+using Domain.Models.Entities;
 using Infrastructure.VisitorRepository;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -28,9 +28,9 @@ namespace FileRepositoryTests
             var saveFile = new File(10,"d",FileType.Track);
             provider.OpenSession();
             
-                var fileRepository = new FileRepository(provider);
-                fileRepository.SaveFileData(saveFile);
-                var test = fileRepository.GetFileData(10);
+            var fileRepository = new FileRepository(provider);
+            fileRepository.SaveFileData(saveFile);
+            var test = fileRepository.GetFileData(10);
             
         }
     }

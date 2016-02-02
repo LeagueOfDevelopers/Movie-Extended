@@ -110,6 +110,7 @@
     <Compile Include="Controllers\AndroidClient\SessionController.cs" />
     <Compile Include="Controllers\FileController.cs" />
     <Compile Include="Controllers\WebClient\CinemaController.cs" />
+    <Compile Include="Controllers\WebClient\QrCodeController.cs" />
     <Compile Include="Controllers\WebClient\CompanyController.cs" />
     <Compile Include="Controllers\WebClient\LanguageController.cs" />
     <Compile Include="Controllers\WebClient\MovieController.cs" />

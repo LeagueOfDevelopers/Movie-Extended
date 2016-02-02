@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Domain.Models;
+using Domain.Models.Entities;
 using Domain.VisitorRepository;
 using NHibernate;
 using NHibernate.Linq;
@@ -11,7 +12,6 @@ namespace Infrastructure.VisitorRepository
 {
     public class CinemaRepository : ICinemaRepository
     {
-
         private readonly SessionProvider _provider ;
 
         public CinemaRepository(SessionProvider provider)

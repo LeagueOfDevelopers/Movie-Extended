@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Domain.Models
+namespace Domain.Models.Entities
 {
     public class Session
     {
@@ -18,6 +14,7 @@ namespace Domain.Models
         public Guid MovieId { get; private set; }
         public SessionState SessionState { get; set; }
     }
+    
     public enum SessionState
     {
         Ready,

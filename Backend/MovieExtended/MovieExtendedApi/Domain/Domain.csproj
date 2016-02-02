@@ -53,15 +53,15 @@
     <Compile Include="Mappings\FileMapping.cs" />
     <Compile Include="Mappings\LanguageMapping.cs" />
     <Compile Include="Mappings\MovieMapping.cs" />
+    <Compile Include="Mappings\QrCodeFingerprintMapping.cs" />
     <Compile Include="Models\Constants.cs" />
     <Compile Include="Models\Entities\Cinema.cs" />
-    <Compile Include="Models\CodeGenerator.cs" />
-    <Compile Include="Models\ICodeGenerator.cs" />
+    <Compile Include="Models\Entities\QrCodeFingerprint.cs" />
+    <Compile Include="Models\QrCodeGenerator.cs" />
+    <Compile Include="Models\IQrCodeGenerator.cs" />
     <Compile Include="Models\Token.cs" />
-    <Compile Include="Models\TokenGenerator.cs" />
     <Compile Include="Models\Entities\Company.cs" />
     <Compile Include="Models\Entities\File.cs" />
-    <Compile Include="Models\ITokenGenerator.cs" />
     <Compile Include="Models\Entities\Language.cs" />
     <Compile Include="Models\Entities\Movie.cs" />
     <Compile Include="Models\Entities\Session.cs" />
@@ -72,6 +72,7 @@
     <Compile Include="VisitorRepository\IFileRepository.cs" />
     <Compile Include="VisitorRepository\ILanguageRepository.cs" />
     <Compile Include="VisitorRepository\IMovieRepository.cs" />
+    <Compile Include="VisitorRepository\IQrCodeRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -7,9 +7,9 @@ using System.Net.Http.Headers;
 using System.Web;
 using System.Web.Http;
 using Domain.Models;
+using Domain.Models.Entities;
 using Domain.VisitorRepository;
-using Extended_Movie.Visitor_Repository;
-using File = Domain.Models.File;
+using File = Domain.Models.Entities.File;
 using NHibernate;
 
 

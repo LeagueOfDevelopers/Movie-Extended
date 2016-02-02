@@ -14,21 +14,6 @@ C:\Users\дшшр\Documents\MovieExtended\Movie-Extended\Backend\MovieExtended\M
 C:\Users\дшшр\Documents\MovieExtended\Movie-Extended\Backend\MovieExtended\MovieExtendedApi\FileRepositoryTests\obj\Debug\FileRepositoryTests.dll
 C:\Users\дшшр\Documents\MovieExtended\Movie-Extended\Backend\MovieExtended\MovieExtendedApi\FileRepositoryTests\obj\Debug\FileRepositoryTests.pdb
 C:\Users\дшшр\Documents\MovieExtended\Movie-Extended\Backend\MovieExtended\MovieExtendedApi\FileRepositoryTests\bin\Debug\Journalist.LanguageExtensions.dll
-C:\AndroidNew\Projects\Movie-Extended\Backend\MovieExtended\MovieExtendedApi\FileRepositoryTests\bin\Debug\FileRepositoryTests.dll
-C:\AndroidNew\Projects\Movie-Extended\Backend\MovieExtended\MovieExtendedApi\FileRepositoryTests\bin\Debug\FileRepositoryTests.pdb
-C:\AndroidNew\Projects\Movie-Extended\Backend\MovieExtended\MovieExtendedApi\FileRepositoryTests\bin\Debug\Domain.dll
-C:\AndroidNew\Projects\Movie-Extended\Backend\MovieExtended\MovieExtendedApi\FileRepositoryTests\bin\Debug\Iesi.Collections.dll
-C:\AndroidNew\Projects\Movie-Extended\Backend\MovieExtended\MovieExtendedApi\FileRepositoryTests\bin\Debug\Infrastructure.dll
-C:\AndroidNew\Projects\Movie-Extended\Backend\MovieExtended\MovieExtendedApi\FileRepositoryTests\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
-C:\AndroidNew\Projects\Movie-Extended\Backend\MovieExtended\MovieExtendedApi\FileRepositoryTests\bin\Debug\NHibernate.dll
-C:\AndroidNew\Projects\Movie-Extended\Backend\MovieExtended\MovieExtendedApi\FileRepositoryTests\bin\Debug\Journalist.LanguageExtensions.dll
-C:\AndroidNew\Projects\Movie-Extended\Backend\MovieExtended\MovieExtendedApi\FileRepositoryTests\bin\Debug\Domain.pdb
-C:\AndroidNew\Projects\Movie-Extended\Backend\MovieExtended\MovieExtendedApi\FileRepositoryTests\bin\Debug\Infrastructure.pdb
-C:\AndroidNew\Projects\Movie-Extended\Backend\MovieExtended\MovieExtendedApi\FileRepositoryTests\bin\Debug\Iesi.Collections.xml
-C:\AndroidNew\Projects\Movie-Extended\Backend\MovieExtended\MovieExtendedApi\FileRepositoryTests\bin\Debug\NHibernate.xml
-C:\AndroidNew\Projects\Movie-Extended\Backend\MovieExtended\MovieExtendedApi\FileRepositoryTests\obj\Debug\FileRepositoryTests.csprojResolveAssemblyReference.cache
-C:\AndroidNew\Projects\Movie-Extended\Backend\MovieExtended\MovieExtendedApi\FileRepositoryTests\obj\Debug\FileRepositoryTests.dll
-C:\AndroidNew\Projects\Movie-Extended\Backend\MovieExtended\MovieExtendedApi\FileRepositoryTests\obj\Debug\FileRepositoryTests.pdb
 C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\FileRepositoryTests\obj\Debug\FileRepositoryTests.dll
 C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\FileRepositoryTests\obj\Debug\FileRepositoryTests.pdb
 C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\FileRepositoryTests\bin\Debug\FileRepositoryTests.dll
@@ -44,4 +29,22 @@ C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\FileRepositoryTest
 C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\FileRepositoryTests\bin\Debug\Iesi.Collections.xml
 C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\FileRepositoryTests\bin\Debug\NHibernate.xml
 C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\FileRepositoryTests\bin\Debug\ru\Microsoft.VisualStudio.QualityTools.UnitTestFramework.resources.dll
+<<<<<<< HEAD
 C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\FileRepositoryTests\obj\Debug\FileRepositoryTests.csprojResolveAssemblyReference.cache
+=======
+C:\AndroidNew\Projects\Movie-Extended\Backend\MovieExtended\MovieExtendedApi\FileRepositoryTests\bin\Debug\FileRepositoryTests.dll
+C:\AndroidNew\Projects\Movie-Extended\Backend\MovieExtended\MovieExtendedApi\FileRepositoryTests\bin\Debug\FileRepositoryTests.pdb
+C:\AndroidNew\Projects\Movie-Extended\Backend\MovieExtended\MovieExtendedApi\FileRepositoryTests\bin\Debug\Domain.dll
+C:\AndroidNew\Projects\Movie-Extended\Backend\MovieExtended\MovieExtendedApi\FileRepositoryTests\bin\Debug\Iesi.Collections.dll
+C:\AndroidNew\Projects\Movie-Extended\Backend\MovieExtended\MovieExtendedApi\FileRepositoryTests\bin\Debug\Infrastructure.dll
+C:\AndroidNew\Projects\Movie-Extended\Backend\MovieExtended\MovieExtendedApi\FileRepositoryTests\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+C:\AndroidNew\Projects\Movie-Extended\Backend\MovieExtended\MovieExtendedApi\FileRepositoryTests\bin\Debug\NHibernate.dll
+C:\AndroidNew\Projects\Movie-Extended\Backend\MovieExtended\MovieExtendedApi\FileRepositoryTests\bin\Debug\Journalist.LanguageExtensions.dll
+C:\AndroidNew\Projects\Movie-Extended\Backend\MovieExtended\MovieExtendedApi\FileRepositoryTests\bin\Debug\Domain.pdb
+C:\AndroidNew\Projects\Movie-Extended\Backend\MovieExtended\MovieExtendedApi\FileRepositoryTests\bin\Debug\Infrastructure.pdb
+C:\AndroidNew\Projects\Movie-Extended\Backend\MovieExtended\MovieExtendedApi\FileRepositoryTests\bin\Debug\Iesi.Collections.xml
+C:\AndroidNew\Projects\Movie-Extended\Backend\MovieExtended\MovieExtendedApi\FileRepositoryTests\bin\Debug\NHibernate.xml
+C:\AndroidNew\Projects\Movie-Extended\Backend\MovieExtended\MovieExtendedApi\FileRepositoryTests\obj\Debug\FileRepositoryTests.csprojResolveAssemblyReference.cache
+C:\AndroidNew\Projects\Movie-Extended\Backend\MovieExtended\MovieExtendedApi\FileRepositoryTests\obj\Debug\FileRepositoryTests.dll
+C:\AndroidNew\Projects\Movie-Extended\Backend\MovieExtended\MovieExtendedApi\FileRepositoryTests\obj\Debug\FileRepositoryTests.pdb
+>>>>>>> 566bebc4e1865e7985c5d96196ac5f08fffd4932

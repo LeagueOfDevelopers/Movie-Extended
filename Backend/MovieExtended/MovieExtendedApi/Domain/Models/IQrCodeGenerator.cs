@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Domain.Models
 {
-    interface ICodeGenerator
+    public interface IQrCodeGenerator
     {
-        string Generate(Token token);
+        string Generate(int movieId, int companyId);
     }
 }

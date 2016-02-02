@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Domain.Models;
-using Extended_Movie.Visitor_Repository;
+using Domain.Models.Entities;
 using Infrastructure.VisitorRepository;
 
 namespace UnitTestProject1
@@ -13,7 +13,6 @@ namespace UnitTestProject1
         [TestMethod]
         public void SaveCinema()
         {
-            
             var cinemaName = "name";
             var cinemaAddress = "address";
             var companyId = 342;
@@ -21,9 +20,8 @@ namespace UnitTestProject1
             var provider = new SessionProvider();
             provider.OpenSession();
            
-                var cinemaRepository = new CinemaRepository(provider);
-                cinemaRepository.SaveCinemaData(cinema);
-            
+            var cinemaRepository = new CinemaRepository(provider);
+            cinemaRepository.SaveCinemaData(cinema);
         }
 
         [TestMethod]
@@ -32,18 +30,13 @@ namespace UnitTestProject1
             var provider = new SessionProvider();
             provider.OpenSession();
             
-                var cinemaRepository = new CinemaRepository(provider);
-                var allCinemas = cinemaRepository.GetAllCinemas();
-               
-            
+            var cinemaRepository = new CinemaRepository(provider);
+            var allCinemas = cinemaRepository.GetAllCinemas();
         }
-
-       
-
+        
         [TestMethod]
         public void GetCinemaByCinemaId()
         {
-            
             var cinemaName = "name1";
             var cinemaAddress = "address";
             var companyId = 232;
@@ -51,17 +44,14 @@ namespace UnitTestProject1
             var provider = new SessionProvider();
             provider.OpenSession();
             
-                var cinemaRepository = new CinemaRepository(provider);
-                cinemaRepository.SaveCinemaData(cinema);
-                var test =cinemaRepository.GetCinemaByCinemaId(232);
-            
-
+            var cinemaRepository = new CinemaRepository(provider);
+            cinemaRepository.SaveCinemaData(cinema);
+            var test =cinemaRepository.GetCinemaByCinemaId(232);
         }
 
         [TestMethod]
         public void GetCinemaByCompanyId()
         {
-            
             var cinemaName = "name1";
             var cinemaAddress = "address";
             var companyId = 89;
@@ -69,12 +59,9 @@ namespace UnitTestProject1
             var provider = new SessionProvider();
             provider.OpenSession();
             
-                var cinemaRepository = new CinemaRepository(provider);
-                cinemaRepository.SaveCinemaData(cinema);
-                var test =cinemaRepository.GetCinemaByCompanyId(89);
-               
-            
-
+            var cinemaRepository = new CinemaRepository(provider);
+            cinemaRepository.SaveCinemaData(cinema);
+            var test =cinemaRepository.GetCinemaByCompanyId(89);
         }
     }
 }

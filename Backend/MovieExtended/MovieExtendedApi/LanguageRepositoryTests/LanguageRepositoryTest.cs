@@ -1,6 +1,6 @@
 ﻿using System;
 using Domain.Models;
-using Extended_Movie.Visitor_Repository;
+using Domain.Models.Entities;
 using Infrastructure.VisitorRepository;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -12,8 +12,7 @@ namespace LanguageRepositoryTests
     {
         [TestMethod]
         public void SaveLanguage()
-        {
-            
+        {   
             var languageName = "name";
             var movieId = 7;
             var trackfieldId = 7;
@@ -22,9 +21,8 @@ namespace LanguageRepositoryTests
             
             provider.OpenSession();
            
-                var languageRepository = new LanguageRepository(provider);
-                languageRepository.SaveLanguage(language);
-            
+            var languageRepository = new LanguageRepository(provider);
+            languageRepository.SaveLanguage(language);
         }
 
         [TestMethod]
@@ -38,8 +36,8 @@ namespace LanguageRepositoryTests
             var provider = new SessionProvider();
             provider.OpenSession();
            
-                var languageRepository = new LanguageRepository(provider);
-                var allLanguages = languageRepository.GetAllLanguages();
+            var languageRepository = new LanguageRepository(provider);
+            var allLanguages = languageRepository.GetAllLanguages();
             
         }
 
@@ -49,17 +47,15 @@ namespace LanguageRepositoryTests
             var provider = new SessionProvider();
 
             provider.OpenSession();
-
-           
-                var languageRepository = new LanguageRepository(provider);
-                var languageByName = languageRepository.GetLanguageByName("name");
+            
+            var languageRepository = new LanguageRepository(provider);
+            var languageByName = languageRepository.GetLanguageByName("name");
             
         }
 
         [TestMethod]
         public void GetLanguageMovieid()
         {
-            
             var languageName = "name";
             var movieId = 8;
             var trackfieldId = 8;
@@ -67,8 +63,8 @@ namespace LanguageRepositoryTests
             var provider = new SessionProvider();
             provider.OpenSession();
            
-                var languageRepository = new LanguageRepository(provider);
-                var allLanguages = languageRepository.GetAllLanguages();
+            var languageRepository = new LanguageRepository(provider);
+            var allLanguages = languageRepository.GetAllLanguages();
             
         }
     }
