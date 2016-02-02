@@ -20,7 +20,6 @@ namespace FrontendService
             container.Register<IFileRepository>(() => container.GetInstance<FileRepository>(), Lifestyle.Singleton);
             container.Register<ICinemaRepository>(() => container.GetInstance<CinemaRepository>(), Lifestyle.Singleton);
             container.Register<IQrCodeRepository>(() => container.GetInstance<QrCodeRepository>(), Lifestyle.Singleton);
-            container.Register<ICodeGenerator>(() => container.GetInstance<CodeGenerator>(),Lifestyle.Singleton);
             container.Register<IQrCodeGenerator>(()=>container.GetInstance<QrCodeGenerator>(),Lifestyle.Singleton);
             
             container.RegisterWebApiControllers(GlobalConfiguration.Configuration);
