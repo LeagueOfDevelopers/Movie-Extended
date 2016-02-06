@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Net;
+using System.Net.Cache;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Web;
@@ -45,21 +46,21 @@ namespace FrontendService.Controllers
             }
         }
 
-        [Route("api/Files/NewTrack/{fileId}")]
+        [Route("api/myfileupload/{fileId}")]
         [HttpPost]
-        public void DownLoadFileToDataBase(HttpPostedFileBase fileUpload, int fileId)
+        public string MyFileUpload(int fileId)
         {
-
-            if (fileUpload != null)
+            var request = HttpContext.Current.Request;
+            string directory = "C:/filesaudio";
+            System.IO.Directory.CreateDirectory(directory);
+            var filePath = String.Format("C:/filesaudio/{0}.mp3",fileId);
+            using (var fs = new System.IO.FileStream(filePath, System.IO.FileMode.Create))
             {
-                var directory = @"C:\files\";
-                var uploadedFile = new File( directory + fileUpload.FileName, FileType.Track);
-                fileRepository.SaveFileData(uploadedFile);
-                //var fileExt = System.IO.Path.GetExtension(fileUpload.FileName).Substring(1);
-                var fileName = Path.GetFileName(fileUpload.FileName);
-
-                fileUpload.SaveAs(Path.Combine(directory, fileName));
+                request.InputStream.CopyTo(fs);
+                fs.Flush();
+                //request.GetBufferedInputStream().CopyToAsync(fs);
             }
+            return "uploaded";
         }
 
         [Route("api/Files/Delete/{fileId}")]
@@ -69,6 +70,8 @@ namespace FrontendService.Controllers
             fileRepository.DeleteFileByFileId(fileId);
         }
 
+
+        
         [Route("api/Files/All")]
         [HttpGet]
         public IEnumerable<File> GettAllFiles()
