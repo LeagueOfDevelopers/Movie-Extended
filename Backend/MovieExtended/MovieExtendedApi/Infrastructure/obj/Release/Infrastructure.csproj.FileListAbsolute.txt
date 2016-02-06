@@ -1,0 +1,12 @@
+C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\Infrastructure\bin\Release\Infrastructure.dll
+C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\Infrastructure\bin\Release\Infrastructure.pdb
+C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\Infrastructure\bin\Release\Domain.dll
+C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\Infrastructure\bin\Release\Iesi.Collections.dll
+C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\Infrastructure\bin\Release\Journalist.LanguageExtensions.dll
+C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\Infrastructure\bin\Release\NHibernate.dll
+C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\Infrastructure\bin\Release\Domain.pdb
+C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\Infrastructure\bin\Release\Iesi.Collections.xml
+C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\Infrastructure\bin\Release\NHibernate.xml
+C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\Infrastructure\obj\Release\Infrastructure.csprojResolveAssemblyReference.cache
+C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\Infrastructure\obj\Release\Infrastructure.dll
+C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\Infrastructure\obj\Release\Infrastructure.pdb

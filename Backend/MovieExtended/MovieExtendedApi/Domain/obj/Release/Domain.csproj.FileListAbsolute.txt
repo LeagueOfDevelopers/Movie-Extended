@@ -1,0 +1,9 @@
+C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\Domain\bin\Release\Domain.dll
+C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\Domain\bin\Release\Domain.pdb
+C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\Domain\bin\Release\Iesi.Collections.dll
+C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\Domain\bin\Release\NHibernate.dll
+C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\Domain\bin\Release\Iesi.Collections.xml
+C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\Domain\bin\Release\NHibernate.xml
+C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\Domain\obj\Release\Domain.csprojResolveAssemblyReference.cache
+C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\Domain\obj\Release\Domain.dll
+C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\Domain\obj\Release\Domain.pdb
