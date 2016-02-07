@@ -22,7 +22,7 @@ namespace Infrastructure.VisitorRepository
         public SessionProvider()
         {
             var configuration = new Configuration();
-            configuration.Configure(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "hibernate.cfg.xml"));
+            configuration.Configure();
             var modelMapper = new ModelMapper();
             modelMapper.AddMapping<CinemaMapping>();
             modelMapper.AddMapping<CompanyMapping>();
