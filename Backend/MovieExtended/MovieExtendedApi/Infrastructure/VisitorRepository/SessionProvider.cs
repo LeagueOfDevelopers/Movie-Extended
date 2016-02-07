@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using Domain.Mappings;
 using Domain.Models.Entities;
 using NHibernate;
@@ -21,7 +22,7 @@ namespace Infrastructure.VisitorRepository
         public SessionProvider()
         {
             var configuration = new Configuration();
-            configuration.Configure();
+            configuration.Configure(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "hibernate.cfg.xml"));
             var modelMapper = new ModelMapper();
             modelMapper.AddMapping<CinemaMapping>();
             modelMapper.AddMapping<CompanyMapping>();

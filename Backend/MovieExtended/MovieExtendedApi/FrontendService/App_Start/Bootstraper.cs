@@ -1,10 +1,10 @@
-﻿using System.CodeDom.Compiler;
-using System.Web.Http;
+﻿using System.Web.Http;
 using Domain.VisitorRepository;
-using Infrastructure.VisitorRepository;
 using SimpleInjector;
 using SimpleInjector.Integration.WebApi;
 using Domain.Models;
+using Infrastructure.VisitorRepository;
+
 namespace FrontendService
 {
     public class Bootstraper

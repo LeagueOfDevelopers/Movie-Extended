@@ -44,3 +44,9 @@ C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\FrontendService\bi
 C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\FrontendService\obj\Release\FrontendService.csprojResolveAssemblyReference.cache
 C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\FrontendService\obj\Release\FrontendService.dll
 C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\FrontendService\obj\Release\FrontendService.pdb
+C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\FrontendService\bin\Microsoft.Azure.AppService.ApiApps.Service.dll
+C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\FrontendService\bin\Microsoft.Web.Infrastructure.dll
+C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\FrontendService\bin\Swashbuckle.Core.dll
+C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\FrontendService\bin\System.IdentityModel.Tokens.Jwt.dll
+C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\FrontendService\bin\WebActivatorEx.dll
+C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\FrontendService\bin\System.IdentityModel.Tokens.Jwt.xml

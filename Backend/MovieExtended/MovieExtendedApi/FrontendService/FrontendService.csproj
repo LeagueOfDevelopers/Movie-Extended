@@ -144,6 +144,7 @@
     <Content Include="packages.config" />
     <Content Include="Metadata\deploymentTemplates\apiappconfig.azureresource.json" />
     <Content Include="apiapp.json" />
+    <None Include="Properties\PublishProfiles\movieextended1 - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\WebApiMovieExtendedApp - Web Deploy.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -161,7 +162,7 @@
       <Name>Domain</Name>
     </ProjectReference>
     <ProjectReference Include="..\Infrastructure\Infrastructure.csproj">
-      <Project>{71E5540E-78F5-4433-8BC9-BE5CFE3F99DE}</Project>
+      <Project>{71e5540e-78f5-4433-8bc9-be5cfe3f99de}</Project>
       <Name>Infrastructure</Name>
     </ProjectReference>
   </ItemGroup>
