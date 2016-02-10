@@ -48,5 +48,12 @@ namespace FrontendService.Controllers.WebClient
 
         }
 
+        [Route("api/Languages/MovieId/{movieId}")]
+        [HttpGet]
+        public IEnumerable<Language> GetLanguagesByMovieId(int movieId)
+        {
+            return _languageRepository.GetLanguagesByMovieId(movieId);
+        } 
+
     }
 }

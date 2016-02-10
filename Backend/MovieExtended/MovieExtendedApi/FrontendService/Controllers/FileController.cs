@@ -39,7 +39,7 @@ namespace FrontendService.Controllers
             else
             {
                 var result = new HttpResponseMessage(HttpStatusCode.OK);
-                var stream = new FileStream(returnFile.FilePath, FileMode.Open);
+                var stream = new FileStream(HttpContext.Current.Server.MapPath(returnFile.FilePath), FileMode.Open);
                 result.Content = new StreamContent(stream);
                 result.Content.Headers.ContentType = new MediaTypeHeaderValue("application/octet-stream");
                 return result;
@@ -51,9 +51,10 @@ namespace FrontendService.Controllers
         public string MyFileUpload(int fileId)
         {
             var request = HttpContext.Current.Request;
-            string directory = "C:/filesaudio";
+            string directory = HttpContext.Current.Server.MapPath("~/AudioTrack");
+            
             System.IO.Directory.CreateDirectory(directory);
-            var filePath = String.Format("C:/filesaudio/{0}.mp3",fileId);
+            var filePath = HttpContext.Current.Server.MapPath(String.Format("~/AudioTrack/{0}.mp3",fileId));
             using (var fs = new System.IO.FileStream(filePath, System.IO.FileMode.Create))
             {
                 request.InputStream.CopyTo(fs);
