@@ -1,12 +1,10 @@
 package com.lod.movie_extended.ui.qrCodeReader;
 
-import android.content.Intent;
 import android.view.View;
 
 import com.google.zxing.Result;
 import com.lod.movie_extended.data.DataManager;
 import com.lod.movie_extended.ui.base.BasePresenter;
-import com.lod.movie_extended.ui.filmPreparation.FilmPreparationActivity;
 
 import javax.inject.Inject;
 

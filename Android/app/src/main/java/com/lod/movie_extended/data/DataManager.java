@@ -3,6 +3,8 @@ package com.lod.movie_extended.data;
 import com.lod.movie_extended.data.local.DataBaseHelper;
 import com.lod.movie_extended.data.local.PreferencesHelper;
 import com.lod.movie_extended.data.model.Session;
+import com.lod.movie_extended.data.model.Token;
+import com.lod.movie_extended.data.remote.Server;
 import com.lod.movie_extended.data.remote.ServerHelper;
 import com.lod.movie_extended.injection.scope.PerApplication;
 
@@ -20,12 +22,23 @@ public class DataManager {
     private final ServerHelper serverHelper;
     private final DataBaseHelper dataBaseHelper;
     private PreferencesHelper preferencesHelper;
+    private Server server;
 
     @Inject
-    public DataManager(ServerHelper serverHelper, DataBaseHelper dataBaseHelper, PreferencesHelper preferencesHelper) {
+    public DataManager(ServerHelper serverHelper, DataBaseHelper dataBaseHelper, PreferencesHelper preferencesHelper,
+                       Server server) {
         this.serverHelper = serverHelper;
         this.dataBaseHelper = dataBaseHelper;
         this.preferencesHelper = preferencesHelper;
+        this.server = server;
+    }
+
+    public Observable<Token> getToken(String qrCode) {
+        return server.getToken(qrCode).map(tokenValue -> {
+            Token token = new Token(tokenValue);
+            dataBaseHelper.saveToken(token);
+            return token;
+        });
     }
 
     public Observable<Session> loadSession(String code) {
@@ -34,7 +47,6 @@ public class DataManager {
             return session;
         });
     }
-
 
     public Session getSession() {
         return dataBaseHelper.getSession();

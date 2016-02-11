@@ -11,7 +11,7 @@ import java.util.ArrayList;
 /**
  * Created by Жамбыл on 09.01.2016.
  */
-public class LanguagesPresenter extends BasePresenter<LanguagesMvp> {
+public class LanguagesPresenter extends BasePresenter<LanguagesMvpView> {
 
     private DataManager dataManager;
     private Bus events;

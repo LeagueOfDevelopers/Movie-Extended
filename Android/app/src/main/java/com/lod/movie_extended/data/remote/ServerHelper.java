@@ -12,11 +12,19 @@ import java.util.ArrayList;
 
 import rx.Observable;
 import rx.Subscriber;
+import rx.schedulers.Schedulers;
+import timber.log.Timber;
 
 /**
  * Created by Жамбыл on 09.01.2016.
  */
 public class ServerHelper {
+
+    Server server;
+
+    public ServerHelper() {
+        server = Server.Creator.newService();
+    }
 
     public Observable<Session> loadSession(String code) {
         return Observable.create(new Observable.OnSubscribe<Session>() {

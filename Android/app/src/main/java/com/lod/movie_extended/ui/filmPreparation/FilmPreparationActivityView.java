@@ -22,7 +22,7 @@ import com.lod.movie_extended.ui.base.ComponentCreator;
 import com.lod.movie_extended.ui.base.ComponentGetter;
 import com.lod.movie_extended.ui.base.Presenter;
 import com.lod.movie_extended.ui.film.FilmActivity;
-import com.lod.movie_extended.ui.languages.LanguagesFragment;
+import com.lod.movie_extended.ui.languages.LanguagesFragmentView;
 import com.lod.movie_extended.ui.remainigTime.RemainingTimeFragment;
 import com.squareup.otto.Bus;
 import com.squareup.otto.Subscribe;
@@ -36,8 +36,8 @@ import timber.log.Timber;
 /**
  * Created by Жамбыл on 09.01.2016.
  */
-public class FilmPreparationActivity extends InjectActivityBase
-        implements FilmPreparationMvp, ComponentCreator<FilmPreparationComponent>, ComponentGetter<FilmPreparationComponent> {
+public class FilmPreparationActivityView extends InjectActivityBase
+        implements FilmPreparationMvpView, ComponentCreator<FilmPreparationComponent>, ComponentGetter<FilmPreparationComponent> {
 
     private static final int LAYOUT = R.layout.activity_film_preparation;
 
@@ -65,6 +65,7 @@ public class FilmPreparationActivity extends InjectActivityBase
         initToolbar();
         isRunning = true;
         presenter.loadSession();
+        presenter.getToken("qwe");
     }
 
     @Override
@@ -131,7 +132,7 @@ public class FilmPreparationActivity extends InjectActivityBase
     @Override
     public void setLanguagesToRecyclerView() {
         setViewsVisible();
-        setFilmFragment(LanguagesFragment.getNewInstance(),false,false);
+        setFilmFragment(LanguagesFragmentView.getNewInstance(),false,false);
     }
 
     private void setFilmFragment(Fragment fragment, boolean addToBackStack, boolean popBackStack) {

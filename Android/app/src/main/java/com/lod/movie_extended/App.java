@@ -29,7 +29,7 @@ public class App extends Application {
 
         if (BuildConfig.DEBUG) {
             Timber.plant(new Logger());
-            Fabric.with(this, new Crashlytics());
+            //Fabric.with(this, new Crashlytics());
         }
     }
 

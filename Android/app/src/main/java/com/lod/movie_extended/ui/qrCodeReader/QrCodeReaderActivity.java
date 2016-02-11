@@ -9,7 +9,7 @@ import com.lod.movie_extended.injection.component.activity.DaggerQrCodeReaderCom
 import com.lod.movie_extended.injection.component.activity.QrCodeReaderComponent;
 import com.lod.movie_extended.injection.module.activity.QrCodeReaderModule;
 import com.lod.movie_extended.ui.base.ComponentCreator;
-import com.lod.movie_extended.ui.filmPreparation.FilmPreparationActivity;
+import com.lod.movie_extended.ui.filmPreparation.FilmPreparationActivityView;
 
 import javax.inject.Inject;
 
@@ -57,8 +57,8 @@ public class QrCodeReaderActivity extends AppCompatActivity
 
     @Override
     public void startFilmPreparationActivity() {
-        Timber.v("starting FilmPreparationActivity");
-        startActivity(new Intent(this,FilmPreparationActivity.class));
+        Timber.v("starting FilmPreparationActivityView");
+        startActivity(new Intent(this,FilmPreparationActivityView.class));
         finish();
     }
 

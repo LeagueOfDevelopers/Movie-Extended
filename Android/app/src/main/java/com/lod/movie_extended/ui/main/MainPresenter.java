@@ -10,8 +10,11 @@ import javax.inject.Inject;
  */
 public class MainPresenter extends BasePresenter<MainMvpView> {
 
-    @Inject
     DataManager dataManager;
+
+    public MainPresenter(DataManager dataManager) {
+        this.dataManager = dataManager;
+    }
 
     @Override
     public void attachView(MainMvpView mvpView) {

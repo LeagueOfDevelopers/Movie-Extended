@@ -3,7 +3,7 @@ package com.lod.movie_extended.injection.component.fragment;
 import com.lod.movie_extended.injection.component.activity.FilmPreparationComponent;
 import com.lod.movie_extended.injection.module.fragment.LanguagesModule;
 import com.lod.movie_extended.injection.scope.PerFragment;
-import com.lod.movie_extended.ui.languages.LanguagesFragment;
+import com.lod.movie_extended.ui.languages.LanguagesFragmentView;
 
 import dagger.Component;
 
@@ -14,5 +14,5 @@ import dagger.Component;
 @Component(dependencies = FilmPreparationComponent.class, modules = LanguagesModule.class)
 public interface LanguagesFragmentComponent {
 
-    void inject(LanguagesFragment languagesFragment);
+    void inject(LanguagesFragmentView languagesFragment);
 }

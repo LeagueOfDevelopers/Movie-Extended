@@ -29,7 +29,7 @@ import butterknife.ButterKnife;
 /**
  * Created by Жамбыл on 09.01.2016.
  */
-public class LanguagesFragment extends Fragment implements LanguagesMvp, ComponentCreator<LanguagesFragmentComponent>{
+public class LanguagesFragmentView extends Fragment implements LanguagesMvpView, ComponentCreator<LanguagesFragmentComponent>{
 
     private static final int LAYOUT = R.layout.fragment_languages;
 
@@ -54,8 +54,8 @@ public class LanguagesFragment extends Fragment implements LanguagesMvp, Compone
         filmPreparationComponent = componentGetter.getComponent();
     }
 
-    public static LanguagesFragment getNewInstance() {
-        LanguagesFragment instance = new LanguagesFragment();
+    public static LanguagesFragmentView getNewInstance() {
+        LanguagesFragmentView instance = new LanguagesFragmentView();
         Bundle bundle = new Bundle();
         instance.setArguments(bundle);
         return instance;

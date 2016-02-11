@@ -16,18 +16,15 @@ import android.os.IBinder;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.util.Log;
 import android.widget.RemoteViews;
 
 import com.lod.movie_extended.App;
 import com.lod.movie_extended.R;
 import com.lod.movie_extended.data.model.Player;
-import com.lod.movie_extended.ui.filmPreparation.FilmPreparationActivity;
+import com.lod.movie_extended.ui.filmPreparation.FilmPreparationActivityView;
 import com.lod.movie_extended.util.Constants;
 import com.lod.movie_extended.util.RemoteControlClientCompat;
 import com.lod.movie_extended.util.RemoteControlHelper;
-
-import java.util.concurrent.ExecutorService;
 
 import javax.inject.Inject;
 
@@ -227,7 +224,7 @@ public class PlayerNotificationService extends Service implements Player.Listene
     }
 
     private PendingIntent getMainPendingIntent() {
-        Intent intent = new Intent(this, FilmPreparationActivity.class);
+        Intent intent = new Intent(this, FilmPreparationActivityView.class);
         intent.setAction(Constants.ACTION.MAIN_ACTION);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         return PendingIntent.getActivity(this, 0, intent, 0);

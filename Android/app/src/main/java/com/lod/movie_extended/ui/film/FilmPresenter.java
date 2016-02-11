@@ -49,12 +49,11 @@ public class FilmPresenter extends BasePresenter<FilmMvpView> implements
     private Context context;
     Player player;
 
+    AudioCapabilitiesReceiver audioCapabilitiesReceiver;
     private long playerPosition;
 
     private static final CookieManager defaultCookieManager;
-
     private static final int MENU_GROUP_TRACKS = 1;
-
     private static final int ID_OFFSET = 2;
 
     static {
@@ -72,17 +71,23 @@ public class FilmPresenter extends BasePresenter<FilmMvpView> implements
             CookieHandler.setDefault(defaultCookieManager);
         }
 
-        AudioCapabilitiesReceiver audioCapabilitiesReceiver = new AudioCapabilitiesReceiver(context, this);
+        audioCapabilitiesReceiver = new AudioCapabilitiesReceiver(context, this);
         audioCapabilitiesReceiver.register();
     }
 
+    public void unregisterAudioCapabilitiesReceiver() {
+        audioCapabilitiesReceiver.unregister();
+    }
+
+    public void setAudioUrl(String audioUrl) {
+        App.get(context).setAudioUrl("http://stream-redirect.hktoolbar.com/radio-HTTP/cr2-hd.3gp/playlist.m3u8");
+    }
 
     public void startPlayerNotificationService() {
         Timber.v("starting PlayerNotificationService");
         startServiceWithAction(Constants.ACTION.START_FOREGROUND_ACTION);
         startServiceWithAction(Constants.ACTION.PLAY_OR_PAUSE);
     }
-
 
     private void startServiceWithAction(String toRightAction) {
         Intent serviceIntent = new Intent(context, PlayerNotificationService.class);

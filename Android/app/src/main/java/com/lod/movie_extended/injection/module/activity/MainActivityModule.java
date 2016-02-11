@@ -3,6 +3,7 @@ package com.lod.movie_extended.injection.module.activity;
 import android.app.Activity;
 import android.content.Context;
 
+import com.lod.movie_extended.data.DataManager;
 import com.lod.movie_extended.injection.context.ActivityContext;
 import com.lod.movie_extended.injection.scope.PerActivity;
 import com.lod.movie_extended.ui.main.MainPresenter;
@@ -35,7 +36,7 @@ public class MainActivityModule {
 
     @Provides
     @PerActivity
-    MainPresenter provideMainPresenter() {
-        return new MainPresenter();
+    MainPresenter provideMainPresenter(DataManager dataManager) {
+        return new MainPresenter(dataManager);
     }
 }

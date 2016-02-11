@@ -8,6 +8,7 @@ import android.media.AudioManager;
 
 import com.lod.movie_extended.data.local.DataBaseHelper;
 import com.lod.movie_extended.data.local.PreferencesHelper;
+import com.lod.movie_extended.data.remote.Server;
 import com.lod.movie_extended.data.remote.ServerHelper;
 import com.lod.movie_extended.injection.context.ApplicationContext;
 import com.lod.movie_extended.injection.scope.PerApplication;
@@ -62,9 +63,16 @@ public class ApplicationModule {
 
     @Provides
     @PerApplication
+    Server provideServer() {
+        return Server.Creator.newService();
+    }
+
+    @Provides
+    @PerApplication
     PreferencesHelper providePrefrencesHelper() {
         return new PreferencesHelper();
     }
+
 
     @Provides
     NotificationManager provideNotificationManager(

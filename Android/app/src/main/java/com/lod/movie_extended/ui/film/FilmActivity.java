@@ -60,7 +60,7 @@ public class FilmActivity extends InjectActivityBase implements FilmMvpView, Com
     @Override
     public void onCreate(Bundle savedInstanceState) {
         App.get(this).setAudioUrl("http://stream-redirect.hktoolbar.com/radio-HTTP/cr2-hd.3gp/playlist.m3u8");
-        super.onCreate  (savedInstanceState);
+        super.onCreate(savedInstanceState);
         Timber.v("onCreate" + presenter.hashCode());
 
         mediaController = new MediaController(this);
@@ -206,6 +206,7 @@ public class FilmActivity extends InjectActivityBase implements FilmMvpView, Com
         Timber.v("onDestroy");
         super.onDestroy();
         presenter.removeListener();
+        presenter.unregisterAudioCapabilitiesReceiver();
     }
 }
 

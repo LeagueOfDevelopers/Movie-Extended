@@ -10,6 +10,7 @@ import com.lod.movie_extended.R;
  * Created by Жамбыл on 10.01.2016.
  */
 public class Constants {
+
     public interface ACTION {
         String MAIN_ACTION = "com.lod.movie_extended.action.main";
         String INIT_ACTION = "com.lod.movie_extended.action.init";
