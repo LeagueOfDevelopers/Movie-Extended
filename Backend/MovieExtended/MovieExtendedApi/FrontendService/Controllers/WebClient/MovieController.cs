@@ -25,7 +25,8 @@ using Newtonsoft.Json;
         public void SaveMovie([FromBody] Movie newMovie)
         {
             _movieRepository.SaveMovie(newMovie);
-            }
+
+        }
 
         [Route("api/Movie/All")]
         [HttpGet]

@@ -53,6 +53,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="VisitorRepository\AndroidTokenRepository.cs" />
     <Compile Include="VisitorRepository\CinemaRepository.cs" />
     <Compile Include="VisitorRepository\CompanyRepository.cs" />
     <Compile Include="VisitorRepository\FileRepository.cs" />

@@ -48,6 +48,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Mappings\AndroidTokenMapping.cs" />
     <Compile Include="Mappings\CinemaMapping.cs" />
     <Compile Include="Mappings\CompanyMapping.cs" />
     <Compile Include="Mappings\FileMapping.cs" />
@@ -56,6 +57,7 @@
     <Compile Include="Mappings\QrCodeFingerprintMapping.cs" />
     <Compile Include="Models\Constants.cs" />
     <Compile Include="Models\Entities\Cinema.cs" />
+    <Compile Include="Models\Entities\AndroidToken.cs" />
     <Compile Include="Models\Entities\QrCodeFingerprint.cs" />
     <Compile Include="Models\QrCodeGenerator.cs" />
     <Compile Include="Models\IQrCodeGenerator.cs" />

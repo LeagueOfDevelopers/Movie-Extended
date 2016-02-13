@@ -18,7 +18,7 @@ namespace Domain.Mappings
             {
                 mapper.Generator(Generators.EnhancedTable);
             });
-            //Property(token => token.);
+            Property(token => token.qrCodeToken,mapper=> mapper.Column("Token"));
         }
     }
 }
