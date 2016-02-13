@@ -19,15 +19,13 @@ using Newtonsoft.Json;
         }
 
         
-        [Route("api/Movie/new/{json}")]
+        [Route("api/Movie/new")]
         [HttpPost]
 
-        public string SaveMovie(string json)
+        public void SaveMovie([FromBody] Movie newMovie)
         {
-            var newMovie = JsonConvert.DeserializeObject<Movie>(json);
             _movieRepository.SaveMovie(newMovie);
-            return "ok";
-        }
+            }
 
         [Route("api/Movie/All")]
         [HttpGet]

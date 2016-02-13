@@ -25,12 +25,11 @@ namespace FrontendService.Controllers.WebClient
             return _companyRepository.GetAllCompanies();
         }
 
-        [Route("api/Company/New/{json}")]
+        [Route("api/Company/New")]
         [HttpPost]
-        public void SaveNewCompany(string json)
+        public void SaveNewCompany([FromBody] Company company)
         {
-            var newCompany = JsonConvert.DeserializeObject<Company>(json);
-            _companyRepository.SaveCompany(newCompany);
+            _companyRepository.SaveCompany(company);
         }
 
         [Route("api/Company/Get/{companyId}")]

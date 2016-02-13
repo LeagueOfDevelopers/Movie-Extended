@@ -33,7 +33,7 @@ namespace Infrastructure.VisitorRepository
         public IEnumerable<Movie> GetMovieByCinemaId(int cinemaId)
         {
             var session = _provider.GetCurrentSession();
-            return session.Query<Movie>().Where(movie => movie.CinemaId == cinemaId);
+            return session.Query<Movie>().Where(movie => movie.Cinema.Id == cinemaId);
         }
 
         public void DeleteMovieByMovieId(int movieId)
@@ -46,7 +46,7 @@ namespace Infrastructure.VisitorRepository
         public void DeleteMovieByCinemaId(int cinemaId)
         {
             var session = _provider.GetCurrentSession();
-            var checkIfExists = session.Query<Movie>().Where(movie => movie.CinemaId == cinemaId);
+            var checkIfExists = session.Query<Movie>().Where(movie => movie.Cinema.Id == cinemaId);
             if (checkIfExists != null) session.Delete(checkIfExists);
         }
 

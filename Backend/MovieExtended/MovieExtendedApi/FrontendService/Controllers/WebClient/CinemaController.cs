@@ -26,12 +26,11 @@ namespace FrontendService.Controllers.WebClient
             return _cinemaRepository.GetAllCinemas();
         }
 
-        [Route("api/Cinema/New/{json}")]
+        [Route("api/Cinema/New")]
         [HttpPost]
-        public void SaveNewCinema(string json)
+        public void SaveNewCinema([FromBody] Cinema cinema)
         {
-            var newCinema = JsonConvert.DeserializeObject<Cinema>(json);
-            _cinemaRepository.SaveCinemaData(newCinema);
+            _cinemaRepository.SaveCinemaData(cinema);
         }
 
         [Route("api/Cinema/GetByCinemaId/{cinemaId}")]

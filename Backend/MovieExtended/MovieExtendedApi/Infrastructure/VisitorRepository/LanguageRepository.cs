@@ -37,7 +37,7 @@ namespace Infrastructure.VisitorRepository
         public IEnumerable<Language> GetLanguagesByMovieId(int movieId)
         {
             var session = _provider.GetCurrentSession();
-            return session.Query<Language>().Where(language => language.MovieId == movieId);
+            return session.Query<Language>().Where(language => language.Movie.Id == movieId);
         }
 
         public void DeleteLanguageByLanguageId(int languageID)
@@ -50,7 +50,7 @@ namespace Infrastructure.VisitorRepository
         public void DeleteLanguageByMovieId(int movieId)
         {
             var session = _provider.GetCurrentSession();
-            var checkIfExists = session.Query<Language>().Where(language => language.MovieId == movieId);
+            var checkIfExists = session.Query<Language>().Where(language => language.Movie.Id == movieId);
             if (checkIfExists != null) session.Delete(checkIfExists);   
         }
 

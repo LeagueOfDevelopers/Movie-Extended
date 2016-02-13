@@ -39,11 +39,10 @@ namespace FrontendService.Controllers.WebClient
            return _languageRepository.GetAllLanguages();
         }
 
-        [Route("api/Languages/New/{Json}")]
+        [Route("api/Languages/New")]
         [HttpPost]
-        public void SaveNewLanguageToDataBase(string json)
+        public void SaveNewLanguageToDataBase([FromBody] Language newLanguage)
         {
-            var newLanguage = JsonConvert.DeserializeObject<Language>(json);
             _languageRepository.SaveLanguage(newLanguage);
 
         }

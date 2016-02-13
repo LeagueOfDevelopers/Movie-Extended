@@ -2,19 +2,19 @@
 {
     public class Language
     {
-        public Language(int id, string name, int movieId, int trackFileId)
+        public Language(int id, string name, Movie movie, File trackFile)
         {
             Id = id;
             Name = name;
-            MovieId = movieId;
-            TrackFileId = trackFileId;
+            Movie = movie;
+            TrackFile = trackFile;
         }
 
-        public Language(string name, int movieId, int trackFileId)
+        public Language(string name, Movie movie, File trackFile)
         {
             Name = name;
-            MovieId = movieId;
-            TrackFileId = trackFileId;
+            Movie = movie;
+            TrackFile = trackFile;
         }
 
         protected Language() { }
@@ -23,8 +23,8 @@
 
         public virtual string Name { get; protected set; }
 
-        public virtual int MovieId { get; set; }
+        public virtual Movie Movie { get; set; }
 
-        public virtual int TrackFileId { get; set; }
+        public virtual File TrackFile { get; set; }
     }
 }

@@ -8,9 +8,9 @@ namespace Domain.VisitorRepository
     {
         IEnumerable<Cinema> GetAllCinemas();
         void SaveCinemaData(Cinema cinema);
-        IEnumerable<Cinema> GetCinemaByCompanyId(int companyId);
+        IEnumerable<Cinema> GetCinemaByCompanyId(int company);
         void DeleteCinemaByCinemaId(int cinemaId);
-        void DeleteCinemaByCompanyId(int companyId);
+        void DeleteCinemaByCompanyId(int company);
         Cinema GetCinemaByCinemaId(int cinemaId);
        void UpdateCinema(string jsonForUpdate);
     }

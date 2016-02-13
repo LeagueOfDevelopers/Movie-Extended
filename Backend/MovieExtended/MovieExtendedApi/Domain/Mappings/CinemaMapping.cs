@@ -17,9 +17,10 @@ namespace Domain.Mappings
             });
             Property(model => model.Name, mapper => mapper.Column("Name"));
             Property(model => model.Address, mapper => mapper.Column("Address"));
-            Property(model => model.CompanyId, mapper =>
+            ManyToOne(model => model.Company, mapper =>
             {
-                mapper.Column("CompanyId");
+                mapper.Column("Company");
+                
             });
         }
     }
