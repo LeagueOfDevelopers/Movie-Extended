@@ -13,7 +13,7 @@ namespace Domain.Models.Entities
             this.Id = Id;
             this.qrCodeToken = qrCodeToken;
         }
-
+        
         public AndroidToken()
         {
             qrCodeToken = Guid.NewGuid();

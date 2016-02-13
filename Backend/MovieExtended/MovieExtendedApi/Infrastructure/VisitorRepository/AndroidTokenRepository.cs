@@ -23,5 +23,13 @@ namespace Infrastructure.VisitorRepository
 
         }
 
+       public void CreateNewToken()
+       {
+           var session = _provider.GetCurrentSession();
+           var token = new AndroidToken();
+           session.BeginTransaction();
+           session.Save(token);
+           session.Transaction.Commit();
+       }
    }
 }
