@@ -3,23 +3,29 @@ using System;
 using System.Net;
 using System.Web.Http;
 using Domain.Models.Entities;
+using Domain.VisitorRepository;
 
 namespace FrontendService.Controllers.AndroidClient
 {
     public class SessionController : ApiController 
     {
         private readonly SessionKeeper _keeper;
-        public SessionController()
+        private readonly IAndroidTokenRepository _androidTokenRepository;
+
+        public SessionController(IAndroidTokenRepository androidTokenRepository)
         {
             _keeper = new SessionKeeper();
+            _androidTokenRepository = androidTokenRepository;
         }
 
         [Route("api/Session/Login/{qr}")]
-        [HttpGet]
-        public Guid Login(string qr)
+        [HttpPost]
+        public Guid Login(Guid qr)
         {
-            var sessionId =  Guid.NewGuid();
-            //_keeper.CreateSession(sessionId);
+            if (_androidTokenRepository.CheckToken(qr))
+            {
+                
+            }
             return sessionId;
         }
 

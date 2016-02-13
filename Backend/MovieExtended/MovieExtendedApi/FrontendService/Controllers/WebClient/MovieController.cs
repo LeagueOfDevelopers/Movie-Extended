@@ -12,6 +12,7 @@ using Newtonsoft.Json;
     public class MovieController : ApiController
     {
         private readonly IMovieRepository _movieRepository;
+        //private readonly 
 
         public MovieController(IMovieRepository movieRepository)
         {

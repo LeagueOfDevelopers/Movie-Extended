@@ -26,5 +26,7 @@
         public virtual string Name { get; protected set; }
 
         public virtual Cinema Cinema { get; protected set; }
+
+
     }
 }

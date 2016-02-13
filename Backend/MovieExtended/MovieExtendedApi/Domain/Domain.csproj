@@ -69,6 +69,7 @@
     <Compile Include="Models\Entities\Session.cs" />
     <Compile Include="Models\SessionKeeper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="VisitorRepository\IAndroidTokenRepository.cs" />
     <Compile Include="VisitorRepository\ICinemaRepository.cs" />
     <Compile Include="VisitorRepository\ICompanyRepository.cs" />
     <Compile Include="VisitorRepository\IFileRepository.cs" />
