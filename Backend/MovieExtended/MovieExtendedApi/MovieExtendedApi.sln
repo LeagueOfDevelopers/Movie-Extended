@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FrontendService", "FrontendService\FrontendService.csproj", "{DEE3CAE6-6B6D-4502-BFE8-A68A892C9C94}"
 EndProject
@@ -18,8 +18,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LanguageRepositoryTests", "LanguageRepositoryTests\LanguageRepositoryTests.csproj", "{7DDF98B8-DB6A-4DC5-B9EF-6B45CED58EDB}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompanyRepositoryTests", "CompanyRepositoryTests\CompanyRepositoryTests.csproj", "{D451C662-0078-4698-AC43-8B21DD892BCB}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileRepositoryTests", "FileRepositoryTests\FileRepositoryTests.csproj", "{E1999006-67F3-48C1-9E41-1F5C1F67D605}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -55,10 +53,6 @@ Global
 		{D451C662-0078-4698-AC43-8B21DD892BCB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D451C662-0078-4698-AC43-8B21DD892BCB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D451C662-0078-4698-AC43-8B21DD892BCB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E1999006-67F3-48C1-9E41-1F5C1F67D605}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E1999006-67F3-48C1-9E41-1F5C1F67D605}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E1999006-67F3-48C1-9E41-1F5C1F67D605}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E1999006-67F3-48C1-9E41-1F5C1F67D605}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -68,6 +62,5 @@ Global
 		{84AA737E-1B21-4EA7-A89B-FF2C67E685A8} = {7427DAE7-74CA-495A-98F3-9AABA8648BED}
 		{7DDF98B8-DB6A-4DC5-B9EF-6B45CED58EDB} = {7427DAE7-74CA-495A-98F3-9AABA8648BED}
 		{D451C662-0078-4698-AC43-8B21DD892BCB} = {7427DAE7-74CA-495A-98F3-9AABA8648BED}
-		{E1999006-67F3-48C1-9E41-1F5C1F67D605} = {7427DAE7-74CA-495A-98F3-9AABA8648BED}
 	EndGlobalSection
 EndGlobal

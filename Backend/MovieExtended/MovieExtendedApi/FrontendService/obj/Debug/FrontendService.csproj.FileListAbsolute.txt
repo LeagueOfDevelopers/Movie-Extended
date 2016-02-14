@@ -90,6 +90,7 @@ C:\AndroidNew\Projects\Movie-Extended\Backend\MovieExtended\MovieExtendedApi\Fro
 C:\AndroidNew\Projects\Movie-Extended\Backend\MovieExtended\MovieExtendedApi\FrontendService\obj\Debug\FrontendService.csprojResolveAssemblyReference.cache
 C:\AndroidNew\Projects\Movie-Extended\Backend\MovieExtended\MovieExtendedApi\FrontendService\obj\Debug\FrontendService.dll
 C:\AndroidNew\Projects\Movie-Extended\Backend\MovieExtended\MovieExtendedApi\FrontendService\obj\Debug\FrontendService.pdb
+C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\FrontendService\obj\Debug\FrontendService.csprojResolveAssemblyReference.cache
 C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\FrontendService\bin\roslyn\csc.exe
 C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\FrontendService\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
 C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\FrontendService\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
@@ -139,6 +140,5 @@ C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\FrontendService\bi
 C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\FrontendService\bin\ru\System.Net.Http.Formatting.resources.dll
 C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\FrontendService\bin\ru\System.Web.Http.resources.dll
 C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\FrontendService\bin\ru\System.Web.Http.WebHost.resources.dll
-C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\FrontendService\obj\Debug\FrontendService.csprojResolveAssemblyReference.cache
 C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\FrontendService\obj\Debug\FrontendService.dll
 C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\FrontendService\obj\Debug\FrontendService.pdb

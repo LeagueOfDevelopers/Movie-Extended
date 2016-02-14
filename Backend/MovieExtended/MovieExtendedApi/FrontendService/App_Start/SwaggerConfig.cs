@@ -1,5 +1,7 @@
 using System.Web.Http;
 using FrontendService;
+using Swashbuckle.Application;
+using WebActivatorEx;
 
 [assembly: PreApplicationStartMethod(typeof(SwaggerConfig), "Register")]
 

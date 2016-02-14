@@ -45,9 +45,36 @@ namespace FrontendService.Controllers
             responseMessage.Content = new StreamContent(stream);
             responseMessage.Content.Headers.ContentType = new MediaTypeHeaderValue("application/octet-stream");
             responseMessage.Headers.Add("content-disposition", "attachment; filename=" + returnFile.Id +".mp3");
+            
 
             return responseMessage;
         }
+
+        [Route("api/File/Get/{fileId}")]
+        [HttpGet]
+        public HttpResponseMessage DownLoadFileFromDataBase1(int fileId)
+        {
+           
+
+            var returnFile = _fileRepository.GetFileData(fileId);
+            if (returnFile == null)
+            {
+                return new HttpResponseMessage(HttpStatusCode.NoContent);
+            }
+
+            var responseMessage = new HttpResponseMessage(HttpStatusCode.OK);
+            var stream = new FileStream(HttpContext.Current.Server.MapPath(returnFile.FilePath), FileMode.Open);
+            responseMessage.Content = new StreamContent(stream);
+            responseMessage.Content.Headers.ContentType = new MediaTypeHeaderValue("application/octet-stream");
+            //responseMessage.Headers.Add("content-disposition", "attachment; filename=" + returnFile.Id + ".mp3");
+            responseMessage.Content.Headers.ContentDisposition = new ContentDispositionHeaderValue("attachment")
+            {
+                FileName = String.Format("{0}.mp3",fileId)
+            };
+
+            return responseMessage;
+        }
+
 
         [Route("api/myfileupload/{fileId}")]
         [HttpPost]
