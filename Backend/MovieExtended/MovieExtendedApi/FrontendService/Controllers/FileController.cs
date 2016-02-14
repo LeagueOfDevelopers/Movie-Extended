@@ -40,12 +40,13 @@ namespace FrontendService.Controllers
                 return new HttpResponseMessage(HttpStatusCode.NoContent);
             }
 
-            var result = new HttpResponseMessage(HttpStatusCode.OK);
+            var responseMessage = new HttpResponseMessage(HttpStatusCode.OK);
             var stream = new FileStream(HttpContext.Current.Server.MapPath(returnFile.FilePath), FileMode.Open);
-            result.Content = new StreamContent(stream);
-            result.Content.Headers.ContentType = new MediaTypeHeaderValue("application/octet-stream");
+            responseMessage.Content = new StreamContent(stream);
+            responseMessage.Content.Headers.ContentType = new MediaTypeHeaderValue("application/octet-stream");
+            responseMessage.Headers.Add("content-disposition", "attachment; filename=" + returnFile.Id +".mp3");
 
-            return result;
+            return responseMessage;
         }
 
         [Route("api/myfileupload/{fileId}")]
