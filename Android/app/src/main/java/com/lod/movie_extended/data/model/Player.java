@@ -26,6 +26,7 @@ import com.google.android.exoplayer.upstream.BandwidthMeter;
 import com.google.android.exoplayer.upstream.DefaultBandwidthMeter;
 import com.google.android.exoplayer.util.DebugTextViewHelper;
 import com.google.android.exoplayer.util.PlayerControl;
+import com.lod.movie_extended.util.ExtractorRendererBuilder;
 import com.lod.movie_extended.util.HlsRendererBuilder;
 
 import java.io.IOException;
@@ -117,7 +118,7 @@ public class Player implements ExoPlayer.Listener, ChunkSampleSource.EventListen
     private static final int RENDERER_BUILDING_STATE_BUILDING = 2;
     private static final int RENDERER_BUILDING_STATE_BUILT = 3;
 
-    private final HlsRendererBuilder rendererBuilder;
+    private final ExtractorRendererBuilder rendererBuilder;
     private final ExoPlayer player;
     private final PlayerControl playerControl;
     private final Handler mainHandler;
@@ -138,7 +139,7 @@ public class Player implements ExoPlayer.Listener, ChunkSampleSource.EventListen
     private InternalErrorListener internalErrorListener;
     private InfoListener infoListener;
 
-    public Player(HlsRendererBuilder rendererBuilder) {
+    public Player(ExtractorRendererBuilder rendererBuilder) {
         this.rendererBuilder = rendererBuilder;
         player = ExoPlayer.Factory.newInstance(RENDERER_COUNT, 1000, 5000);
         player.addListener(this);

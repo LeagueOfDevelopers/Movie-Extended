@@ -22,7 +22,6 @@ public class Logger extends Timber.DebugTree {
             } else {
                 Log.println(priority, finalTag, message);
             }
-            return;
         }
     }
 }

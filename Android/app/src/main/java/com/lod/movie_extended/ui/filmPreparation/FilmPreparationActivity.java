@@ -39,7 +39,7 @@ import timber.log.Timber;
 public class FilmPreparationActivity extends InjectActivityBase
         implements FilmPreparationMvpView, ComponentCreator<FilmPreparationComponent>, ComponentGetter<FilmPreparationComponent> {
 
-    private static final int LAYOUT = R.layout.activity_film_preparation;
+    private static final int LAYOUT = R.layout.activity_film_preparation_2;
 
     @Bind(R.id.progressBar)
     ProgressBar progressBar;
@@ -62,7 +62,7 @@ public class FilmPreparationActivity extends InjectActivityBase
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Timber.v("onCreate");
-        initToolbar();
+//        initToolbar();
         isRunning = true;
         presenter.loadSession();
         presenter.getToken("qwe");
@@ -103,6 +103,7 @@ public class FilmPreparationActivity extends InjectActivityBase
         Timber.v("starting FilmActivity");
         startActivity(new Intent(this, FilmActivity.class));
     }
+
     @Override
     public FilmPreparationComponent getComponent() {
         return component;
@@ -158,12 +159,12 @@ public class FilmPreparationActivity extends InjectActivityBase
 
     private void setViewsVisible() {
         Timber.v("setting views visible");
-        if(toolbar == null) {
-            throw new NullPointerException("toolbar is null");
-        }
+//        if(toolbar == null) {
+//            throw new NullPointerException("toolbar is null");
+//        }
 
         progressBar.setVisibility(View.INVISIBLE);
-        toolbar.setTitle(presenter.getFilmName());
+//        toolbar.setTitle(presenter.getFilmName());
     }
 
     private void initToolbar() {

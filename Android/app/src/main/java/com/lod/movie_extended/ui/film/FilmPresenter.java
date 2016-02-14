@@ -141,37 +141,37 @@ public class FilmPresenter extends BasePresenter<FilmMvpView> implements
 
     @Override
     public void onRendererInitializationError(Exception e) {
-
+        Timber.e(e.getMessage());
     }
 
     @Override
     public void onAudioTrackInitializationError(AudioTrack.InitializationException e) {
-
+        Timber.e(e.getMessage());
     }
 
     @Override
     public void onAudioTrackWriteError(AudioTrack.WriteException e) {
-
+        Timber.e(e.getMessage());
     }
 
     @Override
     public void onDecoderInitializationError(MediaCodecTrackRenderer.DecoderInitializationException e) {
-
+        Timber.e(e.getMessage());
     }
 
     @Override
     public void onCryptoError(MediaCodec.CryptoException e) {
-
+        Timber.e(e.getMessage());
     }
 
     @Override
     public void onLoadError(int sourceId, IOException e) {
-
+        Timber.e("load error " + e.getMessage());
     }
 
     @Override
     public void onDrmSessionManagerError(Exception e) {
-
+        Timber.e(e.getMessage());
     }
 
     @Override
