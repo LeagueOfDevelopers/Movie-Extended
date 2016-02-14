@@ -1,4 +1,4 @@
-package com.lod.movie_extended.server;
+package server_tests.server;
 
 import com.lod.movie_extended.BuildConfig;
 import com.lod.movie_extended.data.remote.Server;

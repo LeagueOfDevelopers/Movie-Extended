@@ -8,6 +8,7 @@ import retrofit.GsonConverterFactory;
 import retrofit.Retrofit;
 import retrofit.RxJavaCallAdapterFactory;
 import retrofit.http.GET;
+import retrofit.http.Header;
 import retrofit.http.Path;
 import rx.Observable;
 
@@ -27,6 +28,9 @@ public interface Server {
     // film name, languages, photo url.
     @GET("session/{token}/info")
     Observable<String> getMovieLanguages(@Path("token") String tokenValue);
+
+    @GET("files/get/{fileId}")
+    Observable<Byte> getAudioFile(@Path("fileId") int fileId);
 
     class Creator {
         public static Server newService() {

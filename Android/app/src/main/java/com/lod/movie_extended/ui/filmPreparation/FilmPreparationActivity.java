@@ -36,7 +36,7 @@ import timber.log.Timber;
 /**
  * Created by Жамбыл on 09.01.2016.
  */
-public class FilmPreparationActivityView extends InjectActivityBase
+public class FilmPreparationActivity extends InjectActivityBase
         implements FilmPreparationMvpView, ComponentCreator<FilmPreparationComponent>, ComponentGetter<FilmPreparationComponent> {
 
     private static final int LAYOUT = R.layout.activity_film_preparation;
@@ -155,10 +155,10 @@ public class FilmPreparationActivityView extends InjectActivityBase
         }
 
     }
+
     private void setViewsVisible() {
         Timber.v("setting views visible");
         if(toolbar == null) {
-            Timber.e("toolbar is null");
             throw new NullPointerException("toolbar is null");
         }
 

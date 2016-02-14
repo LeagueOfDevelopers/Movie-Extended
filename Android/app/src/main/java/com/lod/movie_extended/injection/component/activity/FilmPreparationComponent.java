@@ -6,7 +6,7 @@ import com.lod.movie_extended.data.DataManager;
 import com.lod.movie_extended.injection.component.application.ApplicationComponent;
 import com.lod.movie_extended.injection.module.activity.FilmPreparationModule;
 import com.lod.movie_extended.injection.scope.PerActivity;
-import com.lod.movie_extended.ui.filmPreparation.FilmPreparationActivityView;
+import com.lod.movie_extended.ui.filmPreparation.FilmPreparationActivity;
 import com.squareup.otto.Bus;
 
 import dagger.Component;
@@ -22,5 +22,5 @@ public interface FilmPreparationComponent{
     DataManager getDataManager();
     Bus getBus();
 
-    void inject(FilmPreparationActivityView filmPreparationActivity);
+    void inject(FilmPreparationActivity filmPreparationActivity);
 }

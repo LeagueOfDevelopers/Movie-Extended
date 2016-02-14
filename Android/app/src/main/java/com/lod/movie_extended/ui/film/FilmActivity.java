@@ -59,7 +59,7 @@ public class FilmActivity extends InjectActivityBase implements FilmMvpView, Com
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        App.get(this).setAudioUrl("http://stream-redirect.hktoolbar.com/radio-HTTP/cr2-hd.3gp/playlist.m3u8");
+        App.get(this).setAudioUrl("http://movieextended1.azurewebsites.net/api/Files/Get/43");
         super.onCreate(savedInstanceState);
         Timber.v("onCreate" + presenter.hashCode());
 

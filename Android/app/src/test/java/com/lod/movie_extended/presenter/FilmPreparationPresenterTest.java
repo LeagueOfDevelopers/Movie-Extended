@@ -25,7 +25,6 @@ import static org.mockito.Mockito.verify;
 /**
  * Created by Жамбыл on 2/11/2016.
  */
-
 @RunWith(MockitoJUnitRunner.class)
 public class FilmPreparationPresenterTest {
 

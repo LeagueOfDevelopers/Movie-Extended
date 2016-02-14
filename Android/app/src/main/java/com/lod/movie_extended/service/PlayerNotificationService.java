@@ -20,8 +20,9 @@ import android.widget.RemoteViews;
 
 import com.lod.movie_extended.App;
 import com.lod.movie_extended.R;
+import com.lod.movie_extended.data.DataManager;
 import com.lod.movie_extended.data.model.Player;
-import com.lod.movie_extended.ui.filmPreparation.FilmPreparationActivityView;
+import com.lod.movie_extended.ui.filmPreparation.FilmPreparationActivity;
 import com.lod.movie_extended.util.Constants;
 import com.lod.movie_extended.util.RemoteControlClientCompat;
 import com.lod.movie_extended.util.RemoteControlHelper;
@@ -36,7 +37,6 @@ import timber.log.Timber;
 public class PlayerNotificationService extends Service implements Player.Listener {
 
     Notification notification;
-
     RemoteControlClientCompat remoteControlClientCompat;
 
     @Inject
@@ -50,6 +50,9 @@ public class PlayerNotificationService extends Service implements Player.Listene
 
     @Inject
     ComponentName mediaButtonReceiverComponent;
+
+    @Inject
+    DataManager dataManager;
 
     RemoteViews smallView, bigView;
 
@@ -212,9 +215,9 @@ public class PlayerNotificationService extends Service implements Player.Listene
         return view;
     }
     private void setTextViewText(RemoteViews view) {
-        view.setTextViewText(R.id.status_bar_track_name, "Song Title");
-        view.setTextViewText(R.id.status_bar_artist_name, "Artist Name");
-        view.setTextViewText(R.id.status_bar_album_name, "Album Name");
+        view.setTextViewText(R.id.status_bar_track_name, dataManager.getSession().getFilm().getName());
+//        view.setTextViewText(R.id.status_bar_artist_name, "Artist Name");
+//        view.setTextViewText(R.id.status_bar_album_name, "Album Name");
     }
 
     private void setOnPendingClickListeners(RemoteViews view) {
@@ -224,7 +227,7 @@ public class PlayerNotificationService extends Service implements Player.Listene
     }
 
     private PendingIntent getMainPendingIntent() {
-        Intent intent = new Intent(this, FilmPreparationActivityView.class);
+        Intent intent = new Intent(this, FilmPreparationActivity.class);
         intent.setAction(Constants.ACTION.MAIN_ACTION);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         return PendingIntent.getActivity(this, 0, intent, 0);

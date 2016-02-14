@@ -22,7 +22,7 @@
 
         <activity android:name=".ui.qrCodeReader.QrCodeReaderActivity"/>
 
-        <activity android:name=".ui.filmPreparation.FilmPreparationActivityView"/>
+        <activity android:name=".ui.filmPreparation.FilmPreparationActivity"/>
 
         <activity android:name=".ui.film.FilmActivity"/>
 
