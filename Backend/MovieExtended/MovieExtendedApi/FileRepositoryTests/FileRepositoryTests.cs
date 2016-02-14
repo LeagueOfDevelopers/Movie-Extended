@@ -1,5 +1,4 @@
-﻿using Domain.Models;
-using Domain.Models.Entities;
+﻿using Domain.Models.Entities;
 using Infrastructure.VisitorRepository;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 

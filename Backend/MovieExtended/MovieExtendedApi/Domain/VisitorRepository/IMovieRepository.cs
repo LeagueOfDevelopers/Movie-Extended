@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using Domain.Models;
 using Domain.Models.Entities;
 
 namespace Domain.VisitorRepository

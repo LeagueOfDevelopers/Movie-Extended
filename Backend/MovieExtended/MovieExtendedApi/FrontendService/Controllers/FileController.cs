@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Net;
-using System.Net.Cache;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Web;
@@ -11,7 +10,6 @@ using Domain.Models;
 using Domain.Models.Entities;
 using Domain.VisitorRepository;
 using File = Domain.Models.Entities.File;
-using NHibernate;
 
 
 namespace FrontendService.Controllers
@@ -31,25 +29,23 @@ namespace FrontendService.Controllers
         [HttpGet]
         public HttpResponseMessage DownLoadFileFromDataBase(int fileId,Guid sessionId)
         {
-            if (_keeper.CheckIfSessionExists(sessionId) && _keeper.GetSessionState(sessionId) == SessionState.Active)
+            if (!_keeper.CheckIfSessionExists(sessionId) || _keeper.GetSessionState(sessionId) !=                 SessionState.Active)
             {
-
-
-                var returnFile = _fileRepository.GetFileData(fileId);
-                if (returnFile == null)
-                {
-                    return new HttpResponseMessage(HttpStatusCode.NoContent);
-                }
-                else
-                {
-                    var result = new HttpResponseMessage(HttpStatusCode.OK);
-                    var stream = new FileStream(HttpContext.Current.Server.MapPath(returnFile.FilePath), FileMode.Open);
-                    result.Content = new StreamContent(stream);
-                    result.Content.Headers.ContentType = new MediaTypeHeaderValue("application/octet-stream");
-                    return result;
-                }
+                throw new HttpResponseException(HttpStatusCode.Unauthorized);
             }
-            else throw new HttpResponseException(HttpStatusCode.Unauthorized); 
+
+            var returnFile = _fileRepository.GetFileData(fileId);
+            if (returnFile == null)
+            {
+                return new HttpResponseMessage(HttpStatusCode.NoContent);
+            }
+
+            var result = new HttpResponseMessage(HttpStatusCode.OK);
+            var stream = new FileStream(HttpContext.Current.Server.MapPath(returnFile.FilePath), FileMode.Open);
+            result.Content = new StreamContent(stream);
+            result.Content.Headers.ContentType = new MediaTypeHeaderValue("application/octet-stream");
+
+            return result;
         }
 
         [Route("api/myfileupload/{fileId}")]
@@ -59,9 +55,9 @@ namespace FrontendService.Controllers
             var request = HttpContext.Current.Request;
             string directory = HttpContext.Current.Server.MapPath("~/AudioTrack");
             
-            System.IO.Directory.CreateDirectory(directory);
+            Directory.CreateDirectory(directory);
             var filePath = HttpContext.Current.Server.MapPath(String.Format("~/AudioTrack/{0}.mp3",fileId));
-            using (var fs = new System.IO.FileStream(filePath, System.IO.FileMode.Create))
+            using (var fs = new FileStream(filePath, FileMode.Create))
             {
                 request.InputStream.CopyTo(fs);
                 fs.Flush();
@@ -76,8 +72,6 @@ namespace FrontendService.Controllers
         {
             _fileRepository.DeleteFileByFileId(fileId);
         }
-
-
         
         [Route("api/Files/All")]
         [HttpGet]

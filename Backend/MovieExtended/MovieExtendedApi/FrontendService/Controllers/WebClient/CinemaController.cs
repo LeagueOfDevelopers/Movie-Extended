@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Web.Http;
-using System.Web.Routing;
-using Domain.Models;
 using Domain.Models.Entities;
 using Domain.VisitorRepository;
-using Infrastructure.VisitorRepository;
-using Newtonsoft.Json;
 
 namespace FrontendService.Controllers.WebClient
 {

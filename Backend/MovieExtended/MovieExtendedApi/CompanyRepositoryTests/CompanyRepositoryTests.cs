@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Security.Policy;
-using Domain.Models;
 using Domain.Models.Entities;
 using Infrastructure.VisitorRepository;
 using Microsoft.VisualStudio.TestTools.UnitTesting;

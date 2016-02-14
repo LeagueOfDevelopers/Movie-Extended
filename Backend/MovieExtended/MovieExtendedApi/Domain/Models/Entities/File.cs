@@ -13,9 +13,9 @@
         {
         }
 
-        public File(string FilePath, FileType fileType)
+        public File(string filePath, FileType fileType)
         {
-            this.FilePath = FilePath;
+            FilePath = filePath;
             FileType = fileType;
         }
 
@@ -25,6 +25,7 @@
 
         public virtual FileType FileType { get; protected set; }
     }
+
     public enum FileType
     {
         Track,

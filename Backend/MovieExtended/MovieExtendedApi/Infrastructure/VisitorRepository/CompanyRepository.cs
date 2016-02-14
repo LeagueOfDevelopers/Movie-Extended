@@ -1,9 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Domain.Models;
 using Domain.Models.Entities;
 using Domain.VisitorRepository;
-using NHibernate;
 using NHibernate.Linq;
 using Journalist;
 

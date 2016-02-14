@@ -1,7 +1,6 @@
 ﻿using Domain.Models;
 using System;
 using System.Net;
-using System.Web;
 using System.Web.Http;
 using Domain.Models.Entities;
 using Domain.VisitorRepository;
