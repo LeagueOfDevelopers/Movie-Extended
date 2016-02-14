@@ -11,7 +11,7 @@ namespace FileRepositoryTests
         [TestMethod]
         public void SaveFileData()
         {
-            var saveFile = new File(@"C:\Users\дшшр\Desktop\music\deathcore\test.mp3", FileType.Track);
+            var saveFile = new File(@"C:/filesaudio/77.mp3", FileType.Track);
             
             var provider = new SessionProvider();
             provider.OpenSession();

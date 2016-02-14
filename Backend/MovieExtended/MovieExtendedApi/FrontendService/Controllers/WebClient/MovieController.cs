@@ -12,21 +12,23 @@ using Newtonsoft.Json;
     public class MovieController : ApiController
     {
         private readonly IMovieRepository _movieRepository;
+        private readonly ISessionKeeper _keeper;
 
-        public MovieController(IMovieRepository movieRepository)
+        public MovieController(IMovieRepository movieRepository, ISessionKeeper keeper)
         {
             _movieRepository = movieRepository;
+            _keeper = keeper;
+
         }
 
         
-        [Route("api/Movie/new/{json}")]
+        [Route("api/Movie/new")]
         [HttpPost]
 
-        public string SaveMovie(string json)
+        public void SaveMovie([FromBody] Movie newMovie)
         {
-            var newMovie = JsonConvert.DeserializeObject<Movie>(json);
             _movieRepository.SaveMovie(newMovie);
-            return "ok";
+
         }
 
         [Route("api/Movie/All")]

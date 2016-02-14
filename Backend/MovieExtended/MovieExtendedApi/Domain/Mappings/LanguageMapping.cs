@@ -15,13 +15,15 @@ namespace Domain.Mappings
                 mapper.Generator(Generators.EnhancedTable);
             });
             Property(model => model.Name, mapper => mapper.Column("Name"));
-            Property(model => model.MovieId, mapper =>
+            ManyToOne(model => model.Movie, mapper =>
             {
-                mapper.Column("MovieId");
+                mapper.Column("Movie");
+                
             });
-            Property(model => model.TrackFileId, mapper =>
+            ManyToOne(model => model.TrackFile, mapper =>
             {
-                mapper.Column("TrackFileId");
+                mapper.Column("TrackFile");
+                
             });
         }
     }

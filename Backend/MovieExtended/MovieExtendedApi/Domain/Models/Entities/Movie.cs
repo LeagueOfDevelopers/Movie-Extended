@@ -1,18 +1,20 @@
-﻿namespace Domain.Models.Entities
+﻿using System;
+
+namespace Domain.Models.Entities
 {
     public class Movie
     {
-        public Movie(int id, string name, int cinemaId)
+        public Movie(int id, string name, Cinema cinema)
         {
             Id = id;
             Name = name;
-            CinemaId = cinemaId;
+            Cinema = cinema;
         }
 
-        public Movie(string name, int cinemaId)
+        public Movie(string name, Cinema cinema)
         {
             Name = name;
-            CinemaId = cinemaId;
+            Cinema = cinema;
         }
         
             
@@ -25,6 +27,8 @@
 
         public virtual string Name { get; protected set; }
 
-        public virtual int CinemaId { get; protected set; }
+        public virtual Cinema Cinema { get; protected set; }
+
+        public virtual Guid AndroidToken { get; protected set; }
     }
 }

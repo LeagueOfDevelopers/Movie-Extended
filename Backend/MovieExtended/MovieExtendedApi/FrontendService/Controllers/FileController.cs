@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Net;
+using System.Net.Cache;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Web;
@@ -17,63 +18,72 @@ namespace FrontendService.Controllers
 {
     public class FileController : ApiController
     {
-       // private readonly ISession session;
-        private IFileRepository fileRepository;
+        private readonly ISessionKeeper _keeper;
+        private readonly IFileRepository _fileRepository;
 
-        public FileController(IFileRepository fileRepository)
+        public FileController(IFileRepository fileRepository, ISessionKeeper keeper)
         {
-           // this.session = session;
-            this.fileRepository = fileRepository;
+            _keeper = keeper;
+            _fileRepository = fileRepository;
         }
 
-        [Route("api/Files/Get/{fileId}")]
+        [Route("api/Files/Get/{fileId}/Session/{sessionId}")]
         [HttpGet]
-        public HttpResponseMessage DownLoadFileFromDataBase(int fileId)
+        public HttpResponseMessage DownLoadFileFromDataBase(int fileId,Guid sessionId)
         {
-            var returnFile = fileRepository.GetFileData(fileId);
-            if (returnFile == null)
+            if (_keeper.CheckIfSessionExists(sessionId) && _keeper.GetSessionState(sessionId) == SessionState.Active)
             {
-                return new HttpResponseMessage(HttpStatusCode.NoContent);
+
+
+                var returnFile = _fileRepository.GetFileData(fileId);
+                if (returnFile == null)
+                {
+                    return new HttpResponseMessage(HttpStatusCode.NoContent);
+                }
+                else
+                {
+                    var result = new HttpResponseMessage(HttpStatusCode.OK);
+                    var stream = new FileStream(HttpContext.Current.Server.MapPath(returnFile.FilePath), FileMode.Open);
+                    result.Content = new StreamContent(stream);
+                    result.Content.Headers.ContentType = new MediaTypeHeaderValue("application/octet-stream");
+                    return result;
+                }
             }
-            else
-            {
-                var result = new HttpResponseMessage(HttpStatusCode.OK);
-                var stream = new FileStream(returnFile.FilePath, FileMode.Open);
-                result.Content = new StreamContent(stream);
-                result.Content.Headers.ContentType = new MediaTypeHeaderValue("application/octet-stream");
-                return result;
-            }
+            else throw new HttpResponseException(HttpStatusCode.Unauthorized); 
         }
 
-        [Route("api/Files/NewTrack/{fileId}")]
+        [Route("api/myfileupload/{fileId}")]
         [HttpPost]
-        public void DownLoadFileToDataBase(HttpPostedFileBase fileUpload, int fileId)
+        public string MyFileUpload(int fileId)
         {
-
-            if (fileUpload != null)
+            var request = HttpContext.Current.Request;
+            string directory = HttpContext.Current.Server.MapPath("~/AudioTrack");
+            
+            System.IO.Directory.CreateDirectory(directory);
+            var filePath = HttpContext.Current.Server.MapPath(String.Format("~/AudioTrack/{0}.mp3",fileId));
+            using (var fs = new System.IO.FileStream(filePath, System.IO.FileMode.Create))
             {
-                var directory = @"C:\files\";
-                var uploadedFile = new File( directory + fileUpload.FileName, FileType.Track);
-                fileRepository.SaveFileData(uploadedFile);
-                //var fileExt = System.IO.Path.GetExtension(fileUpload.FileName).Substring(1);
-                var fileName = Path.GetFileName(fileUpload.FileName);
-
-                fileUpload.SaveAs(Path.Combine(directory, fileName));
+                request.InputStream.CopyTo(fs);
+                fs.Flush();
+                //request.GetBufferedInputStream().CopyToAsync(fs);
             }
+            return "uploaded";
         }
 
         [Route("api/Files/Delete/{fileId}")]
         [HttpPost]
         public void DeleteFileByFileId(int fileId)
         {
-            fileRepository.DeleteFileByFileId(fileId);
+            _fileRepository.DeleteFileByFileId(fileId);
         }
 
+
+        
         [Route("api/Files/All")]
         [HttpGet]
         public IEnumerable<File> GettAllFiles()
         {
-           return fileRepository.GetAllFiles();
+           return _fileRepository.GetAllFiles();
         }  
     }
 }

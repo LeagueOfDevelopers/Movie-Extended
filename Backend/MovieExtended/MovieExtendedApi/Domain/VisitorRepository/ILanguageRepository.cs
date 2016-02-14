@@ -8,9 +8,9 @@ namespace Domain.VisitorRepository
     {
         IEnumerable<Language> GetAllLanguages();
         void SaveLanguage(Language language);
-        IEnumerable<Language> GetLanguagesByMovieId(int movieId);
+        IEnumerable<Language> GetLanguagesByMovieId(int movie);
         void DeleteLanguageByLanguageId(int languageID);
-        void DeleteLanguageByMovieId(int movieId);
+        void DeleteLanguageByMovieId(int movie);
         IEnumerable<Language> GetLanguageByName(string languageName);
         void UpdateLanguage(string jsonForUpdate);
     }

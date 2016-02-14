@@ -1,10 +1,10 @@
-﻿using System.CodeDom.Compiler;
-using System.Web.Http;
+﻿using System.Web.Http;
 using Domain.VisitorRepository;
-using Infrastructure.VisitorRepository;
 using SimpleInjector;
 using SimpleInjector.Integration.WebApi;
 using Domain.Models;
+using Infrastructure.VisitorRepository;
+
 namespace FrontendService
 {
     public class Bootstraper
@@ -21,7 +21,7 @@ namespace FrontendService
             container.Register<ICinemaRepository>(() => container.GetInstance<CinemaRepository>(), Lifestyle.Singleton);
             container.Register<IQrCodeRepository>(() => container.GetInstance<QrCodeRepository>(), Lifestyle.Singleton);
             container.Register<IQrCodeGenerator>(()=>container.GetInstance<QrCodeGenerator>(),Lifestyle.Singleton);
-            
+            container.Register<ISessionKeeper>(()=>container.GetInstance<SessionKeeper>(),Lifestyle.Singleton);
             container.RegisterWebApiControllers(GlobalConfiguration.Configuration);
             container.Verify();
             return container;

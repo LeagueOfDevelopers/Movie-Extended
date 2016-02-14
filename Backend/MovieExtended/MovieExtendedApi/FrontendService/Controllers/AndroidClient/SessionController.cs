@@ -1,43 +1,52 @@
 ﻿using Domain.Models;
 using System;
 using System.Net;
+using System.Web;
 using System.Web.Http;
 using Domain.Models.Entities;
+using Domain.VisitorRepository;
 
 namespace FrontendService.Controllers.AndroidClient
 {
     public class SessionController : ApiController 
     {
         private readonly SessionKeeper _keeper;
-        public SessionController()
+        private readonly IMovieRepository _movieRepository;
+
+        public SessionController(IMovieRepository movieRepository)
         {
             _keeper = new SessionKeeper();
+            _movieRepository = movieRepository;
         }
 
         [Route("api/Session/Login/{qr}")]
-        [HttpGet]
-        public Guid Login(string qr)
+        [HttpPost]
+        public Guid Login(Guid qr)
         {
-            var sessionId =  Guid.NewGuid();
-            //_keeper.CreateSession(sessionId);
-            return sessionId;
+            var necessaryMovie = _movieRepository.CheckAndroidToken(qr);
+            if (necessaryMovie !=null)
+            {
+                var newSession = new Session(Guid.NewGuid(),necessaryMovie.Id);
+                return _keeper.CreateSession(newSession);
+            }
+            else throw new HttpResponseException(HttpStatusCode.Unauthorized); ;
         }
 
-        [Route("api/Session/{sessionId}/StartTime")]
-        [HttpGet]
-        public string GetMovieStartTime(Guid sessionId)
-        {
-            if (!_keeper.CheckIfSessionExists(sessionId))
-            {
-                throw new HttpResponseException(HttpStatusCode.Unauthorized);
-            }
-            if (_keeper.GetSessionState(sessionId) != SessionState.Active)
-            {
-                throw new HttpResponseException(HttpStatusCode.NotAcceptable);
-            }
-            var datetime = _keeper.GetMovieStartTime(sessionId);
-            return ConvertToUnixTimestamp(datetime).ToString();
-        }
+        //[Route("api/Session/{sessionId}/StartTime")]
+        //[HttpGet]
+        //public string GetMovieStartTime(Guid sessionId)
+        //{
+        //    if (!_keeper.CheckIfSessionExists(sessionId))
+        //    {
+        //        throw new HttpResponseException(HttpStatusCode.Unauthorized);
+        //    }
+        //    if (_keeper.GetSessionState(sessionId) != SessionState.Active)
+        //    {
+        //        throw new HttpResponseException(HttpStatusCode.NotAcceptable);
+        //    }
+        //    var datetime = _keeper.GetMovieStartTime(sessionId);
+        //    return ConvertToUnixTimestamp(datetime).ToString();
+        //}
 
         private static double ConvertToUnixTimestamp(DateTime date)
         {

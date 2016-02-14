@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Net;
 using System.Web.Http;
 using Domain.Models;
 using Domain.Models.Entities;
@@ -12,10 +13,12 @@ namespace FrontendService.Controllers.WebClient
     public class LanguageController : ApiController
     {
         private readonly ILanguageRepository _languageRepository;
+        private readonly ISessionKeeper _keeper;
 
-        public LanguageController(ILanguageRepository languageRepository)
+        public LanguageController(ILanguageRepository languageRepository, ISessionKeeper keeper)
         {
             _languageRepository = languageRepository;
+            _keeper = keeper;
         }
 
         [Route("api/Languages/DeleteByMovie/{movieId}")]
@@ -39,14 +42,22 @@ namespace FrontendService.Controllers.WebClient
            return _languageRepository.GetAllLanguages();
         }
 
-        [Route("api/Languages/New/{Json}")]
+        [Route("api/Languages/New")]
         [HttpPost]
-        public void SaveNewLanguageToDataBase(string json)
+        public void SaveNewLanguageToDataBase([FromBody] Language newLanguage)
         {
-            var newLanguage = JsonConvert.DeserializeObject<Language>(json);
             _languageRepository.SaveLanguage(newLanguage);
 
         }
+
+        [Route("api/Languages/MovieId/{movieId}/Session/{sessionId}")]
+        [HttpGet]
+        public IEnumerable<Language> GetLanguagesByMovieId(int movieId,Guid sessionId)
+        {
+            if(_keeper.CheckIfSessionExists(sessionId)&& _keeper.GetSessionState(sessionId)==SessionState.Active)
+            return _languageRepository.GetLanguagesByMovieId(movieId);
+            else throw new HttpResponseException(HttpStatusCode.Unauthorized); 
+        } 
 
     }
 }

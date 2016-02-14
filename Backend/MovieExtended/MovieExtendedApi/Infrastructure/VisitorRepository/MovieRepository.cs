@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Domain.Models;
 using Domain.Models.Entities;
@@ -33,7 +34,7 @@ namespace Infrastructure.VisitorRepository
         public IEnumerable<Movie> GetMovieByCinemaId(int cinemaId)
         {
             var session = _provider.GetCurrentSession();
-            return session.Query<Movie>().Where(movie => movie.CinemaId == cinemaId);
+            return session.Query<Movie>().Where(movie => movie.Cinema.Id == cinemaId);
         }
 
         public void DeleteMovieByMovieId(int movieId)
@@ -46,7 +47,7 @@ namespace Infrastructure.VisitorRepository
         public void DeleteMovieByCinemaId(int cinemaId)
         {
             var session = _provider.GetCurrentSession();
-            var checkIfExists = session.Query<Movie>().Where(movie => movie.CinemaId == cinemaId);
+            var checkIfExists = session.Query<Movie>().Where(movie => movie.Cinema.Id == cinemaId);
             if (checkIfExists != null) session.Delete(checkIfExists);
         }
 
@@ -74,6 +75,12 @@ namespace Infrastructure.VisitorRepository
             var session = _provider.GetCurrentSession();
             var checkIfExists = session.Query<Movie>().SingleOrDefault(company => company.Id == movieId);
             return checkIfExists != null;
+        }
+
+        public Movie CheckAndroidToken(Guid token)
+        {
+            var session = _provider.GetCurrentSession();
+            return session.Query<Movie>().SingleOrDefault(movie => movie.AndroidToken==token );
         }
     }
 }

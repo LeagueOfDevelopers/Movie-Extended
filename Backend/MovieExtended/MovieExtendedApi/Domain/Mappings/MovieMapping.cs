@@ -15,7 +15,12 @@ namespace Domain.Mappings
                 mapper.Generator(Generators.EnhancedTable);
             });
             Property(model => model.Name, mapper => mapper.Column("Name"));
-            Property(model => model.CinemaId, mapper => mapper.Column("CinemaId"));
+            ManyToOne(model => model.Cinema, mapper =>
+            {
+                mapper.Column("CinemaId");
+                
+            });
+            Property(movie => movie.AndroidToken, mapper => mapper.Column("Token"));
         }
     }
 }

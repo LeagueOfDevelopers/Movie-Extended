@@ -37,7 +37,7 @@ namespace Infrastructure.VisitorRepository
         public IEnumerable<Cinema> GetCinemaByCompanyId(int companyId)
         {
             var session = _provider.GetCurrentSession();
-            var allcinemasById = session.Query<Cinema>().Where(cinema => cinema.CompanyId==companyId).AsEnumerable<Cinema>();
+            var allcinemasById = session.Query<Cinema>().Where(cinema => cinema.Company.Id==companyId).AsEnumerable<Cinema>();
             
             return allcinemasById;
         }
@@ -57,7 +57,7 @@ namespace Infrastructure.VisitorRepository
         public void DeleteCinemaByCompanyId(int companyId)
         {
             var session = _provider.GetCurrentSession();
-            var checkIfExists = session.Query<Cinema>().Where(cinema => cinema.CompanyId == companyId);
+            var checkIfExists = session.Query<Cinema>().Where(cinema => cinema.Company.Id == companyId);
             if (checkIfExists != null) session.Delete(checkIfExists);
         }
 

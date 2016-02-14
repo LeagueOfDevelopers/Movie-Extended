@@ -25,6 +25,17 @@ namespace CompanyRepositoryTests
                 
             
         }
+        [TestMethod]
+        public void SaveFileData()
+        {
+            var saveFile = new File(@"~/AudioTrack/77.mp3", FileType.Track);
+
+            var provider = new SessionProvider();
+            provider.OpenSession();
+
+            var fileRepository = new FileRepository(provider);
+            fileRepository.SaveFileData(saveFile);
+        }
     }
     }
 
