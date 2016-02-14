@@ -30,7 +30,6 @@ namespace Infrastructure.VisitorRepository
             modelMapper.AddMapping<LanguageMapping>();
             modelMapper.AddMapping<FileMapping>();
             modelMapper.AddMapping<QrCodeFingerprintMapping>();
-            modelMapper.AddMapping<AndroidTokenMapping>();
             configuration.AddDeserializedMapping(modelMapper.CompileMappingForAllExplicitlyAddedEntities(), null);
 
             _factory = configuration.BuildSessionFactory();

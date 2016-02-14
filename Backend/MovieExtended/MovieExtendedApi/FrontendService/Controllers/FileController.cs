@@ -18,32 +18,38 @@ namespace FrontendService.Controllers
 {
     public class FileController : ApiController
     {
-       // private readonly ISession session;
-        private IFileRepository fileRepository;
+        private readonly ISessionKeeper _keeper;
+        private readonly IFileRepository _fileRepository;
 
-        public FileController(IFileRepository fileRepository)
+        public FileController(IFileRepository fileRepository, ISessionKeeper keeper)
         {
-           // this.session = session;
-            this.fileRepository = fileRepository;
+            _keeper = keeper;
+            _fileRepository = fileRepository;
         }
 
-        [Route("api/Files/Get/{fileId}")]
+        [Route("api/Files/Get/{fileId}/Session/{sessionId}")]
         [HttpGet]
-        public HttpResponseMessage DownLoadFileFromDataBase(int fileId)
+        public HttpResponseMessage DownLoadFileFromDataBase(int fileId,Guid sessionId)
         {
-            var returnFile = fileRepository.GetFileData(fileId);
-            if (returnFile == null)
+            if (_keeper.CheckIfSessionExists(sessionId) && _keeper.GetSessionState(sessionId) == SessionState.Active)
             {
-                return new HttpResponseMessage(HttpStatusCode.NoContent);
+
+
+                var returnFile = _fileRepository.GetFileData(fileId);
+                if (returnFile == null)
+                {
+                    return new HttpResponseMessage(HttpStatusCode.NoContent);
+                }
+                else
+                {
+                    var result = new HttpResponseMessage(HttpStatusCode.OK);
+                    var stream = new FileStream(HttpContext.Current.Server.MapPath(returnFile.FilePath), FileMode.Open);
+                    result.Content = new StreamContent(stream);
+                    result.Content.Headers.ContentType = new MediaTypeHeaderValue("application/octet-stream");
+                    return result;
+                }
             }
-            else
-            {
-                var result = new HttpResponseMessage(HttpStatusCode.OK);
-                var stream = new FileStream(HttpContext.Current.Server.MapPath(returnFile.FilePath), FileMode.Open);
-                result.Content = new StreamContent(stream);
-                result.Content.Headers.ContentType = new MediaTypeHeaderValue("application/octet-stream");
-                return result;
-            }
+            else throw new HttpResponseException(HttpStatusCode.Unauthorized); 
         }
 
         [Route("api/myfileupload/{fileId}")]
@@ -68,7 +74,7 @@ namespace FrontendService.Controllers
         [HttpPost]
         public void DeleteFileByFileId(int fileId)
         {
-            fileRepository.DeleteFileByFileId(fileId);
+            _fileRepository.DeleteFileByFileId(fileId);
         }
 
 
@@ -77,7 +83,7 @@ namespace FrontendService.Controllers
         [HttpGet]
         public IEnumerable<File> GettAllFiles()
         {
-           return fileRepository.GetAllFiles();
+           return _fileRepository.GetAllFiles();
         }  
     }
 }

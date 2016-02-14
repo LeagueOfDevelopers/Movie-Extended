@@ -13,12 +13,9 @@ namespace FrontendService.Controllers.WebClient
     public class CinemaController:ApiController
     {
         private readonly ICinemaRepository _cinemaRepository;
-        private readonly IAndroidTokenRepository _androidTokenRepository;
-
-        public CinemaController(ICinemaRepository cinemaRepository,IAndroidTokenRepository androidTokenRepository)
+        public CinemaController(ICinemaRepository cinemaRepository)
         {
             _cinemaRepository = cinemaRepository;
-            _androidTokenRepository = androidTokenRepository;
         }
 
         [Route("api/Cinema/All")]
@@ -33,7 +30,6 @@ namespace FrontendService.Controllers.WebClient
         public void SaveNewCinema([FromBody] Cinema cinema)
         {
             _cinemaRepository.SaveCinemaData(cinema);
-            _androidTokenRepository.CreateNewToken();
         }
 
         [Route("api/Cinema/GetByCinemaId/{cinemaId}")]

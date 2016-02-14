@@ -1,4 +1,6 @@
-﻿namespace Domain.Models.Entities
+﻿using System;
+
+namespace Domain.Models.Entities
 {
     public class Movie
     {
@@ -27,6 +29,6 @@
 
         public virtual Cinema Cinema { get; protected set; }
 
-
+        public virtual Guid AndroidToken { get; protected set; }
     }
 }

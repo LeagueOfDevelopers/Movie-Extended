@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Domain.Models;
 using Domain.Models.Entities;
 
@@ -15,5 +16,6 @@ namespace Domain.VisitorRepository
        IEnumerable<Movie> GetMovieByMovieName(string movieName);
        void UpdateMovie(string jsonForUpdate);
        bool Exists(int movieId);
+       Movie CheckAndroidToken(Guid token);
     }
 }

@@ -21,7 +21,7 @@ namespace FrontendService
             container.Register<ICinemaRepository>(() => container.GetInstance<CinemaRepository>(), Lifestyle.Singleton);
             container.Register<IQrCodeRepository>(() => container.GetInstance<QrCodeRepository>(), Lifestyle.Singleton);
             container.Register<IQrCodeGenerator>(()=>container.GetInstance<QrCodeGenerator>(),Lifestyle.Singleton);
-            
+            container.Register<ISessionKeeper>(()=>container.GetInstance<SessionKeeper>(),Lifestyle.Singleton);
             container.RegisterWebApiControllers(GlobalConfiguration.Configuration);
             container.Verify();
             return container;

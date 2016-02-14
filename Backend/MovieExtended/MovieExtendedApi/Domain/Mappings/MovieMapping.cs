@@ -20,6 +20,7 @@ namespace Domain.Mappings
                 mapper.Column("CinemaId");
                 
             });
+            Property(movie => movie.AndroidToken, mapper => mapper.Column("Token"));
         }
     }
 }

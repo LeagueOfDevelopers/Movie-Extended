@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Domain.Models;
 using Domain.Models.Entities;
@@ -74,6 +75,12 @@ namespace Infrastructure.VisitorRepository
             var session = _provider.GetCurrentSession();
             var checkIfExists = session.Query<Movie>().SingleOrDefault(company => company.Id == movieId);
             return checkIfExists != null;
+        }
+
+        public Movie CheckAndroidToken(Guid token)
+        {
+            var session = _provider.GetCurrentSession();
+            return session.Query<Movie>().SingleOrDefault(movie => movie.AndroidToken==token );
         }
     }
 }
