@@ -4,6 +4,7 @@ using System.IO;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
 using Domain.Models;
@@ -52,9 +53,9 @@ namespace FrontendService.Controllers
 
         [Route("api/File/Get/{fileId}")]
         [HttpGet]
-        public HttpResponseMessage DownLoadFileFromDataBase1(int fileId)
+        public  HttpResponseMessage  DownLoadFileFromDataBase1(int fileId)
         {
-           
+            
 
             var returnFile = _fileRepository.GetFileData(fileId);
             if (returnFile == null)
@@ -63,10 +64,12 @@ namespace FrontendService.Controllers
             }
 
             var responseMessage = new HttpResponseMessage(HttpStatusCode.OK);
-            var stream = new FileStream(HttpContext.Current.Server.MapPath(returnFile.FilePath), FileMode.Open);
-            responseMessage.Content = new StreamContent(stream);
+            var stream =  new FileStream(HttpContext.Current.Server.MapPath(returnFile.FilePath), FileMode.Open  , FileAccess.Read);
+
+            responseMessage.Content =  new StreamContent(stream);
+            
+            
             responseMessage.Content.Headers.ContentType = new MediaTypeHeaderValue("application/octet-stream");
-            //responseMessage.Headers.Add("content-disposition", "attachment; filename=" + returnFile.Id + ".mp3");
             responseMessage.Content.Headers.ContentDisposition = new ContentDispositionHeaderValue("attachment")
             {
                 FileName = String.Format("{0}.mp3",fileId)
