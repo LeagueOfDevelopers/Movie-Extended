@@ -16,8 +16,6 @@ namespace Domain.Models.Entities
             Name = name;
             Cinema = cinema;
         }
-        
-            
 
         protected Movie()
         {
