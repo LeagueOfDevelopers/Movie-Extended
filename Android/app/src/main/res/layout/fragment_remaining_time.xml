@@ -29,11 +29,6 @@
         android:layout_height="wrap_content"
         tools:text="20 мин 15 сек"
         android:textSize="20sp"/>
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="New Button"
-        android:layout_gravity="center_horizontal" />
 
 
 </LinearLayout>

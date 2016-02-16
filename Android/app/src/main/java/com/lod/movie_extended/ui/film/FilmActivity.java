@@ -2,7 +2,13 @@ package com.lod.movie_extended.ui.film;
 
 import android.annotation.TargetApi;
 import android.content.Context;
+import android.os.Build;
 import android.os.Bundle;
+import android.transition.Slide;
+import android.transition.Transition;
+import android.transition.TransitionInflater;
+import android.transition.Visibility;
+import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -38,50 +44,33 @@ import timber.log.Timber;
 
 public class FilmActivity extends InjectActivityBase implements FilmMvpView, ComponentCreator<FilmComponent>{
 
-    private static final int LAYOUT = R.layout.activity_film;
-    private MediaController mediaController;
-
-    @Bind(R.id.controls_root)
-    View debugRootView;
-    @Bind(R.id.subtitles)
-    SubtitleLayout subtitleLayout;
-    @Bind(R.id.audio_controls)
-    Button audioButton;
-    @Bind(R.id.text_controls)
-    Button textButton;
-    @Bind(R.id.root)
-    View root;
+    private static final int LAYOUT = R.layout.player;
 
     @Inject
     FilmPresenter presenter;
 
-    private boolean enableBackgroundAudio;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         App.get(this).setAudioUrl("http://movieextended1.azurewebsites.net/api/file/get/43");
         super.onCreate(savedInstanceState);
+        setupWindowAnimations();
         Timber.v("onCreate" + presenter.hashCode());
+    }
 
-        mediaController = new MediaController(this);
-        mediaController.setAnchorView(root);
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+    private void setupWindowAnimations() {
+        Transition transition = buildEnterTransition();
 
-        root.setOnTouchListener((view, motionEvent) -> {
-            if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
-                toggleControlsVisibility();
-            } else if (motionEvent.getAction() == MotionEvent.ACTION_UP) {
-                view.performClick();
-            }
-            return true;
-        });
+        getWindow().setEnterTransition(transition);
+    }
 
-        root.setOnKeyListener((v, keyCode, event) -> {
-            if (keyCode == KeyEvent.KEYCODE_BACK || keyCode == KeyEvent.KEYCODE_ESCAPE
-                    || keyCode == KeyEvent.KEYCODE_MENU) {
-                return false;
-            }
-            return mediaController.dispatchKeyEvent(event);
-        });
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+    private Visibility buildEnterTransition() {
+        Slide enterTransition = new Slide();
+        enterTransition.setDuration(300);
+        enterTransition.setSlideEdge(Gravity.BOTTOM);
+        return enterTransition;
     }
 
     @Override
@@ -111,94 +100,14 @@ public class FilmActivity extends InjectActivityBase implements FilmMvpView, Com
     @Override
     public void onResume() {
         super.onResume();
-        configureSubtitleView();
 
         presenter.preparePlayer(true);
         presenter.startPlayerNotificationService();
     }
 
-    // User controls
-
-    @Override
-    public MediaController getMyMediaController() {
-        return mediaController;
-    }
-
-    public void updateButtonVisibilities() {
-        audioButton.setVisibility(presenter.haveTracks(Player.TYPE_AUDIO) ? View.VISIBLE : View.GONE);
-        textButton.setVisibility(presenter.haveTracks(Player.TYPE_TEXT) ? View.VISIBLE : View.GONE);
-    }
-
-    public void showAudioPopup(View v) {
-        PopupMenu popup = new PopupMenu(this, v);
-        Menu menu = popup.getMenu();
-        menu.add(Menu.NONE, Menu.NONE, Menu.NONE,"enable background audio");
-        final MenuItem backgroundAudioItem = menu.findItem(0);
-        backgroundAudioItem.setCheckable(true);
-        backgroundAudioItem.setChecked(enableBackgroundAudio);
-        PopupMenu.OnMenuItemClickListener clickListener = item -> {
-            if (item == backgroundAudioItem) {
-                enableBackgroundAudio = !item.isChecked();
-                return true;
-            }
-            return false;
-        };
-        presenter.configurePopupWithTracks(popup, clickListener, Player.TYPE_AUDIO);
-        popup.show();
-    }
-
-    public void showTextPopup(View v) {
-        PopupMenu popup = new PopupMenu(this, v);
-        presenter.configurePopupWithTracks(popup, null, Player.TYPE_TEXT);
-        popup.show();
-    }
-
-    private void toggleControlsVisibility()  {
-        if (mediaController.isShowing()) {
-            mediaController.hide();
-            debugRootView.setVisibility(View.GONE);
-        } else {
-            showControls();
-        }
-    }
-
-    public void showControls() {
-        mediaController.show(0);
-        debugRootView.setVisibility(View.VISIBLE);
-    }
-
     @Override
     public SubtitleLayout getSubtitleLayout() {
-        return subtitleLayout;
-    }
-
-
-    private void configureSubtitleView() {
-        CaptionStyleCompat style;
-        float fontScale;
-        if (Util.SDK_INT >= 19) {
-            style = getUserCaptionStyleV19();
-            fontScale = getUserCaptionFontScaleV19();
-        } else {
-            style = CaptionStyleCompat.DEFAULT;
-            fontScale = 1.0f;
-        }
-        subtitleLayout.setStyle(style);
-        subtitleLayout.setFractionalTextSize(SubtitleLayout.DEFAULT_TEXT_SIZE_FRACTION * fontScale);
-    }
-
-    @TargetApi(19)
-    private float getUserCaptionFontScaleV19() {
-        CaptioningManager captioningManager =
-                (CaptioningManager) getSystemService(Context.CAPTIONING_SERVICE);
-        return captioningManager.getFontScale();
-    }
-
-    @TargetApi(19)
-    private CaptionStyleCompat getUserCaptionStyleV19() {
-        CaptioningManager captioningManager =
-                (CaptioningManager) getSystemService(Context.CAPTIONING_SERVICE);
-        return CaptionStyleCompat.createFromCaptionStyle(captioningManager.getUserStyle());
+        return null;
     }
 
     @Override
@@ -206,7 +115,6 @@ public class FilmActivity extends InjectActivityBase implements FilmMvpView, Com
         Timber.v("onDestroy");
         super.onDestroy();
         presenter.removeListener();
-        presenter.unregisterAudioCapabilitiesReceiver();
     }
 }
 

@@ -64,4 +64,11 @@ public class FilmPreparationPresenter extends BasePresenter<FilmPreparationMvpVi
     public String getFilmName() {
         return currentSession.getFilm().getName();
     }
+
+    public void setFilmTime(boolean filmTime) {
+        dataManager.setFilmTime(filmTime);
+    }
+    public boolean isFilmTime() {
+        return dataManager.isFilmTime();
+    }
 }

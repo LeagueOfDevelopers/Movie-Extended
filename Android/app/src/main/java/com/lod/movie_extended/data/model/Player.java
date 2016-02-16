@@ -27,7 +27,6 @@ import com.google.android.exoplayer.upstream.DefaultBandwidthMeter;
 import com.google.android.exoplayer.util.DebugTextViewHelper;
 import com.google.android.exoplayer.util.PlayerControl;
 import com.lod.movie_extended.util.ExtractorRendererBuilder;
-import com.lod.movie_extended.util.HlsRendererBuilder;
 
 import java.io.IOException;
 import java.util.Collections;

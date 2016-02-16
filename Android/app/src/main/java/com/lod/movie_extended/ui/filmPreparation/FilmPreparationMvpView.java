@@ -10,5 +10,7 @@ import java.util.ArrayList;
  */
 public interface FilmPreparationMvpView extends MvpView {
 
+    void updateFooterVisibility();
+
     void setLanguagesToRecyclerView();
 }

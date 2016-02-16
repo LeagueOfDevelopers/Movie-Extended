@@ -49,38 +49,12 @@ public class FilmPresenter extends BasePresenter<FilmMvpView> implements
     private Context context;
     Player player;
 
-    AudioCapabilitiesReceiver audioCapabilitiesReceiver;
     private long playerPosition;
-
-    private static final CookieManager defaultCookieManager;
-    private static final int MENU_GROUP_TRACKS = 1;
-    private static final int ID_OFFSET = 2;
-
-    static {
-        defaultCookieManager = new CookieManager();
-        defaultCookieManager.setCookiePolicy(CookiePolicy.ACCEPT_ORIGINAL_SERVER);
-    }
 
     public FilmPresenter(DataManager dataManager,Context context, Player player) {
         this.dataManager = dataManager;
         this.context = context;
         this.player = player;
-
-        CookieHandler currentHandler = CookieHandler.getDefault();
-        if (currentHandler != defaultCookieManager) {
-            CookieHandler.setDefault(defaultCookieManager);
-        }
-
-        audioCapabilitiesReceiver = new AudioCapabilitiesReceiver(context, this);
-        audioCapabilitiesReceiver.register();
-    }
-
-    public void unregisterAudioCapabilitiesReceiver() {
-        audioCapabilitiesReceiver.unregister();
-    }
-
-    public void setAudioUrl(String audioUrl) {
-        App.get(context).setAudioUrl("http://stream-redirect.hktoolbar.com/radio-HTTP/cr2-hd.3gp/playlist.m3u8");
     }
 
     public void startPlayerNotificationService() {
@@ -102,11 +76,8 @@ public class FilmPresenter extends BasePresenter<FilmMvpView> implements
         player.setMetadataListener(this);
         player.setInternalErrorListener(this);
         player.seekTo(playerPosition);
-        getMvpView().getMyMediaController().setMediaPlayer(player.getPlayerControl());
-        getMvpView().getMyMediaController().setEnabled(true);
 
         player.prepare();
-        getMvpView().updateButtonVisibilities();
 
         player.setPlayWhenReady(playWhenReady);
     }
@@ -120,6 +91,34 @@ public class FilmPresenter extends BasePresenter<FilmMvpView> implements
         }
     }
 
+    @Override
+      public void onAudioCapabilitiesChanged(AudioCapabilities audioCapabilities) {
+        if (player == null) {
+            return;
+        }
+        boolean playWhenReady = player.getPlayWhenReady();
+        releasePlayer();
+        preparePlayer(playWhenReady);
+    }
+
+    @Override
+    public void onStateChanged(boolean playWhenReady, int playbackState) {
+        //TODO set change
+    }
+
+    @Override
+    public void onError(Exception e) {
+        if (e instanceof UnsupportedDrmException) {
+            // Special case DRM failures.
+            int stringId = 0;
+        }
+    }
+
+    public void removeListener() {
+        player.removeListener(this);
+    }
+
+    // region metadata and subtitles
     @Override
     public void onCues(List<Cue> cues) {
         getMvpView().getSubtitleLayout().setCues(cues);
@@ -138,7 +137,8 @@ public class FilmPresenter extends BasePresenter<FilmMvpView> implements
             }
         }
     }
-
+    //endregion
+    //region Errors
     @Override
     public void onRendererInitializationError(Exception e) {
         Timber.e(e.getMessage());
@@ -173,116 +173,6 @@ public class FilmPresenter extends BasePresenter<FilmMvpView> implements
     public void onDrmSessionManagerError(Exception e) {
         Timber.e(e.getMessage());
     }
+    //endregion
 
-    @Override
-    public void onAudioCapabilitiesChanged(AudioCapabilities audioCapabilities) {
-        if (player == null) {
-            return;
-        }
-        boolean playWhenReady = player.getPlayWhenReady();
-        releasePlayer();
-        preparePlayer(playWhenReady);
-    }
-
-    @Override
-    public void onStateChanged(boolean playWhenReady, int playbackState) {
-        if (playbackState == ExoPlayer.STATE_ENDED) {
-            getMvpView().showControls();
-        }
-        getMvpView().updateButtonVisibilities();
-    }
-
-    public boolean haveTracks(int type) {
-        return player != null && player.getTrackCount(type) > 0;
-    }
-    @Override
-    public void onError(Exception e) {
-        if (e instanceof UnsupportedDrmException) {
-            // Special case DRM failures.
-            int stringId = 0;
-        }
-        getMvpView().updateButtonVisibilities();
-        getMvpView().showControls();
-    }
-
-    public void configurePopupWithTracks(PopupMenu popup,
-                                          final PopupMenu.OnMenuItemClickListener customActionClickListener,
-                                          final int trackType) {
-        if (player == null) {
-            return;
-        }
-        int trackCount = player.getTrackCount(trackType);
-        if (trackCount == 0) {
-            return;
-        }
-        popup.setOnMenuItemClickListener(item -> (customActionClickListener != null
-                && customActionClickListener.onMenuItemClick(item))
-                || onTrackItemClick(item, trackType));
-        Menu menu = popup.getMenu();
-        // ID_OFFSET ensures we avoid clashing with Menu.NONE (which equals 0)
-        menu.add(MENU_GROUP_TRACKS, Player.TRACK_DISABLED + ID_OFFSET, Menu.NONE, "off");
-        for (int i = 0; i < trackCount; i++) {
-            menu.add(MENU_GROUP_TRACKS, i + ID_OFFSET, Menu.NONE,
-                    buildTrackName(player.getTrackFormat(trackType, i)));
-        }
-        menu.setGroupCheckable(MENU_GROUP_TRACKS, true, true);
-        menu.findItem(player.getSelectedTrack(trackType) + ID_OFFSET).setChecked(true);
-    }
-
-    private static String buildTrackName(MediaFormat format) {
-        if (format.adaptive) {
-            return "auto";
-        }
-        String trackName;
-        if (MimeTypes.isAudio(format.mimeType)) {
-            trackName = joinWithSeparator(joinWithSeparator(joinWithSeparator(buildLanguageString(format),
-                    buildAudioPropertyString(format)), buildBitrateString(format)),
-                    buildTrackIdString(format));
-        } else {
-            trackName = joinWithSeparator(joinWithSeparator(buildLanguageString(format),
-                    buildBitrateString(format)), buildTrackIdString(format));
-        }
-        return trackName.length() == 0 ? "unknown" : trackName;
-    }
-
-    private static String buildResolutionString(MediaFormat format) {
-        return format.width == MediaFormat.NO_VALUE || format.height == MediaFormat.NO_VALUE
-                ? "" : format.width + "x" + format.height;
-    }
-
-    private static String buildAudioPropertyString(MediaFormat format) {
-        return format.channelCount == MediaFormat.NO_VALUE || format.sampleRate == MediaFormat.NO_VALUE
-                ? "" : format.channelCount + "ch, " + format.sampleRate + "Hz";
-    }
-
-    private static String buildLanguageString(MediaFormat format) {
-        return TextUtils.isEmpty(format.language) || "und".equals(format.language) ? ""
-                : format.language;
-    }
-
-    private static String buildBitrateString(MediaFormat format) {
-        return format.bitrate == MediaFormat.NO_VALUE ? ""
-                : String.format(Locale.US, "%.2fMbit", format.bitrate / 1000000f);
-    }
-
-    private static String joinWithSeparator(String first, String second) {
-        return first.length() == 0 ? second : (second.length() == 0 ? first : first + ", " + second);
-    }
-
-    private static String buildTrackIdString(MediaFormat format) {
-        return format.trackId == MediaFormat.NO_VALUE ? ""
-                : String.format(Locale.US, " (%d)", format.trackId);
-    }
-
-    private boolean onTrackItemClick(MenuItem item, int type) {
-        if (player == null || item.getGroupId() != MENU_GROUP_TRACKS) {
-            return false;
-        }
-        player.setSelectedTrack(type, item.getItemId() - ID_OFFSET);
-        return true;
-    }
-
-    public void removeListener() {
-        player.removeListener(this);
-    }
 }

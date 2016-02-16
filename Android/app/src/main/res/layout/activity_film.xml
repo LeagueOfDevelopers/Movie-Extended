@@ -24,19 +24,6 @@
             android:orientation="horizontal"
             android:visibility="gone">
 
-            <Button android:id="@+id/audio_controls"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="audio"
-                android:visibility="gone"
-                android:onClick="showAudioPopup"/>
-
-            <Button android:id="@+id/text_controls"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="text"
-                android:visibility="gone"
-                android:onClick="showTextPopup"/>
 
         </LinearLayout>
     </LinearLayout>

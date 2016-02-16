@@ -51,6 +51,7 @@ public class MainActivity extends InjectActivityBase implements MainMvpView, Com
     public void onQrCodeReadButtonClick() {
         Timber.v("starting QrCodeActivity");
         startActivity(new Intent(this, QrCodeReaderActivity.class));
+        finish();
     }
 
     @Override

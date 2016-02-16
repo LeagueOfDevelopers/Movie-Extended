@@ -2,12 +2,15 @@ package com.lod.movie_extended.ui.filmPreparation;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.util.Pair;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 
 import com.lod.movie_extended.App;
@@ -24,6 +27,7 @@ import com.lod.movie_extended.ui.base.Presenter;
 import com.lod.movie_extended.ui.film.FilmActivity;
 import com.lod.movie_extended.ui.languages.LanguagesFragmentView;
 import com.lod.movie_extended.ui.remainigTime.RemainingTimeFragment;
+import com.lod.movie_extended.util.TransitionHelper;
 import com.squareup.otto.Bus;
 import com.squareup.otto.Subscribe;
 
@@ -31,15 +35,20 @@ import javax.inject.Inject;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import timber.log.Timber;
 
 /**
  * Created by Жамбыл on 09.01.2016.
  */
 public class FilmPreparationActivity extends InjectActivityBase
-        implements FilmPreparationMvpView, ComponentCreator<FilmPreparationComponent>, ComponentGetter<FilmPreparationComponent> {
+        implements FilmPreparationMvpView, ComponentCreator<FilmPreparationComponent>,
+        ComponentGetter<FilmPreparationComponent> {
 
-    private static final int LAYOUT = R.layout.activity_film_preparation_2;
+    private static final int LAYOUT = R.layout.activity_film_preparation;
+
+    @Bind(R.id.footer_ll)
+    LinearLayout footer;
 
     @Bind(R.id.progressBar)
     ProgressBar progressBar;
@@ -58,21 +67,31 @@ public class FilmPreparationActivity extends InjectActivityBase
     private ActionBar toolbar;
     private boolean isRunning;
 
+    Intent filmActivityIntent;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Timber.v("onCreate");
-//        initToolbar();
         isRunning = true;
         presenter.loadSession();
         presenter.getToken("qwe");
+        filmActivityIntent = new Intent(this, FilmActivity.class);
     }
 
     @Override
     protected void onResume() {
         Timber.v("onResume");
         super.onResume();
+        updateFooterVisibility();
         isRunning = true;
+    }
+
+    @OnClick(R.id.footer_ll)
+    public void onFooterClick() {
+        if(presenter.isFilmTime()) {
+            transitionTo(filmActivityIntent);
+        }
     }
 
     @Override
@@ -80,6 +99,16 @@ public class FilmPreparationActivity extends InjectActivityBase
         Timber.v("onPause");
         isRunning = false;
         super.onPause();
+    }
+
+    @Override
+    public void updateFooterVisibility() {
+        if(presenter.isFilmTime()) {
+            footer.setVisibility(View.VISIBLE);
+        }
+        else {
+            footer.setVisibility(View.GONE);
+        }
     }
 
     @Override
@@ -93,15 +122,21 @@ public class FilmPreparationActivity extends InjectActivityBase
     }
 
     @Subscribe
-    public void onLanguageSelected(LanguageSelected event) {
-        Timber.v("onLanguageSelected, onLanguageSelected");
-        setFilmFragment(RemainingTimeFragment.getNewInstance(),true,false);
-    }
-
-    @Subscribe
     public void onFilmStarted(FilmStarted event) {
         Timber.v("starting FilmActivity");
-        startActivity(new Intent(this, FilmActivity.class));
+
+        startActivity(filmActivityIntent);
+        fragmentManager.popBackStack();
+
+        presenter.setFilmTime(true);
+        updateFooterVisibility();
+    }
+
+    @SuppressWarnings("unchecked")
+    void transitionTo(Intent i) {
+        final Pair<View, String>[] pairs = TransitionHelper.createSafeTransitionParticipants(this, true);
+        ActivityOptionsCompat transitionActivityOptions = ActivityOptionsCompat.makeSceneTransitionAnimation(this, pairs);
+        startActivity(i, transitionActivityOptions.toBundle());
     }
 
     @Override
@@ -136,6 +171,12 @@ public class FilmPreparationActivity extends InjectActivityBase
         setFilmFragment(LanguagesFragmentView.getNewInstance(),false,false);
     }
 
+    @Subscribe
+    public void onLanguageSelected(LanguageSelected event) {
+        Timber.v("onLanguageSelected, onLanguageSelected");
+        setFilmFragment(RemainingTimeFragment.getNewInstance(),true,false);
+    }
+
     private void setFilmFragment(Fragment fragment, boolean addToBackStack, boolean popBackStack) {
         if(isRunning) {
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
@@ -148,23 +189,17 @@ public class FilmPreparationActivity extends InjectActivityBase
 
             if (addToBackStack) {
                 Timber.v("adding to backStack fragment" + fragment.toString());
-                fragmentTransaction.addToBackStack("");
+                fragmentTransaction.addToBackStack(fragment.toString());
             }
 
             fragmentTransaction.commit();
             fragmentManager.executePendingTransactions();
         }
-
     }
 
     private void setViewsVisible() {
         Timber.v("setting views visible");
-//        if(toolbar == null) {
-//            throw new NullPointerException("toolbar is null");
-//        }
-
         progressBar.setVisibility(View.INVISIBLE);
-//        toolbar.setTitle(presenter.getFilmName());
     }
 
     private void initToolbar() {
@@ -175,5 +210,4 @@ public class FilmPreparationActivity extends InjectActivityBase
             toolbar.setTitle("");
         }
     }
-
 }

@@ -23,6 +23,7 @@ public class DataManager {
     private final DataBaseHelper dataBaseHelper;
     private PreferencesHelper preferencesHelper;
     private Server server;
+    private boolean filmTime;
 
     @Inject
     public DataManager(ServerHelper serverHelper, DataBaseHelper dataBaseHelper, PreferencesHelper preferencesHelper,
@@ -50,5 +51,13 @@ public class DataManager {
 
     public Session getSession() {
         return dataBaseHelper.getSession();
+    }
+
+    public boolean isFilmTime() {
+        return filmTime;
+    }
+
+    public void setFilmTime(boolean filmTime) {
+        this.filmTime = filmTime;
     }
 }

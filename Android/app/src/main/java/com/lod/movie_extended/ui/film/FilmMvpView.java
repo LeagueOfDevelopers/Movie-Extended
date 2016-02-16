@@ -10,11 +10,6 @@ import com.lod.movie_extended.ui.base.MvpView;
  */
 public interface FilmMvpView extends MvpView {
 
-    MediaController getMyMediaController();
-
-    void updateButtonVisibilities();
-
-    void showControls();
 
     SubtitleLayout getSubtitleLayout();
 }

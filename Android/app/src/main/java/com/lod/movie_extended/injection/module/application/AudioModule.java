@@ -9,8 +9,6 @@ import com.lod.movie_extended.data.model.Player;
 import com.lod.movie_extended.injection.context.ApplicationContext;
 import com.lod.movie_extended.injection.scope.PerApplication;
 import com.lod.movie_extended.util.ExtractorRendererBuilder;
-import com.lod.movie_extended.util.HlsRendererBuilder;
-
 import javax.inject.Named;
 
 import dagger.Module;

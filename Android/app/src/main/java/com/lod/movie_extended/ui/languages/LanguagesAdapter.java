@@ -43,14 +43,8 @@ public class LanguagesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        if(viewType == TYPE_FOOTER){
-            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_button, parent, false);
-            return new FooterAdapter(view);
-        }
-        else {
-            View view =  LayoutInflater.from(parent.getContext()).inflate(R.layout.item_languages, parent, false);
-            return new LanguageViewHolder(view);
-        }
+        View view =  LayoutInflater.from(parent.getContext()).inflate(R.layout.item_languages, parent, false);
+        return new LanguageViewHolder(view);
     }
 
     @Override
@@ -78,7 +72,7 @@ public class LanguagesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
     @Override
     public int getItemCount() {
-        return languages.size() + 1;
+        return languages.size();
     }
 
     @Override
@@ -106,19 +100,12 @@ public class LanguagesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
             languagesPresenter.onLanguageSelected();
         }
     }
-    class FooterAdapter extends RecyclerView.ViewHolder{
 
-        @Bind(R.id.go_to_film_button)
-        Button goToFilmButton;
+    class FooterAdapter extends RecyclerView.ViewHolder{
 
         public FooterAdapter(View itemView) {
             super(itemView);
             ButterKnife.bind(this,itemView);
-        }
-
-        @OnClick(R.id.go_to_film_button)
-        public void onClick(View view) {
-//            events.post(new LanguageSelected(null));
         }
     }
 }
