@@ -4,7 +4,9 @@ using System.Net;
 using System.Web.Http;
 using Domain.Models;
 using Domain.Models.Entities;
+using Domain.Models.FrontendEntities;
 using Domain.VisitorRepository;
+using Journalist;
 
 namespace FrontendService.Controllers.WebClient
 {
@@ -15,7 +17,9 @@ namespace FrontendService.Controllers.WebClient
 
         public LanguageController(ILanguageRepository languageRepository, ISessionKeeper keeper)
         {
+            Require.NotNull(languageRepository,nameof(ILanguageRepository));
             _languageRepository = languageRepository;
+            Require.NotNull(keeper , nameof(ISessionKeeper));
             _keeper = keeper;
         }
 
@@ -35,7 +39,7 @@ namespace FrontendService.Controllers.WebClient
 
         [Route("api/Languages/All")]
         [HttpGet]
-        public IEnumerable<Language> GetAllLanguages()
+        public IEnumerable<FrontendLanguage> GetAllLanguages()
         {
            return _languageRepository.GetAllLanguages();
         }
@@ -48,14 +52,22 @@ namespace FrontendService.Controllers.WebClient
 
         }
 
-        [Route("api/Languages/MovieId/{movieId}/Session/{sessionId}")]
-        [HttpGet]
-        public IEnumerable<Language> GetLanguagesByMovieId(int movieId,Guid sessionId)
+        [Route("api/Languages/GetMovie")]
+        [HttpPost]
+        public IEnumerable<AndroidLanguage> GetLanguagesByMovieId([FromBody]string session)
         {
-            if(_keeper.CheckIfSessionExists(sessionId)&& _keeper.GetSessionState(sessionId)==SessionState.Active)
-            return _languageRepository.GetLanguagesByMovieId(movieId);
+            var sessionId = new Guid(session);
+            if (_keeper.CheckIfSessionExists(sessionId)&& _keeper.GetSessionState(sessionId)==SessionState.Active)
+            return _languageRepository.GetLanguagesByMovieId(_keeper.GetMovieId(sessionId));
             else throw new HttpResponseException(HttpStatusCode.Unauthorized); 
-        } 
+        }
+
+        [Route("api/Languages/{movieId}")]
+        [HttpGet]
+        public IEnumerable<AndroidLanguage> GetLanguagesByMovieId(int movieId)
+        {
+                return _languageRepository.GetLanguagesByMovieId(movieId);
+        }
 
     }
 }

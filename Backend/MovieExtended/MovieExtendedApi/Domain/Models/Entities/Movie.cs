@@ -27,6 +27,6 @@ namespace Domain.Models.Entities
 
         public virtual Cinema Cinema { get; protected set; }
 
-        public virtual Guid AndroidToken { get; protected set; }
+        public virtual Guid AndroidToken { get;  set; }
     }
 }

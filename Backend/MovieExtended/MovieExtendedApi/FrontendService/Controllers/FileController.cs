@@ -10,6 +10,7 @@ using System.Web.Http;
 using Domain.Models;
 using Domain.Models.Entities;
 using Domain.VisitorRepository;
+using Journalist;
 using File = Domain.Models.Entities.File;
 
 
@@ -22,15 +23,18 @@ namespace FrontendService.Controllers
 
         public FileController(IFileRepository fileRepository, ISessionKeeper keeper)
         {
+            Require.NotNull(keeper , nameof(ISessionKeeper));    
             _keeper = keeper;
+            Require.NotNull(fileRepository,nameof(IFileRepository));
             _fileRepository = fileRepository;
         }
 
-        [Route("api/Files/Get/{fileId}/Session/{sessionId}")]
-        [HttpGet]
-        public HttpResponseMessage DownLoadFileFromDataBase(int fileId,Guid sessionId)
+        [Route("api/Files/Get/{fileId}")]
+        [HttpPost]
+        public HttpResponseMessage DownLoadFileFromDataBase(int fileId,[FromBody]string session)
         {
-            if (!_keeper.CheckIfSessionExists(sessionId) || _keeper.GetSessionState(sessionId) !=                 SessionState.Active)
+            var sessionId = new Guid(session);
+            if (!_keeper.CheckIfSessionExists(sessionId) || _keeper.GetSessionState(sessionId) != SessionState.Active)
             {
                 throw new HttpResponseException(HttpStatusCode.Unauthorized);
             }

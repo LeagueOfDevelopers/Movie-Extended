@@ -1,13 +1,14 @@
 ﻿using System.Collections.Generic;
 using Domain.Models.Entities;
+using Domain.Models.FrontendEntities;
 
 namespace Domain.VisitorRepository
 {
     public interface ILanguageRepository
     {
-        IEnumerable<Language> GetAllLanguages();
+        IEnumerable<FrontendLanguage> GetAllLanguages();
         void SaveLanguage(Language language);
-        IEnumerable<Language> GetLanguagesByMovieId(int movie);
+        IEnumerable<AndroidLanguage> GetLanguagesByMovieId(int movie);
         void DeleteLanguageByLanguageId(int languageID);
         void DeleteLanguageByMovieId(int movie);
         IEnumerable<Language> GetLanguageByName(string languageName);

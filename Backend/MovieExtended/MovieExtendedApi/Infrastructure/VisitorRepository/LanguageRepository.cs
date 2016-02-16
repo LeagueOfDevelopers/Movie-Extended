@@ -1,6 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
+using Domain.Models;
 using Domain.Models.Entities;
+using Domain.Models.FrontendEntities;
 using Domain.VisitorRepository;
 using Journalist;
 using NHibernate.Linq;
@@ -16,10 +19,18 @@ namespace Infrastructure.VisitorRepository
             Require.NotNull(provider, nameof(SessionProvider));
             _provider = provider;
         }
-        public IEnumerable<Language> GetAllLanguages()
+        public IEnumerable<FrontendLanguage> GetAllLanguages()
         {
             var session = _provider.GetCurrentSession();
-            return session.Query<Language>();
+            var allLanguages = session.Query<Language>().AsEnumerable();
+            var convertedLanguages = new List<FrontendLanguage>();
+
+            foreach (var dblanguage in allLanguages)
+            {
+                var convertedLanguage = new FrontendLanguage(dblanguage);
+                convertedLanguages.Add(convertedLanguage);
+            }
+            return convertedLanguages;
         }
 
         public void SaveLanguage(Language language)
@@ -30,12 +41,21 @@ namespace Infrastructure.VisitorRepository
             session.Transaction.Commit();
         }
 
-        
-
-        public IEnumerable<Language> GetLanguagesByMovieId(int movieId)
+        public IEnumerable<AndroidLanguage> GetLanguagesByMovieId(int movieId)
         {
             var session = _provider.GetCurrentSession();
-            return session.Query<Language>().Where(language => language.Movie.Id == movieId);
+            var languagesByMovieId = session.Query<Language>().Where(language => language.Movie.Id == movieId).AsEnumerable();
+            var convertedLanguages = new List<AndroidLanguage>();
+
+            foreach (var dblanguage in languagesByMovieId)
+            {
+                var convertedLanguage= new AndroidLanguage();
+                convertedLanguage.Id = dblanguage.Id;
+                convertedLanguage.Name = dblanguage.Name;
+                convertedLanguage.TrackFileId = dblanguage.TrackFile.Id;
+                convertedLanguages.Add(convertedLanguage);
+            }
+            return convertedLanguages;
         }
 
         public void DeleteLanguageByLanguageId(int languageID)

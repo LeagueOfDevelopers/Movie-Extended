@@ -4,25 +4,30 @@ using System.Net;
 using System.Web.Http;
 using Domain.Models.Entities;
 using Domain.VisitorRepository;
+using Journalist;
 
 namespace FrontendService.Controllers.AndroidClient
 {
     public class SessionController : ApiController 
     {
-        private readonly SessionKeeper _keeper;
+        private readonly ISessionKeeper _keeper;
         private readonly IMovieRepository _movieRepository;
 
-        public SessionController(IMovieRepository movieRepository)
+        public SessionController(IMovieRepository movieRepository ,ISessionKeeper keeper )
         {
-            _keeper = new SessionKeeper();
+            Require.NotNull(keeper, nameof(ISessionKeeper));
+            _keeper = keeper;
+            Require.NotNull(movieRepository,nameof(IMovieRepository));
             _movieRepository = movieRepository;
         }
 
-        [Route("api/Session/Login/{qr}")]
+        [Route("api/Session/Login")]
         [HttpPost]
-        public Guid Login(Guid qr)
+        public Guid Login([FromBody]string qr)
+            
         {
-            var necessaryMovie = _movieRepository.CheckAndroidToken(qr);
+            var qrGuid = new Guid(qr);
+            var necessaryMovie = _movieRepository.CheckAndroidToken(qrGuid);
             if (necessaryMovie !=null)
             {
                 var newSession = new Session(Guid.NewGuid(),necessaryMovie.Id);

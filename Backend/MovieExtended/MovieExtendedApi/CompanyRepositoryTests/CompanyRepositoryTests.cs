@@ -34,6 +34,24 @@ namespace CompanyRepositoryTests
             var fileRepository = new FileRepository(provider);
             fileRepository.SaveFileData(saveFile);
         }
+        [TestMethod]
+        public void SaveLanguage()
+        {
+            var file = new File("testRepository", FileType.Track);
+            var company = new Company("LOD_Company", new Uri("https://vk.com/holymosh"));
+            var cinema = new Cinema("Rozoviy_Korpus", "G-588", company);
+            var movie = new Movie("10 razrabov Vitalika", cinema);
+            movie.AndroidToken = Guid.NewGuid();
+            var language = new Language("kazahskiy", movie, file);
+
+            var provider = new SessionProvider();
+
+            provider.OpenSession();
+
+            var languageRepository = new LanguageRepository(provider);
+            languageRepository.SaveLanguage(language);
+        }
+
     }
-    }
+}
 

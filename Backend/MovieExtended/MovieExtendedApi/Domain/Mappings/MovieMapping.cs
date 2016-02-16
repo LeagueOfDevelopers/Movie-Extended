@@ -17,6 +17,7 @@ namespace Domain.Mappings
             ManyToOne(model => model.Cinema, mapper =>
             {
                 mapper.Column("CinemaId");
+                mapper.Cascade(Cascade.All);
                 
             });
             Property(movie => movie.AndroidToken, mapper => mapper.Column("Token"));

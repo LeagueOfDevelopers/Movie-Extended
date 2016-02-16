@@ -19,6 +19,7 @@ namespace Domain.Mappings
             ManyToOne(model => model.Company, mapper =>
             {
                 mapper.Column("Company");
+                mapper.Cascade(Cascade.All);
                 
             });
         }

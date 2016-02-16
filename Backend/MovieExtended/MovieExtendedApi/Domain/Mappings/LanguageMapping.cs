@@ -17,11 +17,13 @@ namespace Domain.Mappings
             ManyToOne(model => model.Movie, mapper =>
             {
                 mapper.Column("Movie");
+                mapper.Cascade(Cascade.All);
                 
             });
             ManyToOne(model => model.TrackFile, mapper =>
             {
                 mapper.Column("TrackFile");
+                mapper.Cascade(Cascade.All);
                 
             });
         }

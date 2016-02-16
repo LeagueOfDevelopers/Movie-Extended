@@ -9,7 +9,7 @@ namespace Domain.Models
     {
         public SessionKeeper()
         {
-
+            _sessions = new List<Session>();
         }
 
         public Guid CreateSession(Session session)
@@ -39,14 +39,15 @@ namespace Domain.Models
             return session == null ? SessionState.Closed : session.SessionState;
         }
 
-        //public Guid GetMovieId(Guid sessionId)
-        //{
-        //    var session = _sessions.FirstOrDefault(innerSession => innerSession.SessionId == sessionId);
-        //    return session == null ? Guid.Empty : session.MovieId;
-        //}
+        public int GetMovieId(Guid sessionId)
+        {
+            var session = _sessions.FirstOrDefault(innerSession => innerSession.SessionId == sessionId);
+            if (session == null) throw new ArgumentNullException();
+            else return session.MovieId;
+        }
 
-        private readonly List<Session> _sessions = new List<Session>();
-        private readonly Dictionary<Guid, DateTime> _timeMarks = new Dictionary<Guid, DateTime>();
+        private readonly List<Session> _sessions;
+       // private readonly Dictionary<Guid, DateTime> _timeMarks = new Dictionary<Guid, DateTime>();
 
         //public void SetState(Guid movieId, SessionState state, DateTime changingOccured)
         //{

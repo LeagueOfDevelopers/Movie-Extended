@@ -1,4 +1,6 @@
-﻿using Infrastructure.VisitorRepository;
+﻿using System;
+using Domain.Models.Entities;
+using Infrastructure.VisitorRepository;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 
@@ -10,16 +12,19 @@ namespace LanguageRepositoryTests
         [TestMethod]
         public void SaveLanguage()
         {   
-           // var languageName = "name";
-            //var movieId = 7;
-            //var trackfieldId = 7;
-            //var language = new Language(languageName,movieId,trackfieldId);
+            var file = new File(0,"testRepository" , FileType.Track);
+            var company = new Company(0,"LOD_Company",new Uri("https://vk.com/holymosh"));
+            var cinema =  new Cinema(0,"Rozoviy_Korpus","G-588",company);
+            var movie = new Movie(0,"10 razrabov Vitalika",cinema);
+            movie.AndroidToken = Guid.NewGuid();
+            var language = new Language(0,"kazahskiy",movie,file);
+            
             var provider = new SessionProvider();
             
             provider.OpenSession();
            
             var languageRepository = new LanguageRepository(provider);
-            //languageRepository.SaveLanguage(language);
+            languageRepository.SaveLanguage(language);
         }
 
         [TestMethod]

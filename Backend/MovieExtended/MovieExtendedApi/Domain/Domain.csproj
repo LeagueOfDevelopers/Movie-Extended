@@ -57,6 +57,13 @@
     <Compile Include="Models\Constants.cs" />
     <Compile Include="Models\Entities\Cinema.cs" />
     <Compile Include="Models\Entities\QrCodeFingerprint.cs" />
+    <Compile Include="Models\EntityConverter.cs" />
+    <Compile Include="Models\FrontendEntities\AndroidLanguage.cs" />
+    <Compile Include="Models\FrontendEntities\FrontendCinema.cs" />
+    <Compile Include="Models\FrontendEntities\FrontendCompany.cs" />
+    <Compile Include="Models\FrontendEntities\FrontendFile.cs" />
+    <Compile Include="Models\FrontendEntities\FrontendLanguage.cs" />
+    <Compile Include="Models\FrontendEntities\FrontendMovie.cs" />
     <Compile Include="Models\ISessionKeeper.cs" />
     <Compile Include="Models\QrCodeGenerator.cs" />
     <Compile Include="Models\IQrCodeGenerator.cs" />
