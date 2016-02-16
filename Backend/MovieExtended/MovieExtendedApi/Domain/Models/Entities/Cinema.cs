@@ -10,7 +10,7 @@
             Company = company;
         }
 
-        public Cinema(string name ,string address, Company company)
+        public Cinema(string name, string address, Company company)
         {
             Name = name;
             Address = address;
@@ -19,7 +19,6 @@
 
         protected Cinema()
         {
-
         }
 
         public virtual int Id { get; protected set; }

@@ -8,24 +8,21 @@ namespace FrontendService.Controllers.WebClient
 {
     public class MovieController : ApiController
     {
-        private readonly IMovieRepository _movieRepository;
         private readonly ISessionKeeper _keeper;
+        private readonly IMovieRepository _movieRepository;
 
         public MovieController(IMovieRepository movieRepository, ISessionKeeper keeper)
         {
             _movieRepository = movieRepository;
             _keeper = keeper;
-
         }
 
-        
+
         [Route("api/Movie/new")]
         [HttpPost]
-
         public void SaveMovie([FromBody] Movie newMovie)
         {
             _movieRepository.SaveMovie(newMovie);
-
         }
 
         [Route("api/Movie/All")]
@@ -33,13 +30,13 @@ namespace FrontendService.Controllers.WebClient
         public IEnumerable<Movie> GetAllMoviesFromDatabase()
         {
             return _movieRepository.GetAllMovies();
-        } 
+        }
 
         [Route("api/Movie/{movieId}")]
         [HttpGet]
         public Movie GetMovieByMovieId(int movieId)
         {
-          return  _movieRepository.GetMovieByMovieId(movieId);
+            return _movieRepository.GetMovieByMovieId(movieId);
         }
 
         [Route("api/Movie/Cinema/{cinemaId}")]
@@ -62,9 +59,5 @@ namespace FrontendService.Controllers.WebClient
         {
             _movieRepository.GetMovieByCinemaId(cinemaId);
         }
-
     }
 }
-
-
-

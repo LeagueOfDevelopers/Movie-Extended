@@ -1,39 +1,40 @@
-﻿using Domain.Models;
-using System;
+﻿using System;
 using System.Net;
 using System.Web.Http;
+using Domain.Models;
 using Domain.Models.Entities;
 using Domain.VisitorRepository;
 using Journalist;
 
 namespace FrontendService.Controllers.AndroidClient
 {
-    public class SessionController : ApiController 
+    public class SessionController : ApiController
     {
         private readonly ISessionKeeper _keeper;
         private readonly IMovieRepository _movieRepository;
 
-        public SessionController(IMovieRepository movieRepository ,ISessionKeeper keeper )
+        public SessionController(IMovieRepository movieRepository, ISessionKeeper keeper)
         {
             Require.NotNull(keeper, nameof(ISessionKeeper));
             _keeper = keeper;
-            Require.NotNull(movieRepository,nameof(IMovieRepository));
+            Require.NotNull(movieRepository, nameof(IMovieRepository));
             _movieRepository = movieRepository;
         }
 
         [Route("api/Session/Login")]
         [HttpPost]
-        public Guid Login([FromBody]string qr)
-            
+        public Guid Login([FromBody] string qr)
+
         {
             var qrGuid = new Guid(qr);
             var necessaryMovie = _movieRepository.CheckAndroidToken(qrGuid);
-            if (necessaryMovie !=null)
+            if (necessaryMovie != null)
             {
-                var newSession = new Session(Guid.NewGuid(),necessaryMovie.Id);
+                var newSession = new Session(Guid.NewGuid(), necessaryMovie.Id);
                 return _keeper.CreateSession(newSession);
             }
-            else throw new HttpResponseException(HttpStatusCode.Unauthorized); ;
+            throw new HttpResponseException(HttpStatusCode.Unauthorized);
+            ;
         }
 
         //[Route("api/Session/{sessionId}/StartTime")]
@@ -54,8 +55,8 @@ namespace FrontendService.Controllers.AndroidClient
 
         private static double ConvertToUnixTimestamp(DateTime date)
         {
-            DateTime origin = new DateTime(1970, 1, 1, 0, 0, 0, 0);
-            TimeSpan diff = date - origin;
+            var origin = new DateTime(1970, 1, 1, 0, 0, 0, 0);
+            var diff = date - origin;
             return diff.TotalMilliseconds;
         }
     }

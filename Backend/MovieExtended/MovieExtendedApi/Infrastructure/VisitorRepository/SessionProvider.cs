@@ -7,13 +7,11 @@ using NHibernate.Tool.hbm2ddl;
 
 namespace Infrastructure.VisitorRepository
 {
-    public  class SessionProvider
+    public class SessionProvider
     {
-        [ThreadStatic]
-        private static ISession _session;
+        [ThreadStatic] private static ISession _session;
 
-        [ThreadStatic]
-        private static ITransaction _transaction;
+        [ThreadStatic] private static ITransaction _transaction;
 
         private readonly ISessionFactory _factory;
 
@@ -39,7 +37,7 @@ namespace Infrastructure.VisitorRepository
         {
             return _session;
         }
-        
+
         public void OpenSession()
         {
             if (_session == null || !_session.IsOpen)

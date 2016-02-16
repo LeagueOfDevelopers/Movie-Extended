@@ -1,16 +1,16 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Domain.Models.Entities;
 using Domain.VisitorRepository;
-using NHibernate.Linq;
 using Journalist;
-
+using NHibernate.Linq;
 
 namespace Infrastructure.VisitorRepository
 {
     public class CinemaRepository : ICinemaRepository
     {
-        private readonly SessionProvider _provider ;
+        private readonly SessionProvider _provider;
 
         public CinemaRepository(SessionProvider provider)
         {
@@ -35,8 +35,8 @@ namespace Infrastructure.VisitorRepository
         public IEnumerable<Cinema> GetCinemaByCompanyId(int companyId)
         {
             var session = _provider.GetCurrentSession();
-            var allcinemasById = session.Query<Cinema>().Where(cinema => cinema.Company.Id==companyId).AsEnumerable<Cinema>();
-            
+            var allcinemasById = session.Query<Cinema>().Where(cinema => cinema.Company.Id == companyId).AsEnumerable();
+
             return allcinemasById;
         }
 
@@ -67,7 +67,7 @@ namespace Infrastructure.VisitorRepository
 
         public void UpdateCinema(string jsonForUpdate)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
     }
 }

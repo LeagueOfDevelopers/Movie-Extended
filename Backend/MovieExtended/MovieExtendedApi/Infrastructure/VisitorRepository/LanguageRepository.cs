@@ -1,7 +1,6 @@
-﻿using System.Collections;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Domain.Models;
 using Domain.Models.Entities;
 using Domain.Models.FrontendEntities;
 using Domain.VisitorRepository;
@@ -10,15 +9,16 @@ using NHibernate.Linq;
 
 namespace Infrastructure.VisitorRepository
 {
-    public class LanguageRepository:ILanguageRepository
+    public class LanguageRepository : ILanguageRepository
     {
         private readonly SessionProvider _provider;
-        
+
         public LanguageRepository(SessionProvider provider)
         {
             Require.NotNull(provider, nameof(SessionProvider));
             _provider = provider;
         }
+
         public IEnumerable<FrontendLanguage> GetAllLanguages()
         {
             var session = _provider.GetCurrentSession();
@@ -44,12 +44,13 @@ namespace Infrastructure.VisitorRepository
         public IEnumerable<AndroidLanguage> GetLanguagesByMovieId(int movieId)
         {
             var session = _provider.GetCurrentSession();
-            var languagesByMovieId = session.Query<Language>().Where(language => language.Movie.Id == movieId).AsEnumerable();
+            var languagesByMovieId =
+                session.Query<Language>().Where(language => language.Movie.Id == movieId).AsEnumerable();
             var convertedLanguages = new List<AndroidLanguage>();
 
             foreach (var dblanguage in languagesByMovieId)
             {
-                var convertedLanguage= new AndroidLanguage();
+                var convertedLanguage = new AndroidLanguage();
                 convertedLanguage.Id = dblanguage.Id;
                 convertedLanguage.Name = dblanguage.Name;
                 convertedLanguage.TrackFileId = dblanguage.TrackFile.Id;
@@ -62,14 +63,14 @@ namespace Infrastructure.VisitorRepository
         {
             var session = _provider.GetCurrentSession();
             var checkIfExists = session.Query<Language>().SingleOrDefault(language => language.Id == languageID);
-            if (checkIfExists != null) session.Delete((checkIfExists));
+            if (checkIfExists != null) session.Delete(checkIfExists);
         }
 
         public void DeleteLanguageByMovieId(int movieId)
         {
             var session = _provider.GetCurrentSession();
             var checkIfExists = session.Query<Language>().Where(language => language.Movie.Id == movieId);
-            if (checkIfExists != null) session.Delete(checkIfExists);   
+            if (checkIfExists != null) session.Delete(checkIfExists);
         }
 
         public IEnumerable<Language> GetLanguageByName(string languageName)
@@ -80,7 +81,7 @@ namespace Infrastructure.VisitorRepository
 
         public void UpdateLanguage(string jsonForUpdate)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
     }
 }

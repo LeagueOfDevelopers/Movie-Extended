@@ -20,7 +20,6 @@ namespace Domain.Models.FrontendEntities
 
         protected FrontendCompany()
         {
-
         }
 
         public FrontendCompany(Company company)

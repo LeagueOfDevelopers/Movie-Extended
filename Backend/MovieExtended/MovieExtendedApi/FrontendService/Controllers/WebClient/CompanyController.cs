@@ -5,7 +5,7 @@ using Domain.VisitorRepository;
 
 namespace FrontendService.Controllers.WebClient
 {
-    public class CompanyController:ApiController
+    public class CompanyController : ApiController
     {
         private readonly ICompanyRepository _companyRepository;
 

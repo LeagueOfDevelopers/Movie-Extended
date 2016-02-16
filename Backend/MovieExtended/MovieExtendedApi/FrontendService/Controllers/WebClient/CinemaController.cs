@@ -5,9 +5,10 @@ using Domain.VisitorRepository;
 
 namespace FrontendService.Controllers.WebClient
 {
-    public class CinemaController:ApiController
+    public class CinemaController : ApiController
     {
         private readonly ICinemaRepository _cinemaRepository;
+
         public CinemaController(ICinemaRepository cinemaRepository)
         {
             _cinemaRepository = cinemaRepository;

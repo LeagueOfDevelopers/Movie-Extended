@@ -1,7 +1,6 @@
 ﻿using System;
 using Domain.Models.Entities;
 
-
 namespace Domain.Models.FrontendEntities
 {
     public class FrontendMovie
@@ -30,12 +29,13 @@ namespace Domain.Models.FrontendEntities
             Cinema = new FrontendCinema(movie.Cinema);
             AndroidToken = movie.AndroidToken;
         }
+
         public virtual int Id { get; protected set; }
 
         public virtual string Name { get; protected set; }
 
         public virtual FrontendCinema Cinema { get; protected set; }
 
-        public virtual Guid AndroidToken { get;  set; }
+        public virtual Guid AndroidToken { get; set; }
     }
 }

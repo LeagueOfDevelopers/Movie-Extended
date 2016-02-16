@@ -1,6 +1,4 @@
-﻿
-
-using Domain.Models.Entities;
+﻿using Domain.Models.Entities;
 
 namespace Domain.Models.FrontendEntities
 {
@@ -14,7 +12,7 @@ namespace Domain.Models.FrontendEntities
             Company = company;
         }
 
-        public FrontendCinema(string name ,string address, FrontendCompany company)
+        public FrontendCinema(string name, string address, FrontendCompany company)
         {
             Name = name;
             Address = address;
@@ -23,7 +21,6 @@ namespace Domain.Models.FrontendEntities
 
         protected FrontendCinema()
         {
-
         }
 
         public FrontendCinema(Cinema cinema)
@@ -31,8 +28,9 @@ namespace Domain.Models.FrontendEntities
             Id = cinema.Id;
             Name = cinema.Name;
             Address = cinema.Address;
-            Company=new FrontendCompany(cinema.Company);
+            Company = new FrontendCompany(cinema.Company);
         }
+
         public virtual int Id { get; protected set; }
 
         public virtual string Name { get; protected set; }

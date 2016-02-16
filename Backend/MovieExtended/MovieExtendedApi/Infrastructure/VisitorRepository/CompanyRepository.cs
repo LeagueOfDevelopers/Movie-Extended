@@ -1,13 +1,14 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Domain.Models.Entities;
 using Domain.VisitorRepository;
-using NHibernate.Linq;
 using Journalist;
+using NHibernate.Linq;
 
 namespace Infrastructure.VisitorRepository
 {
-    public class CompanyRepository :ICompanyRepository
+    public class CompanyRepository : ICompanyRepository
     {
         private readonly SessionProvider _provider;
 
@@ -16,7 +17,7 @@ namespace Infrastructure.VisitorRepository
             Require.NotNull(provider, nameof(SessionProvider));
             _provider = provider;
         }
-        
+
         public IEnumerable<Company> GetAllCompanies()
         {
             var session = _provider.GetCurrentSession();
@@ -51,7 +52,7 @@ namespace Infrastructure.VisitorRepository
 
         public void UpdateCompany(string jsonForUpdate)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
         public bool Exists(int companyId)

@@ -1,6 +1,4 @@
-﻿
-
-using Domain.Models.Entities;
+﻿using Domain.Models.Entities;
 
 namespace Domain.Models.FrontendEntities
 {
@@ -25,15 +23,17 @@ namespace Domain.Models.FrontendEntities
         {
             Id = language.Id;
             Name = language.Name;
-            Movie= new FrontendMovie(language.Movie);
+            Movie = new FrontendMovie(language.Movie);
             TrackFile = new FrontendFile(language.TrackFile);
         }
 
-        public FrontendLanguage() { }
+        public FrontendLanguage()
+        {
+        }
 
-        public virtual int Id { get;  set; }
+        public virtual int Id { get; set; }
 
-        public virtual string Name { get;  set; }
+        public virtual string Name { get; set; }
 
         public virtual FrontendMovie Movie { get; set; }
 

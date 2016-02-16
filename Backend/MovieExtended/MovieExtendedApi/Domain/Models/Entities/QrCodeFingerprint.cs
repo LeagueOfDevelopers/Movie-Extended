@@ -2,9 +2,6 @@
 {
     public class QrCodeFingerprint
     {
-        public virtual string Value { get; protected set; }
-        public virtual string Id { get; protected set; }
-
         protected QrCodeFingerprint()
         {
         }
@@ -13,5 +10,8 @@
         {
             Value = value;
         }
+
+        public virtual string Value { get; protected set; }
+        public virtual string Id { get; protected set; }
     }
 }

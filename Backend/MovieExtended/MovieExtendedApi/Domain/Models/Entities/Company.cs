@@ -19,7 +19,6 @@ namespace Domain.Models.Entities
 
         protected Company()
         {
-
         }
 
         public virtual int Id { get; protected set; }

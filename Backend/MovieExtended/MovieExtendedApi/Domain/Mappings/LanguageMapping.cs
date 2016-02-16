@@ -4,7 +4,7 @@ using NHibernate.Mapping.ByCode.Conformist;
 
 namespace Domain.Mappings
 {
-    public class LanguageMapping :ClassMapping<Language>
+    public class LanguageMapping : ClassMapping<Language>
     {
         public LanguageMapping()
         {
@@ -18,13 +18,11 @@ namespace Domain.Mappings
             {
                 mapper.Column("Movie");
                 mapper.Cascade(Cascade.All);
-                
             });
             ManyToOne(model => model.TrackFile, mapper =>
             {
                 mapper.Column("TrackFile");
                 mapper.Cascade(Cascade.All);
-                
             });
         }
     }

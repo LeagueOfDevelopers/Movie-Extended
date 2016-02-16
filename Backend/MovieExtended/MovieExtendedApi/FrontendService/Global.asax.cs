@@ -1,11 +1,12 @@
 ﻿using System.Diagnostics;
+using System.Web;
 using System.Web.Http;
-using SimpleInjector.Integration.WebApi;
 using Infrastructure.VisitorRepository;
+using SimpleInjector.Integration.WebApi;
 
 namespace FrontendService
 {
-    public class WebApiApplication : System.Web.HttpApplication
+    public class WebApiApplication : HttpApplication
     {
         protected void Application_Start()
         {
@@ -14,11 +15,12 @@ namespace FrontendService
 
             GlobalConfiguration.Configure(WebApiConfig.Register);
         }
+
         protected void Application_BeginRequest()
         {
             Debug.WriteLine("Begin request");
             var sessionProvider = GlobalConfiguration.Configuration.DependencyResolver.GetService(
-                typeof(SessionProvider)) as SessionProvider;
+                typeof (SessionProvider)) as SessionProvider;
             sessionProvider.OpenSession();
         }
 
@@ -26,7 +28,7 @@ namespace FrontendService
         {
             Debug.WriteLine("End request");
             var sessionProvider = GlobalConfiguration.Configuration.DependencyResolver.GetService(
-                typeof(SessionProvider)) as SessionProvider;
+                typeof (SessionProvider)) as SessionProvider;
             sessionProvider.CloseSession();
         }
     }

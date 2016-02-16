@@ -8,7 +8,7 @@ using NHibernate.Linq;
 
 namespace Infrastructure.VisitorRepository
 {
-    public class MovieRepository:IMovieRepository
+    public class MovieRepository : IMovieRepository
     {
         private readonly SessionProvider _provider;
 
@@ -17,6 +17,7 @@ namespace Infrastructure.VisitorRepository
             Require.NotNull(provider, nameof(SessionProvider));
             _provider = provider;
         }
+
         public IEnumerable<Movie> GetAllMovies()
         {
             var session = _provider.GetCurrentSession();
@@ -65,7 +66,7 @@ namespace Infrastructure.VisitorRepository
 
         public void UpdateMovie(string jsonForUpdate)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
         public bool Exists(int movieId)
@@ -78,7 +79,7 @@ namespace Infrastructure.VisitorRepository
         public Movie CheckAndroidToken(Guid token)
         {
             var session = _provider.GetCurrentSession();
-            return session.Query<Movie>().SingleOrDefault(movie => movie.AndroidToken==token );
+            return session.Query<Movie>().SingleOrDefault(movie => movie.AndroidToken == token);
         }
     }
 }

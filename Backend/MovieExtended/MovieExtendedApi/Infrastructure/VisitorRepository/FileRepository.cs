@@ -18,9 +18,6 @@ namespace Infrastructure.VisitorRepository
             _provider = provider;
         }
 
-        
-
-       
 
         public void DownLoadFileFromDataBase(int fileId)
         {
@@ -33,14 +30,11 @@ namespace Infrastructure.VisitorRepository
             var deleteFile = session.Query<File>().SingleOrDefault(file => fileId == file.Id);
             if (deleteFile != null)
             {
-                System.IO.File.Delete(deleteFile.FilePath.ToString());
+                System.IO.File.Delete(deleteFile.FilePath);
                 session.Delete(deleteFile);
-
             }
-
         }
 
-        
 
         public File GetFileData(int fileId)
         {

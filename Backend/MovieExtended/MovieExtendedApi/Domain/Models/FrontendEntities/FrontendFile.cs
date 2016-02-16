@@ -1,5 +1,4 @@
-﻿using System.Reflection;
-using Domain.Models.Entities;
+﻿using Domain.Models.Entities;
 
 namespace Domain.Models.FrontendEntities
 {
@@ -29,12 +28,10 @@ namespace Domain.Models.FrontendEntities
             FileType = file.FileType;
         }
 
-        public virtual int Id { get;  set; }
+        public virtual int Id { get; set; }
 
         public virtual string FilePath { get; protected set; }
 
         public virtual FileType FileType { get; protected set; }
     }
-
-    
 }

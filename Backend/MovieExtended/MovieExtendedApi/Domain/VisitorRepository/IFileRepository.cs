@@ -3,12 +3,12 @@ using Domain.Models.Entities;
 
 namespace Domain.VisitorRepository
 {
-   public interface IFileRepository
+    public interface IFileRepository
     {
         void DownLoadFileFromDataBase(int fileId);
         void DeleteFileByFileId(int fileId);
         File GetFileData(int fileId);
         void SaveFileData(File file);
-       IEnumerable<File> GetAllFiles();
+        IEnumerable<File> GetAllFiles();
     }
 }

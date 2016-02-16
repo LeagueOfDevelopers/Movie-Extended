@@ -12,7 +12,6 @@ namespace Domain.Mappings
             {
                 mapper.Column("Id");
                 mapper.Generator(Generators.EnhancedTable);
-                
             });
             Property(model => model.Name, mapper => mapper.Column("Name"));
             Property(model => model.Address, mapper => mapper.Column("Address"));
@@ -20,7 +19,6 @@ namespace Domain.Mappings
             {
                 mapper.Column("Company");
                 mapper.Cascade(Cascade.All);
-                
             });
         }
     }

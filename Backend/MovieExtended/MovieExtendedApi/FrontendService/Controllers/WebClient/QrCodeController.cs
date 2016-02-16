@@ -7,12 +7,12 @@ namespace FrontendService.Controllers.WebClient
 {
     public class QrCodeController : ApiController
     {
-        private readonly IQrCodeGenerator _qrCodeGenerator;
-        private readonly IQrCodeRepository _qrCodeRepository;
         private readonly ICompanyRepository _companyRepository;
         private readonly IMovieRepository _movieRepository;
+        private readonly IQrCodeGenerator _qrCodeGenerator;
+        private readonly IQrCodeRepository _qrCodeRepository;
 
-        public QrCodeController(IQrCodeGenerator qrCodeGenerator, 
+        public QrCodeController(IQrCodeGenerator qrCodeGenerator,
             IQrCodeRepository qrCodeRepository,
             ICompanyRepository companyRepository,
             IMovieRepository movieRepository)
