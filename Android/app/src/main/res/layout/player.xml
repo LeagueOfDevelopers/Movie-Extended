@@ -7,10 +7,12 @@
     android:layout_height="match_parent">
 
     <ImageButton
+        android:id="@+id/close"
         android:layout_margin="20dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@mipmap/apollo_holo_dark_notifiation_bar_collapse"/>
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:background="@color/transparent"
+        android:src="@mipmap/close"/>
 
     <ImageView
         android:layout_marginTop="20dp"
@@ -40,26 +42,35 @@
     <LinearLayout
         android:layout_marginTop="30dp"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="80dp"
         android:layout_gravity="center">
 
         <ImageButton
-            android:layout_margin="20dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@mipmap/apollo_holo_dark_notifiation_bar_collapse"/>
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="40dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:scaleType="fitXY"
+            android:background="@color/transparent"
+            android:src="@mipmap/left"/>
+
+        <com.lod.movie_extended.util.PlayPauseView
+            android:id="@+id/play_pause_view"
+            android:layout_marginTop="10dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:clickable="true"
+            android:foreground="?android:selectableItemBackground"
+            android:stateListAnimator="@animator/button_elevation"/>
 
         <ImageButton
-            android:layout_margin="20dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@mipmap/apollo_holo_dark_notifiation_bar_collapse"/>
-
-        <ImageButton
-            android:layout_margin="20dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@mipmap/apollo_holo_dark_notifiation_bar_collapse"/>
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="40dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:scaleType="fitXY"
+            android:background="@color/transparent"
+            android:src="@mipmap/right"/>
 
     </LinearLayout>
 

@@ -1,5 +1,8 @@
 package com.lod.movie_extended.data;
 
+import android.content.Context;
+
+import com.lod.movie_extended.App;
 import com.lod.movie_extended.data.local.DataBaseHelper;
 import com.lod.movie_extended.data.local.PreferencesHelper;
 import com.lod.movie_extended.data.model.Session;
@@ -24,6 +27,7 @@ public class DataManager {
     private PreferencesHelper preferencesHelper;
     private Server server;
     private boolean filmTime;
+    private boolean qrCodeProcessed;
 
     @Inject
     public DataManager(ServerHelper serverHelper, DataBaseHelper dataBaseHelper, PreferencesHelper preferencesHelper,
@@ -59,5 +63,17 @@ public class DataManager {
 
     public void setFilmTime(boolean filmTime) {
         this.filmTime = filmTime;
+    }
+
+    public boolean hasQrCodeBeenProcessed() {
+        return qrCodeProcessed;
+    }
+
+    public void setQrCodeProcessed(boolean qrCodeProcessed) {
+        this.qrCodeProcessed = qrCodeProcessed;
+    }
+
+    public void setAudioUrl(Context context, String audioUrl) {
+        App.get(context).setAudioUrl(audioUrl);
     }
 }

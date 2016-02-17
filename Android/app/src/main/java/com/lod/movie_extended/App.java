@@ -3,14 +3,12 @@ package com.lod.movie_extended;
 import android.app.Application;
 import android.content.Context;
 
-import com.crashlytics.android.Crashlytics;
 import com.lod.movie_extended.injection.component.application.ApplicationComponent;
 import com.lod.movie_extended.injection.component.application.DaggerApplicationComponent;
 import com.lod.movie_extended.injection.module.application.ApplicationModule;
 import com.lod.movie_extended.injection.module.application.AudioModule;
 import com.lod.movie_extended.util.Logger;
 
-import io.fabric.sdk.android.Fabric;
 import timber.log.Timber;
 
 /**

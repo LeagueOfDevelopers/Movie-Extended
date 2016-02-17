@@ -45,6 +45,7 @@ public class FilmPreparationActivity extends InjectActivityBase
         implements FilmPreparationMvpView, ComponentCreator<FilmPreparationComponent>,
         ComponentGetter<FilmPreparationComponent> {
 
+    //region vars
     private static final int LAYOUT = R.layout.activity_film_preparation;
 
     @Bind(R.id.footer_ll)
@@ -64,10 +65,10 @@ public class FilmPreparationActivity extends InjectActivityBase
 
     FilmPreparationComponent component;
 
-    private ActionBar toolbar;
     private boolean isRunning;
 
     Intent filmActivityIntent;
+    //endregion
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,6 +78,13 @@ public class FilmPreparationActivity extends InjectActivityBase
         presenter.loadSession();
         presenter.getToken("qwe");
         filmActivityIntent = new Intent(this, FilmActivity.class);
+        initToolbar();
+    }
+
+    private void initToolbar() {
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        toolbar.setTitle("Movie-Extended");
     }
 
     @Override
@@ -87,18 +95,18 @@ public class FilmPreparationActivity extends InjectActivityBase
         isRunning = true;
     }
 
-    @OnClick(R.id.footer_ll)
-    public void onFooterClick() {
-        if(presenter.isFilmTime()) {
-            transitionTo(filmActivityIntent);
-        }
-    }
-
     @Override
     protected void onPause() {
         Timber.v("onPause");
         isRunning = false;
         super.onPause();
+    }
+
+    @OnClick(R.id.footer_ll)
+    public void onFooterClick() {
+        if(presenter.isFilmTime()) {
+            startActivity(filmActivityIntent);
+        }
     }
 
     @Override
@@ -174,7 +182,12 @@ public class FilmPreparationActivity extends InjectActivityBase
     @Subscribe
     public void onLanguageSelected(LanguageSelected event) {
         Timber.v("onLanguageSelected, onLanguageSelected");
-        setFilmFragment(RemainingTimeFragment.getNewInstance(),true,false);
+        if(presenter.isFilmTime()) {
+            startActivity(filmActivityIntent);
+        }
+        else {
+            setFilmFragment(RemainingTimeFragment.getNewInstance(),true,false);
+        }
     }
 
     private void setFilmFragment(Fragment fragment, boolean addToBackStack, boolean popBackStack) {
@@ -199,15 +212,6 @@ public class FilmPreparationActivity extends InjectActivityBase
 
     private void setViewsVisible() {
         Timber.v("setting views visible");
-        progressBar.setVisibility(View.INVISIBLE);
-    }
-
-    private void initToolbar() {
-        setSupportActionBar((Toolbar)findViewById(R.id.toolbar));
-        toolbar = getSupportActionBar();
-
-        if(toolbar != null) {
-            toolbar.setTitle("");
-        }
+        progressBar.setVisibility(View.GONE);
     }
 }

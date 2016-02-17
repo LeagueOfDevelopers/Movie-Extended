@@ -10,6 +10,8 @@ import com.lod.movie_extended.injection.component.activity.MainActivityComponent
 import com.lod.movie_extended.injection.module.activity.MainActivityModule;
 import com.lod.movie_extended.ui.base.InjectActivityBase;
 import com.lod.movie_extended.ui.base.ComponentCreator;
+import com.lod.movie_extended.ui.filmPreparation.FilmPreparationActivity;
+import com.lod.movie_extended.ui.filmPreparation.FilmPreparationPresenter;
 import com.lod.movie_extended.ui.qrCodeReader.QrCodeReaderActivity;
 
 import javax.inject.Inject;
@@ -29,6 +31,11 @@ public class MainActivity extends InjectActivityBase implements MainMvpView, Com
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Timber.v("onCreate");
+
+        if(presenter.hasQrCodeBeenProcessed()) {
+            startActivity(new Intent(MainActivity.this, FilmPreparationActivity.class));
+            finish();
+        }
     }
 
     @Override
@@ -52,6 +59,7 @@ public class MainActivity extends InjectActivityBase implements MainMvpView, Com
         Timber.v("starting QrCodeActivity");
         startActivity(new Intent(this, QrCodeReaderActivity.class));
         finish();
+        presenter.setQrCodeProcessed(true);
     }
 
     @Override

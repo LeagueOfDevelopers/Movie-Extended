@@ -25,4 +25,12 @@ public class MainPresenter extends BasePresenter<MainMvpView> {
     public void detachView() {
         super.detachView();
     }
+
+    public boolean hasQrCodeBeenProcessed() {
+        return dataManager.hasQrCodeBeenProcessed();
+    }
+
+    public void setQrCodeProcessed(boolean qrCodePrecessed) {
+        dataManager.setQrCodeProcessed(qrCodePrecessed);
+    }
 }

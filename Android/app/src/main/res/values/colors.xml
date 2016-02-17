@@ -22,4 +22,7 @@
 
     <!-- Black -->
     <color name="black">#ff000000</color>
+
+    <color name="purple">#6A1B9A</color>
+    <color name="blue">#1565C0</color>
 </resources>

@@ -2,7 +2,11 @@ package com.lod.movie_extended.ui.film;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.media.MediaCodec;
+import android.support.annotation.Nullable;
+import android.support.v7.graphics.Palette;
 import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -21,6 +25,7 @@ import com.google.android.exoplayer.metadata.TxxxMetadata;
 import com.google.android.exoplayer.text.Cue;
 import com.google.android.exoplayer.util.MimeTypes;
 import com.lod.movie_extended.App;
+import com.lod.movie_extended.R;
 import com.lod.movie_extended.data.DataManager;
 import com.lod.movie_extended.data.model.Player;
 import com.lod.movie_extended.service.PlayerNotificationService;
@@ -40,16 +45,18 @@ import timber.log.Timber;
 /**
  * Created by Жамбыл on 09.01.2016.
  */
-public class FilmPresenter extends BasePresenter<FilmMvpView> implements
-        Player.Listener, Player.CaptionListener, Player.Id3MetadataListener,
-        AudioCapabilitiesReceiver.Listener, Player.InternalErrorListener {
+public class    FilmPresenter extends BasePresenter<FilmMvpView> implements
+        Player.Listener {
 
-    DataManager dataManager;
+    private DataManager dataManager;
 
     private Context context;
-    Player player;
+    private Player player;
 
     private long playerPosition;
+
+    @Nullable
+    private Palette palette;
 
     public FilmPresenter(DataManager dataManager,Context context, Player player) {
         this.dataManager = dataManager;
@@ -57,30 +64,54 @@ public class FilmPresenter extends BasePresenter<FilmMvpView> implements
         this.player = player;
     }
 
+    public void setAudioUrl(Context context) {
+        dataManager.setAudioUrl(context,"http://movieextended1.azurewebsites.net/api/file/get/43");
+    }
+
+    public void togglePlayer() {
+        boolean playing = player.getPlayWhenReady();
+        player.setPlayWhenReady(!playing);
+    }
+
     public void startPlayerNotificationService() {
         Timber.v("starting PlayerNotificationService");
         startServiceWithAction(Constants.ACTION.START_FOREGROUND_ACTION);
-        startServiceWithAction(Constants.ACTION.PLAY_OR_PAUSE);
-    }
-
-    private void startServiceWithAction(String toRightAction) {
-        Intent serviceIntent = new Intent(context, PlayerNotificationService.class);
-        serviceIntent.setAction(toRightAction);
-        context.startService(serviceIntent);
     }
 
     public void preparePlayer(boolean playWhenReady) {
         Timber.v("preparing player");
         player.addListener(this);
-        player.setCaptionListener(this);
-        player.setMetadataListener(this);
-        player.setInternalErrorListener(this);
         player.seekTo(playerPosition);
-
         player.prepare();
-
-        player.setPlayWhenReady(playWhenReady);
     }
+
+    public int getPosterDarkColor() {
+        return getPosterPalette().getDarkVibrantColor(0);
+    }
+
+    public int getPosterLightColor() {
+        return getPosterPalette().getLightVibrantColor(0);
+    }
+
+    public Palette getPosterPalette() {
+        if(palette == null) {
+            Bitmap poster = BitmapFactory.decodeResource(context.getResources(),
+                    R.mipmap.star_wars);
+            palette = Palette.from(poster).generate();
+        }
+        return palette;
+    }
+
+    public void OnDestroy() {
+        removeListener();
+    }
+
+
+    @Override
+    public void onStateChanged(boolean playWhenReady, int playbackState) {
+        getMvpView().togglePlayPauseButton();
+    }
+
 
     private void releasePlayer() {
         Timber.v("releasing player");
@@ -91,88 +122,23 @@ public class FilmPresenter extends BasePresenter<FilmMvpView> implements
         }
     }
 
-    @Override
-      public void onAudioCapabilitiesChanged(AudioCapabilities audioCapabilities) {
-        if (player == null) {
-            return;
-        }
-        boolean playWhenReady = player.getPlayWhenReady();
-        releasePlayer();
-        preparePlayer(playWhenReady);
+    private void startServiceWithAction(String toRightAction) {
+        Intent serviceIntent = new Intent(context, PlayerNotificationService.class);
+        serviceIntent.setAction(toRightAction);
+        context.startService(serviceIntent);
     }
 
-    @Override
-    public void onStateChanged(boolean playWhenReady, int playbackState) {
-        //TODO set change
+    private void removeListener() {
+        player.removeListener(this);
     }
+
 
     @Override
     public void onError(Exception e) {
         if (e instanceof UnsupportedDrmException) {
-            // Special case DRM failures.
-            int stringId = 0;
+            Timber.e(e.getMessage());
         }
     }
 
-    public void removeListener() {
-        player.removeListener(this);
-    }
-
-    // region metadata and subtitles
-    @Override
-    public void onCues(List<Cue> cues) {
-        getMvpView().getSubtitleLayout().setCues(cues);
-    }
-
-    @Override
-    public void onId3Metadata(Map<String, Object> metadata) {
-        for (Map.Entry<String, Object> entry : metadata.entrySet()) {
-            if (TxxxMetadata.TYPE.equals(entry.getKey())) {
-                TxxxMetadata txxxMetadata = (TxxxMetadata) entry.getValue();
-            } else if (PrivMetadata.TYPE.equals(entry.getKey())) {
-                PrivMetadata privMetadata = (PrivMetadata) entry.getValue();
-            } else if (GeobMetadata.TYPE.equals(entry.getKey())) {
-                GeobMetadata geobMetadata = (GeobMetadata) entry.getValue();
-            } else {
-            }
-        }
-    }
-    //endregion
-    //region Errors
-    @Override
-    public void onRendererInitializationError(Exception e) {
-        Timber.e(e.getMessage());
-    }
-
-    @Override
-    public void onAudioTrackInitializationError(AudioTrack.InitializationException e) {
-        Timber.e(e.getMessage());
-    }
-
-    @Override
-    public void onAudioTrackWriteError(AudioTrack.WriteException e) {
-        Timber.e(e.getMessage());
-    }
-
-    @Override
-    public void onDecoderInitializationError(MediaCodecTrackRenderer.DecoderInitializationException e) {
-        Timber.e(e.getMessage());
-    }
-
-    @Override
-    public void onCryptoError(MediaCodec.CryptoException e) {
-        Timber.e(e.getMessage());
-    }
-
-    @Override
-    public void onLoadError(int sourceId, IOException e) {
-        Timber.e("load error " + e.getMessage());
-    }
-
-    @Override
-    public void onDrmSessionManagerError(Exception e) {
-        Timber.e(e.getMessage());
-    }
-    //endregion
 
 }

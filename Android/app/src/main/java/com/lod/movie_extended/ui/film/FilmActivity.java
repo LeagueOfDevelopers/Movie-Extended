@@ -1,41 +1,36 @@
 package com.lod.movie_extended.ui.film;
 
 import android.annotation.TargetApi;
-import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.v7.graphics.Palette;
 import android.transition.Slide;
 import android.transition.Transition;
-import android.transition.TransitionInflater;
 import android.transition.Visibility;
 import android.view.Gravity;
-import android.view.KeyEvent;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.accessibility.CaptioningManager;
-import android.widget.Button;
-import android.widget.MediaController;
-import android.widget.PopupMenu;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.ImageButton;
+import android.widget.LinearLayout;
 
-import com.google.android.exoplayer.text.CaptionStyleCompat;
 import com.google.android.exoplayer.text.SubtitleLayout;
-import com.google.android.exoplayer.util.Util;
 import com.lod.movie_extended.App;
 import com.lod.movie_extended.R;
-import com.lod.movie_extended.data.model.Player;
 import com.lod.movie_extended.injection.component.activity.DaggerFilmComponent;
 import com.lod.movie_extended.injection.component.activity.FilmComponent;
 import com.lod.movie_extended.injection.module.activity.FilmModule;
 import com.lod.movie_extended.ui.base.ComponentCreator;
 import com.lod.movie_extended.ui.base.InjectActivityBase;
 import com.lod.movie_extended.ui.base.Presenter;
+import com.lod.movie_extended.util.PlayPauseView;
 
 import javax.inject.Inject;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import timber.log.Timber;
 
 /**
@@ -46,16 +41,69 @@ public class FilmActivity extends InjectActivityBase implements FilmMvpView, Com
 
     private static final int LAYOUT = R.layout.player;
 
+    @Bind(R.id.play_pause_view)
+    PlayPauseView playPauseView;
+
+    @Bind(R.id.player_background_ll)
+    LinearLayout background;
+
     @Inject
     FilmPresenter presenter;
-
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         App.get(this).setAudioUrl("http://movieextended1.azurewebsites.net/api/file/get/43");
         super.onCreate(savedInstanceState);
+        presenter.preparePlayer(true);
         setupWindowAnimations();
         Timber.v("onCreate" + presenter.hashCode());
+        initUI();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        presenter.startPlayerNotificationService();
+    }
+
+    @Override
+    protected void onDestroy() {
+        Timber.v("onDestroy");
+        super.onDestroy();
+        presenter.OnDestroy();
+    }
+
+    private void initUI() {
+        initPlayPauseView();
+        setStatusBarColor(presenter.getPosterDarkColor());
+        setBackgroundLayout(presenter.getPosterLightColor());
+    }
+
+    @OnClick(R.id.close)
+    public void OnCloseButtonClick() {
+        finish();
+    }
+
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+    private void setStatusBarColor(int color) {
+        Window window = getWindow();
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+        window.setStatusBarColor(color);
+    }
+
+    private void setBackgroundLayout(int color) {
+        background.setBackgroundColor(color);
+    }
+
+    private void initPlayPauseView() {
+        playPauseView.setOnClickListener(v -> {
+            presenter.togglePlayer();
+        });
+    }
+
+    @Override
+    public void togglePlayPauseButton() {
+        playPauseView.toggle();
     }
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
@@ -98,23 +146,8 @@ public class FilmActivity extends InjectActivityBase implements FilmMvpView, Com
     }
 
     @Override
-    public void onResume() {
-        super.onResume();
-
-        presenter.preparePlayer(true);
-        presenter.startPlayerNotificationService();
-    }
-
-    @Override
     public SubtitleLayout getSubtitleLayout() {
         return null;
-    }
-
-    @Override
-    protected void onDestroy() {
-        Timber.v("onDestroy");
-        super.onDestroy();
-        presenter.removeListener();
     }
 }
 
