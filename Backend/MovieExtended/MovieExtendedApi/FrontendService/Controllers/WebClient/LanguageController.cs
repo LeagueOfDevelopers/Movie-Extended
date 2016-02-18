@@ -12,14 +12,14 @@ namespace FrontendService.Controllers.WebClient
 {
     public class LanguageController : ApiController
     {
-        private readonly ILanguageRepository _languageRepository;
         private readonly ISessionKeeper _keeper;
+        private readonly ILanguageRepository _languageRepository;
 
         public LanguageController(ILanguageRepository languageRepository, ISessionKeeper keeper)
         {
-            Require.NotNull(languageRepository,nameof(ILanguageRepository));
+            Require.NotNull(languageRepository, nameof(ILanguageRepository));
             _languageRepository = languageRepository;
-            Require.NotNull(keeper , nameof(ISessionKeeper));
+            Require.NotNull(keeper, nameof(ISessionKeeper));
             _keeper = keeper;
         }
 
@@ -41,7 +41,7 @@ namespace FrontendService.Controllers.WebClient
         [HttpGet]
         public IEnumerable<FrontendLanguage> GetAllLanguages()
         {
-           return _languageRepository.GetAllLanguages();
+            return _languageRepository.GetAllLanguages();
         }
 
         [Route("api/Languages/New")]
@@ -49,25 +49,23 @@ namespace FrontendService.Controllers.WebClient
         public void SaveNewLanguageToDataBase([FromBody] Language newLanguage)
         {
             _languageRepository.SaveLanguage(newLanguage);
-
         }
 
         [Route("api/Languages/GetMovie")]
         [HttpPost]
-        public IEnumerable<AndroidLanguage> GetLanguagesByMovieId([FromBody]string session)
+        public IEnumerable<AndroidLanguage> GetLanguagesByMovieId([FromBody] string session)
         {
             var sessionId = new Guid(session);
-            if (_keeper.CheckIfSessionExists(sessionId)&& _keeper.GetSessionState(sessionId)==SessionState.Active)
-            return _languageRepository.GetLanguagesByMovieId(_keeper.GetMovieId(sessionId));
-            else throw new HttpResponseException(HttpStatusCode.Unauthorized); 
+            if (_keeper.CheckIfSessionExists(sessionId) && _keeper.GetSessionState(sessionId) == SessionState.Active)
+                return _languageRepository.GetLanguagesByMovieId(_keeper.GetMovieId(sessionId));
+            throw new HttpResponseException(HttpStatusCode.Unauthorized);
         }
 
         [Route("api/Languages/{movieId}")]
         [HttpGet]
         public IEnumerable<AndroidLanguage> GetLanguagesByMovieId(int movieId)
         {
-                return _languageRepository.GetLanguagesByMovieId(movieId);
+            return _languageRepository.GetLanguagesByMovieId(movieId);
         }
-
     }
 }

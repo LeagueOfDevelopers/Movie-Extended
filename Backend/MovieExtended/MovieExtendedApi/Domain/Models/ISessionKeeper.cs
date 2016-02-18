@@ -9,5 +9,7 @@ namespace Domain.Models
         bool CheckIfSessionExists(Guid sessionId);
         SessionState GetSessionState(Guid sessionId);
         int GetMovieId(Guid sessionId);
+        void SetMovieTime(int movieId, DateTime movieStartTime);
+        DateTime GetMovieStartTime(int movieId);
     }
 }

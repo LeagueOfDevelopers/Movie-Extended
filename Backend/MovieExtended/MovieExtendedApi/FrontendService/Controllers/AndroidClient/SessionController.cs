@@ -53,11 +53,27 @@ namespace FrontendService.Controllers.AndroidClient
         //    return ConvertToUnixTimestamp(datetime).ToString();
         //}
 
-        private static double ConvertToUnixTimestamp(DateTime date)
+        //private static double ConvertToUnixTimestamp(DateTime date)
+        //{
+        //    var origin = new DateTime(1970, 1, 1, 0, 0, 0, 0);
+        //    var diff = date - origin;
+        //    return diff.TotalMilliseconds;
+        //}
+        [Route("api/SetTime")]
+        [HttpPut]
+        public void SetMovieStartTime([FromBody] int movieId, [FromBody] DateTime movieStartTime)
         {
-            var origin = new DateTime(1970, 1, 1, 0, 0, 0, 0);
-            var diff = date - origin;
-            return diff.TotalMilliseconds;
+            _keeper.SetMovieTime(movieId,movieStartTime);
         }
+
+        [Route("api/GetTime/{movieId}")]
+        [HttpGet]
+        public DateTime GetMovieStartTime(int movieId)
+        {
+            return _keeper.GetMovieStartTime(movieId);
+        }
+
+        
+    
     }
 }

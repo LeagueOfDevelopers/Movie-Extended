@@ -17,7 +17,9 @@
             TrackFile = trackFile;
         }
 
-        protected Language() { }
+        protected Language()
+        {
+        }
 
         public virtual int Id { get; protected set; }
 
