@@ -112,7 +112,7 @@ public class PlayPauseView extends FrameLayout {
         mDrawable.draw(canvas);
     }
 
-    public void toggle() {
+    public void toggle(boolean slow) {
         if (mAnimatorSet != null) {
             mAnimatorSet.cancel();
         }
@@ -123,8 +123,13 @@ public class PlayPauseView extends FrameLayout {
         colorAnim.setEvaluator(new ArgbEvaluator());
         final Animator pausePlayAnim = mDrawable.getPausePlayAnimator();
         mAnimatorSet.setInterpolator(new DecelerateInterpolator());
-        mAnimatorSet.setDuration(PLAY_PAUSE_ANIMATION_DURATION);
+        long duration = slow ? PLAY_PAUSE_ANIMATION_DURATION : 0;
+        mAnimatorSet.setDuration(duration);
         mAnimatorSet.playTogether(colorAnim, pausePlayAnim);
         mAnimatorSet.start();
+    }
+
+    public boolean isPlay() {
+        return mDrawable.isPlay();
     }
 }

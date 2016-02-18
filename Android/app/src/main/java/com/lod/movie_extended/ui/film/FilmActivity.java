@@ -1,18 +1,14 @@
 package com.lod.movie_extended.ui.film;
 
 import android.annotation.TargetApi;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.v7.graphics.Palette;
 import android.transition.Slide;
 import android.transition.Transition;
 import android.transition.Visibility;
 import android.view.Gravity;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.ImageButton;
 import android.widget.LinearLayout;
 
 import com.google.android.exoplayer.text.SubtitleLayout;
@@ -54,7 +50,7 @@ public class FilmActivity extends InjectActivityBase implements FilmMvpView, Com
     public void onCreate(Bundle savedInstanceState) {
         App.get(this).setAudioUrl("http://movieextended1.azurewebsites.net/api/file/get/43");
         super.onCreate(savedInstanceState);
-        presenter.preparePlayer(true);
+        presenter.onCreate();
         setupWindowAnimations();
         Timber.v("onCreate" + presenter.hashCode());
         initUI();
@@ -63,7 +59,6 @@ public class FilmActivity extends InjectActivityBase implements FilmMvpView, Com
     @Override
     public void onResume() {
         super.onResume();
-        presenter.startPlayerNotificationService();
     }
 
     @Override
@@ -96,14 +91,26 @@ public class FilmActivity extends InjectActivityBase implements FilmMvpView, Com
     }
 
     private void initPlayPauseView() {
+        setCorrectDrawable(false);
+        setOnClickListenerOnPlayPauseView();
+    }
+
+    private void setOnClickListenerOnPlayPauseView() {
         playPauseView.setOnClickListener(v -> {
             presenter.togglePlayer();
         });
     }
 
+    private void setCorrectDrawable(boolean slow) {
+        if(presenter.isPlaying() == playPauseView.isPlay())
+        {
+            playPauseView.toggle(slow);
+        }
+    }
+
     @Override
-    public void togglePlayPauseButton() {
-        playPauseView.toggle();
+    public void togglePlayPauseButtonSlowIfNeed() {
+        setCorrectDrawable(true);
     }
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
