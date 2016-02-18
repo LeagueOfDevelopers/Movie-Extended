@@ -10,10 +10,8 @@ import android.transition.Slide;
 import android.transition.Transition;
 import android.transition.Visibility;
 import android.view.Gravity;
-import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.ImageButton;
 import android.widget.LinearLayout;
 
 import com.google.android.exoplayer.text.SubtitleLayout;
@@ -28,8 +26,7 @@ import com.lod.movie_extended.ui.base.InjectActivityBase;
 import com.lod.movie_extended.ui.base.InjectFragmentBase;
 import com.lod.movie_extended.ui.base.Presenter;
 import com.lod.movie_extended.ui.fragment.poster.PosterFragment;
-import com.lod.movie_extended.ui.fragment.subtitles.SubtitlesFragment;
-import com.lod.movie_extended.util.PlayPauseView;
+import com.lod.movie_extended.ui.view.PlayPauseView;
 
 import javax.inject.Inject;
 

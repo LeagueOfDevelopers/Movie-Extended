@@ -1,4 +1,4 @@
-package com.lod.movie_extended.util;
+package com.lod.movie_extended.service;
 
 import android.app.PendingIntent;
 import android.graphics.Bitmap;

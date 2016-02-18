@@ -71,7 +71,7 @@
             android:background="@color/transparent"
             android:src="@mipmap/left"/>
 
-        <com.lod.movie_extended.util.PlayPauseView
+        <com.lod.movie_extended.ui.view.PlayPauseView
             android:id="@+id/play_pause_view"
             android:layout_marginTop="10dp"
             android:layout_width="60dp"

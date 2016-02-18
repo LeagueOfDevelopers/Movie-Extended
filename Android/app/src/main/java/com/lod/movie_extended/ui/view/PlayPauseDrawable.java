@@ -1,4 +1,4 @@
-package com.lod.movie_extended.util;
+package com.lod.movie_extended.ui.view;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;

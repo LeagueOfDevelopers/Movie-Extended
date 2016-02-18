@@ -27,7 +27,7 @@ import com.lod.movie_extended.ui.base.Presenter;
 import com.lod.movie_extended.ui.activity.film.FilmActivity;
 import com.lod.movie_extended.ui.fragment.languages.LanguagesFragment;
 import com.lod.movie_extended.ui.fragment.remainigTime.RemainingTimeFragment;
-import com.lod.movie_extended.util.TransitionHelper;
+import com.lod.movie_extended.ui.view.TransitionHelper;
 import com.squareup.otto.Bus;
 import com.squareup.otto.Subscribe;
 

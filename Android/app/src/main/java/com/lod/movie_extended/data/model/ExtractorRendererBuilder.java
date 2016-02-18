@@ -1,4 +1,4 @@
-package com.lod.movie_extended.util;
+package com.lod.movie_extended.data.model;
 
 import android.content.Context;
 import android.media.AudioManager;
