@@ -2,7 +2,7 @@ package com.lod.movie_extended.injection.module.fragment;
 
 import com.lod.movie_extended.data.DataManager;
 import com.lod.movie_extended.injection.scope.PerFragment;
-import com.lod.movie_extended.ui.remainigTime.RemainingTimePresenter;
+import com.lod.movie_extended.ui.fragment.remainigTime.RemainingTimePresenter;
 
 import dagger.Module;
 import dagger.Provides;

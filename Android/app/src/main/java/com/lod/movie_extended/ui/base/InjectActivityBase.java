@@ -3,18 +3,16 @@ package com.lod.movie_extended.ui.base;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
-import com.lod.movie_extended.injection.component.activity.FilmComponent;
-import com.lod.movie_extended.ui.main.MainPresenter;
+
 import com.squareup.otto.Bus;
 
-import dagger.Component;
+import javax.inject.Inject;
 
 
 /**
  * Created by Жамбыл on 10.01.2016.
  */
-public abstract class InjectActivityBase extends AppCompatActivity implements MvpView{
+public abstract class InjectActivityBase extends AppCompatActivity implements MvpView, Injector{
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -36,13 +34,8 @@ public abstract class InjectActivityBase extends AppCompatActivity implements Mv
         getPresenter().detachView();
     }
 
-    protected abstract int getContentView();
-
-    public abstract void inject();
-
-    protected abstract Presenter getPresenter();
-
-    protected Bus getBus() {
+    @Override
+    public Bus getBus() {
         return null;
     }
 }

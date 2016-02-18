@@ -3,7 +3,7 @@ package com.lod.movie_extended.injection.component.activity;
 import com.lod.movie_extended.injection.component.application.ApplicationComponent;
 import com.lod.movie_extended.injection.module.activity.QrCodeReaderModule;
 import com.lod.movie_extended.injection.scope.PerActivity;
-import com.lod.movie_extended.ui.qrCodeReader.QrCodeReaderActivity;
+import com.lod.movie_extended.ui.activity.qrCodeReader.QrCodeReaderActivity;
 
 import dagger.Component;
 

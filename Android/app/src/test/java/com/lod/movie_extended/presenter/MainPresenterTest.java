@@ -1,8 +1,8 @@
 package com.lod.movie_extended.presenter;
 
 import com.lod.movie_extended.data.DataManager;
-import com.lod.movie_extended.ui.main.MainMvpView;
-import com.lod.movie_extended.ui.main.MainPresenter;
+import com.lod.movie_extended.ui.activity.main.MainMvpView;
+import com.lod.movie_extended.ui.activity.main.MainPresenter;
 
 import org.junit.After;
 import org.junit.Before;

@@ -15,7 +15,7 @@ public interface MediaCodecSelector {
     public static final MediaCodecSelector DEFAULT = new MediaCodecSelector() {
 
         /**
-         * The name for the raw (passthrough) decoder OMX component.
+         * The name for the raw (passthrough) decoder OMX parentComponent.
          */
         private static final String RAW_DECODER_NAME = "OMX.google.raw.decoder";
 

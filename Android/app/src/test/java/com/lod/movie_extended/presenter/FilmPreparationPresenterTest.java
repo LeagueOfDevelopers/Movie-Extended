@@ -2,8 +2,8 @@ package com.lod.movie_extended.presenter;
 
 import com.lod.movie_extended.data.DataManager;
 import com.lod.movie_extended.data.model.Session;
-import com.lod.movie_extended.ui.filmPreparation.FilmPreparationMvpView;
-import com.lod.movie_extended.ui.filmPreparation.FilmPreparationPresenter;
+import com.lod.movie_extended.ui.activity.filmPreparation.FilmPreparationMvpView;
+import com.lod.movie_extended.ui.activity.filmPreparation.FilmPreparationPresenter;
 import com.lod.movie_extended.util.TestDataFactory;
 
 import junit.framework.Assert;

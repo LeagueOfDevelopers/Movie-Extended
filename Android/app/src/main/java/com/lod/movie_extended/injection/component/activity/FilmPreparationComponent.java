@@ -6,8 +6,7 @@ import com.lod.movie_extended.data.DataManager;
 import com.lod.movie_extended.injection.component.application.ApplicationComponent;
 import com.lod.movie_extended.injection.module.activity.FilmPreparationModule;
 import com.lod.movie_extended.injection.scope.PerActivity;
-import com.lod.movie_extended.ui.base.InjectActivityBase;
-import com.lod.movie_extended.ui.filmPreparation.FilmPreparationActivity;
+import com.lod.movie_extended.ui.activity.filmPreparation.FilmPreparationActivity;
 import com.squareup.otto.Bus;
 
 import dagger.Component;

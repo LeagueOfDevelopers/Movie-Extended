@@ -1,10 +1,9 @@
 package com.lod.movie_extended.injection.module.activity;
 
 import android.app.Activity;
-import android.content.Context;
 
 import com.lod.movie_extended.injection.scope.PerActivity;
-import com.lod.movie_extended.ui.qrCodeReader.QrCodeReaderPresenter;
+import com.lod.movie_extended.ui.activity.qrCodeReader.QrCodeReaderPresenter;
 
 import dagger.Module;
 import dagger.Provides;

@@ -12,7 +12,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.main.MainActivity">
+        <activity android:name=".ui.activity.main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -20,11 +20,11 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".ui.qrCodeReader.QrCodeReaderActivity"/>
+        <activity android:name=".ui.activity.qrCodeReader.QrCodeReaderActivity"/>
 
-        <activity android:name=".ui.filmPreparation.FilmPreparationActivity"/>
+        <activity android:name=".ui.activity.filmPreparation.FilmPreparationActivity"/>
 
-        <activity android:name=".ui.film.FilmActivity"/>
+        <activity android:name=".ui.activity.film.FilmActivity"/>
 
         <service android:name=".service.PlayerNotificationService"/>
     </application>

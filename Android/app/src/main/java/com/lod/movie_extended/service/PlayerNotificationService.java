@@ -22,7 +22,7 @@ import com.lod.movie_extended.App;
 import com.lod.movie_extended.R;
 import com.lod.movie_extended.data.DataManager;
 import com.lod.movie_extended.data.model.Player;
-import com.lod.movie_extended.ui.filmPreparation.FilmPreparationActivity;
+import com.lod.movie_extended.ui.activity.filmPreparation.FilmPreparationActivity;
 import com.lod.movie_extended.util.Constants;
 import com.lod.movie_extended.util.RemoteControlClientCompat;
 import com.lod.movie_extended.util.RemoteControlHelper;

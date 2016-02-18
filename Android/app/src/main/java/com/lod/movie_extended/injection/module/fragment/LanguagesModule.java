@@ -5,8 +5,8 @@ import android.support.v7.widget.LinearLayoutManager;
 
 import com.lod.movie_extended.data.DataManager;
 import com.lod.movie_extended.injection.scope.PerFragment;
-import com.lod.movie_extended.ui.languages.LanguagesAdapter;
-import com.lod.movie_extended.ui.languages.LanguagesPresenter;
+import com.lod.movie_extended.ui.fragment.languages.LanguagesAdapter;
+import com.lod.movie_extended.ui.fragment.languages.LanguagesPresenter;
 import com.squareup.otto.Bus;
 
 import dagger.Module;

@@ -6,7 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.lod.movie_extended.data.DataManager;
 import com.lod.movie_extended.injection.scope.PerActivity;
-import com.lod.movie_extended.ui.filmPreparation.FilmPreparationPresenter;
+import com.lod.movie_extended.ui.activity.filmPreparation.FilmPreparationPresenter;
 
 import dagger.Module;
 import dagger.Provides;
