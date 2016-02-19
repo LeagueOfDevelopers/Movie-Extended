@@ -37,15 +37,12 @@ public class FilmPresenter extends BasePresenter<FilmMvpView> implements
         this.dataManager = dataManager;
         this.context = context;
         this.player = player;
+        player.setAudioUrl("http://movieextended1.azurewebsites.net/api/file/get/43");
     }
 
     public void onCreate() {
         preparePlayerIfNotReady();
         startPlayerNotificationService();
-    }
-
-    public void setAudioUrl(Context context) {
-        dataManager.setAudioUrl(context,"http://movieextended1.azurewebsites.net/api/file/get/43");
     }
 
     public void togglePlayer() {

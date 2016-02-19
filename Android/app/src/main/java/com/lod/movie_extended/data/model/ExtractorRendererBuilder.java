@@ -30,12 +30,20 @@ public class ExtractorRendererBuilder {
 
     private final Context context;
     private final String userAgent;
-    private final Uri uri;
+    private Uri uri;
 
-    public ExtractorRendererBuilder(Context context, String userAgent, Uri uri) {
+    public ExtractorRendererBuilder(Context context, String userAgent) {
+        this(context,userAgent,Uri.parse(""));
+    }
+
+    private ExtractorRendererBuilder(Context context, String userAgent, Uri uri) {
         this.context = context;
         this.userAgent = userAgent;
         this.uri = uri;
+    }
+
+    public void setAudiUri(String audiUri) {
+        this.uri = Uri.parse(audiUri);
     }
 
     public void buildRenderers(Player player) {

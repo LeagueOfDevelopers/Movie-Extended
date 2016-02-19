@@ -49,10 +49,6 @@ public class App extends Application {
         return mApplicationComponent;
     }
 
-    public void setAudioUrl(String url) {
-        audioModule.setAudioUrl(url);
-    }
-
     public void setComponent(ApplicationComponent applicationComponent) {
         mApplicationComponent = applicationComponent;
     }

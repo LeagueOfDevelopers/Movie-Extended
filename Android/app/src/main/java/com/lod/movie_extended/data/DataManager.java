@@ -72,8 +72,4 @@ public class DataManager {
     public void setQrCodeProcessed(boolean qrCodeProcessed) {
         this.qrCodeProcessed = qrCodeProcessed;
     }
-
-    public void setAudioUrl(Context context, String audioUrl) {
-        App.get(context).setAudioUrl(audioUrl);
-    }
 }

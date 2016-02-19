@@ -1,6 +1,7 @@
 package com.lod.movie_extended.ui.activity.filmPreparation;
 
 import com.lod.movie_extended.data.DataManager;
+import com.lod.movie_extended.data.model.Player;
 import com.lod.movie_extended.data.model.Session;
 import com.lod.movie_extended.data.model.Token;
 import com.lod.movie_extended.ui.base.BasePresenter;
@@ -12,13 +13,23 @@ import timber.log.Timber;
 /**
  * Created by Жамбыл on 09.01.2016.
  */
-public class FilmPreparationPresenter extends BasePresenter<FilmPreparationMvpView> {
+public class FilmPreparationPresenter extends BasePresenter<FilmPreparationMvpView> implements Player.Listener {
 
     DataManager dataManager;
     Session currentSession;
+    Player player;
 
-    public FilmPreparationPresenter(DataManager dataManager) {
+    public FilmPreparationPresenter(DataManager dataManager, Player player) {
         this.dataManager = dataManager;
+        this.player = player;
+    }
+
+    public void onCreate() {
+        player.addListener(this);
+    }
+
+    public void onDestroy() {
+        player.removeListener(this);
     }
 
     public void loadSession() {
@@ -70,5 +81,15 @@ public class FilmPreparationPresenter extends BasePresenter<FilmPreparationMvpVi
     }
     public boolean isFilmTime() {
         return dataManager.isFilmTime();
+    }
+
+    @Override
+    public void onStateChanged(boolean playWhenReady, int playbackState) {
+        Timber.v("onStateChanged " + playWhenReady);
+    }
+
+    @Override
+    public void onError(Exception e) {
+        Timber.e("error");
     }
 }

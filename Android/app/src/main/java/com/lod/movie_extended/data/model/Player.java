@@ -79,6 +79,11 @@ public class Player implements ExoPlayer.Listener, MediaCodecAudioTrackRenderer.
         player.setSelectedTrack(TYPE_TEXT, TRACK_DISABLED);
     }
 
+    public void setAudioUrl(String audioUrl) {
+        rendererBuilder.setAudiUri(audioUrl);
+        prepare();
+    }
+
     public void addListener(Listener listener) {
         listeners.add(listener);
     }

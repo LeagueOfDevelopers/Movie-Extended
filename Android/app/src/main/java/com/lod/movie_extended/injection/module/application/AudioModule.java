@@ -13,6 +13,7 @@ import javax.inject.Named;
 
 import dagger.Module;
 import dagger.Provides;
+import timber.log.Timber;
 
 /**
  * Created by Жамбыл on 09.01.2016.
@@ -20,11 +21,6 @@ import dagger.Provides;
 @Module(includes = ApplicationModule.class)
 public class AudioModule {
 
-    private String audioUrl;
-
-    public void setAudioUrl(String audioUrl) {
-        this.audioUrl = audioUrl;
-    }
 
     @Provides
     @PerApplication
@@ -34,21 +30,15 @@ public class AudioModule {
 
     @Provides
     @PerApplication
-    ExtractorRendererBuilder provideHlsRendererBuilder(@ApplicationContext Context context, @Named("userAgent") String userAgent,
-                                                 @Named("audioUrl") String audioUrl) {
-        return new ExtractorRendererBuilder(context, userAgent, Uri.parse(audioUrl));
+    ExtractorRendererBuilder provideHlsRendererBuilder(@ApplicationContext Context context,
+                                                       @Named("userAgent") String userAgent) {
+        return new ExtractorRendererBuilder(context, userAgent);
     }
 
     @Provides
     @Named("userAgent")
     String provideUserAgent(@ApplicationContext Context context) {
         return Util.getUserAgent(context, context.getResources().getString(R.string.app_name));
-    }
-
-    @Provides
-    @Named("audioUrl")
-    String provideAudioUri() {
-        return audioUrl;
     }
 
 }

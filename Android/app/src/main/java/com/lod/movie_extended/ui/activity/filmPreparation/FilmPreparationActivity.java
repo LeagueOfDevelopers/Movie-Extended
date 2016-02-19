@@ -75,10 +75,17 @@ public class FilmPreparationActivity extends InjectActivityBase
         super.onCreate(savedInstanceState);
         Timber.v("onCreate");
         isRunning = true;
+        presenter.onCreate();
         presenter.loadSession();
         presenter.getToken("qwe");
         filmActivityIntent = new Intent(this, FilmActivity.class);
         initToolbar();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        presenter.onDestroy();
     }
 
     private void initToolbar() {
