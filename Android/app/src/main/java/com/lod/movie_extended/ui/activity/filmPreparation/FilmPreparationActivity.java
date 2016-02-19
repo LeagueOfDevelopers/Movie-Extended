@@ -11,6 +11,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.lod.movie_extended.App;
 import com.lod.movie_extended.R;
@@ -179,6 +180,11 @@ public class FilmPreparationActivity extends InjectActivityBase
     public void setLanguagesToRecyclerView() {
         setViewsVisible();
         setFilmFragment(InjectFragmentBase.getNewInstance(LanguagesFragment.class),false,false);
+    }
+
+    @Override
+    public void onShowHeadsetError() {
+        Toast.makeText(this,"headset error",Toast.LENGTH_SHORT).show();
     }
 
     @Subscribe

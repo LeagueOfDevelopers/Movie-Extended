@@ -123,5 +123,10 @@ public class FilmPresenter extends BasePresenter<FilmMvpView> implements
         }
     }
 
+    @Override
+    public void onWiredHeadsetNotOn() {
+        getMvpView().showHeadsetError();
+    }
+
 
 }

@@ -251,5 +251,10 @@ public class PlayerNotificationService extends Service implements Player.Listene
     public void onError(Exception e) {
 
     }
+
+    @Override
+    public void onWiredHeadsetNotOn() {
+        //do nothing
+    }
 }
 

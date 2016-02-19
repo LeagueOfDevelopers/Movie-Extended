@@ -10,8 +10,9 @@ import com.lod.movie_extended.ui.base.MvpView;
  */
 public interface FilmMvpView extends MvpView {
 
-
     void togglePlayPauseButtonSlowIfNeed();
 
     SubtitleLayout getSubtitleLayout();
+
+    void showHeadsetError();
 }

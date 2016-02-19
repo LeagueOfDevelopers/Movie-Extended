@@ -1,5 +1,6 @@
 package com.lod.movie_extended.data.model;
 
+import android.media.AudioManager;
 import android.media.MediaCodec;
 import android.os.Handler;
 
@@ -51,13 +52,14 @@ public class Player implements ExoPlayer.Listener, MediaCodecAudioTrackRenderer.
     private int lastReportedPlaybackState;
     private boolean lastReportedPlayWhenReady;
     private CaptionListener captionListener;
-
+    private AudioManager audioManager;
     /**
      * A listener for core events.
      */
     public interface Listener {
         void onStateChanged(boolean playWhenReady, int playbackState);
         void onError(Exception e);
+        void onWiredHeadsetNotOn();
     }
 
     /**
@@ -67,8 +69,9 @@ public class Player implements ExoPlayer.Listener, MediaCodecAudioTrackRenderer.
         void onCues(List<Cue> cues);
     }
 
-    public Player(ExtractorRendererBuilder rendererBuilder) {
+    public Player(ExtractorRendererBuilder rendererBuilder, AudioManager audioManager) {
         this.rendererBuilder = rendererBuilder;
+        this.audioManager = audioManager;
         player = ExoPlayer.Factory.newInstance(RENDERER_COUNT, 1000, 5000);
         player.addListener(this);
         mainHandler = new Handler();
@@ -137,7 +140,18 @@ public class Player implements ExoPlayer.Listener, MediaCodecAudioTrackRenderer.
         maybeReportPlayerState();
     }
 
+    public void onWiredHeadsetNotOn() {
+        for (Listener listener : listeners) {
+            listener.onWiredHeadsetNotOn();
+        }
+        maybeReportPlayerState();
+    }
+
     public void setPlayWhenReady(boolean playWhenReady) {
+        if(playWhenReady && !audioManager.isWiredHeadsetOn()) {
+            onWiredHeadsetNotOn();
+            return;
+        }
         player.setPlayWhenReady(playWhenReady);
         maybeReportPlayerState();
     }

@@ -1,5 +1,7 @@
 package com.lod.movie_extended.ui.activity.filmPreparation;
 
+import android.widget.Toast;
+
 import com.lod.movie_extended.data.DataManager;
 import com.lod.movie_extended.data.model.Player;
 import com.lod.movie_extended.data.model.Session;
@@ -91,5 +93,10 @@ public class FilmPreparationPresenter extends BasePresenter<FilmPreparationMvpVi
     @Override
     public void onError(Exception e) {
         Timber.e("error");
+    }
+
+    @Override
+    public void onWiredHeadsetNotOn() {
+        getMvpView().onShowHeadsetError();
     }
 }

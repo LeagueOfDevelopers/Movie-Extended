@@ -10,4 +10,6 @@ public interface FilmPreparationMvpView extends MvpView {
     void updateFooterVisibility();
 
     void setLanguagesToRecyclerView();
+
+    void onShowHeadsetError();
 }

@@ -13,6 +13,7 @@ import android.view.Gravity;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.google.android.exoplayer.text.SubtitleLayout;
 import com.lod.movie_extended.App;
@@ -193,6 +194,11 @@ public class FilmActivity extends InjectActivityBase implements FilmMvpView,
     @Override
     public SubtitleLayout getSubtitleLayout() {
         return null;
+    }
+
+    @Override
+    public void showHeadsetError() {
+        Toast.makeText(this,"Headset error",Toast.LENGTH_SHORT).show();
     }
 
     @Override
