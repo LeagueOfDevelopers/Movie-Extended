@@ -57,27 +57,23 @@ public class FilmActivity extends InjectActivityBase implements FilmMvpView,
     FilmPresenter presenter;
 
     private FilmComponent component;
-    private boolean isRunning;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Timber.v("onCreate");
         presenter.onCreate();
-        isRunning = true;
         initUI();
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        isRunning = true;
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        isRunning = false;
     }
 
     @Override
@@ -116,14 +112,12 @@ public class FilmActivity extends InjectActivityBase implements FilmMvpView,
     }
 
     private void setFragment(Fragment fragment) {
-        if(isRunning) {
-            Timber.v("setting Fragment");
-            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.replace(R.id.poster_subtitles_fragment_holder, fragment);
+        Timber.v("setting Fragment");
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.poster_subtitles_fragment_holder, fragment);
 
-            fragmentTransaction.commit();
-            fragmentManager.executePendingTransactions();
-        }
+        fragmentTransaction.commit();
+        fragmentManager.executePendingTransactions();
     }
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)

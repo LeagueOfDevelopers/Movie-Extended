@@ -65,8 +65,6 @@ public class FilmPreparationActivity extends InjectActivityBase
 
     FilmPreparationComponent component;
 
-    private boolean isRunning;
-
     Intent filmActivityIntent;
     //endregion
 
@@ -74,7 +72,6 @@ public class FilmPreparationActivity extends InjectActivityBase
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Timber.v("onCreate");
-        isRunning = true;
         presenter.onCreate();
         presenter.loadSession();
         presenter.getToken("qwe");
@@ -99,13 +96,11 @@ public class FilmPreparationActivity extends InjectActivityBase
         Timber.v("onResume");
         super.onResume();
         updateFooterVisibility();
-        isRunning = true;
     }
 
     @Override
     protected void onPause() {
         Timber.v("onPause");
-        isRunning = false;
         super.onPause();
     }
 
@@ -198,23 +193,21 @@ public class FilmPreparationActivity extends InjectActivityBase
     }
 
     private void setFilmFragment(Fragment fragment, boolean addToBackStack, boolean popBackStack) {
-        if(isRunning) {
-            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.replace(R.id.film_fragment_holder, fragment);
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.film_fragment_holder, fragment);
 
-            if(popBackStack) {
-                Timber.v("popping fragment back stack");
-                fragmentManager.popBackStack();
-            }
-
-            if (addToBackStack) {
-                Timber.v("adding to backStack fragment" + fragment.toString());
-                fragmentTransaction.addToBackStack(fragment.toString());
-            }
-
-            fragmentTransaction.commit();
-            fragmentManager.executePendingTransactions();
+        if(popBackStack) {
+            Timber.v("popping fragment back stack");
+            fragmentManager.popBackStack();
         }
+
+        if (addToBackStack) {
+            Timber.v("adding to backStack fragment" + fragment.toString());
+            fragmentTransaction.addToBackStack(fragment.toString());
+        }
+
+        fragmentTransaction.commit();
+        fragmentManager.executePendingTransactions();
     }
 
     private void setViewsVisible() {
