@@ -76,6 +76,10 @@ namespace Domain.Models
         public void SetMovieTime(int movieId, DateTime movieStartTime)
         {
             _movieStartTime.Add(movieId,movieStartTime);
+            foreach (var session in _sessions.Where(session => session.MovieId==movieId ))
+            {
+                    session.SessionState = SessionState.Active;
+            }
         }
 
         public DateTime GetMovieStartTime(int movieId)
@@ -83,5 +87,6 @@ namespace Domain.Models
             var startTime = _movieStartTime.SingleOrDefault(pair => pair.Key == movieId);
             return startTime.Value;
         }
+        
     }
 }

@@ -59,11 +59,12 @@ namespace FrontendService.Controllers.AndroidClient
         //    var diff = date - origin;
         //    return diff.TotalMilliseconds;
         //}
-        [Route("api/SetTime")]
+        [Route("api/SetTime/{movieId}")]
         [HttpPut]
-        public void SetMovieStartTime([FromBody] int movieId, [FromBody] DateTime movieStartTime)
+        public void SetMovieStartTime( int movieId, [FromBody] DateTime movieStartTime)
         {
             _keeper.SetMovieTime(movieId,movieStartTime);
+            
         }
 
         [Route("api/GetTime/{movieId}")]
