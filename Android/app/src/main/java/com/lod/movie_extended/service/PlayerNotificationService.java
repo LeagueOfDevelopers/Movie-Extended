@@ -97,7 +97,7 @@ public class PlayerNotificationService extends Service implements Player.Listene
     public int onStartCommand(Intent intent, int flags, int startId) {
         switch (intent.getAction()) {
             case Constants.ACTION.START_FOREGROUND_ACTION:
-                createAndShowNotification();
+                createAndShowNotification(false);
                 registerRemoteControlClient();
                 break;
 
@@ -125,7 +125,7 @@ public class PlayerNotificationService extends Service implements Player.Listene
     public void play() {
         Timber.v("notification play");
         player.setPlayWhenReady(true);
-        createAndShowNotification();
+        createAndShowNotification(true);
         setPlayOrPauseImage();
     }
 
@@ -165,11 +165,13 @@ public class PlayerNotificationService extends Service implements Player.Listene
         return player.getPlayWhenReady();
     }
 
-    public void createAndShowNotification() {
+    public void createAndShowNotification(boolean foreground) {
         smallView = getRemoteViews(R.layout.notification_player_small);
         bigView = getRemoteViews(R.layout.notification_player_big);
         Notification notification = getNotification(smallView,bigView);
-        startForeground(Constants.NOTIFICATION_ID.FOREGROUND_SERVICE, notification);
+        if(foreground) {
+            startForeground(Constants.NOTIFICATION_ID.FOREGROUND_SERVICE, notification);
+        }
     }
 
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
@@ -240,6 +242,9 @@ public class PlayerNotificationService extends Service implements Player.Listene
     @Override
     public void onStateChanged(boolean playWhenReady, int playbackState) {
         setPlayOrPauseImage();
+        if(!playWhenReady) {
+            stopForeground(true);
+        }
     }
 
     @Override
