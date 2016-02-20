@@ -27,6 +27,7 @@ import com.lod.movie_extended.ui.base.InjectActivityBase;
 import com.lod.movie_extended.ui.base.InjectFragmentBase;
 import com.lod.movie_extended.ui.base.Presenter;
 import com.lod.movie_extended.ui.fragment.poster.PosterFragment;
+import com.lod.movie_extended.ui.fragment.subtitles.SubtitlesFragment;
 import com.lod.movie_extended.ui.view.PlayPauseView;
 
 import javax.inject.Inject;
@@ -59,6 +60,8 @@ public class FilmActivity extends InjectActivityBase implements FilmMvpView,
 
     private FilmComponent component;
 
+    private boolean isPosterFragment;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -84,7 +87,6 @@ public class FilmActivity extends InjectActivityBase implements FilmMvpView,
         presenter.OnDestroy();
     }
 
-
     @Override
     public void togglePlayPauseButtonSlowIfNeed() {
         setCorrectDrawable(true);
@@ -97,7 +99,17 @@ public class FilmActivity extends InjectActivityBase implements FilmMvpView,
 
     @OnClick(R.id.show_subtitles)
     public void OnShowSubtitles() {
+        toggleFragment();
+    }
 
+    private void toggleFragment() {
+        if(isPosterFragment) {
+            setSubtitleFragment();
+        }
+        else {
+            setPosterFragment();
+        }
+        isPosterFragment = !isPosterFragment;
     }
 
     private void initUI() {
@@ -105,10 +117,15 @@ public class FilmActivity extends InjectActivityBase implements FilmMvpView,
         initPlayPauseView();
         setStatusBarColor(presenter.getPosterDarkColor());
         setBackgroundLayout(presenter.getPosterLightColor());
-        setSubtitlesFragment();
+        setPosterFragment();
     }
 
-    private void setSubtitlesFragment() {
+    private void setSubtitleFragment() {
+        setFragment(InjectFragmentBase.getNewInstance(SubtitlesFragment.class));
+
+    }
+
+    private void setPosterFragment() {
         setFragment(InjectFragmentBase.getNewInstance(PosterFragment.class));
     }
 

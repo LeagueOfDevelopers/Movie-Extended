@@ -28,7 +28,7 @@ public class AudioModule {
 
     @Provides
     @PerApplication
-    ExtractorRendererBuilder provideHlsRendererBuilder(@ApplicationContext Context context,
+    ExtractorRendererBuilder provideExtractorRendererBuilder(@ApplicationContext Context context,
                                                        @Named("userAgent") String userAgent) {
         return new ExtractorRendererBuilder(context, userAgent);
     }

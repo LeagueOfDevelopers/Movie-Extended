@@ -88,6 +88,7 @@ public class FilmPreparationPresenter extends BasePresenter<FilmPreparationMvpVi
     @Override
     public void onStateChanged(boolean playWhenReady, int playbackState) {
         Timber.v("onStateChanged " + playWhenReady);
+        getMvpView().togglePlayerView(playWhenReady);
     }
 
     @Override
@@ -98,5 +99,9 @@ public class FilmPreparationPresenter extends BasePresenter<FilmPreparationMvpVi
     @Override
     public void onWiredHeadsetNotOn() {
         getMvpView().onShowHeadsetError();
+    }
+
+    public void togglePlayer(boolean isPlaying) {
+        player.setPlayWhenReady(!isPlaying);
     }
 }

@@ -12,4 +12,6 @@ public interface FilmPreparationMvpView extends MvpView {
     void setLanguagesToRecyclerView();
 
     void onShowHeadsetError();
+
+    void togglePlayerView(boolean playWhenReady);
 }

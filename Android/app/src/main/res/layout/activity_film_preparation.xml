@@ -59,6 +59,7 @@
         android:orientation="horizontal">
 
         <ImageButton
+            android:id="@+id/footer_player_button"
             android:src="@mipmap/apollo_holo_dark_play"
             android:layout_margin="10dp"
             android:layout_width="0dp"

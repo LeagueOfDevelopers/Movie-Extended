@@ -9,6 +9,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.util.Pair;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.Toast;
@@ -55,6 +56,9 @@ public class FilmPreparationActivity extends InjectActivityBase
     @Bind(R.id.progressBar)
     ProgressBar progressBar;
 
+    @Bind(R.id.footer_player_button)
+    ImageButton footerPlayerButton;
+
     @Inject
     FilmPreparationPresenter presenter;
 
@@ -67,6 +71,7 @@ public class FilmPreparationActivity extends InjectActivityBase
     FilmPreparationComponent component;
 
     Intent filmActivityIntent;
+    private boolean isPlaying;
     //endregion
 
     @Override
@@ -110,6 +115,11 @@ public class FilmPreparationActivity extends InjectActivityBase
         if(presenter.isFilmTime()) {
             startActivity(filmActivityIntent);
         }
+    }
+
+    @OnClick(R.id.footer_player_button)
+    public void onFooterPlayerButtonClick() {
+        presenter.togglePlayer(isPlaying);
     }
 
     @Override
@@ -185,6 +195,18 @@ public class FilmPreparationActivity extends InjectActivityBase
     @Override
     public void onShowHeadsetError() {
         Toast.makeText(this,"headset error",Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void togglePlayerView(boolean playWhenReady) {
+        if(playWhenReady) {
+            isPlaying = true;
+            footerPlayerButton.setBackground(getResources().getDrawable(R.mipmap.apollo_holo_dark_pause));
+        }
+        else {
+            isPlaying = false;
+            footerPlayerButton.setBackground(getResources().getDrawable(R.mipmap.apollo_holo_dark_play));
+        }
     }
 
     @Subscribe

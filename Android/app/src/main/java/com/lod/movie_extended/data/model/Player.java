@@ -35,6 +35,8 @@ public class Player implements ExoPlayer.Listener, MediaCodecAudioTrackRenderer.
     public static final int TRACK_DEFAULT = ExoPlayer.TRACK_DEFAULT;
     public static final int RENDERER_COUNT = 2;
 
+    public static final String EMPTY_AUDIO_URL = "empty";
+
     public static final int TYPE_AUDIO = 0;
     public static final int TYPE_TEXT = 1;
     public static final int TYPE_METADATA = 2;
@@ -53,6 +55,13 @@ public class Player implements ExoPlayer.Listener, MediaCodecAudioTrackRenderer.
     private boolean lastReportedPlayWhenReady;
     private CaptionListener captionListener;
     private AudioManager audioManager;
+    private String audioUrl;
+
+    public String getAudioUrl() {
+        return audioUrl;
+    }
+
+
     /**
      * A listener for core events.
      */
@@ -80,9 +89,11 @@ public class Player implements ExoPlayer.Listener, MediaCodecAudioTrackRenderer.
         rendererBuildingState = RENDERER_BUILDING_STATE_IDLE;
         // Disable text initially.
         player.setSelectedTrack(TYPE_TEXT, TRACK_DISABLED);
+        audioUrl = EMPTY_AUDIO_URL;
     }
 
     public void setAudioUrl(String audioUrl) {
+        this.audioUrl = audioUrl;
         rendererBuilder.setAudiUri(audioUrl);
         prepare();
     }

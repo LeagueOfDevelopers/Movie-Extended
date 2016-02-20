@@ -243,7 +243,7 @@ public class PlayerNotificationService extends Service implements Player.Listene
     public void onStateChanged(boolean playWhenReady, int playbackState) {
         setPlayOrPauseImage();
         if(!playWhenReady) {
-            stopForeground(true);
+            stopForeground(false);
         }
     }
 
