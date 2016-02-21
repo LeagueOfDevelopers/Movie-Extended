@@ -10,6 +10,7 @@ using Domain.Models;
 using Domain.Models.Entities;
 using Domain.VisitorRepository;
 using Journalist;
+using static Domain.Models.Entities.FileType;
 using File = Domain.Models.Entities.File;
 
 namespace FrontendService.Controllers
@@ -75,31 +76,61 @@ namespace FrontendService.Controllers
 
 
             responseMessage.Content.Headers.ContentType = new MediaTypeHeaderValue("application/octet-stream");
-            responseMessage.Content.Headers.ContentDisposition = new ContentDispositionHeaderValue("attachment")
+            switch (returnFile.FileType)
             {
-                FileName = string.Format("{0}.mp3", fileId)
-            };
+                case Track:
 
+                    responseMessage.Content.Headers.ContentDisposition = new ContentDispositionHeaderValue("attachment")
+                    {
+                        FileName = string.Format("{0}.mp3", fileId)
+                    };
+                    break;
+
+                case Subtitles:
+                    responseMessage.Content.Headers.ContentDisposition = new ContentDispositionHeaderValue("attachment")
+                    {
+                        FileName = string.Format("{0}.sub", fileId)
+                    };
+                    break;
+                    
+            }
             return responseMessage;
         }
 
 
-        [Route("api/myfileupload/{fileId}")]
+        [Route("api/myfileupload/{fileId}/fileType/{filetype}")]
         [HttpPost]
-        public string MyFileUpload(int fileId)
+        public IHttpActionResult MyFileUpload(int fileId , FileType filetype)
         {
             var request = HttpContext.Current.Request;
-            var directory = HttpContext.Current.Server.MapPath("~/AudioTrack");
+            string directory;
+            string filePath;
+            switch (filetype)
+            {
+                    case Track :
+                {
+                    directory= HttpContext.Current.Server.MapPath("~/AudioTrack");
+                    filePath= HttpContext.Current.Server.MapPath(string.Format("~/AudioTrack/{0}.mp3", fileId));
+                        break;
+                }
+                    case Subtitles:
+                {
+                    directory = HttpContext.Current.Server.MapPath("~/SubTitles");
+                    filePath = HttpContext.Current.Server.MapPath(string.Format("~/SubTitles/{0}.srt", fileId));
 
+                        break;
+                }
+                default:
+                    return BadRequest("wrong type of file");
+            }
             Directory.CreateDirectory(directory);
-            var filePath = HttpContext.Current.Server.MapPath(string.Format("~/AudioTrack/{0}.mp3", fileId));
             using (var fs = new FileStream(filePath, FileMode.Create))
             {
                 request.InputStream.CopyTo(fs);
                 fs.Flush();
                 //request.GetBufferedInputStream().CopyToAsync(fs);
             }
-            return "uploaded";
+            return Ok("uploaded");
         }
 
         [Route("api/Files/Delete/{fileId}")]

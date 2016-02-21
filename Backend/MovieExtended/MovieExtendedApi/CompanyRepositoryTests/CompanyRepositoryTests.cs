@@ -25,7 +25,7 @@ namespace CompanyRepositoryTests
         [TestMethod]
         public void SaveFileData()
         {
-            var saveFile = new File(@"~/AudioTrack/77.mp3", FileType.Track);
+            var saveFile = new File(@"~/SubTitles/99.srt", FileType.Subtitles);
 
             var provider = new SessionProvider();
             provider.OpenSession();
@@ -37,8 +37,8 @@ namespace CompanyRepositoryTests
         [TestMethod]
         public void SaveLanguage()
         {
-            var file = new File("testRepository", FileType.Track);
-            var company = new Company("LOD_Company", new Uri("https://vk.com/holymosh"));
+            var file = new File("subtitle_test", FileType.Subtitles);
+            var company = new Company("LOD_Company", new Uri("https://wedfghj.com/iwdwaiddiwj"));
             var cinema = new Cinema("Rozoviy_Korpus", "G-588", company);
             var movie = new Movie("10 razrabov Vitalika", cinema);
             movie.AndroidToken = Guid.NewGuid();
