@@ -89,7 +89,7 @@ namespace FrontendService.Controllers
                 case Subtitles:
                     responseMessage.Content.Headers.ContentDisposition = new ContentDispositionHeaderValue("attachment")
                     {
-                        FileName = string.Format("{0}.sub", fileId)
+                        FileName = string.Format("{0}.srt", fileId)
                     };
                     break;
                     
