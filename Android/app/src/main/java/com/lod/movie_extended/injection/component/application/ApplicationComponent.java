@@ -10,7 +10,7 @@ import com.lod.movie_extended.data.model.Player;
 import com.lod.movie_extended.data.remote.ServerHelper;
 import com.lod.movie_extended.injection.context.ApplicationContext;
 import com.lod.movie_extended.injection.module.application.ApplicationModule;
-import com.lod.movie_extended.injection.module.application.AudioModule;
+import com.lod.movie_extended.injection.module.application.AudioModuleNew;
 import com.lod.movie_extended.injection.scope.PerApplication;
 import com.lod.movie_extended.service.PlayerNotificationService;
 import com.squareup.otto.Bus;
@@ -24,7 +24,7 @@ import dagger.Component;
 @Component(
         modules = {
                 ApplicationModule.class,
-                AudioModule.class
+                AudioModuleNew.class
         }
 )
 public interface ApplicationComponent{

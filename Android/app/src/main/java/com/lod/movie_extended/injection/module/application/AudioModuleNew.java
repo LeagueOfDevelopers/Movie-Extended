@@ -18,7 +18,7 @@ import dagger.Provides;
  * Created by Жамбыл on 09.01.2016.
  */
 @Module
-public class AudioModule {
+public class AudioModuleNew {
 
     @Provides
     @PerApplication

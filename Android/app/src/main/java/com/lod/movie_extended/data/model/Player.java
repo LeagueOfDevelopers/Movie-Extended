@@ -15,6 +15,7 @@ import com.google.android.exoplayer.audio.AudioTrack;
 import com.google.android.exoplayer.text.Cue;
 import com.google.android.exoplayer.text.TextRenderer;
 import com.google.android.exoplayer.upstream.BandwidthMeter;
+import com.lod.movie_extended.util.PlayerLogger;
 
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
@@ -58,7 +59,9 @@ public class Player implements ExoPlayer.Listener, MediaCodecAudioTrackRenderer.
     private CaptionListener captionListener;
     private AudioManager audioManager;
     private String audioUrl;
-
+    private boolean notFirstCue;
+    private long firstCue = 158880;
+    private PlayerLogger playerLogger;
     public String getAudioUrl() {
         return audioUrl;
     }
@@ -81,6 +84,7 @@ public class Player implements ExoPlayer.Listener, MediaCodecAudioTrackRenderer.
     }
 
     public Player(ExtractorRendererBuilder rendererBuilder, AudioManager audioManager) {
+        Timber.v("constructor");
         this.rendererBuilder = rendererBuilder;
         this.audioManager = audioManager;
         player = ExoPlayer.Factory.newInstance(RENDERER_COUNT, 1000, 5000);
@@ -92,12 +96,26 @@ public class Player implements ExoPlayer.Listener, MediaCodecAudioTrackRenderer.
         // Disable text initially.
         player.setSelectedTrack(TYPE_TEXT, ExoPlayer.TRACK_DEFAULT);
         audioUrl = EMPTY_AUDIO_URL;
+        playerLogger = new PlayerLogger(this);
+        startLogging();
+    }
+
+    private void stopLogging() {
+        playerLogger.stopLogging();
+    }
+
+    private void startLogging() {
+        playerLogger.startLogging();
     }
 
     public void setAudioUrl(String audioUrl) {
         this.audioUrl = audioUrl;
         rendererBuilder.setAudiUri(audioUrl);
         prepare();
+    }
+
+    public long getBufferedPosition() {
+        return player.getBufferedPosition();
     }
 
     public void addListener(Listener listener) {
@@ -125,16 +143,21 @@ public class Player implements ExoPlayer.Listener, MediaCodecAudioTrackRenderer.
     }
 
     public void prepare() {
+        Timber.v("prepare");
         if (rendererBuildingState == RENDERER_BUILDING_STATE_BUILT) {
             player.stop();
         }
         rendererBuilder.cancel();
         rendererBuildingState = RENDERER_BUILDING_STATE_BUILDING;
         maybeReportPlayerState();
+        Timber.v("renderBuilder.buildRenderers");
         rendererBuilder.buildRenderers(this);
+        Timber.v("player seek to firstCue " + firstCue);
+        player.seekTo(firstCue);
     }
 
     public void onRenderers(TrackRenderer[] renderers, BandwidthMeter bandwidthMeter) {
+        Timber.v("onRenderers");
         for (int i = 0; i < RENDERER_COUNT; i++) {
             if (renderers[i] == null) {
                 // Convert a null renderer to a dummy renderer.
@@ -222,11 +245,13 @@ public class Player implements ExoPlayer.Listener, MediaCodecAudioTrackRenderer.
 
     @Override
     public void onPlayerStateChanged(boolean playWhenReady, int state) {
+        Timber.v("onPlayerStateChanged " + playWhenReady);
         maybeReportPlayerState();
     }
 
     @Override
     public void onPlayerError(ExoPlaybackException exception) {
+        Timber.e("PLAYER ERROR "  + exception.getMessage());
         rendererBuildingState = RENDERER_BUILDING_STATE_IDLE;
         for (Listener listener : listeners) {
             listener.onError(exception);
@@ -235,6 +260,7 @@ public class Player implements ExoPlayer.Listener, MediaCodecAudioTrackRenderer.
 
     @Override
     public void onPlayWhenReadyCommitted() {
+        Timber.v("onPlayWhenReadyCommitted");
         // Do nothing.
     }
 
@@ -278,6 +304,13 @@ public class Player implements ExoPlayer.Listener, MediaCodecAudioTrackRenderer.
     @Override
     public void onCues(List<Cue> cues) {
         Timber.v("onCues " + cues.size());
+
+        if(!notFirstCue && cues.size() > 0) {
+            notFirstCue = true;
+            stopLogging();
+            long firstCue = player.getCurrentPosition();
+            Timber.v("firstCue appears at " + firstCue);
+        }
 
         for (Cue cue : cues) {
             Timber.v(String.valueOf(cue.text));

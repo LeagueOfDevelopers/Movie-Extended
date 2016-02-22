@@ -44,7 +44,7 @@ public class FilmPresenter extends BasePresenter<FilmMvpView> implements
     }
 
     public void onCreate() {
-        preparePlayerIfNotReady();
+        player.addListener(this);
         startPlayerNotificationService();
     }
 
@@ -60,15 +60,6 @@ public class FilmPresenter extends BasePresenter<FilmMvpView> implements
     public void startPlayerNotificationService() {
         Timber.v("starting PlayerNotificationService");
         startServiceWithAction(Constants.ACTION.START_FOREGROUND_ACTION);
-    }
-
-    public void preparePlayerIfNotReady() {
-        if(player.getPlaybackState() == Player.STATE_IDLE) {
-            Timber.v("preparing player");
-            player.seekTo(playerPosition);
-            player.prepare();
-        }
-        player.addListener(this);
     }
 
     public int getPosterDarkColor() {
