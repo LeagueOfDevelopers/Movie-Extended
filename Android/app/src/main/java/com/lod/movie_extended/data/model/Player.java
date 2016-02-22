@@ -19,6 +19,8 @@ import com.google.android.exoplayer.upstream.BandwidthMeter;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
+import timber.log.Timber;
+
 /**
  * Created by Жамбыл on 09.01.2016.
  */
@@ -88,7 +90,7 @@ public class Player implements ExoPlayer.Listener, MediaCodecAudioTrackRenderer.
         lastReportedPlaybackState = STATE_IDLE;
         rendererBuildingState = RENDERER_BUILDING_STATE_IDLE;
         // Disable text initially.
-        player.setSelectedTrack(TYPE_TEXT, TRACK_DISABLED);
+        player.setSelectedTrack(TYPE_TEXT, ExoPlayer.TRACK_DEFAULT);
         audioUrl = EMPTY_AUDIO_URL;
     }
 
@@ -275,7 +277,11 @@ public class Player implements ExoPlayer.Listener, MediaCodecAudioTrackRenderer.
 
     @Override
     public void onCues(List<Cue> cues) {
+        Timber.v("onCues " + cues.size());
 
+        for (Cue cue : cues) {
+            Timber.v(String.valueOf(cue.text));
+        }
     }
 
 }
