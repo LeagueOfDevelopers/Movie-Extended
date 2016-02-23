@@ -29,6 +29,7 @@
     public enum FileType
     {
         Track,
-        Subtitles
+        Subtitles,
+        Poster
     }
 }

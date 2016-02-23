@@ -51,7 +51,7 @@ namespace FrontendService.Controllers.WebClient
             _languageRepository.SaveLanguage(newLanguage);
         }
 
-        [Route("api/Languages/GetMovie")]
+        [Route("api/Languages/Get")]
         [HttpPost]
         public IEnumerable<AndroidLanguage> GetLanguagesByMovieId([FromBody] string session)
         {

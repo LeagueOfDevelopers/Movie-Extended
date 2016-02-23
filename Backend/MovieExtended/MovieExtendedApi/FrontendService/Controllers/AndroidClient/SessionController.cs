@@ -24,7 +24,6 @@ namespace FrontendService.Controllers.AndroidClient
         [Route("api/Session/Login")]
         [HttpPost]
         public Guid Login([FromBody] string qr)
-
         {
             var qrGuid = new Guid(qr);
             var necessaryMovie = _movieRepository.CheckAndroidToken(qrGuid);
@@ -34,7 +33,6 @@ namespace FrontendService.Controllers.AndroidClient
                 return _keeper.CreateSession(newSession);
             }
             throw new HttpResponseException(HttpStatusCode.Unauthorized);
-            ;
         }
 
         //[Route("api/Session/{sessionId}/StartTime")]
