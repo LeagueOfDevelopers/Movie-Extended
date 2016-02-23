@@ -6,6 +6,7 @@ import android.content.Context;
 import com.lod.movie_extended.data.DataManager;
 import com.lod.movie_extended.data.local.DataBaseHelper;
 import com.lod.movie_extended.data.local.PreferencesHelper;
+import com.lod.movie_extended.data.model.ColorHelper;
 import com.lod.movie_extended.data.model.Player;
 import com.lod.movie_extended.data.remote.ServerHelper;
 import com.lod.movie_extended.injection.context.ApplicationContext;
@@ -39,6 +40,8 @@ public interface ApplicationComponent{
     DataManager getDataManager();
 
     Player getPlayer();
+
+    ColorHelper getColorHelper();
 
     ServerHelper getServerHelper();
 

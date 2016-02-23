@@ -10,6 +10,7 @@ import android.transition.Slide;
 import android.transition.Transition;
 import android.transition.Visibility;
 import android.view.Gravity;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.LinearLayout;
@@ -51,6 +52,9 @@ public class FilmActivity extends InjectActivityBase implements FilmMvpView,
 
     @Bind(R.id.player_background_ll)
     LinearLayout background;
+
+    @Bind(R.id.header)
+    LinearLayout header;
 
     @Inject
     FragmentManager fragmentManager;
@@ -109,7 +113,6 @@ public class FilmActivity extends InjectActivityBase implements FilmMvpView,
         else {
             setPosterFragment();
         }
-        isPosterFragment = !isPosterFragment;
     }
 
     private void initUI() {
@@ -118,16 +121,18 @@ public class FilmActivity extends InjectActivityBase implements FilmMvpView,
         setStatusBarColor(presenter.getPosterDarkColor());
         setBackgroundLayout(presenter.getPosterLightColor());
         setPosterFragment();
-        isPosterFragment = true;
     }
 
     private void setSubtitleFragment() {
+        isPosterFragment = false;
         setFragment(InjectFragmentBase.getNewInstance(SubtitlesFragment.class));
-
+        header.setVisibility(View.VISIBLE);
     }
 
     private void setPosterFragment() {
+        isPosterFragment = true;
         setFragment(InjectFragmentBase.getNewInstance(PosterFragment.class));
+        header.setVisibility(View.INVISIBLE);
     }
 
     private void setFragment(Fragment fragment) {

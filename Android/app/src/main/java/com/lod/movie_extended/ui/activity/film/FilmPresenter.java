@@ -4,12 +4,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.support.annotation.Nullable;
 import android.support.v7.graphics.Palette;
 
 import com.google.android.exoplayer.drm.UnsupportedDrmException;
 import com.lod.movie_extended.R;
 import com.lod.movie_extended.data.DataManager;
+import com.lod.movie_extended.data.model.ColorHelper;
 import com.lod.movie_extended.data.model.Player;
 import com.lod.movie_extended.service.PlayerNotificationService;
 import com.lod.movie_extended.ui.base.BasePresenter;
@@ -24,19 +26,19 @@ public class FilmPresenter extends BasePresenter<FilmMvpView> implements
         Player.Listener {
 
     private DataManager dataManager;
-
     private Context context;
     private Player player;
-
     private long playerPosition;
+    private ColorHelper colorHelper;
 
     @Nullable
     private Palette palette;
 
-    public FilmPresenter(DataManager dataManager,Context context, Player player) {
+    public FilmPresenter(DataManager dataManager, Context context, Player player, ColorHelper colorHelper) {
         this.dataManager = dataManager;
         this.context = context;
         this.player = player;
+        this.colorHelper = colorHelper;
         if(player.getAudioUrl().equals(Player.EMPTY_AUDIO_URL)) {
             Timber.v("setting audio url");
             player.setAudioUrl("http://movieextended1.azurewebsites.net/api/file/get/43");
@@ -63,21 +65,13 @@ public class FilmPresenter extends BasePresenter<FilmMvpView> implements
     }
 
     public int getPosterDarkColor() {
-        return getPosterPalette().getDarkVibrantColor(0);
+        return colorHelper.getPosterDarkColor();
     }
 
     public int getPosterLightColor() {
-        return getPosterPalette().getLightVibrantColor(0);
+        return colorHelper.getPosterLightColor();
     }
 
-    public Palette getPosterPalette() {
-        if(palette == null) {
-            Bitmap poster = BitmapFactory.decodeResource(context.getResources(),
-                    R.mipmap.star_wars);
-            palette = Palette.from(poster).generate();
-        }
-        return palette;
-    }
 
     public void OnDestroy() {
         removeListener();
@@ -108,7 +102,6 @@ public class FilmPresenter extends BasePresenter<FilmMvpView> implements
     private void removeListener() {
         player.removeListener(this);
     }
-
 
     @Override
     public void onError(Exception e) {

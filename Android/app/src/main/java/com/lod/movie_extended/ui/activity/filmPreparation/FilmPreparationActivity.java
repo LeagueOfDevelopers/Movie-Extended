@@ -83,6 +83,11 @@ public class FilmPreparationActivity extends InjectActivityBase
         presenter.getToken("qwe");
         filmActivityIntent = new Intent(this, FilmActivity.class);
         initToolbar();
+        initFooter();
+    }
+
+    private void initFooter() {
+        footer.setBackgroundColor(presenter.getPosterDarkColor());
     }
 
     @Override

@@ -3,6 +3,7 @@ package com.lod.movie_extended.ui.activity.filmPreparation;
 import android.widget.Toast;
 
 import com.lod.movie_extended.data.DataManager;
+import com.lod.movie_extended.data.model.ColorHelper;
 import com.lod.movie_extended.data.model.Player;
 import com.lod.movie_extended.data.model.Session;
 import com.lod.movie_extended.data.model.Token;
@@ -17,13 +18,15 @@ import timber.log.Timber;
  */
 public class FilmPreparationPresenter extends BasePresenter<FilmPreparationMvpView> implements Player.Listener {
 
-    DataManager dataManager;
-    Session currentSession;
-    Player player;
+    private DataManager dataManager;
+    private Session currentSession;
+    private Player player;
+    private ColorHelper colorHelper;
 
-    public FilmPreparationPresenter(DataManager dataManager, Player player) {
+    public FilmPreparationPresenter(DataManager dataManager, Player player, ColorHelper colorHelper) {
         this.dataManager = dataManager;
         this.player = player;
+        this.colorHelper = colorHelper;
     }
 
     public void onCreate() {
@@ -102,5 +105,14 @@ public class FilmPreparationPresenter extends BasePresenter<FilmPreparationMvpVi
 
     public void togglePlayer(boolean isPlaying) {
         player.setPlayWhenReady(!isPlaying);
+    }
+
+
+    public int getPosterDarkColor() {
+        return colorHelper.getPosterDarkColor();
+    }
+
+    public int getPosterLightColor() {
+        return colorHelper.getPosterLightColor();
     }
 }

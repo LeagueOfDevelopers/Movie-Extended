@@ -5,8 +5,8 @@ import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 
 import com.lod.movie_extended.data.DataManager;
+import com.lod.movie_extended.data.model.ColorHelper;
 import com.lod.movie_extended.data.model.Player;
-import com.lod.movie_extended.injection.module.application.ApplicationModule;
 import com.lod.movie_extended.injection.scope.PerActivity;
 import com.lod.movie_extended.ui.activity.filmPreparation.FilmPreparationPresenter;
 
@@ -26,8 +26,9 @@ public class FilmPreparationModule {
 
     @Provides
     @PerActivity
-    FilmPreparationPresenter provideFilmPreparationPresenter(DataManager dataManager, Player player) {
-        return new FilmPreparationPresenter(dataManager, player);
+    FilmPreparationPresenter provideFilmPreparationPresenter(DataManager dataManager, Player player,
+                                                             ColorHelper colorHelper) {
+        return new FilmPreparationPresenter(dataManager, player, colorHelper);
     }
 
     @Provides
