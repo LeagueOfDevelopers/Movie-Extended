@@ -8,6 +8,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.android.exoplayer.text.Cue;
+import com.google.android.exoplayer.text.SubtitleLayout;
 import com.lod.movie_extended.R;
 import com.lod.movie_extended.injection.component.activity.FilmComponent;
 import com.lod.movie_extended.injection.component.activity.FilmPreparationComponent;
@@ -20,8 +22,11 @@ import com.lod.movie_extended.ui.base.InjectFragmentBase;
 import com.lod.movie_extended.ui.base.Presenter;
 import com.squareup.otto.Bus;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
+import butterknife.Bind;
 import butterknife.ButterKnife;
 
 /**
@@ -35,6 +40,9 @@ public class SubtitlesFragment extends InjectFragmentBase
     @Inject
     SubtitlesPresenter presenter;
 
+    @Bind(R.id.subtitles)
+    SubtitleLayout subtitleLayout;
+
     @Inject
     Bus events;
 
@@ -42,6 +50,17 @@ public class SubtitlesFragment extends InjectFragmentBase
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         return super.onCreateView(inflater,container,savedInstanceState);
+    }
+
+    @Override
+    public void onCues(List<Cue> cues) {
+        subtitleLayout.setCues(cues);
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        presenter.onDestroy();
     }
 
     @Override

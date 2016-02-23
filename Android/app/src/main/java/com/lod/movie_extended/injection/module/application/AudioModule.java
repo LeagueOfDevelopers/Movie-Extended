@@ -2,6 +2,7 @@ package com.lod.movie_extended.injection.module.application;
 
 import android.content.Context;
 import android.media.AudioManager;
+import android.net.Uri;
 
 import com.google.android.exoplayer.util.Util;
 import com.lod.movie_extended.R;
@@ -18,7 +19,8 @@ import dagger.Provides;
  * Created by Жамбыл on 09.01.2016.
  */
 @Module
-public class AudioModuleNew {
+public class AudioModule {
+
 
     @Provides
     @PerApplication

@@ -3,6 +3,7 @@ package com.lod.movie_extended.injection.component.activity;
 import android.content.Context;
 
 import com.lod.movie_extended.data.DataManager;
+import com.lod.movie_extended.data.model.Player;
 import com.lod.movie_extended.injection.component.application.ApplicationComponent;
 import com.lod.movie_extended.injection.module.activity.FilmModule;
 import com.lod.movie_extended.injection.scope.PerActivity;
@@ -21,6 +22,7 @@ public interface FilmComponent{
     Context getContext();
     DataManager getDataManager();
     Bus getBus();
+    Player getPlayer();
 
     void inject(FilmActivity filmActivity);
 }

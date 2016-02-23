@@ -14,18 +14,21 @@
         <ImageButton
             android:id="@+id/close"
             android:layout_alignParentLeft="true"
-            android:layout_margin="20dp"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
+            android:layout_margin="5dp"
+            android:padding="13dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:scaleType="fitXY"
             android:background="@color/transparent"
             android:src="@mipmap/close"/>
 
         <ImageButton
             android:id="@+id/show_subtitles"
             android:layout_alignParentRight="true"
-            android:layout_margin="20dp"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
+            android:layout_margin="5dp"
+            android:padding="13dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:scaleType="fitXY"
             android:background="@color/transparent"
             android:src="@mipmap/subtitles"/>
@@ -35,26 +38,9 @@
     <FrameLayout
         android:id="@+id/poster_subtitles_fragment_holder"
         android:layout_width="match_parent"
-        android:layout_height="250dp">
-
+        android:layout_height="350dp">
     </FrameLayout>
 
-    <TextView
-        android:layout_marginTop="10dp"
-        android:textSize="20sp"
-        android:id="@+id/track_name_text_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Звездные войны"
-        android:layout_gravity="center"/>
-
-    <TextView
-        android:layout_marginTop="10dp"
-        android:textSize="15sp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="русский язык"
-        android:layout_gravity="center"/>
 
     <LinearLayout
         android:layout_marginTop="30dp"

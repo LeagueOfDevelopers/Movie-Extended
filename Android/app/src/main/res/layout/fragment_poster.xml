@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="350dp">
 
     <ImageView
         android:id="@+id/poster"
@@ -12,6 +12,23 @@
         android:layout_height="250dp"
         android:scaleType="fitXY"
         android:src="@mipmap/star_wars"
+        android:layout_gravity="center"/>
+
+    <TextView
+        android:layout_marginTop="10dp"
+        android:textSize="20sp"
+        android:id="@+id/track_name_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Звездные войны"
+        android:layout_gravity="center"/>
+
+    <TextView
+        android:layout_marginTop="10dp"
+        android:textSize="15sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="русский язык"
         android:layout_gravity="center"/>
 
 </LinearLayout>

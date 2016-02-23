@@ -34,15 +34,11 @@ public class Player implements ExoPlayer.Listener, MediaCodecAudioTrackRenderer.
     public static final int STATE_BUFFERING = ExoPlayer.STATE_BUFFERING;
     public static final int STATE_READY = ExoPlayer.STATE_READY;
     public static final int STATE_ENDED = ExoPlayer.STATE_ENDED;
-    public static final int TRACK_DISABLED = ExoPlayer.TRACK_DISABLED;
-    public static final int TRACK_DEFAULT = ExoPlayer.TRACK_DEFAULT;
     public static final int RENDERER_COUNT = 2;
-
     public static final String EMPTY_AUDIO_URL = "empty";
 
     public static final int TYPE_AUDIO = 0;
     public static final int TYPE_TEXT = 1;
-    public static final int TYPE_METADATA = 2;
     private static final int RENDERER_BUILDING_STATE_IDLE = 1;
 
     private static final int RENDERER_BUILDING_STATE_BUILDING = 2;
@@ -59,7 +55,6 @@ public class Player implements ExoPlayer.Listener, MediaCodecAudioTrackRenderer.
     private CaptionListener captionListener;
     private AudioManager audioManager;
     private String audioUrl;
-    private boolean notFirstCue;
     private long firstCue = 158880;
     private PlayerLogger playerLogger;
     public String getAudioUrl() {
@@ -67,18 +62,12 @@ public class Player implements ExoPlayer.Listener, MediaCodecAudioTrackRenderer.
     }
 
 
-    /**
-     * A listener for core events.
-     */
     public interface Listener {
         void onStateChanged(boolean playWhenReady, int playbackState);
         void onError(Exception e);
         void onWiredHeadsetNotOn();
     }
 
-    /**
-     * A listener for receiving notifications of timed text.
-     */
     public interface CaptionListener {
         void onCues(List<Cue> cues);
     }
@@ -93,11 +82,11 @@ public class Player implements ExoPlayer.Listener, MediaCodecAudioTrackRenderer.
         listeners = new CopyOnWriteArrayList<>();
         lastReportedPlaybackState = STATE_IDLE;
         rendererBuildingState = RENDERER_BUILDING_STATE_IDLE;
-        // Disable text initially.
-        player.setSelectedTrack(TYPE_TEXT, ExoPlayer.TRACK_DEFAULT);
+        player.setSelectedTrack(TYPE_TEXT, ExoPlayer.TRACK_DISABLED);
         audioUrl = EMPTY_AUDIO_URL;
         playerLogger = new PlayerLogger(this);
         startLogging();
+        player.seekTo(firstCue);
     }
 
     private void stopLogging() {
@@ -128,6 +117,15 @@ public class Player implements ExoPlayer.Listener, MediaCodecAudioTrackRenderer.
 
     public void setCaptionListener(CaptionListener listener) {
         captionListener = listener;
+        if(player.getSelectedTrack(TYPE_TEXT) == ExoPlayer.TRACK_DISABLED) {
+            player.setSelectedTrack(TYPE_TEXT,ExoPlayer.TRACK_DEFAULT);
+        }
+    }
+    public void removeCaptionListener() {
+        captionListener = null;
+        if(player.getSelectedTrack(TYPE_TEXT) == ExoPlayer.TRACK_DEFAULT) {
+            player.setSelectedTrack(TYPE_TEXT,ExoPlayer.TRACK_DISABLED);
+        }
     }
 
     public int getTrackCount(int type) {
@@ -153,8 +151,8 @@ public class Player implements ExoPlayer.Listener, MediaCodecAudioTrackRenderer.
         Timber.v("renderBuilder.buildRenderers");
         rendererBuilder.buildRenderers(this);
         Timber.v("player seek to firstCue " + firstCue);
-        player.seekTo(firstCue);
     }
+
 
     public void onRenderers(TrackRenderer[] renderers, BandwidthMeter bandwidthMeter) {
         Timber.v("onRenderers");
@@ -190,10 +188,6 @@ public class Player implements ExoPlayer.Listener, MediaCodecAudioTrackRenderer.
         }
         player.setPlayWhenReady(playWhenReady);
         maybeReportPlayerState();
-    }
-
-    public void seekTo(long positionMs) {
-        player.seekTo(positionMs);
     }
 
     public void release() {
@@ -232,11 +226,9 @@ public class Player implements ExoPlayer.Listener, MediaCodecAudioTrackRenderer.
     }
 
     public void moveToLeft() {
-        seekTo(getCurrentPosition()-1000);
     }
 
     public void moveToRight() {
-        seekTo(getCurrentPosition()+1000);
     }
 
     public Handler getMainHandler() {
@@ -260,7 +252,6 @@ public class Player implements ExoPlayer.Listener, MediaCodecAudioTrackRenderer.
 
     @Override
     public void onPlayWhenReadyCommitted() {
-        Timber.v("onPlayWhenReadyCommitted");
         // Do nothing.
     }
 
@@ -303,17 +294,8 @@ public class Player implements ExoPlayer.Listener, MediaCodecAudioTrackRenderer.
 
     @Override
     public void onCues(List<Cue> cues) {
-        Timber.v("onCues " + cues.size());
-
-        if(!notFirstCue && cues.size() > 0) {
-            notFirstCue = true;
-            stopLogging();
-            long firstCue = player.getCurrentPosition();
-            Timber.v("firstCue appears at " + firstCue);
-        }
-
-        for (Cue cue : cues) {
-            Timber.v(String.valueOf(cue.text));
+        if(captionListener != null) {
+            captionListener.onCues(cues);
         }
     }
 

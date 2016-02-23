@@ -1,6 +1,7 @@
 package com.lod.movie_extended.injection.module.fragment;
 
 import com.lod.movie_extended.data.DataManager;
+import com.lod.movie_extended.data.model.Player;
 import com.lod.movie_extended.injection.scope.PerFragment;
 import com.lod.movie_extended.ui.fragment.subtitles.SubtitlesPresenter;
 import com.squareup.otto.Bus;
@@ -16,7 +17,7 @@ public class SubtitlesModule {
 
     @PerFragment
     @Provides
-    SubtitlesPresenter provideSubtitlesPresenter(DataManager dataManager, Bus bus) {
-        return new SubtitlesPresenter(dataManager, bus);
+    SubtitlesPresenter provideSubtitlesPresenter(DataManager dataManager, Bus bus, Player player) {
+        return new SubtitlesPresenter(dataManager, bus, player);
     }
 }

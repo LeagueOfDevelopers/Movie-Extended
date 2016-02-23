@@ -15,7 +15,7 @@ public class PlayerLogger {
 
     Player player;
     ExecutorService loggingThread;
-    Future currentTask;
+    boolean doLogging;
 
     public PlayerLogger(Player player) {
         Timber.v("constructor");
@@ -25,13 +25,13 @@ public class PlayerLogger {
 
     public void startLogging() {
         Timber.v("start Logging");
-        currentTask = loggingThread.submit(new LoggingRunnable(player));
+        doLogging = true;
+        loggingThread.submit(new LoggingRunnable(player));
     }
 
     public void stopLogging() {
         Timber.v("stop Logging");
-        currentTask.cancel(true);
-//        loggingThread.shutdownNow();
+        doLogging = false;
     }
 
     private class LoggingRunnable implements Runnable {
@@ -44,7 +44,7 @@ public class PlayerLogger {
 
         @Override
         public void run() {
-            while(!Thread.interrupted()) {
+            while(doLogging) {
                 Timber.v("player playWhenReady " + player.getPlayWhenReady());
                 Timber.v("playerCurrentPosition " + player.getCurrentPosition());
                 Timber.v("player buffered percentage" + player.getBufferedPercentage());

@@ -36,13 +36,8 @@ public class ExtractorRendererBuilder {
     private Uri uri;
 
     public ExtractorRendererBuilder(Context context, String userAgent) {
-        this(context,userAgent,Uri.parse(""));
-    }
-
-    private ExtractorRendererBuilder(Context context, String userAgent, Uri uri) {
         this.context = context;
         this.userAgent = userAgent;
-        this.uri = uri;
     }
 
     public void setAudiUri(String audiUri) {
@@ -50,6 +45,9 @@ public class ExtractorRendererBuilder {
     }
 
     public void buildRenderers(Player player) {
+        if(uri == null) {
+            return;
+        }
         Timber.v("buildRenderers");
         Allocator allocator = new DefaultAllocator(BUFFER_SEGMENT_SIZE);
 
