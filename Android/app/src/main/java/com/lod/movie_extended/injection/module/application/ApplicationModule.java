@@ -33,6 +33,7 @@ public class ApplicationModule {
     }
 
     @Provides
+    @PerApplication
     Application provideApplication() {
         return mApplication;
     }
@@ -75,18 +76,14 @@ public class ApplicationModule {
 
 
     @Provides
+    @PerApplication
     NotificationManager provideNotificationManager(
             @ApplicationContext Context context) {
         return (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
     }
 
     @Provides
-    AudioManager provideAudioManager(
-            @ApplicationContext Context context) {
-        return (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
-    }
-
-    @Provides
+    @PerApplication
     ComponentName provideComponentName(
             @ApplicationContext Context context) {
         return new ComponentName(context, PlayerReceiver.class);

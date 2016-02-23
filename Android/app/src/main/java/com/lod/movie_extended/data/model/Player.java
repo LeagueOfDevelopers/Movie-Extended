@@ -82,11 +82,23 @@ public class Player implements ExoPlayer.Listener, MediaCodecAudioTrackRenderer.
         listeners = new CopyOnWriteArrayList<>();
         lastReportedPlaybackState = STATE_IDLE;
         rendererBuildingState = RENDERER_BUILDING_STATE_IDLE;
-        player.setSelectedTrack(TYPE_TEXT, ExoPlayer.TRACK_DISABLED);
         audioUrl = EMPTY_AUDIO_URL;
         playerLogger = new PlayerLogger(this);
+        disableSubtitles();
         startLogging();
-        player.seekTo(firstCue);
+    }
+
+
+    public boolean isSubtitlesEnabled() {
+        return player.getSelectedTrack(TYPE_TEXT) == ExoPlayer.TRACK_DEFAULT;
+    }
+
+    public void disableSubtitles() {
+        player.setSelectedTrack(TYPE_TEXT, ExoPlayer.TRACK_DISABLED);
+    }
+
+    public void enableSubtitles() {
+        player.setSelectedTrack(TYPE_TEXT, ExoPlayer.TRACK_DEFAULT);
     }
 
     private void stopLogging() {
@@ -117,15 +129,11 @@ public class Player implements ExoPlayer.Listener, MediaCodecAudioTrackRenderer.
 
     public void setCaptionListener(CaptionListener listener) {
         captionListener = listener;
-        if(player.getSelectedTrack(TYPE_TEXT) == ExoPlayer.TRACK_DISABLED) {
-            player.setSelectedTrack(TYPE_TEXT,ExoPlayer.TRACK_DEFAULT);
-        }
+        enableSubtitles();
     }
     public void removeCaptionListener() {
         captionListener = null;
-        if(player.getSelectedTrack(TYPE_TEXT) == ExoPlayer.TRACK_DEFAULT) {
-            player.setSelectedTrack(TYPE_TEXT,ExoPlayer.TRACK_DISABLED);
-        }
+        disableSubtitles();
     }
 
     public int getTrackCount(int type) {

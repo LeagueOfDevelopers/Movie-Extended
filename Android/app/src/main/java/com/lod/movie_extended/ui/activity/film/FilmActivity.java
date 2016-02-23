@@ -118,6 +118,7 @@ public class FilmActivity extends InjectActivityBase implements FilmMvpView,
         setStatusBarColor(presenter.getPosterDarkColor());
         setBackgroundLayout(presenter.getPosterLightColor());
         setPosterFragment();
+        isPosterFragment = true;
     }
 
     private void setSubtitleFragment() {

@@ -6,7 +6,7 @@ import android.content.Context;
 import com.lod.movie_extended.injection.component.application.ApplicationComponent;
 import com.lod.movie_extended.injection.component.application.DaggerApplicationComponent;
 import com.lod.movie_extended.injection.module.application.ApplicationModule;
-import com.lod.movie_extended.injection.module.application.AudioModule;
+import com.lod.movie_extended.injection.module.application.AuModule;
 import com.lod.movie_extended.util.Logger;
 
 import timber.log.Timber;
@@ -18,7 +18,7 @@ public class App extends Application {
 
     ApplicationComponent mApplicationComponent;
     ApplicationModule applicationModule;
-    AudioModule audioModule;
+    AuModule audioModule;
 
     @Override
     public void onCreate() {
@@ -38,11 +38,11 @@ public class App extends Application {
         if (mApplicationComponent == null) {
 
             applicationModule = new ApplicationModule(this);
-            audioModule = new AudioModule();
+            audioModule = new AuModule();
 
             mApplicationComponent = DaggerApplicationComponent.builder()
                     .applicationModule(applicationModule)
-                    .audioModule(audioModule)
+                    .auModule(audioModule)
                     .build();
         }
         return mApplicationComponent;

@@ -46,6 +46,7 @@ public class ExtractorRendererBuilder {
 
     public void buildRenderers(Player player) {
         if(uri == null) {
+            Timber.v("uri is null");
             return;
         }
         Timber.v("buildRenderers");

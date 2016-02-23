@@ -50,6 +50,7 @@ public class PlayerLogger {
                 Timber.v("player buffered percentage" + player.getBufferedPercentage());
                 Timber.v("player buffered position" + player.getBufferedPosition());
                 Timber.v("player's duration " + player.getDuration());
+                Timber.v("subtitles enabled " + player.isSubtitlesEnabled());
 
                 sleep();
             }
