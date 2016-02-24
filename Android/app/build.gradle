@@ -117,6 +117,9 @@ dependencies {
     androidTestCompile mockito
     androidTestCompile "com.android.support:support-annotations:$SUPPORT_LIBRARY_VERSION"
 
+    androidTestCompile ('com.android.support.test.espresso:espresso-core:2.0') {
+        exclude group: 'javax.inject'
+    }
 //    androidTestCompile("com.android.support.test.espresso:espresso-contrib:$ESPRESSO_VERSION") {
 //        exclude group: 'com.android.support', module: 'appcompat'
 //        exclude group: 'com.android.support', module: 'support-v4'

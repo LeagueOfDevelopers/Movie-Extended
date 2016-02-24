@@ -7,8 +7,11 @@ import com.lod.movie_extended.data.model.Language;
 import retrofit.GsonConverterFactory;
 import retrofit.Retrofit;
 import retrofit.RxJavaCallAdapterFactory;
+import retrofit.http.Body;
 import retrofit.http.GET;
 import retrofit.http.Header;
+import retrofit.http.Headers;
+import retrofit.http.POST;
 import retrofit.http.Path;
 import rx.Observable;
 
@@ -19,15 +22,17 @@ public interface Server {
 
     String ENDPOINT = "http://movieextended1.azurewebsites.net/api/";
 
-    @GET("session/login/{qrCode}")
-    Observable<String> getToken(@Path("qrCode") String qrCode);
+    @POST("session/login")
+    @Headers("Content-Type:application/json")
+    Observable<String> getToken(@Body String qrCode);
 
-    @GET("session/{token}/startTime")
-    Observable<String> getMovieStartTime(@Path("token") String tokenValue);
+    @POST("languages/get")
+    @Headers("Content-Type:application/json")
+    Observable<String> getMovieLanguages(@Body String tokenValue);
 
-    // film name, languages, photo url.
-    @GET("session/{token}/info")
-    Observable<String> getMovieLanguages(@Path("token") String tokenValue);
+    //film name, languages, photo url.
+//    @GET("/languages/get")
+//    Observable<String> getMovieLanguages(@Path("token") String tokenValue);
 
     @GET("files/get/{fileId}")
     Observable<Byte> getAudioFile(@Path("fileId") int fileId);

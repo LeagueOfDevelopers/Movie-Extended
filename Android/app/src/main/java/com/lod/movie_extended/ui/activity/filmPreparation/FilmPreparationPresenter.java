@@ -4,6 +4,7 @@ import android.widget.Toast;
 
 import com.lod.movie_extended.data.DataManager;
 import com.lod.movie_extended.data.model.ColorHelper;
+import com.lod.movie_extended.data.model.Language;
 import com.lod.movie_extended.data.model.Player;
 import com.lod.movie_extended.data.model.Session;
 import com.lod.movie_extended.data.model.Token;
@@ -63,17 +64,34 @@ public class FilmPreparationPresenter extends BasePresenter<FilmPreparationMvpVi
                  .subscribe(new Subscriber<Token>() {
                      @Override
                      public void onCompleted() {
-
+                         Timber.v("token completed");
                      }
 
                      @Override
                      public void onError(Throwable e) {
-
+                        Timber.e("server request error " + e.getMessage());
                      }
 
                      @Override
                      public void onNext(Token token) {
-                         Timber.v(token.getValue());
+                         Timber.v("token " + token.getValue());
+                         dataManager.getLanguages()
+                                 .subscribeOn(Schedulers.io()).subscribe(new Subscriber<String>() {
+                             @Override
+                             public void onCompleted() {
+                                 Timber.v("onLanguagesCompleted");
+                             }
+
+                             @Override
+                             public void onError(Throwable e) {
+                                 Timber.e("language get error");
+                             }
+
+                             @Override
+                             public void onNext(String language) {
+                                 Timber.v("Language " + language);
+                             }
+                         });
                      }
                  });
     }

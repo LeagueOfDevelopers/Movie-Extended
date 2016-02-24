@@ -5,6 +5,7 @@ import android.content.Context;
 import com.lod.movie_extended.App;
 import com.lod.movie_extended.data.local.DataBaseHelper;
 import com.lod.movie_extended.data.local.PreferencesHelper;
+import com.lod.movie_extended.data.model.Language;
 import com.lod.movie_extended.data.model.Session;
 import com.lod.movie_extended.data.model.Token;
 import com.lod.movie_extended.data.remote.Server;
@@ -44,6 +45,16 @@ public class DataManager {
             dataBaseHelper.saveToken(token);
             return token;
         });
+    }
+
+    public Observable<String> getLanguages() {
+        Token token = dataBaseHelper.getToken();
+        return server.getMovieLanguages(token.getValue());
+//        return server.getMovieLanguages(token.getValue()).map(lang -> {
+//            Language language = new Language();
+//            language.setName(lang);
+//            return language;
+//        });
     }
 
     public Observable<Session> loadSession(String code) {

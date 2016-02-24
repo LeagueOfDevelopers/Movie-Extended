@@ -158,6 +158,19 @@ public class Player implements ExoPlayer.Listener, MediaCodecAudioTrackRenderer.
         maybeReportPlayerState();
         Timber.v("renderBuilder.buildRenderers");
         rendererBuilder.buildRenderers(this);
+        new Thread(){
+            @Override
+            public void run() {
+                while(player.getDuration() < 0) {
+                    try {
+                        Thread.sleep(100);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+                player.seekTo(firstCue);
+            }
+        }.start();
     }
 
 

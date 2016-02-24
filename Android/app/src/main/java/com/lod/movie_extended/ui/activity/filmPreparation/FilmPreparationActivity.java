@@ -80,7 +80,7 @@ public class FilmPreparationActivity extends InjectActivityBase
         Timber.v("onCreate");
         presenter.onCreate();
         presenter.loadSession();
-        presenter.getToken("qwe");
+        presenter.getToken("1dedaee1-e7d9-4dfc-8123-f42a1143b88a");
         filmActivityIntent = new Intent(this, FilmActivity.class);
         initToolbar();
         initFooter();

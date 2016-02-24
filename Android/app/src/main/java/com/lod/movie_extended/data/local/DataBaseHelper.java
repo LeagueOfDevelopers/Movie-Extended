@@ -23,4 +23,8 @@ public class DataBaseHelper {
     public Session getSession(){
         return session;
     }
+
+    public Token getToken() {
+        return token;
+    }
 }
