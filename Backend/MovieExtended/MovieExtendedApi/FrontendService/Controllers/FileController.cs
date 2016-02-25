@@ -19,13 +19,16 @@ namespace FrontendService.Controllers
     {
         private readonly IFileRepository _fileRepository;
         private readonly ISessionKeeper _keeper;
+        private readonly IMovieRepository _movieRepository;
 
-        public FileController(IFileRepository fileRepository, ISessionKeeper keeper)
+        public FileController(IFileRepository fileRepository, ISessionKeeper keeper , IMovieRepository movieRepository)
         {
             Require.NotNull(keeper, nameof(ISessionKeeper));
             _keeper = keeper;
             Require.NotNull(fileRepository, nameof(IFileRepository));
             _fileRepository = fileRepository;
+            Require.NotNull(movieRepository , nameof(IMovieRepository));
+            _movieRepository = movieRepository;
         }
 
         [Route("api/Files/Get/{fileId}")]
@@ -133,8 +136,30 @@ namespace FrontendService.Controllers
             return Ok("uploaded");
         }
 
+
+
+        [Route("image/set/{movieId}")]
+        [HttpPut]
+        public IHttpActionResult GetImage(int movieId)
+        {
+            var request = HttpContext.Current.Request;
+            var directory = HttpContext.Current.Server.MapPath("~/Posters");
+            var filePath = HttpContext.Current.Server.MapPath(string.Format("~/Posters/{0}.jpg", movieId));
+            _movieRepository.SetPoster(movieId , filePath);
+            Directory.CreateDirectory(directory);
+            using (var fs = new FileStream(filePath, FileMode.Create))
+            {
+                request.InputStream.CopyTo(fs);
+                fs.Flush();
+            }
+
+            return Ok("uploaded");
+        }
+
+
         [Route("api/Files/Delete/{fileId}")]
         [HttpPost]
+
         public void DeleteFileByFileId(int fileId)
         {
             _fileRepository.DeleteFileByFileId(fileId);

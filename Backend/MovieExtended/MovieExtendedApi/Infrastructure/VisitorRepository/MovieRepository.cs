@@ -64,9 +64,12 @@ namespace Infrastructure.VisitorRepository
             return session.Query<Movie>().Where(movie => movie.Name == movieName);
         }
 
-        public void UpdateMovie(string jsonForUpdate)
+        public void SetPoster(int movieId , string posterPath)
         {
-            throw new NotImplementedException();
+            var session = _provider.GetCurrentSession();
+            var movie = session.Get<Movie>(movieId);
+            movie.PosterPath = posterPath;
+            session.Update(movie,movieId);
         }
 
         public bool Exists(int movieId)
