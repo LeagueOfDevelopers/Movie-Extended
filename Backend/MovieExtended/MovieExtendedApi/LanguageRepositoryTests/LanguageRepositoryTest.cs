@@ -8,23 +8,23 @@ namespace LanguageRepositoryTests
     [TestClass]
     public class LanguageRepositoryTest
     {
-        [TestMethod]
-        public void SaveLanguage()
-        {
-            var file = new File(0, "testRepository", FileType.Track);
-            var company = new Company(0, "LOD_Company", new Uri("https://vk.com/holymosh"));
-            var cinema = new Cinema(0, "Rozoviy_Korpus", "G-588", company);
-            var movie = new Movie(0, "10 razrabov Vitalika", cinema);
-            movie.AndroidToken = Guid.NewGuid();
-            var language = new Language(0, "kazahskiy", movie, file);
+        //[TestMethod]
+        //public void SaveLanguage()
+        //{
+        //    var file = new File(0, "testRepository", FileType.Track);
+        //    var company = new Company(0, "LOD_Company", new Uri("https://vk.com/holymosh"));
+        //    var cinema = new Cinema(0, "Rozoviy_Korpus", "G-588", company);
+        //    var movie = new Movie(0, "10 razrabov Vitalika", cinema);
+        //    movie.AndroidToken = Guid.NewGuid();
+        //    var language = new Language(0, "kazahskiy", movie, file);
 
-            var provider = new SessionProvider();
+        //    var provider = new SessionProvider();
 
-            provider.OpenSession();
+        //    provider.OpenSession();
 
-            var languageRepository = new LanguageRepository(provider);
-            languageRepository.SaveLanguage(language);
-        }
+        //    var languageRepository = new LanguageRepository(provider);
+        //    languageRepository.SaveLanguage(language);
+        //}
 
         [TestMethod]
         public void GetAllLanguages()

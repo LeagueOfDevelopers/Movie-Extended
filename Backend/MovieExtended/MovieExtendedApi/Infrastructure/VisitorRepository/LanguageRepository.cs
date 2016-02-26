@@ -41,23 +41,11 @@ namespace Infrastructure.VisitorRepository
             session.Transaction.Commit();
         }
 
-        public IEnumerable<AndroidLanguage> GetLanguagesByMovieId(int movieId)
+        public IEnumerable<AndroidLanguage> GetLanguagesByMovieId(int movie)
         {
-            var session = _provider.GetCurrentSession();
-            var languagesByMovieId =
-                session.Query<Language>().Where(language => language.Movie.Id == movieId).AsEnumerable();
-            var convertedLanguages = new List<AndroidLanguage>();
-
-            foreach (var dblanguage in languagesByMovieId)
-            {
-                var convertedLanguage = new AndroidLanguage();
-                convertedLanguage.Id = dblanguage.Id;
-                convertedLanguage.Name = dblanguage.Name;
-                convertedLanguage.TrackFileId = dblanguage.TrackFile.Id;
-                convertedLanguages.Add(convertedLanguage);
-            }
-            return convertedLanguages;
+            throw new NotImplementedException();
         }
+
 
         public void DeleteLanguageByLanguageId(int languageID)
         {
@@ -66,12 +54,11 @@ namespace Infrastructure.VisitorRepository
             if (checkIfExists != null) session.Delete(checkIfExists);
         }
 
-        public void DeleteLanguageByMovieId(int movieId)
+        public void DeleteLanguageByMovieId(int movie)
         {
-            var session = _provider.GetCurrentSession();
-            var checkIfExists = session.Query<Language>().Where(language => language.Movie.Id == movieId);
-            if (checkIfExists != null) session.Delete(checkIfExists);
+            throw new NotImplementedException();
         }
+
 
         public IEnumerable<Language> GetLanguageByName(string languageName)
         {

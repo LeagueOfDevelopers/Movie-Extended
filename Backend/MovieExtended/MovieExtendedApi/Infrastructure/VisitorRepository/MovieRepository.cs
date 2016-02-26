@@ -30,11 +30,11 @@ namespace Infrastructure.VisitorRepository
             return session.Query<Movie>().SingleOrDefault(movie => movie.Id == movieId);
         }
 
-        public IEnumerable<Movie> GetMovieByCinemaId(int cinemaId)
+        public IEnumerable<Movie> GetMovieByCinemaId(int cinema)
         {
-            var session = _provider.GetCurrentSession();
-            return session.Query<Movie>().Where(movie => movie.Cinema.Id == cinemaId);
+            throw new NotImplementedException();
         }
+
 
         public void DeleteMovieByMovieId(int movieId)
         {
@@ -43,12 +43,11 @@ namespace Infrastructure.VisitorRepository
             if (checkIfExists != null) session.Delete(checkIfExists);
         }
 
-        public void DeleteMovieByCinemaId(int cinemaId)
+        public void DeleteMovieByCinemaId(int cinema)
         {
-            var session = _provider.GetCurrentSession();
-            var checkIfExists = session.Query<Movie>().Where(movie => movie.Cinema.Id == cinemaId);
-            if (checkIfExists != null) session.Delete(checkIfExists);
+            throw new NotImplementedException();
         }
+
 
         public void SaveMovie(Movie movie)
         {
@@ -64,11 +63,11 @@ namespace Infrastructure.VisitorRepository
             return session.Query<Movie>().Where(movie => movie.Name == movieName);
         }
 
-        public void SetPoster(int movieId , string posterPath)
+        public void SetPoster(int movieId , File posterPath)
         {
             var session = _provider.GetCurrentSession();
             var movie = session.Get<Movie>(movieId);
-            movie.PosterPath = posterPath;
+            movie.Poster= posterPath;
             session.Update(movie,movieId);
         }
 

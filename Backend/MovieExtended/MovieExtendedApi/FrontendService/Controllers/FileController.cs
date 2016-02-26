@@ -145,7 +145,7 @@ namespace FrontendService.Controllers
             var request = HttpContext.Current.Request;
             var directory = HttpContext.Current.Server.MapPath("~/Posters");
             var filePath = HttpContext.Current.Server.MapPath(string.Format("~/Posters/{0}.jpg", movieId));
-            _movieRepository.SetPoster(movieId , filePath);
+           // _movieRepository.SetPoster(movieId , );
             Directory.CreateDirectory(directory);
             using (var fs = new FileStream(filePath, FileMode.Create))
             {

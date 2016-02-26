@@ -14,11 +14,6 @@ namespace Domain.Mappings
                 mapper.Generator(Generators.EnhancedTable);
             });
             Property(model => model.Name, mapper => mapper.Column("Name"));
-            ManyToOne(model => model.Movie, mapper =>
-            {
-                mapper.Column("Movie");
-                mapper.Cascade(Cascade.All);
-            });
             ManyToOne(model => model.TrackFile, mapper =>
             {
                 mapper.Column("TrackFile");

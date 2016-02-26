@@ -32,13 +32,11 @@ namespace Infrastructure.VisitorRepository
             session.Transaction.Commit();
         }
 
-        public IEnumerable<Cinema> GetCinemaByCompanyId(int companyId)
+        public IEnumerable<Cinema> GetCinemaByCompanyId(int company)
         {
-            var session = _provider.GetCurrentSession();
-            var allcinemasById = session.Query<Cinema>().Where(cinema => cinema.Company.Id == companyId).AsEnumerable();
-
-            return allcinemasById;
+            throw new NotImplementedException();
         }
+
 
         public void DeleteCinemaByCinemaId(int cinemaId)
         {
@@ -52,12 +50,12 @@ namespace Infrastructure.VisitorRepository
             }
         }
 
-        public void DeleteCinemaByCompanyId(int companyId)
+        public void DeleteCinemaByCompanyId(int company)
         {
-            var session = _provider.GetCurrentSession();
-            var checkIfExists = session.Query<Cinema>().Where(cinema => cinema.Company.Id == companyId);
-            if (checkIfExists != null) session.Delete(checkIfExists);
+            throw new NotImplementedException();
         }
+
+       
 
         public Cinema GetCinemaByCinemaId(int cinemaId)
         {

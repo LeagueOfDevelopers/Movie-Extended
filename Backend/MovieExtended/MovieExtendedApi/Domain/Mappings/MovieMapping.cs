@@ -8,18 +8,23 @@ namespace Domain.Mappings
     {
         public MovieMapping()
         {
+            Table("Movie");
             Id(model => model.Id, mapper =>
             {
                 mapper.Column("Id");
                 mapper.Generator(Generators.EnhancedTable);
             });
             Property(model => model.Name, mapper => mapper.Column("Name"));
-            ManyToOne(model => model.Cinema, mapper =>
+            Set(movie => movie.Language, mapper =>
             {
-                mapper.Column("CinemaId");
+               mapper.Table("Language");
+               mapper.Cascade(Cascade.All);
+            }); 
+            Property(movie => movie.AndroidToken, mapper => mapper.Column("Token"));
+            OneToOne(model => model.Poster , mapper =>
+            {
                 mapper.Cascade(Cascade.All);
             });
-            Property(movie => movie.AndroidToken, mapper => mapper.Column("Token"));
         }
     }
 }

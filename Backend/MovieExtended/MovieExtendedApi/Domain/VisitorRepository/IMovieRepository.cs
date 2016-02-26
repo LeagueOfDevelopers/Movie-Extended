@@ -13,7 +13,7 @@ namespace Domain.VisitorRepository
         void DeleteMovieByCinemaId(int cinema);
         void SaveMovie(Movie movie);
         IEnumerable<Movie> GetMovieByMovieName(string movieName);
-        void SetPoster(int movieId , string posterPath);
+        void SetPoster(int movieId , File posterPath);
         bool Exists(int movieId);
         Movie CheckAndroidToken(Guid token);
     }

@@ -2,19 +2,20 @@
 {
     public class Cinema
     {
-        public Cinema(int id, string name, string address, Company company)
+        public Cinema(int id, string name, string address , Movie movie )
         {
             Id = id;
             Name = name;
             Address = address;
-            Company = company;
+            Movie = movie;
+
         }
 
-        public Cinema(string name, string address, Company company)
+        public Cinema(string name, string address, Movie movie)
         {
             Name = name;
             Address = address;
-            Company = company;
+            Movie = movie;
         }
 
         protected Cinema()
@@ -27,6 +28,6 @@
 
         public virtual string Address { get; protected set; }
 
-        public virtual Company Company { get; set; }
+        public virtual Movie Movie { get; set; }
     }
 }

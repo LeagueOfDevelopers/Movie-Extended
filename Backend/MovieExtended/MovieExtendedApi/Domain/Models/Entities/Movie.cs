@@ -1,20 +1,24 @@
 ﻿using System;
+using System.Collections.Generic;
+using NHibernate.Mapping;
 
 namespace Domain.Models.Entities
 {
     public class Movie
     {
-        public Movie(int id, string name, Cinema cinema)
+        public Movie(int id, string name , List<Language> language)
         {
             Id = id;
             Name = name;
-            Cinema = cinema;
+            Language = language;
+
         }
 
-        public Movie(string name, Cinema cinema)
+        public Movie(string name , List<Language> language)
         {
             Name = name;
-            Cinema = cinema;
+            Language= language;
+            
         }
 
         protected Movie()
@@ -25,10 +29,10 @@ namespace Domain.Models.Entities
 
         public virtual string Name { get; protected set; }
 
-        public virtual Cinema Cinema { get; protected set; }
+        public  virtual List<Language> Language { get; set; }
 
         public virtual Guid AndroidToken { get; set; }
 
-        public virtual string PosterPath { get; set; }
+        public virtual File  Poster { get; set; }
     }
 }

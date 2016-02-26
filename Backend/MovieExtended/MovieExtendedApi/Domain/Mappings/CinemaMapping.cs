@@ -15,11 +15,11 @@ namespace Domain.Mappings
             });
             Property(model => model.Name, mapper => mapper.Column("Name"));
             Property(model => model.Address, mapper => mapper.Column("Address"));
-            ManyToOne(model => model.Company, mapper =>
+            ManyToOne(model =>model.Movie , mapper =>
             {
-                mapper.Column("Company");
-                mapper.Cascade(Cascade.All);
-            });
+               mapper.Column("movieId"); 
+               mapper.Cascade(Cascade.All);
+            } );
         }
     }
 }
