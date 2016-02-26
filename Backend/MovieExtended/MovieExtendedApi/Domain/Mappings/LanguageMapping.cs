@@ -19,6 +19,11 @@ namespace Domain.Mappings
                 mapper.Column("TrackFile");
                 mapper.Cascade(Cascade.All);
             });
+            ManyToOne(model=> model.Subtitles , mapper =>
+            {
+                mapper.Column("Subtitles");
+                mapper.Cascade(Cascade.All);
+            });
         }
     }
 }
