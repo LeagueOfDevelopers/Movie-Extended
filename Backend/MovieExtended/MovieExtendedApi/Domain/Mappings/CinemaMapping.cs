@@ -1,4 +1,5 @@
 ﻿using Domain.Models.Entities;
+using NHibernate.Mapping;
 using NHibernate.Mapping.ByCode;
 using NHibernate.Mapping.ByCode.Conformist;
 
@@ -8,6 +9,7 @@ namespace Domain.Mappings
     {
         public CinemaMapping()
         {
+            Table("Cinema");
             Id(model => model.Id, mapper =>
             {
                 mapper.Column("Id");
@@ -15,9 +17,9 @@ namespace Domain.Mappings
             });
             Property(model => model.Name, mapper => mapper.Column("Name"));
             Property(model => model.Address, mapper => mapper.Column("Address"));
-            ManyToOne(model =>model.Movie , mapper =>
+            Bag(model =>model.Movie , mapper =>
             {
-               mapper.Column("movieId"); 
+               mapper.Table("Movie"); 
                mapper.Cascade(Cascade.All);
             } );
         }

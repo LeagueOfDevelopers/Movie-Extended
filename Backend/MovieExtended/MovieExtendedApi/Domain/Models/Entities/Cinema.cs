@@ -1,8 +1,10 @@
-﻿namespace Domain.Models.Entities
+﻿using System.Collections.Generic;
+
+namespace Domain.Models.Entities
 {
     public class Cinema
     {
-        public Cinema(int id, string name, string address , Movie movie )
+        public Cinema(int id, string name, string address , IEnumerable<Movie> movie )
         {
             Id = id;
             Name = name;
@@ -11,7 +13,7 @@
 
         }
 
-        public Cinema(string name, string address, Movie movie)
+        public Cinema(string name, string address, IEnumerable<Movie> movie)
         {
             Name = name;
             Address = address;
@@ -28,6 +30,6 @@
 
         public virtual string Address { get; protected set; }
 
-        public virtual Movie Movie { get; set; }
+        public virtual IEnumerable<Movie> Movie { get; set; }
     }
 }

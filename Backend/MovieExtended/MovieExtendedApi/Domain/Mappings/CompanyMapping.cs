@@ -8,6 +8,7 @@ namespace Domain.Mappings
     {
         public CompanyMapping()
         {
+            Table("Company");
             Id(model => model.Id, mapper =>
             {
                 mapper.Column("Id");
@@ -15,7 +16,7 @@ namespace Domain.Mappings
             });
             Property(model => model.Name, mapper => mapper.Column("Name"));
             Property(model => model.Website, mapper => mapper.Column("Website"));
-            Set(company => company.Cinema , mapper =>
+            Bag(company => company.Cinema , mapper =>
             {
                 mapper.Table("Cinema");
                 mapper.Cascade(Cascade.All);

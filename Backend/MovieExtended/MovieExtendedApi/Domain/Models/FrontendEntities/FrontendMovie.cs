@@ -26,7 +26,7 @@ namespace Domain.Models.FrontendEntities
         {
             Id = movie.Id;
             Name = movie.Name;
-            Cinema = new FrontendCinema(movie.Cinema);
+           // Cinema = new FrontendCinema(movie.Cinema);
             AndroidToken = movie.AndroidToken;
         }
 

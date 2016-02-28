@@ -90,7 +90,6 @@ C:\AndroidNew\Projects\Movie-Extended\Backend\MovieExtended\MovieExtendedApi\Fro
 C:\AndroidNew\Projects\Movie-Extended\Backend\MovieExtended\MovieExtendedApi\FrontendService\obj\Debug\FrontendService.csprojResolveAssemblyReference.cache
 C:\AndroidNew\Projects\Movie-Extended\Backend\MovieExtended\MovieExtendedApi\FrontendService\obj\Debug\FrontendService.dll
 C:\AndroidNew\Projects\Movie-Extended\Backend\MovieExtended\MovieExtendedApi\FrontendService\obj\Debug\FrontendService.pdb
-C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\FrontendService\obj\Debug\FrontendService.csprojResolveAssemblyReference.cache
 C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\FrontendService\bin\roslyn\csc.exe
 C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\FrontendService\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
 C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\FrontendService\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
@@ -109,6 +108,7 @@ C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\FrontendService\bi
 C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\FrontendService\bin\Domain.dll
 C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\FrontendService\bin\Iesi.Collections.dll
 C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\FrontendService\bin\Infrastructure.dll
+C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\FrontendService\bin\Journalist.LanguageExtensions.dll
 C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\FrontendService\bin\Microsoft.Azure.AppService.ApiApps.Service.dll
 C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\FrontendService\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\FrontendService\bin\Microsoft.Web.Infrastructure.dll
@@ -123,7 +123,6 @@ C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\FrontendService\bi
 C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\FrontendService\bin\System.Web.Http.dll
 C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\FrontendService\bin\System.Web.Http.WebHost.dll
 C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\FrontendService\bin\WebActivatorEx.dll
-C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\FrontendService\bin\Journalist.LanguageExtensions.dll
 C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\FrontendService\bin\Domain.pdb
 C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\FrontendService\bin\Infrastructure.pdb
 C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\FrontendService\bin\Iesi.Collections.xml
@@ -140,5 +139,6 @@ C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\FrontendService\bi
 C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\FrontendService\bin\ru\System.Net.Http.Formatting.resources.dll
 C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\FrontendService\bin\ru\System.Web.Http.resources.dll
 C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\FrontendService\bin\ru\System.Web.Http.WebHost.resources.dll
+C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\FrontendService\obj\Debug\FrontendService.csprojResolveAssemblyReference.cache
 C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\FrontendService\obj\Debug\FrontendService.dll
 C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\FrontendService\obj\Debug\FrontendService.pdb

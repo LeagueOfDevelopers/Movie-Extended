@@ -28,7 +28,7 @@ namespace Domain.Models.FrontendEntities
             Id = cinema.Id;
             Name = cinema.Name;
             Address = cinema.Address;
-            Company = new FrontendCompany(cinema.Company);
+           // Company = new FrontendCompany(cinema.Company);
         }
 
         public virtual int Id { get; protected set; }

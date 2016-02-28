@@ -23,7 +23,7 @@ namespace Domain.Models.FrontendEntities
         {
             Id = language.Id;
             Name = language.Name;
-            Movie = new FrontendMovie(language.Movie);
+           // Movie = new FrontendMovie(language.Movie);
             TrackFile = new FrontendFile(language.TrackFile);
         }
 
