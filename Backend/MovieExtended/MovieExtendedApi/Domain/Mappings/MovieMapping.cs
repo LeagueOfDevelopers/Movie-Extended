@@ -12,7 +12,7 @@ namespace Domain.Mappings
             Id(model => model.Id, mapper =>
             {
                 mapper.Column("Id");
-                mapper.Generator(Generators.EnhancedTable);
+                mapper.Generator(Generators.Identity);
             });
             Property(model => model.Name, mapper => mapper.Column("Name"));
             Set(movie => movie.Language, mapper =>

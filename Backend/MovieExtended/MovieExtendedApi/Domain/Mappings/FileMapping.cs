@@ -9,7 +9,7 @@ namespace Domain.Mappings
         public FileMapping()
         {
             Table("Files");
-            Id(file => file.Id, mapper => { mapper.Generator(Generators.EnhancedTable); });
+            Id(file => file.Id, mapper => { mapper.Generator(Generators.Identity); });
             Property(file => file.FilePath, mapper => mapper.Column("FilePath"));
             Property(file => file.FileType, mapper => mapper.Column("FileType"));
         }

@@ -13,7 +13,7 @@ namespace Domain.Mappings
             Id(model => model.Id, mapper =>
             {
                 mapper.Column("Id");
-                mapper.Generator(Generators.EnhancedTable);
+                mapper.Generator(Generators.Identity);
             });
             Property(model => model.Name, mapper => mapper.Column("Name"));
             Property(model => model.Address, mapper => mapper.Column("Address"));

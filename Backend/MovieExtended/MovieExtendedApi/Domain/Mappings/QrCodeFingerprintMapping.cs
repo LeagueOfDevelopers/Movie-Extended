@@ -11,7 +11,7 @@ namespace Domain.Mappings
             Id(model => model.Id, mapper =>
             {
                 mapper.Column("Id");
-                mapper.Generator(Generators.EnhancedTable);
+                mapper.Generator(Generators.Identity);
             });
             Property(model => model.Value, mapper => mapper.Column("Value"));
         }
