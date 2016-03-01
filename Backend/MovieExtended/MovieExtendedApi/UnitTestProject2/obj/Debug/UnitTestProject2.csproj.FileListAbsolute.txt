@@ -1,0 +1,16 @@
+C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\UnitTestProject2\bin\Debug\UnitTestProject2.dll
+C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\UnitTestProject2\bin\Debug\UnitTestProject2.pdb
+C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\UnitTestProject2\bin\Debug\Domain.dll
+C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\UnitTestProject2\bin\Debug\Infrastructure.dll
+C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\UnitTestProject2\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\UnitTestProject2\bin\Debug\NHibernate.dll
+C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\UnitTestProject2\bin\Debug\Journalist.LanguageExtensions.dll
+C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\UnitTestProject2\bin\Debug\Iesi.Collections.dll
+C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\UnitTestProject2\bin\Debug\Domain.pdb
+C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\UnitTestProject2\bin\Debug\Infrastructure.pdb
+C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\UnitTestProject2\bin\Debug\NHibernate.xml
+C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\UnitTestProject2\bin\Debug\Iesi.Collections.xml
+C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\UnitTestProject2\bin\Debug\ru\Microsoft.VisualStudio.QualityTools.UnitTestFramework.resources.dll
+C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\UnitTestProject2\obj\Debug\UnitTestProject2.csprojResolveAssemblyReference.cache
+C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\UnitTestProject2\obj\Debug\UnitTestProject2.dll
+C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\UnitTestProject2\obj\Debug\UnitTestProject2.pdb

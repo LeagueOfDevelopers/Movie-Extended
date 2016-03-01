@@ -5,7 +5,7 @@ namespace Domain.Models.Entities
 {
     public class Company
     {
-        public Company(int id, string name, Uri website , List<Cinema> cinema)
+        public Company(int id, string name, Uri website , ISet<Cinema> cinema)
         {
             Id = id;
             Name = name;
@@ -13,7 +13,7 @@ namespace Domain.Models.Entities
             Cinema = cinema;
         }
 
-        public Company(string name, Uri website, List<Cinema> cinema )
+        public Company(string name, Uri website, ISet<Cinema> cinema )
         {
             Name = name;
             Website = website;
@@ -30,6 +30,6 @@ namespace Domain.Models.Entities
 
         public virtual Uri Website { get; protected set; }
 
-        public  virtual List<Cinema> Cinema { get; set; }
+        public  virtual ISet<Cinema> Cinema { get; set; }
     }
 }

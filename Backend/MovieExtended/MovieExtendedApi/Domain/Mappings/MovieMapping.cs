@@ -17,9 +17,11 @@ namespace Domain.Mappings
             Property(model => model.Name, mapper => mapper.Column("Name"));
             Set(movie => movie.Language, mapper =>
             {
-               mapper.Table("Language");
                mapper.Cascade(Cascade.All);
-            }); 
+                mapper.Key(language => language.Column("Language") );
+            }
+             , relation => relation.OneToMany() 
+            ); 
             Property(movie => movie.AndroidToken, mapper => mapper.Column("Token"));
             OneToOne(model => model.Poster , mapper =>
             {

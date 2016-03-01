@@ -4,12 +4,14 @@ using System.IO;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
 using Domain.Models;
 using Domain.Models.Entities;
 using Domain.VisitorRepository;
 using Journalist;
+using Journalist.Options;
 using static Domain.Models.Entities.FileType;
 using File = Domain.Models.Entities.File;
 
@@ -54,7 +56,7 @@ namespace FrontendService.Controllers
             responseMessage.Content.Headers.ContentType = new MediaTypeHeaderValue("application/octet-stream");
             responseMessage.Content.Headers.ContentDisposition = new ContentDispositionHeaderValue("attachment")
             {
-                FileName = string.Format("{0}.mp3", fileId)
+                FileName = $"{fileId}.mp3"
             };
 
 
@@ -150,7 +152,9 @@ namespace FrontendService.Controllers
             using (var fs = new FileStream(filePath, FileMode.Create))
             {
                 request.InputStream.CopyTo(fs);
+                
                 fs.Flush();
+                
             }
 
             return Ok("uploaded");
@@ -171,5 +175,7 @@ namespace FrontendService.Controllers
         {
             return _fileRepository.GetAllFiles();
         }
+
+
     }
 }

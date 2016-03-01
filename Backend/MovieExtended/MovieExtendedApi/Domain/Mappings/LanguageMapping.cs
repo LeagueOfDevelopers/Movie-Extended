@@ -14,14 +14,14 @@ namespace Domain.Mappings
                 mapper.Generator(Generators.Identity);
             });
             Property(model => model.Name, mapper => mapper.Column("Name"));
-            ManyToOne(model => model.TrackFile, mapper =>
+            OneToOne(model => model.TrackFile, mapper =>
             {
-                mapper.Column("TrackFile");
+                
                 mapper.Cascade(Cascade.All);
             });
-            ManyToOne(model=> model.Subtitles , mapper =>
+            OneToOne(model=> model.Subtitles , mapper =>
             {
-                mapper.Column("Subtitles");
+                
                 mapper.Cascade(Cascade.All);
             });
         }

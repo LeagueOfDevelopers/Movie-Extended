@@ -4,7 +4,7 @@ namespace Domain.Models.Entities
 {
     public class Cinema
     {
-        public Cinema(int id, string name, string address , IEnumerable<Movie> movie )
+        public Cinema(int id, string name, string address , ISet<Movie> movie )
         {
             Id = id;
             Name = name;
@@ -13,7 +13,7 @@ namespace Domain.Models.Entities
 
         }
 
-        public Cinema(string name, string address, IEnumerable<Movie> movie)
+        public Cinema(string name, string address, ISet<Movie> movie)
         {
             Name = name;
             Address = address;
@@ -30,6 +30,6 @@ namespace Domain.Models.Entities
 
         public virtual string Address { get; protected set; }
 
-        public virtual IEnumerable<Movie> Movie { get; set; }
+        public virtual ISet<Movie> Movie { get; set; }
     }
 }

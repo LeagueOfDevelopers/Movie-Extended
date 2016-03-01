@@ -16,11 +16,11 @@ namespace Domain.Mappings
             });
             Property(model => model.Name, mapper => mapper.Column("Name"));
             Property(model => model.Website, mapper => mapper.Column("Website"));
-            Bag(company => company.Cinema , mapper =>
+            Set(company => company.Cinema , mapper =>
             {
-                mapper.Table("Cinema");
                 mapper.Cascade(Cascade.All);
-            }  );
+                mapper.Key(cinema => cinema.Column("Cinema") );
+            } ,relation => relation.OneToMany()  );
         }
     }
 }

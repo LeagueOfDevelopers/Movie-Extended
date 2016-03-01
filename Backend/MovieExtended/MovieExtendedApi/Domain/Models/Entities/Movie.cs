@@ -6,7 +6,7 @@ namespace Domain.Models.Entities
 {
     public class Movie
     {
-        public Movie(int id, string name , List<Language> language)
+        public Movie(int id, string name , ISet<Language> language)
         {
             Id = id;
             Name = name;
@@ -14,7 +14,7 @@ namespace Domain.Models.Entities
 
         }
 
-        public Movie(string name , List<Language> language)
+        public Movie(string name , ISet<Language> language)
         {
             Name = name;
             Language= language;
@@ -29,7 +29,7 @@ namespace Domain.Models.Entities
 
         public virtual string Name { get; protected set; }
 
-        public  virtual List<Language> Language { get; set; }
+        public  virtual ISet<Language> Language { get; set; }
 
         public virtual Guid AndroidToken { get; set; }
 
