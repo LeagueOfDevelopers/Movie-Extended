@@ -1,4 +1,4 @@
-package com.lod.movie_extended.data.model;
+package com.lod.movie_extended.data.model.player;
 
 import android.content.Context;
 import android.media.AudioManager;
@@ -20,6 +20,7 @@ import com.google.android.exoplayer.upstream.DefaultAllocator;
 import com.google.android.exoplayer.upstream.DefaultBandwidthMeter;
 import com.google.android.exoplayer.upstream.DefaultUriDataSource;
 import com.google.android.exoplayer.util.MimeTypes;
+import com.lod.movie_extended.data.model.player.Player;
 
 import timber.log.Timber;
 
@@ -40,16 +41,22 @@ public class ExtractorRendererBuilder {
         this.userAgent = userAgent;
     }
 
-    public void setAudiUri(String audiUri) {
+    public void startBuildingRenderers(Player player, String audiUri) {
         this.uri = Uri.parse(audiUri);
+        buildRenderers(player);
     }
 
-    public void buildRenderers(Player player) {
+    public void setSubtitlesUrl() {
+
+    }
+
+    private void buildRenderers(Player player) {
         if(uri == null) {
-            Timber.v("uri is null");
+            Timber.e("uri is null");
             return;
         }
-        Timber.v("buildRenderers");
+
+        Timber.v("building renderers");
         Allocator allocator = new DefaultAllocator(BUFFER_SEGMENT_SIZE);
 
         DefaultBandwidthMeter bandwidthMeter = new DefaultBandwidthMeter(player.getMainHandler(),
@@ -76,10 +83,5 @@ public class ExtractorRendererBuilder {
         Timber.v("player.onRenderers");
         player.onRenderers(renderers, bandwidthMeter);
     }
-
-    public void cancel() {
-        // Do nothing.
-    }
-
 }
 

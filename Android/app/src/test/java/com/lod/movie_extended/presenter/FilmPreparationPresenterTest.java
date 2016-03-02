@@ -36,7 +36,7 @@ public class FilmPreparationPresenterTest {
 
     @Before
     public void setUp() {
-        filmPreparationPresenter = new FilmPreparationPresenter(dataManager,null, null);
+        filmPreparationPresenter = new FilmPreparationPresenter(dataManager,null);
         filmPreparationPresenter.attachView(filmPreparationMvpView);
 
         session = TestDataFactory.getTestSession();

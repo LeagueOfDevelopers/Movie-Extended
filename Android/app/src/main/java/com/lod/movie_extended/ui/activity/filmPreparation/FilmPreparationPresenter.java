@@ -1,11 +1,8 @@
 package com.lod.movie_extended.ui.activity.filmPreparation;
 
-import android.widget.Toast;
-
 import com.lod.movie_extended.data.DataManager;
-import com.lod.movie_extended.data.model.ColorHelper;
-import com.lod.movie_extended.data.model.Language;
-import com.lod.movie_extended.data.model.Player;
+import com.lod.movie_extended.data.model.player.Player;
+import com.lod.movie_extended.data.model.player.PlayerListener;
 import com.lod.movie_extended.data.model.Session;
 import com.lod.movie_extended.data.model.Token;
 import com.lod.movie_extended.ui.base.BasePresenter;
@@ -17,17 +14,15 @@ import timber.log.Timber;
 /**
  * Created by Жамбыл on 09.01.2016.
  */
-public class FilmPreparationPresenter extends BasePresenter<FilmPreparationMvpView> implements Player.Listener {
+public class FilmPreparationPresenter extends BasePresenter<FilmPreparationMvpView> implements PlayerListener {
 
     private DataManager dataManager;
     private Session currentSession;
     private Player player;
-    private ColorHelper colorHelper;
 
-    public FilmPreparationPresenter(DataManager dataManager, Player player, ColorHelper colorHelper) {
+    public FilmPreparationPresenter(DataManager dataManager, Player player) {
         this.dataManager = dataManager;
         this.player = player;
-        this.colorHelper = colorHelper;
     }
 
     public void onCreate() {
@@ -105,9 +100,11 @@ public class FilmPreparationPresenter extends BasePresenter<FilmPreparationMvpVi
     public boolean isFilmTime() {
         return dataManager.isFilmTime();
     }
-
+    public boolean isPlaying() {
+        return player.getPlayWhenReady();
+    }
     @Override
-    public void onStateChanged(boolean playWhenReady, int playbackState) {
+    public void onStateChanged(boolean playWhenReady) {
         getMvpView().togglePlayerView(playWhenReady);
     }
 
@@ -123,14 +120,5 @@ public class FilmPreparationPresenter extends BasePresenter<FilmPreparationMvpVi
 
     public void togglePlayer(boolean isPlaying) {
         player.setPlayWhenReady(!isPlaying);
-    }
-
-
-    public int getPosterDarkColor() {
-        return colorHelper.getPosterDarkColor();
-    }
-
-    public int getPosterLightColor() {
-        return colorHelper.getPosterLightColor();
     }
 }

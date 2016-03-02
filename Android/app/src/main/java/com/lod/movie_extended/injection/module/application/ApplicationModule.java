@@ -16,6 +16,7 @@ import com.lod.movie_extended.data.remote.Server;
 import com.lod.movie_extended.data.remote.ServerHelper;
 import com.lod.movie_extended.injection.context.ApplicationContext;
 import com.lod.movie_extended.injection.scope.PerApplication;
+import com.lod.movie_extended.receiver.HeadsetEventReceiver;
 import com.lod.movie_extended.receiver.PlayerReceiver;
 import com.squareup.otto.Bus;
 
@@ -100,4 +101,9 @@ public class ApplicationModule {
                 R.mipmap.star_wars));
     }
 
+    @Provides
+    @PerApplication
+    HeadsetEventReceiver provideHeadsetEventReceiver() {
+        return new HeadsetEventReceiver();
+    }
 }

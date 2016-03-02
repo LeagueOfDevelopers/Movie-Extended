@@ -2,7 +2,8 @@ package com.lod.movie_extended.ui.fragment.subtitles;
 
 import com.google.android.exoplayer.text.Cue;
 import com.lod.movie_extended.data.DataManager;
-import com.lod.movie_extended.data.model.Player;
+import com.lod.movie_extended.data.model.player.CaptionListener;
+import com.lod.movie_extended.data.model.player.Player;
 import com.lod.movie_extended.ui.base.BasePresenter;
 import com.squareup.otto.Bus;
 
@@ -13,7 +14,7 @@ import timber.log.Timber;
 /**
  * Created by Жамбыл on 2/18/2016.
  */
-public class SubtitlesPresenter extends BasePresenter<SubtitlesMvpView> implements Player.CaptionListener {
+public class SubtitlesPresenter extends BasePresenter<SubtitlesMvpView> implements CaptionListener {
 
     private DataManager dataManager;
     private Bus events;

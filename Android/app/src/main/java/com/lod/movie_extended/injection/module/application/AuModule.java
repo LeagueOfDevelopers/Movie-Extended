@@ -2,13 +2,16 @@ package com.lod.movie_extended.injection.module.application;
 
 import android.content.Context;
 import android.media.AudioManager;
+import android.os.Handler;
 
+import com.google.android.exoplayer.ExoPlayer;
 import com.google.android.exoplayer.util.Util;
 import com.lod.movie_extended.R;
-import com.lod.movie_extended.data.model.ExtractorRendererBuilder;
-import com.lod.movie_extended.data.model.Player;
+import com.lod.movie_extended.data.model.player.ExtractorRendererBuilder;
+import com.lod.movie_extended.data.model.player.Player;
 import com.lod.movie_extended.injection.context.ApplicationContext;
 import com.lod.movie_extended.injection.scope.PerApplication;
+import com.lod.movie_extended.data.model.player.PlayerLogger;
 
 import javax.inject.Named;
 
@@ -23,8 +26,14 @@ public class AuModule {
 
     @Provides
     @PerApplication
-    Player providePlayer(ExtractorRendererBuilder hlsRendererBuilder, AudioManager audioManager) {
-        return new Player(hlsRendererBuilder, audioManager);
+    ExoPlayer provideExoPlayer() {
+        return ExoPlayer.Factory.newInstance(Player.RENDERER_COUNT, 1000, 5000);
+    }
+
+    @Provides
+    @PerApplication
+    Player providePlayer(@ApplicationContext Context context) {
+        return new Player(context);
     }
 
     @Provides
@@ -47,5 +56,17 @@ public class AuModule {
     AudioManager provideAudioManager(
             @ApplicationContext Context context) {
         return (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
+    }
+
+    @Provides
+    @PerApplication
+    Handler provideHandler() {
+        return new Handler();
+    }
+
+    @Provides
+    @PerApplication
+    PlayerLogger providePlayerLogger() {
+        return new PlayerLogger();
     }
 }

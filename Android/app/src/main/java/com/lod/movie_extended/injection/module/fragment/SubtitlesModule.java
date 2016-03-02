@@ -1,7 +1,7 @@
 package com.lod.movie_extended.injection.module.fragment;
 
 import com.lod.movie_extended.data.DataManager;
-import com.lod.movie_extended.data.model.Player;
+import com.lod.movie_extended.data.model.player.Player;
 import com.lod.movie_extended.injection.scope.PerFragment;
 import com.lod.movie_extended.ui.fragment.subtitles.SubtitlesPresenter;
 import com.squareup.otto.Bus;

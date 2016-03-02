@@ -21,7 +21,8 @@ import android.widget.RemoteViews;
 import com.lod.movie_extended.App;
 import com.lod.movie_extended.R;
 import com.lod.movie_extended.data.DataManager;
-import com.lod.movie_extended.data.model.Player;
+import com.lod.movie_extended.data.model.player.Player;
+import com.lod.movie_extended.data.model.player.PlayerListener;
 import com.lod.movie_extended.ui.activity.filmPreparation.FilmPreparationActivity;
 import com.lod.movie_extended.util.Constants;
 
@@ -32,7 +33,7 @@ import timber.log.Timber;
 /**
  * Created by Жамбыл on 09.01.2016.
  */
-public class PlayerNotificationService extends Service implements Player.Listener {
+public class PlayerNotificationService extends Service implements PlayerListener {
 
     Notification notification;
     RemoteControlClientCompat remoteControlClientCompat;
@@ -154,11 +155,9 @@ public class PlayerNotificationService extends Service implements Player.Listene
     }
 
     public void moveToLeft() {
-        player.moveToLeft();
     }
 
     public void moveToRight() {
-        player.moveToRight();
     }
 
     public boolean getIsPlaying() {
@@ -240,7 +239,7 @@ public class PlayerNotificationService extends Service implements Player.Listene
     }
 
     @Override
-    public void onStateChanged(boolean playWhenReady, int playbackState) {
+    public void onStateChanged(boolean playWhenReady) {
         setPlayOrPauseImage();
         if(!playWhenReady) {
             stopForeground(false);

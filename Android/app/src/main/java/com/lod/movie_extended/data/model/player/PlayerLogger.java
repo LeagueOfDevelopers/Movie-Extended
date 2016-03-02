@@ -1,10 +1,9 @@
-package com.lod.movie_extended.util;
+package com.lod.movie_extended.data.model.player;
 
-import com.lod.movie_extended.data.model.Player;
+import com.lod.movie_extended.data.model.player.Player;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
 
 import timber.log.Timber;
 
@@ -17,10 +16,12 @@ public class PlayerLogger {
     ExecutorService loggingThread;
     boolean doLogging;
 
-    public PlayerLogger(Player player) {
-        Timber.v("constructor");
-        this.player = player;
+    public PlayerLogger() {
         loggingThread = Executors.newSingleThreadScheduledExecutor();
+    }
+
+    public void setPlayer(Player player) {
+        this.player = player;
     }
 
     public void startLogging() {

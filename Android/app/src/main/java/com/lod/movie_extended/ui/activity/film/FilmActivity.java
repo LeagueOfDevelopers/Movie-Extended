@@ -19,6 +19,7 @@ import android.widget.Toast;
 import com.google.android.exoplayer.text.SubtitleLayout;
 import com.lod.movie_extended.App;
 import com.lod.movie_extended.R;
+import com.lod.movie_extended.data.model.ColorHelper;
 import com.lod.movie_extended.injection.component.activity.DaggerFilmComponent;
 import com.lod.movie_extended.injection.component.activity.FilmComponent;
 import com.lod.movie_extended.injection.module.activity.FilmModule;
@@ -61,6 +62,9 @@ public class FilmActivity extends InjectActivityBase implements FilmMvpView,
 
     @Inject
     FilmPresenter presenter;
+
+    @Inject
+    ColorHelper colorHelper;
 
     private FilmComponent component;
 
@@ -118,8 +122,8 @@ public class FilmActivity extends InjectActivityBase implements FilmMvpView,
     private void initUI() {
         setupWindowAnimations();
         initPlayPauseView();
-        setStatusBarColor(presenter.getPosterDarkColor());
-        setBackgroundLayout(presenter.getPosterLightColor());
+        setStatusBarColor(colorHelper.getPosterDarkColor());
+        setBackgroundLayout(colorHelper.getPosterLightColor());
         setPosterFragment();
     }
 

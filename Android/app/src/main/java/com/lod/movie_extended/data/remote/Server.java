@@ -30,13 +30,6 @@ public interface Server {
     @Headers("Content-Type:application/json")
     Observable<String> getMovieLanguages(@Body String tokenValue);
 
-    //film name, languages, photo url.
-//    @GET("/languages/get")
-//    Observable<String> getMovieLanguages(@Path("token") String tokenValue);
-
-    @GET("files/get/{fileId}")
-    Observable<Byte> getAudioFile(@Path("fileId") int fileId);
-
     class Creator {
         public static Server newService() {
             Gson gson = new GsonBuilder()

@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import com.lod.movie_extended.App;
 import com.lod.movie_extended.R;
+import com.lod.movie_extended.data.model.ColorHelper;
 import com.lod.movie_extended.events.FilmStarted;
 import com.lod.movie_extended.events.LanguageSelected;
 import com.lod.movie_extended.injection.component.activity.DaggerFilmPreparationComponent;
@@ -61,12 +62,12 @@ public class FilmPreparationActivity extends InjectActivityBase
 
     @Inject
     FilmPreparationPresenter presenter;
-
     @Inject
     Bus events;
-
     @Inject
     FragmentManager fragmentManager;
+    @Inject
+    ColorHelper colorHelper;
 
     FilmPreparationComponent component;
 
@@ -87,7 +88,7 @@ public class FilmPreparationActivity extends InjectActivityBase
     }
 
     private void initFooter() {
-        footer.setBackgroundColor(presenter.getPosterDarkColor());
+        footer.setBackgroundColor(colorHelper.getPosterDarkColor());
     }
 
     @Override
