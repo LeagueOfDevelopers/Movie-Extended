@@ -59,8 +59,7 @@ public class ExtractorRendererBuilder {
         Timber.v("building renderers");
         Allocator allocator = new DefaultAllocator(BUFFER_SEGMENT_SIZE);
 
-        DefaultBandwidthMeter bandwidthMeter = new DefaultBandwidthMeter(player.getMainHandler(),
-                null);
+        DefaultBandwidthMeter bandwidthMeter = new DefaultBandwidthMeter(player.getMainHandler(),null);
         DataSource dataSource = new DefaultUriDataSource(context, bandwidthMeter, userAgent);
         Extractor extractor = new Mp3Extractor();
         Uri subUrl = Uri.parse("http://movieextended1.azurewebsites.net/api/File/Get/54");

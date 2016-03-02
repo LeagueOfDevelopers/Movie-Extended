@@ -1,11 +1,9 @@
 package com.lod.movie_extended.ui.fragment.remainigTime;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,9 +14,8 @@ import com.lod.movie_extended.events.FilmStarted;
 import com.lod.movie_extended.injection.component.activity.FilmPreparationComponent;
 import com.lod.movie_extended.injection.component.fragment.DaggerRemainingTimeComponent;
 import com.lod.movie_extended.injection.component.fragment.RemainingTimeComponent;
-import com.lod.movie_extended.injection.module.fragment.RemainingTimeModule;
+import com.lod.movie_extended.test.module.fragment.RemainingTimeModule;
 import com.lod.movie_extended.ui.base.ComponentCreator;
-import com.lod.movie_extended.ui.base.ComponentGetter;
 import com.lod.movie_extended.ui.base.InjectFragmentBase;
 import com.lod.movie_extended.ui.base.Presenter;
 import com.squareup.otto.Bus;

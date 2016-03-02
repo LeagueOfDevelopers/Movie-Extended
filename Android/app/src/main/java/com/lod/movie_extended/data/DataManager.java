@@ -1,11 +1,7 @@
 package com.lod.movie_extended.data;
 
-import android.content.Context;
-
-import com.lod.movie_extended.App;
 import com.lod.movie_extended.data.local.DataBaseHelper;
 import com.lod.movie_extended.data.local.PreferencesHelper;
-import com.lod.movie_extended.data.model.Language;
 import com.lod.movie_extended.data.model.Session;
 import com.lod.movie_extended.data.model.Token;
 import com.lod.movie_extended.data.remote.Server;
@@ -15,7 +11,6 @@ import com.lod.movie_extended.injection.scope.PerApplication;
 import javax.inject.Inject;
 
 import rx.Observable;
-import rx.functions.Func1;
 
 /**
  * Created by Жамбыл on 09.01.2016.

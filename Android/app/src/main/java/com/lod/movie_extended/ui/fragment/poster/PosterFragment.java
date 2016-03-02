@@ -1,18 +1,13 @@
 package com.lod.movie_extended.ui.fragment.poster;
 
-import android.support.v4.app.Fragment;
-
 import com.lod.movie_extended.R;
 import com.lod.movie_extended.injection.component.activity.FilmComponent;
 import com.lod.movie_extended.injection.component.fragment.DaggerPosterComponent;
 import com.lod.movie_extended.injection.component.fragment.PosterComponent;
-import com.lod.movie_extended.injection.component.fragment.SubtitlesComponent;
-import com.lod.movie_extended.injection.module.fragment.PosterModule;
+import com.lod.movie_extended.test.module.fragment.PosterModule;
 import com.lod.movie_extended.ui.base.ComponentCreator;
 import com.lod.movie_extended.ui.base.InjectFragmentBase;
 import com.lod.movie_extended.ui.base.Presenter;
-import com.lod.movie_extended.ui.fragment.subtitles.SubtitlesMvpView;
-import com.lod.movie_extended.ui.fragment.subtitles.SubtitlesPresenter;
 import com.squareup.otto.Bus;
 
 import javax.inject.Inject;

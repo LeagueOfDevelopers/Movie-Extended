@@ -1,4 +1,4 @@
-package com.lod.movie_extended.injection.module.fragment;
+package com.lod.movie_extended.test.module.fragment;
 
 import com.lod.movie_extended.data.DataManager;
 import com.lod.movie_extended.injection.scope.PerFragment;

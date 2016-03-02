@@ -18,7 +18,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.widget.RemoteViews;
 
-import com.lod.movie_extended.App;
+import com.lod.movie_extended.injection.App;
 import com.lod.movie_extended.R;
 import com.lod.movie_extended.data.DataManager;
 import com.lod.movie_extended.data.model.player.Player;
@@ -58,7 +58,7 @@ public class PlayerNotificationService extends Service implements PlayerListener
     @Override
     public void onCreate() {
         super.onCreate();
-        App.get(getApplicationContext()).getComponent().inject(this);
+        App.instance().getComponent().inject(this);
         player.addListener(this);
     }
 
@@ -117,20 +117,28 @@ public class PlayerNotificationService extends Service implements PlayerListener
             case Constants.ACTION.MOVE_TO_RIGHT:
                 moveToRight();
                 break;
+
+            case Constants.ACTION.STOP_FOREGROUND_ACTION:
+                stop();
+                break;
         }
 
         return START_NOT_STICKY;
     }
 
+    private void stop() {
+        stopForeground(true);
+    }
+
     @SuppressLint("NewApi")
-    public void play() {
+    private void play() {
         Timber.v("notification play");
         player.setPlayWhenReady(true);
         createAndShowNotification(true);
         setPlayOrPauseImage();
     }
 
-    public void pause() {
+    private void pause() {
         Timber.v("notification pause");
         player.setPlayWhenReady(false);
         stopForeground(false);
@@ -200,6 +208,7 @@ public class PlayerNotificationService extends Service implements PlayerListener
 
         notificationManager.notify(Constants.NOTIFICATION_ID.FOREGROUND_SERVICE,notification);
     }
+
     private RemoteViews getRemoteViews(@LayoutRes int layoutId) {
         RemoteViews view = new RemoteViews(getPackageName(),layoutId);
         setOnPendingClickListeners(view);

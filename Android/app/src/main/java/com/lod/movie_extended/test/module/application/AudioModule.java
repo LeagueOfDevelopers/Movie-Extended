@@ -1,4 +1,4 @@
-package com.lod.movie_extended.injection.module.application;
+package com.lod.movie_extended.test.module.application;
 
 import android.content.Context;
 import android.media.AudioManager;
@@ -22,7 +22,7 @@ import dagger.Provides;
  * Created by Жамбыл on 2/23/2016.
  */
 @Module
-public class AuModule {
+public class AudioModule {
 
     @Provides
     @PerApplication
@@ -32,8 +32,8 @@ public class AuModule {
 
     @Provides
     @PerApplication
-    Player providePlayer(@ApplicationContext Context context) {
-        return new Player(context);
+    Player providePlayer() {
+        return new Player();
     }
 
     @Provides

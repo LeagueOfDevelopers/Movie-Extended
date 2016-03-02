@@ -28,6 +28,7 @@ public class PlayerLogger {
         Timber.v("start Logging");
         doLogging = true;
         loggingThread.submit(new LoggingRunnable(player));
+
     }
 
     public void stopLogging() {
@@ -64,5 +65,9 @@ public class PlayerLogger {
                 e.printStackTrace();
             }
         }
+    }
+
+    public int test(){
+        return 3;
     }
 }

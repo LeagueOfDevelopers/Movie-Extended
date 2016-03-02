@@ -15,12 +15,12 @@ import me.dm7.barcodescanner.zxing.ZXingScannerView;
  */
 public class QrCodeReaderPresenter extends BasePresenter<QrCodeReaderMvp> implements ZXingScannerView.ResultHandler{
 
-    @Inject
     DataManager dataManager;
 
     public ZXingScannerView scannerView;
 
-    public QrCodeReaderPresenter(ZXingScannerView scannerView) {
+    public QrCodeReaderPresenter(DataManager dataManager, ZXingScannerView scannerView) {
+        this.dataManager = dataManager;
         this.scannerView = scannerView;
     }
 
@@ -30,6 +30,7 @@ public class QrCodeReaderPresenter extends BasePresenter<QrCodeReaderMvp> implem
 
     @Override
     public void handleResult(Result result) {
+        setQrCodeProcessed(true);
         getMvpView().startFilmPreparationActivity();
     }
 
@@ -40,5 +41,9 @@ public class QrCodeReaderPresenter extends BasePresenter<QrCodeReaderMvp> implem
 
     public void stopCamera() {
         scannerView.stopCamera();
+    }
+
+    private void setQrCodeProcessed(boolean qrCodePrecessed) {
+        dataManager.setQrCodeProcessed(qrCodePrecessed);
     }
 }

@@ -1,6 +1,7 @@
 package com.lod.movie_extended.ui.activity.filmPreparation;
 
 import com.lod.movie_extended.data.DataManager;
+import com.lod.movie_extended.data.model.ServiceHelper;
 import com.lod.movie_extended.data.model.player.Player;
 import com.lod.movie_extended.data.model.player.PlayerListener;
 import com.lod.movie_extended.data.model.Session;
@@ -19,10 +20,12 @@ public class FilmPreparationPresenter extends BasePresenter<FilmPreparationMvpVi
     private DataManager dataManager;
     private Session currentSession;
     private Player player;
+    private ServiceHelper serviceHelper;
 
-    public FilmPreparationPresenter(DataManager dataManager, Player player) {
+    public FilmPreparationPresenter(DataManager dataManager, Player player, ServiceHelper serviceHelper) {
         this.dataManager = dataManager;
         this.player = player;
+        this.serviceHelper = serviceHelper;
     }
 
     public void onCreate() {

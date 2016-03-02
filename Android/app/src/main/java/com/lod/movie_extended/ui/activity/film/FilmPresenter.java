@@ -7,6 +7,7 @@ import android.support.v7.graphics.Palette;
 
 import com.google.android.exoplayer.drm.UnsupportedDrmException;
 import com.lod.movie_extended.data.DataManager;
+import com.lod.movie_extended.data.model.ServiceHelper;
 import com.lod.movie_extended.data.model.player.Player;
 import com.lod.movie_extended.data.model.player.PlayerListener;
 import com.lod.movie_extended.service.PlayerNotificationService;
@@ -24,13 +25,13 @@ public class FilmPresenter extends BasePresenter<FilmMvpView> implements
     private DataManager dataManager;
     private Context context;
     private Player player;
-    private long playerPosition;    @Nullable
-    private Palette palette;
+    private ServiceHelper serviceHelper;
 
-    public FilmPresenter(DataManager dataManager, Context context, Player player) {
+    public FilmPresenter(DataManager dataManager, Context context, Player player, ServiceHelper serviceHelper) {
         this.dataManager = dataManager;
         this.context = context;
         this.player = player;
+        this.serviceHelper = serviceHelper;
 
         if(!player.hasAudioUrlBeenSet) {
             Timber.v("setting audio url");
@@ -40,7 +41,7 @@ public class FilmPresenter extends BasePresenter<FilmMvpView> implements
 
     public void onCreate() {
         player.addListener(this);
-        startPlayerNotificationService();
+        serviceHelper.startNotificationService();
     }
 
     public void togglePlayer() {
@@ -52,10 +53,6 @@ public class FilmPresenter extends BasePresenter<FilmMvpView> implements
         return player.getPlayWhenReady();
     }
 
-    public void startPlayerNotificationService() {
-        Timber.v("starting PlayerNotificationService");
-        startServiceWithAction(Constants.ACTION.START_FOREGROUND_ACTION);
-    }
 
     public void OnDestroy() {
         removeListener();
@@ -65,13 +62,6 @@ public class FilmPresenter extends BasePresenter<FilmMvpView> implements
     @Override
     public void onStateChanged(boolean playWhenReady) {
         getMvpView().togglePlayPauseButtonSlowIfNeed();
-    }
-
-
-    private void startServiceWithAction(String toRightAction) {
-        Intent serviceIntent = new Intent(context, PlayerNotificationService.class);
-        serviceIntent.setAction(toRightAction);
-        context.startService(serviceIntent);
     }
 
     private void removeListener() {

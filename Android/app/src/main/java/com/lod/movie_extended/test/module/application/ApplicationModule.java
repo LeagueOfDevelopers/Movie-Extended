@@ -1,17 +1,16 @@
-package com.lod.movie_extended.injection.module.application;
+package com.lod.movie_extended.test.module.application;
 
 import android.app.Application;
 import android.app.NotificationManager;
 import android.content.ComponentName;
 import android.content.Context;
-import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.media.AudioManager;
 
 import com.lod.movie_extended.R;
 import com.lod.movie_extended.data.local.DataBaseHelper;
 import com.lod.movie_extended.data.local.PreferencesHelper;
 import com.lod.movie_extended.data.model.ColorHelper;
+import com.lod.movie_extended.data.model.ServiceHelper;
 import com.lod.movie_extended.data.remote.Server;
 import com.lod.movie_extended.data.remote.ServerHelper;
 import com.lod.movie_extended.injection.context.ApplicationContext;
@@ -19,8 +18,6 @@ import com.lod.movie_extended.injection.scope.PerApplication;
 import com.lod.movie_extended.receiver.HeadsetEventReceiver;
 import com.lod.movie_extended.receiver.PlayerReceiver;
 import com.squareup.otto.Bus;
-
-import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
@@ -75,10 +72,9 @@ public class ApplicationModule {
 
     @Provides
     @PerApplication
-    PreferencesHelper providePrefrencesHelper() {
+    PreferencesHelper providePreferencesHelper() {
         return new PreferencesHelper();
     }
-
 
     @Provides
     @PerApplication
@@ -105,5 +101,11 @@ public class ApplicationModule {
     @PerApplication
     HeadsetEventReceiver provideHeadsetEventReceiver() {
         return new HeadsetEventReceiver();
+    }
+
+    @Provides
+    @PerApplication
+    ServiceHelper provideServiceHelper(@ApplicationContext Context context) {
+        return new ServiceHelper(context);
     }
 }

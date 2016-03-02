@@ -1,9 +1,7 @@
 package com.lod.movie_extended.ui.fragment.languages;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -15,9 +13,8 @@ import com.lod.movie_extended.data.model.Language;
 import com.lod.movie_extended.injection.component.activity.FilmPreparationComponent;
 import com.lod.movie_extended.injection.component.fragment.DaggerLanguagesComponent;
 import com.lod.movie_extended.injection.component.fragment.LanguagesComponent;
-import com.lod.movie_extended.injection.module.fragment.LanguagesModule;
+import com.lod.movie_extended.test.module.fragment.LanguagesModule;
 import com.lod.movie_extended.ui.base.ComponentCreator;
-import com.lod.movie_extended.ui.base.ComponentGetter;
 import com.lod.movie_extended.ui.base.InjectFragmentBase;
 import com.lod.movie_extended.ui.base.Presenter;
 

@@ -4,7 +4,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 
-import com.lod.movie_extended.App;
+import com.lod.movie_extended.injection.App;
 import com.lod.movie_extended.data.model.player.Player;
 
 import javax.inject.Inject;
@@ -19,13 +19,10 @@ public class HeadsetEventReceiver extends BroadcastReceiver {
     @Inject
     Player player;
 
-    Context context;
-
     @Override
     public void onReceive(Context context, Intent intent) {
         Timber.v("onReceive");
-        this.context = context;
-        App.get(context).getComponent().inject(this);
+        App.instance().getComponent().inject(this);
         if (intent.getAction().equals(Intent.ACTION_HEADSET_PLUG)) {
             int state = intent.getIntExtra("state", -1);
             switch (state) {
@@ -36,8 +33,6 @@ public class HeadsetEventReceiver extends BroadcastReceiver {
                 case 1:
                     Timber.v("Headset is plugged");
                     break;
-                default:
-                    Timber.v("I have no idea what the headset state is");
             }
         }
     }

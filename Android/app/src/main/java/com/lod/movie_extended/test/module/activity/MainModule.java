@@ -1,4 +1,4 @@
-package com.lod.movie_extended.injection.module.activity;
+package com.lod.movie_extended.test.module.activity;
 
 import android.app.Activity;
 import android.content.Context;

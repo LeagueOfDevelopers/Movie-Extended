@@ -10,12 +10,14 @@ import com.lod.movie_extended.data.DataManager;
 import com.lod.movie_extended.data.local.DataBaseHelper;
 import com.lod.movie_extended.data.local.PreferencesHelper;
 import com.lod.movie_extended.data.model.ColorHelper;
+import com.lod.movie_extended.data.model.ServiceHelper;
 import com.lod.movie_extended.data.model.player.ExtractorRendererBuilder;
 import com.lod.movie_extended.data.model.player.Player;
 import com.lod.movie_extended.data.remote.ServerHelper;
+import com.lod.movie_extended.injection.App;
 import com.lod.movie_extended.injection.context.ApplicationContext;
-import com.lod.movie_extended.injection.module.application.ApplicationModule;
-import com.lod.movie_extended.injection.module.application.AuModule;
+import com.lod.movie_extended.test.module.application.ApplicationModule;
+import com.lod.movie_extended.test.module.application.AudioModule;
 import com.lod.movie_extended.injection.scope.PerApplication;
 import com.lod.movie_extended.receiver.HeadsetEventReceiver;
 import com.lod.movie_extended.service.PlayerNotificationService;
@@ -31,7 +33,7 @@ import dagger.Component;
 @Component(
         modules = {
                 ApplicationModule.class,
-                AuModule.class
+                AudioModule.class
         }
 )
 public interface ApplicationComponent{
@@ -59,6 +61,8 @@ public interface ApplicationComponent{
 
     ColorHelper getColorHelper();
 
+    ServiceHelper getServiceHelper();
+
     ServerHelper getServerHelper();
 
     DataBaseHelper getDataBaseHelper();
@@ -72,4 +76,14 @@ public interface ApplicationComponent{
     void inject(HeadsetEventReceiver headsetEventReceiver);
 
     void inject(Player player);
+
+    void inject(App app);
+
+    final class Initializer {
+        public static ApplicationComponent init(App application) {
+            ApplicationComponent appGraph = DaggerApplicationComponent.builder().build();
+            appGraph.inject(application);
+            return appGraph;
+        }
+    }
 }

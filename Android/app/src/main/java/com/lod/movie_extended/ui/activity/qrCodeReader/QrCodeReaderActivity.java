@@ -4,10 +4,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
-import com.lod.movie_extended.App;
+import com.lod.movie_extended.injection.App;
 import com.lod.movie_extended.injection.component.activity.DaggerQrCodeReaderComponent;
 import com.lod.movie_extended.injection.component.activity.QrCodeReaderComponent;
-import com.lod.movie_extended.injection.module.activity.QrCodeReaderModule;
+import com.lod.movie_extended.test.module.activity.QrCodeReaderModule;
 import com.lod.movie_extended.ui.base.ComponentCreator;
 import com.lod.movie_extended.ui.activity.filmPreparation.FilmPreparationActivity;
 
@@ -50,7 +50,7 @@ public class QrCodeReaderActivity extends AppCompatActivity
     @Override
     public QrCodeReaderComponent createComponent() {
         return DaggerQrCodeReaderComponent.builder()
-                .applicationComponent(App.get(this).getComponent())
+                .applicationComponent(App.instance().getComponent())
                 .qrCodeReaderModule(new QrCodeReaderModule(this))
                 .build();
     }

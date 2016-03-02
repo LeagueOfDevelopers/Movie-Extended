@@ -17,12 +17,12 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.google.android.exoplayer.text.SubtitleLayout;
-import com.lod.movie_extended.App;
+import com.lod.movie_extended.injection.App;
 import com.lod.movie_extended.R;
 import com.lod.movie_extended.data.model.ColorHelper;
 import com.lod.movie_extended.injection.component.activity.DaggerFilmComponent;
 import com.lod.movie_extended.injection.component.activity.FilmComponent;
-import com.lod.movie_extended.injection.module.activity.FilmModule;
+import com.lod.movie_extended.test.module.activity.FilmModule;
 import com.lod.movie_extended.ui.base.ComponentCreator;
 import com.lod.movie_extended.ui.base.ComponentGetter;
 import com.lod.movie_extended.ui.base.InjectActivityBase;
@@ -212,7 +212,7 @@ public class FilmActivity extends InjectActivityBase implements FilmMvpView,
     public FilmComponent createComponent() {
         component = DaggerFilmComponent.builder()
                 .filmModule(new FilmModule(this))
-                .applicationComponent(App.get(this).getComponent())
+                .applicationComponent(App.instance().getComponent())
                 .build();
 
         return component;

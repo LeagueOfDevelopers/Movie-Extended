@@ -1,6 +1,5 @@
 package com.lod.movie_extended.data.model.player;
 
-import android.content.Context;
 import android.media.AudioManager;
 import android.media.MediaCodec;
 import android.os.Handler;
@@ -15,7 +14,7 @@ import com.google.android.exoplayer.audio.AudioTrack;
 import com.google.android.exoplayer.text.Cue;
 import com.google.android.exoplayer.text.TextRenderer;
 import com.google.android.exoplayer.upstream.BandwidthMeter;
-import com.lod.movie_extended.App;
+import com.lod.movie_extended.injection.App;
 
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
@@ -51,9 +50,12 @@ public class Player implements ExoPlayer.Listener, MediaCodecAudioTrackRenderer.
     @Inject
     PlayerLogger playerLogger;
 
-    public Player(Context context) {
+    public int asd() {
+        return playerLogger.test();
+    }
+    public Player() {
         Timber.v("constructor");
-        App.get(context).getComponent().inject(this);
+        App.instance().getComponent().inject(this);
         player.addListener(this);
         listeners = new CopyOnWriteArrayList<>();
         playerLogger.setPlayer(this);
@@ -82,6 +84,7 @@ public class Player implements ExoPlayer.Listener, MediaCodecAudioTrackRenderer.
     }
 
     public void startAudio(String audioUrl) {
+        hasAudioUrlBeenSet = true;
         rendererBuilder.startBuildingRenderers(this,audioUrl);
         startLogging();
     }
@@ -145,7 +148,6 @@ public class Player implements ExoPlayer.Listener, MediaCodecAudioTrackRenderer.
         }
         maybeReportPlayerState();
     }
-
 
     private void mute() {
         isPlaying = false;

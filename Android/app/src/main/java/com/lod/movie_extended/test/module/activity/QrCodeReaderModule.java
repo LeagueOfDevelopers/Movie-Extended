@@ -1,7 +1,8 @@
-package com.lod.movie_extended.injection.module.activity;
+package com.lod.movie_extended.test.module.activity;
 
 import android.app.Activity;
 
+import com.lod.movie_extended.data.DataManager;
 import com.lod.movie_extended.injection.scope.PerActivity;
 import com.lod.movie_extended.ui.activity.qrCodeReader.QrCodeReaderPresenter;
 
@@ -24,8 +25,8 @@ public class QrCodeReaderModule {
 
     @Provides
     @PerActivity
-    QrCodeReaderPresenter provideQrCodeReaderPresenter(ZXingScannerView zXingScannerView) {
-        return new QrCodeReaderPresenter(zXingScannerView);
+    QrCodeReaderPresenter provideQrCodeReaderPresenter(DataManager dataManager,ZXingScannerView zXingScannerView) {
+        return new QrCodeReaderPresenter(dataManager,zXingScannerView);
     }
 
     @Provides

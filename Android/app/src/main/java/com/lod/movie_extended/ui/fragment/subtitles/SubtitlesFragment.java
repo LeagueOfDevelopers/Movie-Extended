@@ -1,9 +1,7 @@
 package com.lod.movie_extended.ui.fragment.subtitles;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,12 +10,10 @@ import com.google.android.exoplayer.text.Cue;
 import com.google.android.exoplayer.text.SubtitleLayout;
 import com.lod.movie_extended.R;
 import com.lod.movie_extended.injection.component.activity.FilmComponent;
-import com.lod.movie_extended.injection.component.activity.FilmPreparationComponent;
 import com.lod.movie_extended.injection.component.fragment.DaggerSubtitlesComponent;
 import com.lod.movie_extended.injection.component.fragment.SubtitlesComponent;
-import com.lod.movie_extended.injection.module.fragment.SubtitlesModule;
+import com.lod.movie_extended.test.module.fragment.SubtitlesModule;
 import com.lod.movie_extended.ui.base.ComponentCreator;
-import com.lod.movie_extended.ui.base.ComponentGetter;
 import com.lod.movie_extended.ui.base.InjectFragmentBase;
 import com.lod.movie_extended.ui.base.Presenter;
 import com.squareup.otto.Bus;

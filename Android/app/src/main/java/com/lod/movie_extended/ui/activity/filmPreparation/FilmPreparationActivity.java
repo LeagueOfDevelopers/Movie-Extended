@@ -14,14 +14,14 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import com.lod.movie_extended.App;
+import com.lod.movie_extended.injection.App;
 import com.lod.movie_extended.R;
 import com.lod.movie_extended.data.model.ColorHelper;
 import com.lod.movie_extended.events.FilmStarted;
 import com.lod.movie_extended.events.LanguageSelected;
 import com.lod.movie_extended.injection.component.activity.DaggerFilmPreparationComponent;
 import com.lod.movie_extended.injection.component.activity.FilmPreparationComponent;
-import com.lod.movie_extended.injection.module.activity.FilmPreparationModule;
+import com.lod.movie_extended.test.module.activity.FilmPreparationModule;
 import com.lod.movie_extended.ui.base.InjectActivityBase;
 import com.lod.movie_extended.ui.base.ComponentCreator;
 import com.lod.movie_extended.ui.base.ComponentGetter;
@@ -81,10 +81,11 @@ public class FilmPreparationActivity extends InjectActivityBase
         Timber.v("onCreate");
         presenter.onCreate();
         presenter.loadSession();
-        presenter.getToken("1dedaee1-e7d9-4dfc-8123-f42a1143b88a");
+        presenter.getToken("00000000-0000-0000-0000-000000000000");
         filmActivityIntent = new Intent(this, FilmActivity.class);
         initToolbar();
         initFooter();
+        togglePlayerView(presenter.isPlaying());
     }
 
     private void initFooter() {
@@ -94,6 +95,7 @@ public class FilmPreparationActivity extends InjectActivityBase
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        Timber.v("onDestroy");
         presenter.onDestroy();
     }
 
@@ -141,7 +143,7 @@ public class FilmPreparationActivity extends InjectActivityBase
     @Override
     public FilmPreparationComponent createComponent() {
         component = DaggerFilmPreparationComponent.builder()
-                .applicationComponent(App.get(this).getComponent())
+                .applicationComponent(App.instance().getComponent())
                 .filmPreparationModule(new FilmPreparationModule(this))
                 .build();
 
