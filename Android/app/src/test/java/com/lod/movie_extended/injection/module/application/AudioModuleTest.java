@@ -8,7 +8,9 @@ import com.google.android.exoplayer.ExoPlayer;
 import com.lod.movie_extended.data.model.player.ExtractorRendererBuilder;
 import com.lod.movie_extended.data.model.player.Player;
 import com.lod.movie_extended.data.model.player.PlayerLogger;
+import com.lod.movie_extended.data.model.player.TimeHelper;
 import com.lod.movie_extended.injection.context.ApplicationContext;
+import com.lod.movie_extended.injection.scope.PerApplication;
 
 import javax.inject.Named;
 
@@ -51,6 +53,12 @@ public class AudioModuleTest {
     }
 
     @Provides
+    @PerApplication
+    TimeHelper provideTimeHelper() {
+        return mock(TimeHelper.class);
+    }
+
+    @Provides
     Handler provideHandler() {
         return mock(Handler.class);
     }
@@ -58,7 +66,6 @@ public class AudioModuleTest {
     @Provides
     PlayerLogger providePlayerLogger() {
         PlayerLogger playerLogger = mock(PlayerLogger.class);
-        doReturn(2).when(playerLogger).test();
         return playerLogger;
     }
 }

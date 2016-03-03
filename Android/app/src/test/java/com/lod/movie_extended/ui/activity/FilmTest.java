@@ -37,6 +37,5 @@ public class FilmTest {
 
     @Test
     public void init() {
-        System.out.println(filmActivity.asd());
     }
 }

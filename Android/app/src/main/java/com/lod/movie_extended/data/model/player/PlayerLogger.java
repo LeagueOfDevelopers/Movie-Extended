@@ -54,8 +54,16 @@ public class PlayerLogger {
                 Timber.v("player's duration " + player.getDuration());
                 Timber.v("subtitles enabled " + player.isSubtitlesEnabled());
 
+                if(checkIfNeedStopLogging()) {
+                    break;
+                }
+
                 sleep();
             }
+        }
+
+        private boolean checkIfNeedStopLogging() {
+            return player.getDuration() == player.getCurrentPosition();
         }
 
         private void sleep() {
@@ -65,9 +73,5 @@ public class PlayerLogger {
                 e.printStackTrace();
             }
         }
-    }
-
-    public int test(){
-        return 3;
     }
 }

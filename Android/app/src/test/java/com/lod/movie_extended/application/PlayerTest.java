@@ -28,8 +28,6 @@ public class PlayerTest {
 
     @Test
     public void asd() {
-        player.setPlayWhenReady(true);
-        assert player.asd() == 2;
     }
 
 }

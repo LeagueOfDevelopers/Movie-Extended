@@ -49,10 +49,9 @@ public class Player implements ExoPlayer.Listener, MediaCodecAudioTrackRenderer.
     AudioManager audioManager;
     @Inject
     PlayerLogger playerLogger;
+    @Inject
+    TimeHelper timeHelper;
 
-    public int asd() {
-        return playerLogger.test();
-    }
     public Player() {
         Timber.v("constructor");
         App.instance().getComponent().inject(this);
@@ -63,13 +62,18 @@ public class Player implements ExoPlayer.Listener, MediaCodecAudioTrackRenderer.
     }
 
     public void setPlayWhenReady(boolean playWhenReady) {
-        if(playWhenReady && !audioManager.isWiredHeadsetOn()) {
-            onWiredHeadsetNotOn();
+        if (checkHeadset(playWhenReady)) {
             return;
         }
+
         if(playWhenReady) {
-            if(!player.getPlayWhenReady()) {
-                player.setPlayWhenReady(true);
+            Timber.v("dif " + (timeHelper.getCurrentFilmTime() - player.getCurrentPosition()));
+            if(timeHelper.getCurrentFilmTime() - player.getCurrentPosition() > 500) {
+                Timber.v("seeking to " + timeHelper.getCurrentFilmTime());
+                player.seekTo(timeHelper.getCurrentFilmTime());
+            }
+            else {
+                Timber.v("not seeking");
             }
             unmute();
         }
@@ -77,6 +81,14 @@ public class Player implements ExoPlayer.Listener, MediaCodecAudioTrackRenderer.
             mute();
         }
         maybeReportPlayerState();
+    }
+
+    private boolean checkHeadset(boolean playWhenReady) {
+        if(playWhenReady && !audioManager.isWiredHeadsetOn()) {
+            onWiredHeadsetNotOn();
+            return true;
+        }
+        return false;
     }
 
     public boolean getPlayWhenReady() {
@@ -87,6 +99,8 @@ public class Player implements ExoPlayer.Listener, MediaCodecAudioTrackRenderer.
         hasAudioUrlBeenSet = true;
         rendererBuilder.startBuildingRenderers(this,audioUrl);
         startLogging();
+        player.setPlayWhenReady(true);
+        timeHelper.setFilmDuration(player.getDuration());
     }
 
     public boolean isSubtitlesEnabled() {

@@ -9,6 +9,7 @@ import com.google.android.exoplayer.util.Util;
 import com.lod.movie_extended.R;
 import com.lod.movie_extended.data.model.player.ExtractorRendererBuilder;
 import com.lod.movie_extended.data.model.player.Player;
+import com.lod.movie_extended.data.model.player.TimeHelper;
 import com.lod.movie_extended.injection.context.ApplicationContext;
 import com.lod.movie_extended.injection.scope.PerApplication;
 import com.lod.movie_extended.data.model.player.PlayerLogger;
@@ -56,6 +57,12 @@ public class AudioModule {
     AudioManager provideAudioManager(
             @ApplicationContext Context context) {
         return (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
+    }
+
+    @Provides
+    @PerApplication
+    TimeHelper provideTimeHelper() {
+        return new TimeHelper();
     }
 
     @Provides
