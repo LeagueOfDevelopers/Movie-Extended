@@ -81,4 +81,7 @@ public class FilmPresenter extends BasePresenter<FilmMvpView> implements
     }
 
 
+    public int test() {
+        return 0;
+    }
 }

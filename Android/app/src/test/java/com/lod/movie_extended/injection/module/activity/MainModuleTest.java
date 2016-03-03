@@ -1,4 +1,4 @@
-package com.lod.movie_extended.test.module.activity;
+package com.lod.movie_extended.injection.module.activity;
 
 import android.app.Activity;
 import android.content.Context;
@@ -12,14 +12,14 @@ import dagger.Module;
 import dagger.Provides;
 
 /**
- * Created by Жамбыл on 09.01.2016.
+ * Created by Жамбыл on 3/3/2016.
  */
 @Module
-public class MainModule {
+public class MainModuleTest {
 
     private Activity mActivity;
 
-    public MainModule(Activity activity) {
+    public MainModuleTest(Activity activity) {
         mActivity = activity;
     }
 

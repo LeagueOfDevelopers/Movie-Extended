@@ -14,8 +14,8 @@ import com.lod.movie_extended.events.FilmStarted;
 import com.lod.movie_extended.injection.component.activity.FilmPreparationComponent;
 import com.lod.movie_extended.injection.component.fragment.DaggerRemainingTimeComponent;
 import com.lod.movie_extended.injection.component.fragment.RemainingTimeComponent;
-import com.lod.movie_extended.test.module.fragment.RemainingTimeModule;
-import com.lod.movie_extended.ui.base.ComponentCreator;
+import com.lod.movie_extended.injection.module.fragment.RemainingTimeModule;
+import com.lod.movie_extended.ui.base.ComponentGetter;
 import com.lod.movie_extended.ui.base.InjectFragmentBase;
 import com.lod.movie_extended.ui.base.Presenter;
 import com.squareup.otto.Bus;
@@ -29,7 +29,7 @@ import butterknife.ButterKnife;
  * Created by Жамбыл on 09.01.2016.
  */
 public class RemainingTimeFragment extends InjectFragmentBase
-        implements RemainingTimeMvp, ComponentCreator<RemainingTimeComponent> {
+        implements RemainingTimeMvp, ComponentGetter<RemainingTimeComponent> {
 
     private static final int LAYOUT = R.layout.fragment_remaining_time;
 
@@ -45,9 +45,11 @@ public class RemainingTimeFragment extends InjectFragmentBase
     @Inject
     Bus events;
 
-    long remainingTime;
+    private long remainingTime;
 
-    Handler handler;
+    private Handler handler;
+
+    private RemainingTimeComponent component;
 
 
     @Nullable
@@ -83,14 +85,6 @@ public class RemainingTimeFragment extends InjectFragmentBase
     }
 
     @Override
-    public RemainingTimeComponent createComponent() {
-        return DaggerRemainingTimeComponent.builder()
-                .filmPreparationComponent((FilmPreparationComponent) parentComponent)
-                .remainingTimeModule(new RemainingTimeModule())
-                .build();
-    }
-
-    @Override
     public int getContentView() {
         return LAYOUT;
     }
@@ -98,7 +92,7 @@ public class RemainingTimeFragment extends InjectFragmentBase
     @Override
     public void inject() {
         ButterKnife.bind(this,view);
-        createComponent().inject(this);
+        getComponent().inject(this);
     }
 
     @Override
@@ -109,5 +103,21 @@ public class RemainingTimeFragment extends InjectFragmentBase
     @Override
     public Bus getBus() {
         return events;
+    }
+
+    @Override
+    public RemainingTimeComponent getComponent() {
+        if(component == null) {
+            component = DaggerRemainingTimeComponent.builder()
+                    .filmPreparationComponent((FilmPreparationComponent) parentComponent)
+                    .remainingTimeModule(new RemainingTimeModule())
+                    .build();
+        }
+        return component;
+    }
+
+    @Override
+    public void setComponent(RemainingTimeComponent component) {
+        this.component = component;
     }
 }

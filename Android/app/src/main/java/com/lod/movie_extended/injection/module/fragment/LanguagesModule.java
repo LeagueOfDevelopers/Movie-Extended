@@ -1,4 +1,4 @@
-package com.lod.movie_extended.test.module.fragment;
+package com.lod.movie_extended.injection.module.fragment;
 
 import android.content.Context;
 import android.support.v7.widget.LinearLayoutManager;

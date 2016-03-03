@@ -13,8 +13,8 @@ import com.lod.movie_extended.data.model.Language;
 import com.lod.movie_extended.injection.component.activity.FilmPreparationComponent;
 import com.lod.movie_extended.injection.component.fragment.DaggerLanguagesComponent;
 import com.lod.movie_extended.injection.component.fragment.LanguagesComponent;
-import com.lod.movie_extended.test.module.fragment.LanguagesModule;
-import com.lod.movie_extended.ui.base.ComponentCreator;
+import com.lod.movie_extended.injection.module.fragment.LanguagesModule;
+import com.lod.movie_extended.ui.base.ComponentGetter;
 import com.lod.movie_extended.ui.base.InjectFragmentBase;
 import com.lod.movie_extended.ui.base.Presenter;
 
@@ -28,7 +28,7 @@ import butterknife.ButterKnife;
 /**
  * Created by Жамбыл on 09.01.2016.
  */
-public class LanguagesFragment extends InjectFragmentBase implements LanguagesMvpView, ComponentCreator<LanguagesComponent>{
+public class LanguagesFragment extends InjectFragmentBase implements LanguagesMvpView, ComponentGetter<LanguagesComponent> {
 
     private static final int LAYOUT = R.layout.fragment_languages;
 
@@ -41,8 +41,7 @@ public class LanguagesFragment extends InjectFragmentBase implements LanguagesMv
     @Inject
     LanguagesPresenter presenter;
 
-    @Inject
-    LinearLayoutManager linearLayoutManager;
+    private LanguagesComponent component;
 
     @Nullable
     @Override
@@ -54,18 +53,10 @@ public class LanguagesFragment extends InjectFragmentBase implements LanguagesMv
 
     private void initRecyclerView() {
         languagesAdapter.setLanguages(presenter.getLanguages());
-        languagesRecyclerView.setLayoutManager(linearLayoutManager);
+        languagesRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
         languagesRecyclerView.setAdapter(languagesAdapter);
         languagesRecyclerView.setHasFixedSize(true);
-    }
-
-    @Override
-    public LanguagesComponent createComponent() {
-        return DaggerLanguagesComponent.builder()
-                .filmPreparationComponent((FilmPreparationComponent) parentComponent)
-                .languagesModule(new LanguagesModule())
-                .build();
     }
 
     @Override
@@ -81,11 +72,28 @@ public class LanguagesFragment extends InjectFragmentBase implements LanguagesMv
     @Override
     public void inject() {
         ButterKnife.bind(this,view);
-        createComponent().inject(this);
+        getComponent().inject(this);
     }
 
     @Override
     public Presenter getPresenter() {
         return presenter;
+    }
+
+    @Override
+    public LanguagesComponent getComponent() {
+        if(component == null) {
+            component = DaggerLanguagesComponent.builder()
+                    .filmPreparationComponent((FilmPreparationComponent) parentComponent)
+                    .languagesModule(new LanguagesModule())
+                    .build();
+        }
+
+        return component;
+    }
+
+    @Override
+    public void setComponent(LanguagesComponent component) {
+        this.component = component;
     }
 }

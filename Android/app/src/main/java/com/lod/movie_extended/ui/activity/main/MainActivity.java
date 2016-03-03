@@ -7,9 +7,9 @@ import com.lod.movie_extended.injection.App;
 import com.lod.movie_extended.R;
 import com.lod.movie_extended.injection.component.activity.DaggerMainComponent;
 import com.lod.movie_extended.injection.component.activity.MainComponent;
-import com.lod.movie_extended.test.module.activity.MainModule;
+import com.lod.movie_extended.injection.module.activity.MainModule;
+import com.lod.movie_extended.ui.base.ComponentGetter;
 import com.lod.movie_extended.ui.base.InjectActivityBase;
-import com.lod.movie_extended.ui.base.ComponentCreator;
 import com.lod.movie_extended.ui.activity.filmPreparation.FilmPreparationActivity;
 import com.lod.movie_extended.ui.activity.qrCodeReader.QrCodeReaderActivity;
 
@@ -19,12 +19,14 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import timber.log.Timber;
 
-public class MainActivity extends InjectActivityBase implements MainMvpView, ComponentCreator<MainComponent> {
+public class MainActivity extends InjectActivityBase implements MainMvpView, ComponentGetter<MainComponent> {
 
     private final static int LAYOUT = R.layout.activity_main;
 
     @Inject
     MainPresenter presenter;
+
+    private MainComponent component;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +47,7 @@ public class MainActivity extends InjectActivityBase implements MainMvpView, Com
     @Override
     public void inject() {
         ButterKnife.bind(this);
-        createComponent().inject(this);
+        getComponent().inject(this);
     }
 
     @Override
@@ -61,10 +63,18 @@ public class MainActivity extends InjectActivityBase implements MainMvpView, Com
     }
 
     @Override
-    public MainComponent createComponent() {
-        return DaggerMainComponent.builder()
-                .applicationComponent(App.instance().getComponent())
-                .mainModule(new MainModule(this))
-                .build();
+    public MainComponent getComponent() {
+        if(component == null) {
+            component = DaggerMainComponent.builder()
+                    .applicationComponent(App.instance().getComponent())
+                    .mainModule(new MainModule(this))
+                    .build();
+        }
+        return component;
+    }
+
+    @Override
+    public void setComponent(MainComponent component) {
+        this.component = component;
     }
 }

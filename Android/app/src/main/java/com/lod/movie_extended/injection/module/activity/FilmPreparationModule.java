@@ -1,4 +1,4 @@
-package com.lod.movie_extended.test.module.activity;
+package com.lod.movie_extended.injection.module.activity;
 
 import android.content.Context;
 import android.support.v4.app.FragmentManager;

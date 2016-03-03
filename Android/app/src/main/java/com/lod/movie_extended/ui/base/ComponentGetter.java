@@ -5,4 +5,6 @@ package com.lod.movie_extended.ui.base;
  */
 public interface ComponentGetter<T> {
     T getComponent();
+
+    void setComponent(T component);
 }

@@ -1,4 +1,4 @@
-package com.lod.movie_extended.test.module.application;
+package com.lod.movie_extended.injection.module.application;
 
 import android.content.Context;
 import android.media.AudioManager;

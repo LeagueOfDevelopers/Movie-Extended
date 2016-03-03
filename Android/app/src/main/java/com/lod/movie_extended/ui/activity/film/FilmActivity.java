@@ -22,8 +22,7 @@ import com.lod.movie_extended.R;
 import com.lod.movie_extended.data.model.ColorHelper;
 import com.lod.movie_extended.injection.component.activity.DaggerFilmComponent;
 import com.lod.movie_extended.injection.component.activity.FilmComponent;
-import com.lod.movie_extended.test.module.activity.FilmModule;
-import com.lod.movie_extended.ui.base.ComponentCreator;
+import com.lod.movie_extended.injection.module.activity.FilmModule;
 import com.lod.movie_extended.ui.base.ComponentGetter;
 import com.lod.movie_extended.ui.base.InjectActivityBase;
 import com.lod.movie_extended.ui.base.InjectFragmentBase;
@@ -43,8 +42,7 @@ import timber.log.Timber;
  * Created by Жамбыл on 29.12.2015.
  */
 
-public class FilmActivity extends InjectActivityBase implements FilmMvpView,
-        ComponentCreator<FilmComponent>, ComponentGetter<FilmComponent> {
+public class FilmActivity extends InjectActivityBase implements FilmMvpView, ComponentGetter<FilmComponent> {
 
     private static final int LAYOUT = R.layout.player;
 
@@ -78,6 +76,9 @@ public class FilmActivity extends InjectActivityBase implements FilmMvpView,
         initUI();
     }
 
+    public int asd() {
+        return presenter.test();
+    }
     @Override
     public void onResume() {
         super.onResume();
@@ -200,22 +201,12 @@ public class FilmActivity extends InjectActivityBase implements FilmMvpView,
     @Override
     public void inject() {
         ButterKnife.bind(this);
-        createComponent().inject(this);
+        getComponent().inject(this);
     }
 
     @Override
     public Presenter getPresenter() {
         return presenter;
-    }
-
-    @Override
-    public FilmComponent createComponent() {
-        component = DaggerFilmComponent.builder()
-                .filmModule(new FilmModule(this))
-                .applicationComponent(App.instance().getComponent())
-                .build();
-
-        return component;
     }
 
     @Override
@@ -230,7 +221,18 @@ public class FilmActivity extends InjectActivityBase implements FilmMvpView,
 
     @Override
     public FilmComponent getComponent() {
+        if(component == null) {
+            component = DaggerFilmComponent.builder()
+                    .filmModule(new FilmModule(this))
+                    .applicationComponent(App.instance().getComponent())
+                    .build();
+        }
         return component;
+    }
+
+    @Override
+    public void setComponent(FilmComponent component) {
+        this.component = component;
     }
 }
 

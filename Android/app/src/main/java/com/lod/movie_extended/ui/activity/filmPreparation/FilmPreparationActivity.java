@@ -21,9 +21,8 @@ import com.lod.movie_extended.events.FilmStarted;
 import com.lod.movie_extended.events.LanguageSelected;
 import com.lod.movie_extended.injection.component.activity.DaggerFilmPreparationComponent;
 import com.lod.movie_extended.injection.component.activity.FilmPreparationComponent;
-import com.lod.movie_extended.test.module.activity.FilmPreparationModule;
+import com.lod.movie_extended.injection.module.activity.FilmPreparationModule;
 import com.lod.movie_extended.ui.base.InjectActivityBase;
-import com.lod.movie_extended.ui.base.ComponentCreator;
 import com.lod.movie_extended.ui.base.ComponentGetter;
 import com.lod.movie_extended.ui.base.InjectFragmentBase;
 import com.lod.movie_extended.ui.base.Presenter;
@@ -45,8 +44,7 @@ import timber.log.Timber;
  * Created by Жамбыл on 09.01.2016.
  */
 public class FilmPreparationActivity extends InjectActivityBase
-        implements FilmPreparationMvpView, ComponentCreator<FilmPreparationComponent>,
-        ComponentGetter<FilmPreparationComponent> {
+        implements FilmPreparationMvpView, ComponentGetter<FilmPreparationComponent> {
 
     //region vars
     private static final int LAYOUT = R.layout.activity_film_preparation;
@@ -140,16 +138,6 @@ public class FilmPreparationActivity extends InjectActivityBase
         }
     }
 
-    @Override
-    public FilmPreparationComponent createComponent() {
-        component = DaggerFilmPreparationComponent.builder()
-                .applicationComponent(App.instance().getComponent())
-                .filmPreparationModule(new FilmPreparationModule(this))
-                .build();
-
-        return component;
-    }
-
     @Subscribe
     public void onFilmStarted(FilmStarted event) {
         Timber.v("starting FilmActivity");
@@ -170,7 +158,19 @@ public class FilmPreparationActivity extends InjectActivityBase
 
     @Override
     public FilmPreparationComponent getComponent() {
+        if(component == null) {
+            component = DaggerFilmPreparationComponent.builder()
+                    .applicationComponent(App.instance().getComponent())
+                    .filmPreparationModule(new FilmPreparationModule(this))
+                    .build();
+        }
+
         return component;
+    }
+
+    @Override
+    public void setComponent(FilmPreparationComponent component) {
+        this.component = component;
     }
 
     @Override
@@ -181,7 +181,7 @@ public class FilmPreparationActivity extends InjectActivityBase
     @Override
     public void inject() {
         ButterKnife.bind(this);
-        createComponent().inject(this);
+        getComponent().inject(this);
     }
 
     @Override

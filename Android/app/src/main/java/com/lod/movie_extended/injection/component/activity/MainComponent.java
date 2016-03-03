@@ -1,7 +1,7 @@
 package com.lod.movie_extended.injection.component.activity;
 
 import com.lod.movie_extended.injection.component.application.ApplicationComponent;
-import com.lod.movie_extended.test.module.activity.MainModule;
+import com.lod.movie_extended.injection.module.activity.MainModule;
 import com.lod.movie_extended.injection.scope.PerActivity;
 import com.lod.movie_extended.ui.activity.main.MainActivity;
 

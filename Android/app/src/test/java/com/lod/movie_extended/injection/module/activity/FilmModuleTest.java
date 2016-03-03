@@ -1,4 +1,4 @@
-package com.lod.movie_extended.test.module.activity;
+package com.lod.movie_extended.injection.module.activity;
 
 import android.content.Context;
 import android.support.v4.app.FragmentManager;
@@ -13,22 +13,27 @@ import com.lod.movie_extended.ui.activity.film.FilmPresenter;
 import dagger.Module;
 import dagger.Provides;
 
+import static org.mockito.Mockito.doReturn;
+import static org.mockito.Mockito.mock;
+
 /**
- * Created by Жамбыл on 09.01.2016.
+ * Created by Жамбыл on 3/3/2016.
  */
 @Module
-public class FilmModule {
+public class FilmModuleTest {
 
     AppCompatActivity activity;
 
-    public FilmModule(AppCompatActivity activity) {
+    public FilmModuleTest(AppCompatActivity activity) {
         this.activity = activity;
     }
 
     @Provides
     @PerActivity
     FilmPresenter provideFilmPresenter(DataManager dataManager, Player player, ServiceHelper serviceHelper) {
-        return new FilmPresenter(dataManager,activity,player,serviceHelper);
+        FilmPresenter filmPresenter = mock(FilmPresenter.class);
+        doReturn(1).when(filmPresenter).test();
+        return filmPresenter;
     }
 
     @Provides

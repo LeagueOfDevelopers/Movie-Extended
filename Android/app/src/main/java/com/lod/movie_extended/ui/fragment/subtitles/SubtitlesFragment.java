@@ -12,8 +12,8 @@ import com.lod.movie_extended.R;
 import com.lod.movie_extended.injection.component.activity.FilmComponent;
 import com.lod.movie_extended.injection.component.fragment.DaggerSubtitlesComponent;
 import com.lod.movie_extended.injection.component.fragment.SubtitlesComponent;
-import com.lod.movie_extended.test.module.fragment.SubtitlesModule;
-import com.lod.movie_extended.ui.base.ComponentCreator;
+import com.lod.movie_extended.injection.module.fragment.SubtitlesModule;
+import com.lod.movie_extended.ui.base.ComponentGetter;
 import com.lod.movie_extended.ui.base.InjectFragmentBase;
 import com.lod.movie_extended.ui.base.Presenter;
 import com.squareup.otto.Bus;
@@ -29,7 +29,7 @@ import butterknife.ButterKnife;
  * Created by Жамбыл on 2/18/2016.
  */
 public class SubtitlesFragment extends InjectFragmentBase
-        implements SubtitlesMvpView,ComponentCreator<SubtitlesComponent> {
+        implements SubtitlesMvpView, ComponentGetter<SubtitlesComponent> {
 
     private static final int LAYOUT = R.layout.fragment_subtitles;
 
@@ -41,6 +41,8 @@ public class SubtitlesFragment extends InjectFragmentBase
 
     @Inject
     Bus events;
+
+    private SubtitlesComponent component;
 
     @Nullable
     @Override
@@ -60,14 +62,6 @@ public class SubtitlesFragment extends InjectFragmentBase
     }
 
     @Override
-    public SubtitlesComponent createComponent() {
-        return DaggerSubtitlesComponent.builder()
-                .filmComponent((FilmComponent) parentComponent)
-                .subtitlesModule(new SubtitlesModule())
-                .build();
-    }
-
-    @Override
     public int getContentView() {
         return LAYOUT;
     }
@@ -75,7 +69,7 @@ public class SubtitlesFragment extends InjectFragmentBase
     @Override
     public void inject() {
         ButterKnife.bind(this,view);
-        createComponent().inject(this);
+        getComponent().inject(this);
     }
 
     @Override
@@ -86,5 +80,21 @@ public class SubtitlesFragment extends InjectFragmentBase
     @Override
     public Bus getBus() {
         return events;
+    }
+
+    @Override
+    public SubtitlesComponent getComponent() {
+        if(component == null) {
+            component = DaggerSubtitlesComponent.builder()
+                    .filmComponent((FilmComponent) parentComponent)
+                    .subtitlesModule(new SubtitlesModule())
+                    .build();
+        }
+        return component;
+    }
+
+    @Override
+    public void setComponent(SubtitlesComponent component) {
+        this.component = component;
     }
 }

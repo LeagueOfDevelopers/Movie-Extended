@@ -1,5 +1,6 @@
-package com.lod.movie_extended;
+package com.lod.movie_extended.application;
 
+import com.lod.movie_extended.BuildConfig;
 import com.lod.movie_extended.data.model.player.Player;
 import com.lod.movie_extended.injection.App;
 import com.lod.movie_extended.util.TestComponentCreator;

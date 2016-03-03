@@ -1,4 +1,4 @@
-package com.lod.movie_extended.test.module.application;
+package com.lod.movie_extended.injection.module.application;
 
 import android.app.Application;
 import android.app.NotificationManager;

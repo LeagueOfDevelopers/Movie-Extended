@@ -5,8 +5,8 @@ import android.app.Application;
 import com.lod.movie_extended.BuildConfig;
 import com.lod.movie_extended.injection.component.application.ApplicationComponent;
 import com.lod.movie_extended.injection.component.application.DaggerApplicationComponent;
-import com.lod.movie_extended.test.module.application.ApplicationModule;
-import com.lod.movie_extended.test.module.application.AudioModule;
+import com.lod.movie_extended.injection.module.application.ApplicationModule;
+import com.lod.movie_extended.injection.module.application.AudioModule;
 import com.lod.movie_extended.util.Logger;
 import timber.log.Timber;
 
