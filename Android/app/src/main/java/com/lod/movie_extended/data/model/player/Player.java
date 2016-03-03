@@ -61,14 +61,14 @@ public class Player implements ExoPlayer.Listener, MediaCodecAudioTrackRenderer.
         disableSubtitles();
     }
 
-    public void setPlayWhenReady(boolean playWhenReady) {
+    public boolean setPlayWhenReady(boolean playWhenReady) {
         if (checkHeadset(playWhenReady)) {
-            return;
+            return false;
         }
 
         if(playWhenReady) {
             Timber.v("dif " + (timeHelper.getCurrentFilmTime() - player.getCurrentPosition()));
-            if(timeHelper.getCurrentFilmTime() - player.getCurrentPosition() > 500) {
+            if(timeHelper.getCurrentFilmTime() - player.getCurrentPosition() > 100) {
                 Timber.v("seeking to " + timeHelper.getCurrentFilmTime());
                 player.seekTo(timeHelper.getCurrentFilmTime());
             }
@@ -80,15 +80,9 @@ public class Player implements ExoPlayer.Listener, MediaCodecAudioTrackRenderer.
         else {
             mute();
         }
-        maybeReportPlayerState();
-    }
 
-    private boolean checkHeadset(boolean playWhenReady) {
-        if(playWhenReady && !audioManager.isWiredHeadsetOn()) {
-            onWiredHeadsetNotOn();
-            return true;
-        }
-        return false;
+        maybeReportPlayerState();
+        return true;
     }
 
     public boolean getPlayWhenReady() {
@@ -154,6 +148,14 @@ public class Player implements ExoPlayer.Listener, MediaCodecAudioTrackRenderer.
 
     public Handler getMainHandler() {
         return mainHandler;
+    }
+
+    private boolean checkHeadset(boolean playWhenReady) {
+        if(playWhenReady && !audioManager.isWiredHeadsetOn()) {
+            onWiredHeadsetNotOn();
+            return true;
+        }
+        return false;
     }
 
     private void onWiredHeadsetNotOn() {
@@ -252,5 +254,9 @@ public class Player implements ExoPlayer.Listener, MediaCodecAudioTrackRenderer.
         if(captionListener != null) {
             captionListener.onCues(cues);
         }
+    }
+
+    public void seekTo(long to) {
+        player.seekTo(to);
     }
 }
