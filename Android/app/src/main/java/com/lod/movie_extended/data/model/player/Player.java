@@ -67,18 +67,10 @@ public class Player implements ExoPlayer.Listener, MediaCodecAudioTrackRenderer.
         }
 
         if(playWhenReady) {
-            Timber.v("dif " + (timeHelper.getCurrentFilmTime() - player.getCurrentPosition()));
-            if(timeHelper.getCurrentFilmTime() - player.getCurrentPosition() > 100) {
-                Timber.v("seeking to " + timeHelper.getCurrentFilmTime());
-                player.seekTo(timeHelper.getCurrentFilmTime());
-            }
-            else {
-                Timber.v("not seeking");
-            }
-            unmute();
+            processPlay();
         }
         else {
-            mute();
+            processPause();
         }
 
         maybeReportPlayerState();
@@ -95,6 +87,7 @@ public class Player implements ExoPlayer.Listener, MediaCodecAudioTrackRenderer.
         startLogging();
         player.setPlayWhenReady(true);
         timeHelper.setFilmDuration(player.getDuration());
+        maybeReportPlayerState();
     }
 
     public boolean isSubtitlesEnabled() {
@@ -156,6 +149,22 @@ public class Player implements ExoPlayer.Listener, MediaCodecAudioTrackRenderer.
             return true;
         }
         return false;
+    }
+
+    private void processPause() {
+        mute();
+    }
+
+    private void processPlay() {
+        Timber.v("dif " + (timeHelper.getCurrentFilmTime() - player.getCurrentPosition()));
+        if(timeHelper.getCurrentFilmTime() - player.getCurrentPosition() > 300) {
+            Timber.v("seeking to " + timeHelper.getCurrentFilmTime());
+            player.seekTo(timeHelper.getCurrentFilmTime());
+        }
+        else {
+            Timber.v("not seeking");
+        }
+        unmute();
     }
 
     private void onWiredHeadsetNotOn() {

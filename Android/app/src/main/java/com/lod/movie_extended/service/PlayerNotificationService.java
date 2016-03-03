@@ -8,6 +8,7 @@ import android.app.PendingIntent;
 import android.app.Service;
 import android.content.ComponentName;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.media.AudioManager;
 import android.media.MediaMetadataRetriever;
 import android.media.RemoteControlClient;
@@ -119,15 +120,28 @@ public class PlayerNotificationService extends Service implements PlayerListener
                 break;
 
             case Constants.ACTION.STOP_FOREGROUND_ACTION:
-                stop();
+                onDestroy();
                 break;
         }
 
         return START_NOT_STICKY;
     }
 
-    private void stop() {
+    @Override
+    public void onTaskRemoved(Intent rootIntent) {
+        Timber.e("onTaskRemoved");
+        onDestroy();
+        super.onTaskRemoved(rootIntent);
+    }
+
+    @Override
+    public void onDestroy() {
+        Timber.v("onDestroy");
+        pause();
         stopForeground(true);
+        player.removeListener(this);
+        notificationManager.cancelAll();
+        super.onDestroy();
     }
 
     @SuppressLint("NewApi")
@@ -135,14 +149,12 @@ public class PlayerNotificationService extends Service implements PlayerListener
         Timber.v("notification play");
         player.setPlayWhenReady(true);
         createAndShowNotification(true);
-        setPlayOrPauseImage();
     }
 
     private void pause() {
         Timber.v("notification pause");
         player.setPlayWhenReady(false);
         stopForeground(false);
-        setPlayOrPauseImage();
     }
 
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
@@ -175,7 +187,7 @@ public class PlayerNotificationService extends Service implements PlayerListener
     public void createAndShowNotification(boolean foreground) {
         smallView = getRemoteViews(R.layout.notification_player_small);
         bigView = getRemoteViews(R.layout.notification_player_big);
-        Notification notification = getNotification(smallView,bigView);
+        Notification notification = createNotification(smallView,bigView);
         if(foreground) {
             startForeground(Constants.NOTIFICATION_ID.FOREGROUND_SERVICE, notification);
         }
@@ -183,8 +195,7 @@ public class PlayerNotificationService extends Service implements PlayerListener
 
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     @NonNull
-    private Notification getNotification(RemoteViews smallView, RemoteViews bigView) {
-
+    private Notification createNotification(RemoteViews smallView, RemoteViews bigView) {
         notification = new Notification.Builder(this)
                 .setSmallIcon(R.mipmap.star_wars)
                 .setContentIntent(getMainPendingIntent())
@@ -196,17 +207,6 @@ public class PlayerNotificationService extends Service implements PlayerListener
         notification.bigContentView = bigView;
 
         return notification;
-    }
-
-    private void setForeground(boolean isForeground) {
-        if(isForeground) {
-            notification.flags = Notification.FLAG_FOREGROUND_SERVICE;
-        }
-        else {
-            notification.flags = Notification.FLAG_NO_CLEAR;
-        }
-
-        notificationManager.notify(Constants.NOTIFICATION_ID.FOREGROUND_SERVICE,notification);
     }
 
     private RemoteViews getRemoteViews(@LayoutRes int layoutId) {
@@ -257,7 +257,7 @@ public class PlayerNotificationService extends Service implements PlayerListener
 
     @Override
     public void onError(Exception e) {
-
+        Timber.e("onError");
     }
 
     @Override
