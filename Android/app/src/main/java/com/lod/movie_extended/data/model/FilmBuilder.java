@@ -3,6 +3,7 @@ package com.lod.movie_extended.data.model;
 import android.graphics.Bitmap;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Жамбыл on 09.01.2016.
@@ -20,6 +21,10 @@ public class FilmBuilder {
 
     public void addLanguage(Language language) {
         languages.add(language);
+    }
+
+    public void setLanguages(ArrayList<Language> languages) {
+        this.languages = languages;
     }
 
     public void setName(String Name) {

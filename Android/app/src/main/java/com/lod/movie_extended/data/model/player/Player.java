@@ -206,6 +206,9 @@ public class Player implements ExoPlayer.Listener, MediaCodecAudioTrackRenderer.
         }
     }
 
+    public void onStop() {
+        stopLogging();
+    }
     private void stopLogging() {
         playerLogger.stopLogging();
     }

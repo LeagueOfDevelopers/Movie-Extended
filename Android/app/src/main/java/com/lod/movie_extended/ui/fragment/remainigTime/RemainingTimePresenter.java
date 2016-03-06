@@ -14,7 +14,7 @@ public class RemainingTimePresenter extends BasePresenter<RemainingTimeMvp> {
 
     public RemainingTimePresenter(DataManager dataManager) {
         this.dataManager = dataManager;
-        currentSession = dataManager.getSession();
+        currentSession = dataManager.getSession().toBlocking().first();
     }
 
     public long getRemainingTime() {

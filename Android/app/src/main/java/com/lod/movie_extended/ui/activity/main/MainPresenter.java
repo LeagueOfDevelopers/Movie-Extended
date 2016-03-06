@@ -27,8 +27,4 @@ public class MainPresenter extends BasePresenter<MainMvpView> {
     public boolean hasQrCodeBeenProcessed() {
         return dataManager.hasQrCodeBeenProcessed();
     }
-
-    public void setQrCodeProcessed(boolean qrCodePrecessed) {
-        dataManager.setQrCodeProcessed(qrCodePrecessed);
-    }
 }

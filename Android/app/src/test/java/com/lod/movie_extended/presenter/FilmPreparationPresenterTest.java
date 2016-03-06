@@ -45,9 +45,6 @@ public class FilmPreparationPresenterTest {
                 .when(dataManager)
                 .getSession();
 
-        doReturn(Observable.just(session))
-                .when(dataManager)
-                .loadSession("123");
     }
 
     @After
@@ -57,14 +54,12 @@ public class FilmPreparationPresenterTest {
 
     @Test
     public void loadSessionTest_mustCallSetLanguagesToRecyclerView() {
-        filmPreparationPresenter.loadSession();
 
         verify(filmPreparationMvpView).setLanguagesToRecyclerView();
     }
 
     @Test
     public void getFilmName_mustReturnString() {
-        filmPreparationPresenter.loadSession();
         Assert.assertEquals(filmPreparationPresenter.getFilmName(),session.getFilm().getName());
     }
 }

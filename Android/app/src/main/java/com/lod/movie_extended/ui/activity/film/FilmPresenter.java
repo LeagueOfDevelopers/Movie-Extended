@@ -35,7 +35,7 @@ public class FilmPresenter extends BasePresenter<FilmMvpView> implements
 
         if(!player.hasAudioUrlBeenSet) {
             Timber.v("setting audio url");
-                player.startAudio("http://movieextended1.azurewebsites.net/api/file/get/1");
+            player.startAudio("http://movieextended1.azurewebsites.net/api/file/get/1");
         }
     }
 

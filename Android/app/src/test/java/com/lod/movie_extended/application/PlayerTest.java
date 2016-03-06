@@ -4,10 +4,14 @@ import android.media.AudioManager;
 
 import com.google.android.exoplayer.text.Cue;
 import com.lod.movie_extended.BuildConfig;
+import com.lod.movie_extended.data.DataManager;
+import com.lod.movie_extended.data.local.DataBaseHelper;
+import com.lod.movie_extended.data.model.Session;
 import com.lod.movie_extended.data.model.player.CaptionListener;
 import com.lod.movie_extended.data.model.player.Player;
 import com.lod.movie_extended.data.model.player.PlayerListener;
 import com.lod.movie_extended.data.model.player.TimeHelper;
+import com.lod.movie_extended.data.remote.Server;
 import com.lod.movie_extended.injection.App;
 import com.lod.movie_extended.injection.module.application.AudioModuleTest;
 import com.lod.movie_extended.util.TestComponentCreator;
@@ -20,6 +24,11 @@ import org.robolectric.annotation.Config;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import rx.Observable;
+import rx.Subscriber;
+import rx.schedulers.Schedulers;
+import timber.log.Timber;
 
 import static junit.framework.Assert.assertEquals;
 import static org.mockito.Mockito.atLeast;

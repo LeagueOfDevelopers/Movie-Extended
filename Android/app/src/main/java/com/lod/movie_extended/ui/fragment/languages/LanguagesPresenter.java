@@ -23,7 +23,7 @@ public class LanguagesPresenter extends BasePresenter<LanguagesMvpView> {
     }
 
     public ArrayList<Language> getLanguages() {
-        return dataManager.getSession().getFilm().getLanguages();
+        return dataManager.getSession().toBlocking().first().getFilm().getLanguages();
     }
 
     public void onLanguageSelected() {

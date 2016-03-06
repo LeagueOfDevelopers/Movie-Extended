@@ -30,7 +30,7 @@ public class QrCodeReaderPresenter extends BasePresenter<QrCodeReaderMvp> implem
 
     @Override
     public void handleResult(Result result) {
-        setQrCodeProcessed(true);
+        dataManager.setQrCode("00000000-0000-0000-0000-000000000000");
         getMvpView().startFilmPreparationActivity();
     }
 
@@ -41,9 +41,5 @@ public class QrCodeReaderPresenter extends BasePresenter<QrCodeReaderMvp> implem
 
     public void stopCamera() {
         scannerView.stopCamera();
-    }
-
-    private void setQrCodeProcessed(boolean qrCodePrecessed) {
-        dataManager.setQrCodeProcessed(qrCodePrecessed);
     }
 }

@@ -78,8 +78,6 @@ public class FilmPreparationActivity extends InjectActivityBase
         super.onCreate(savedInstanceState);
         Timber.v("onCreate");
         presenter.onCreate();
-        presenter.loadSession();
-        presenter.getToken("00000000-0000-0000-0000-000000000000");
         filmActivityIntent = new Intent(this, FilmActivity.class);
         initToolbar();
         initFooter();
@@ -107,6 +105,7 @@ public class FilmPreparationActivity extends InjectActivityBase
     protected void onResume() {
         Timber.v("onResume");
         super.onResume();
+        presenter.loadSession();
         updateFooterVisibility();
     }
 

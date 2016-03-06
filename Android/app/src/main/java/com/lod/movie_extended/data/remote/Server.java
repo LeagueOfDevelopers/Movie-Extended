@@ -2,8 +2,10 @@ package com.lod.movie_extended.data.remote;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
 import com.lod.movie_extended.data.model.Language;
 
+import retrofit.Callback;
 import retrofit.GsonConverterFactory;
 import retrofit.Retrofit;
 import retrofit.RxJavaCallAdapterFactory;
@@ -28,7 +30,12 @@ public interface Server {
 
     @POST("languages/get")
     @Headers("Content-Type:application/json")
-    Observable<String> getMovieLanguages(@Body String tokenValue);
+    Observable<JsonArray> getMovieLanguages(@Body String tokenValue);
+
+    @POST("languages/get")
+    @Headers("Content-Type:application/json")
+    Object getMovieLanguagesTest(Callback<Language> response, @Body String tokenValue);
+
 
     class Creator {
         public static Server newService() {

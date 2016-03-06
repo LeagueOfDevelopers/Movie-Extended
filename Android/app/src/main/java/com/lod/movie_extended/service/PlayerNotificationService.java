@@ -129,7 +129,7 @@ public class PlayerNotificationService extends Service implements PlayerListener
 
     @Override
     public void onTaskRemoved(Intent rootIntent) {
-        Timber.e("onTaskRemoved");
+        Timber.v("onTaskRemoved");
         onDestroy();
         super.onTaskRemoved(rootIntent);
     }
@@ -140,6 +140,7 @@ public class PlayerNotificationService extends Service implements PlayerListener
         pause();
         stopForeground(true);
         player.removeListener(this);
+        player.onStop();
         notificationManager.cancelAll();
         super.onDestroy();
     }
@@ -222,8 +223,10 @@ public class PlayerNotificationService extends Service implements PlayerListener
         }
         return view;
     }
+
     private void setTextViewText(RemoteViews view) {
-        view.setTextViewText(R.id.status_bar_track_name, dataManager.getSession().getFilm().getName());
+        String filmName = dataManager.getSession().toBlocking().first().getFilm().getName();
+        view.setTextViewText(R.id.status_bar_track_name, filmName);
 //        view.setTextViewText(R.id.status_bar_artist_name, "Artist Name");
 //        view.setTextViewText(R.id.status_bar_album_name, "Album Name");
     }

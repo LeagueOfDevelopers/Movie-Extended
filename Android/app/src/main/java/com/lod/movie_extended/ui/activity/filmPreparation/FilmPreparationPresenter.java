@@ -1,6 +1,8 @@
 package com.lod.movie_extended.ui.activity.filmPreparation;
 
+import com.google.gson.JsonArray;
 import com.lod.movie_extended.data.DataManager;
+import com.lod.movie_extended.data.model.Language;
 import com.lod.movie_extended.data.model.ServiceHelper;
 import com.lod.movie_extended.data.model.player.Player;
 import com.lod.movie_extended.data.model.player.PlayerListener;
@@ -9,6 +11,8 @@ import com.lod.movie_extended.data.model.Token;
 import com.lod.movie_extended.ui.base.BasePresenter;
 
 import rx.Subscriber;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.functions.Action1;
 import rx.schedulers.Schedulers;
 import timber.log.Timber;
 
@@ -30,6 +34,7 @@ public class FilmPreparationPresenter extends BasePresenter<FilmPreparationMvpVi
 
     public void onCreate() {
         player.addListener(this);
+        loadSession();
     }
 
     public void onDestroy() {
@@ -37,62 +42,30 @@ public class FilmPreparationPresenter extends BasePresenter<FilmPreparationMvpVi
     }
 
     public void loadSession() {
-        dataManager.loadSession("123").subscribe(new Subscriber<Session>() {
-            @Override
-            public void onCompleted() {
+        Timber.v("loading session");
+        dataManager.getSession()
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(new Subscriber<Session>() {
+                @Override
+                public void onCompleted() {
 
-            }
+                }
 
-            @Override
-            public void onError(Throwable e) {
+                @Override
+                public void onError(Throwable e) {
 
-            }
+                }
 
-            @Override
-            public void onNext(Session session) {
-                currentSession = session;
-                getMvpView().setLanguagesToRecyclerView();
-            }
-        });
+                @Override
+                public void onNext(Session session) {
+                    Timber.v(session.getFilm().getName());
+                    currentSession = session;
+                    getMvpView().setLanguagesToRecyclerView();
+                }
+            });
     }
 
-    public void getToken(String qrCode) {
-         dataManager.getToken(qrCode)
-                 .subscribeOn(Schedulers.io())
-                 .subscribe(new Subscriber<Token>() {
-                     @Override
-                     public void onCompleted() {
-                         Timber.v("token completed");
-                     }
-
-                     @Override
-                     public void onError(Throwable e) {
-                        Timber.e("server request error " + e.getMessage());
-                     }
-
-                     @Override
-                     public void onNext(Token token) {
-                         Timber.v("token " + token.getValue());
-                         dataManager.getLanguages()
-                                 .subscribeOn(Schedulers.io()).subscribe(new Subscriber<String>() {
-                             @Override
-                             public void onCompleted() {
-                                 Timber.v("onLanguagesCompleted");
-                             }
-
-                             @Override
-                             public void onError(Throwable e) {
-                                 Timber.e("language get error");
-                             }
-
-                             @Override
-                             public void onNext(String language) {
-                                 Timber.v("Language " + language);
-                             }
-                         });
-                     }
-                 });
-    }
     public String getFilmName() {
         return currentSession.getFilm().getName();
     }
