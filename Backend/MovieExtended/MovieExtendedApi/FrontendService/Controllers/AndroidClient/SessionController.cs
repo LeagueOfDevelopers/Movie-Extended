@@ -23,14 +23,17 @@ namespace FrontendService.Controllers.AndroidClient
 
         [Route("api/Session/Login")]
         [HttpPost]
-        public Guid Login([FromBody] string qr)
+        public Movie Login([FromBody] string qr)
         {
             var qrGuid = new Guid(qr);
             var necessaryMovie = _movieRepository.CheckAndroidToken(qrGuid);
+            var newSessionGuid = Guid.NewGuid();
             if (necessaryMovie != null)
             {
-                var newSession = new Session(Guid.NewGuid(), necessaryMovie.Id);
-                return _keeper.CreateSession(newSession);
+                necessaryMovie.AndroidToken = newSessionGuid;
+                var newSession = new Session(newSessionGuid, necessaryMovie.Id);
+                _keeper.CreateSession(newSession);
+                return necessaryMovie;
             }
             throw new HttpResponseException(HttpStatusCode.Unauthorized);
         }

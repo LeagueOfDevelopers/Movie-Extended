@@ -16,11 +16,11 @@ namespace Domain.Models
             _movieStartTime = new Dictionary<int, DateTime>();
         }
 
-        public Guid CreateSession(Session session)
+        public void CreateSession(Session session)
         {
             session.SessionState = SessionState.Ready;
             _sessions.Add(session);
-            return session.SessionId;
+            
         }
 
         public bool CheckIfSessionExists(Guid sessionId)

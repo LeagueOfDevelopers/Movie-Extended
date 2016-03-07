@@ -92,7 +92,7 @@ namespace FrontendService.Controllers
                 }
                     case Subtitles:
                 {
-                    directory = HttpContext.Current.Server.MapPath("~/SubTitles");
+                    directory = HttpContext.Current.Server.MapPath("~/Subtitles");
                     filePath = HttpContext.Current.Server.MapPath(string.Format("~/SubTitles/{0}.srt", fileId));
 
                         break;
@@ -100,15 +100,14 @@ namespace FrontendService.Controllers
                 default:
                     return BadRequest("wrong type of file");
             }
-            //Directory.CreateDirectory(directory);
-            //var fs = new FileStream(filePath, FileMode.Create);
-            //    request.InputStream.CopyTo(fs);
-           
-            //    fs.Flush();
-            //    //request.GetBufferedInputStream().CopyToAsync(fs);
-            var files = request.Files;
-           
-            
+            Directory.CreateDirectory(directory);
+            var fs = new FileStream(filePath, FileMode.Create);
+            request.InputStream.CopyTo(fs);
+
+            fs.Flush();
+            //request.GetBufferedInputStream().CopyToAsync(fs);
+
+
             return Ok("uploaded");
         }
 
