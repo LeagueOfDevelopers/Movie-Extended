@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration.Internal;
 using System.IO;
 using System.Net;
 using System.Net.Http;
@@ -7,11 +8,14 @@ using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
+using System.Web.Http.Results;
 using Domain.Models;
 using Domain.Models.Entities;
+
 using Domain.VisitorRepository;
 using Journalist;
 using Journalist.Options;
+using NHibernate.Util;
 using static Domain.Models.Entities.FileType;
 using File = Domain.Models.Entities.File;
 
@@ -33,39 +37,21 @@ namespace FrontendService.Controllers
             _movieRepository = movieRepository;
         }
 
-        [Route("api/Files/Get/{fileId}")]
-        [HttpPost]
-        public HttpResponseMessage DownLoadFileFromDataBase(int fileId, [FromBody] string session)
+        [Route("file/{fileId}")]
+        [HttpPut]
+        public HttpResponseMessage Track(int fileId , [FromBody] Guid sessionId)
         {
-            var sessionId = new Guid(session);
-            if (!_keeper.CheckIfSessionExists(sessionId) || _keeper.GetSessionState(sessionId) != SessionState.Ready
-                ||_keeper.GetSessionState(sessionId)!=SessionState.Active)
+            if (_keeper.CheckIfSessionExists(sessionId))
+            return GetAnyFile(fileId);
+            return new HttpResponseMessage()
             {
-                throw new HttpResponseException(HttpStatusCode.Unauthorized);
-            }
-
-            var returnFile = _fileRepository.GetFileData(fileId);
-            if (returnFile == null)
-            {
-                return new HttpResponseMessage(HttpStatusCode.NoContent);
-            }
-
-            var responseMessage = new HttpResponseMessage(HttpStatusCode.OK);
-            var stream = new FileStream(HttpContext.Current.Server.MapPath(returnFile.FilePath), FileMode.Open);
-            responseMessage.Content = new StreamContent(stream);
-            responseMessage.Content.Headers.ContentType = new MediaTypeHeaderValue("application/octet-stream");
-            responseMessage.Content.Headers.ContentDisposition = new ContentDispositionHeaderValue("attachment")
-            {
-                FileName = $"{fileId}.mp3"
+                StatusCode = HttpStatusCode.Unauthorized
             };
-
-
-            return responseMessage;
         }
 
-        [Route("api/File/Get/{fileId}")]
-        [HttpGet]
-        public HttpResponseMessage DownLoadFileFromDataBase1(int fileId)
+        
+
+        private HttpResponseMessage GetAnyFile(int fileId)
         {
             var returnFile = _fileRepository.GetFileData(fileId);
             if (returnFile == null)
@@ -81,27 +67,13 @@ namespace FrontendService.Controllers
 
 
             responseMessage.Content.Headers.ContentType = new MediaTypeHeaderValue("application/octet-stream");
-            switch (returnFile.FileType)
+            responseMessage.Content.Headers.ContentDisposition = new ContentDispositionHeaderValue("attachment")
             {
-                case Track:
+                FileName = Path.GetDirectoryName(returnFile.FilePath) + '.' + Path.GetExtension(returnFile.FilePath)
 
-                    responseMessage.Content.Headers.ContentDisposition = new ContentDispositionHeaderValue("attachment")
-                    {
-                        FileName = string.Format("{0}.mp3", fileId)
-                    };
-                    break;
-
-                case Subtitles:
-                    responseMessage.Content.Headers.ContentDisposition = new ContentDispositionHeaderValue("attachment")
-                    {
-                        FileName = string.Format("{0}.srt", fileId)
-                    };
-                    break;
-                    
-            }
+            };
             return responseMessage;
         }
-
 
         [Route("api/myfileupload/{fileId}/fileType/{filetype}")]
         [HttpPost]
@@ -112,7 +84,7 @@ namespace FrontendService.Controllers
             string filePath;
             switch (filetype)
             {
-                    case Track :
+                    case FileType.Track :
                 {
                     directory= HttpContext.Current.Server.MapPath("~/AudioTrack");
                     filePath= HttpContext.Current.Server.MapPath(string.Format("~/AudioTrack/{0}.mp3", fileId));
@@ -128,13 +100,15 @@ namespace FrontendService.Controllers
                 default:
                     return BadRequest("wrong type of file");
             }
-            Directory.CreateDirectory(directory);
-            using (var fs = new FileStream(filePath, FileMode.Create))
-            {
-                request.InputStream.CopyTo(fs);
-                fs.Flush();
-                //request.GetBufferedInputStream().CopyToAsync(fs);
-            }
+            //Directory.CreateDirectory(directory);
+            //var fs = new FileStream(filePath, FileMode.Create);
+            //    request.InputStream.CopyTo(fs);
+           
+            //    fs.Flush();
+            //    //request.GetBufferedInputStream().CopyToAsync(fs);
+            var files = request.Files;
+           
+            
             return Ok("uploaded");
         }
 
@@ -142,7 +116,7 @@ namespace FrontendService.Controllers
 
         [Route("image/set/{movieId}")]
         [HttpPut]
-        public IHttpActionResult GetImage(int movieId)
+        public IHttpActionResult SetImage(int movieId)
         {
             var request = HttpContext.Current.Request;
             var directory = HttpContext.Current.Server.MapPath("~/Posters");
@@ -176,6 +150,30 @@ namespace FrontendService.Controllers
             return _fileRepository.GetAllFiles();
         }
 
+        [Route("save/track/{fileId}")]
+        [HttpPost]
+        public void SaveTrack(int fileId)
+        {
+            var request = HttpContext.Current.Request;
+            var fileStreamProvider = new MultipartFileStreamProvider(HttpContext.Current.Server.MapPath("~AudioTrack/"));
+            var audio = fileStreamProvider.FileData.First();
+            
+
+
+
+
+        }
+
+        [Route("poster")]
+        [HttpPut]
+        public HttpResponseMessage GetPoster([FromBody] Guid sessionId)
+        {
+            var movieId = _keeper.GetMovieId(sessionId);
+            var fileId = _movieRepository.GetPosterId(movieId);
+            return GetAnyFile(fileId);
+        }
+
+
+        }
 
     }
-}

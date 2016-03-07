@@ -2,17 +2,19 @@
 {
     public class Language
     {
-        public Language(int id, string name, File trackFile)
+        public Language(int id, string name, File trackFile , File subtitles)
         {
             Id = id;
             Name = name;
             TrackFile = trackFile;
+            Subtitles = subtitles;
         }
 
-        public Language(string name,  File trackFile)
+        public Language(string name,  File trackFile , File subtitles)
         {
             Name = name;
             TrackFile = trackFile;
+            Subtitles = subtitles;
         }
 
         protected Language()

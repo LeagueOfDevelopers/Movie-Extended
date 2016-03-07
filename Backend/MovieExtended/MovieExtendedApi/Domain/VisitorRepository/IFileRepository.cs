@@ -10,5 +10,6 @@ namespace Domain.VisitorRepository
         File GetFileData(int fileId);
         void SaveFileData(File file);
         IEnumerable<File> GetAllFiles();
+        void Update(int fileId, string filePath);
     }
 }

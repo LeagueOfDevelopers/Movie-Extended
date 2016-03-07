@@ -16,5 +16,6 @@ namespace Domain.VisitorRepository
         void SetPoster(int movieId , File posterPath);
         bool Exists(int movieId);
         Movie CheckAndroidToken(Guid token);
+        int GetPosterId(int movieId);
     }
 }

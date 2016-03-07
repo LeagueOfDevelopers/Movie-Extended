@@ -55,5 +55,14 @@ namespace Infrastructure.VisitorRepository
             var session = _provider.GetCurrentSession();
             return session.Query<File>();
         }
+
+        public void Update(int fileId, string filePath)
+        {
+            var session = _provider.GetCurrentSession();
+            session.Update(session.Query<File>().SingleOrDefault(file => file.Id == fileId).FilePath = filePath);
+
+
+
+        }
     }
 }

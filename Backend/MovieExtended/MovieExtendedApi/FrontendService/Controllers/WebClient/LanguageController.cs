@@ -53,19 +53,13 @@ namespace FrontendService.Controllers.WebClient
 
         [Route("api/Languages/Get")]
         [HttpPost]
-        public IEnumerable<AndroidLanguage> GetLanguagesByMovieId([FromBody] string session)
+        public ISet<Language> GetLanguagesByMovieId([FromBody] string session)
         {
             var sessionId = new Guid(session);
-            if (_keeper.CheckIfSessionExists(sessionId) && _keeper.GetSessionState(sessionId) == SessionState.Active)
+            if (_keeper.CheckIfSessionExists(sessionId) )
                 return _languageRepository.GetLanguagesByMovieId(_keeper.GetMovieId(sessionId));
             throw new HttpResponseException(HttpStatusCode.Unauthorized);
         }
 
-        [Route("api/Languages/{movieId}")]
-        [HttpGet]
-        public IEnumerable<AndroidLanguage> GetLanguagesByMovieId(int movieId)
-        {
-            return _languageRepository.GetLanguagesByMovieId(movieId);
-        }
     }
 }

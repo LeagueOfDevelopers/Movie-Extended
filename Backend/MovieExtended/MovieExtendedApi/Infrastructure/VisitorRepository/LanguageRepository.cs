@@ -41,9 +41,11 @@ namespace Infrastructure.VisitorRepository
             session.Transaction.Commit();
         }
 
-        public IEnumerable<AndroidLanguage> GetLanguagesByMovieId(int movie)
+        public ISet<Language> GetLanguagesByMovieId(int movieId)
         {
-            throw new NotImplementedException();
+            var session = _provider.GetCurrentSession();
+            var movie = session.Query<Movie>().SingleOrDefault(model => model.Id == movieId);
+            return movie.Language;
         }
 
 

@@ -18,14 +18,6 @@ namespace Domain.Models
 
         public Guid CreateSession(Session session)
         {
-            //var session = new Session(Guid.NewGuid());
-            //if (_timeMarks.ContainsKey(movieId))
-            //{
-            //    session.SessionState = SessionState.Active;
-            //}
-
-            //_sessions.Add(session);
-            //return session.SessionId;
             session.SessionState = SessionState.Ready;
             _sessions.Add(session);
             return session.SessionId;

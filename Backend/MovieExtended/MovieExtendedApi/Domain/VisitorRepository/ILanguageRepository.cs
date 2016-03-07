@@ -8,7 +8,7 @@ namespace Domain.VisitorRepository
     {
         IEnumerable<FrontendLanguage> GetAllLanguages();
         void SaveLanguage(Language language);
-        IEnumerable<AndroidLanguage> GetLanguagesByMovieId(int movie);
+        ISet<Language> GetLanguagesByMovieId(int movieId);
         void DeleteLanguageByLanguageId(int languageID);
         void DeleteLanguageByMovieId(int movie);
         IEnumerable<Language> GetLanguageByName(string languageName);

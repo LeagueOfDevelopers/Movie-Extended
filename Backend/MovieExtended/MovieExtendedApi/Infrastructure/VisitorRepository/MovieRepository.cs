@@ -83,5 +83,12 @@ namespace Infrastructure.VisitorRepository
             var session = _provider.GetCurrentSession();
             return session.Query<Movie>().SingleOrDefault(movie => movie.AndroidToken == token);
         }
+
+        public int GetPosterId(int movieId)
+        {
+            var session = _provider.GetCurrentSession();
+            var movieforposter = session.Query<Movie>().SingleOrDefault(movie => movie.Id == movieId);
+            return movieforposter.Poster.Id;
+        }
     }
 }
