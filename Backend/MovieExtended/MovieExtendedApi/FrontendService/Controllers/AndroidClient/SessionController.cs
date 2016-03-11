@@ -68,12 +68,20 @@ namespace FrontendService.Controllers.AndroidClient
             
         }
 
-        [Route("api/GetTime/{movieId}")]
+        [Route("time/start/{movieId}")]
         [HttpGet]
         public DateTime GetMovieStartTime(int movieId)
         {
             return _keeper.GetMovieStartTime(movieId);
         }
+
+        [Route("time/current/{movieId}")]
+        [HttpGet]
+        public TimeSpan GetCurrentMovieTime(int movieId)
+        {
+            return _keeper.GetCurrentMovieTime(movieId);
+        }
+
 
         
     

@@ -1,21 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Configuration.Internal;
 using System.IO;
+using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
-using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
-using System.Web.Http.Results;
 using Domain.Models;
 using Domain.Models.Entities;
-
 using Domain.VisitorRepository;
 using Journalist;
-using Journalist.Options;
-using NHibernate.Util;
 using static Domain.Models.Entities.FileType;
 using File = Domain.Models.Entities.File;
 
@@ -43,7 +38,7 @@ namespace FrontendService.Controllers
         {
             if (_keeper.CheckIfSessionExists(sessionId))
             return GetAnyFile(fileId);
-            return new HttpResponseMessage()
+            return new HttpResponseMessage
             {
                 StatusCode = HttpStatusCode.Unauthorized
             };
@@ -149,21 +144,29 @@ namespace FrontendService.Controllers
             return _fileRepository.GetAllFiles();
         }
 
-        [Route("save/track/{fileId}")]
+        [Route("save/track/{languageId}")]
         [HttpPost]
-        public string SaveTrack(int fileId)
+        public IHttpActionResult SaveTrack(int languageId)
         {
             var request = HttpContext.Current.Request;
-            var file = request.Files.AllKeys;
-            var audio = request.Files.GetMultiple(file[0]);
-            //audio.ForEach(postedFile => postedFile.SaveAs(
-            //    Path.Combine(HttpContext.Current.Server.MapPath("~/AudioTrack"),postedFile.FileName)) );
-            var postFile = audio[0];
-            return Path.GetExtension(postFile.FileName);
+            var allKeys = request.Files.AllKeys;
+            var files = request.Files.GetMultiple(allKeys[0]);
+            var audio = files[0];
+            if (extensions.Contains(Path.GetExtension(audio.FileName)))
+            {
+                var directory = HttpContext.Current.Server.MapPath("~/AudioTrack");
+                var filePath = Path.Combine(directory, audio.FileName);
+                audio.SaveAs(filePath);
+                return Ok("uploaded");
+            }
+        else
+            {
+                return StatusCode(HttpStatusCode.NotAcceptable);
+            }
         }
 
-       
+        public string[] extensions  = { ".mp3", ".srt", ".wav", ".jpg", "jpeg", "png", "sub" };
 
-        }
+    }
 
     }

@@ -11,6 +11,6 @@ namespace Domain.Models
         int GetMovieId(Guid sessionId);
         void SetMovieTime(int movieId, DateTime movieStartTime);
         DateTime GetMovieStartTime(int movieId);
-
+        TimeSpan GetCurrentMovieTime(int movieId);
     }
 }

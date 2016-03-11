@@ -79,6 +79,12 @@ namespace Domain.Models
             var startTime = _movieStartTime.SingleOrDefault(pair => pair.Key == movieId);
             return startTime.Value;
         }
+
+        public TimeSpan GetCurrentMovieTime(int movieId)
+        {
+
+            return DateTime.Now-GetMovieStartTime(movieId);
+        }
         
     }
 }
