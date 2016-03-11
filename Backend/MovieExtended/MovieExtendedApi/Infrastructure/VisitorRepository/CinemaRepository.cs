@@ -1,8 +1,9 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Domain.Models.Entities;
-using Domain.VisitorRepository;
+using Domain.Repository;
+using Infrastructure.Repository;
 using Journalist;
 using NHibernate.Linq;
 

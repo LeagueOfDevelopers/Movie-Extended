@@ -53,13 +53,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\CompanyRepository.cs" />
+    <Compile Include="Repository\FileRepository.cs" />
+    <Compile Include="Repository\LanguageRepository.cs" />
+    <Compile Include="Repository\MovieRepository.cs" />
+    <Compile Include="Repository\QrCodeRepository.cs" />
+    <Compile Include="Repository\SessionKeeper.cs" />
+    <Compile Include="Repository\SessionProvider.cs" />
     <Compile Include="VisitorRepository\CinemaRepository.cs" />
-    <Compile Include="VisitorRepository\CompanyRepository.cs" />
-    <Compile Include="VisitorRepository\FileRepository.cs" />
-    <Compile Include="VisitorRepository\LanguageRepository.cs" />
-    <Compile Include="VisitorRepository\MovieRepository.cs" />
-    <Compile Include="VisitorRepository\QrCodeRepository.cs" />
-    <Compile Include="VisitorRepository\SessionProvider.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Domain\Domain.csproj">

@@ -5,7 +5,7 @@ using NHibernate.Cfg;
 using NHibernate.Mapping.ByCode;
 using NHibernate.Tool.hbm2ddl;
 
-namespace Infrastructure.VisitorRepository
+namespace Infrastructure.Repository
 {
     public class SessionProvider
     {

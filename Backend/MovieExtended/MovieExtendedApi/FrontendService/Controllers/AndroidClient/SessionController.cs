@@ -3,7 +3,7 @@ using System.Net;
 using System.Web.Http;
 using Domain.Models;
 using Domain.Models.Entities;
-using Domain.VisitorRepository;
+using Domain.Repository;
 using Journalist;
 
 namespace FrontendService.Controllers.AndroidClient

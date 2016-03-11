@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Domain.Models.Entities;
 
-namespace Domain.VisitorRepository
+namespace Domain.Repository
 {
     public interface IMovieRepository
     {

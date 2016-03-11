@@ -1,7 +1,8 @@
-﻿using Domain.VisitorRepository;
+﻿using Domain.Repository;
+using Infrastructure.VisitorRepository;
 using Journalist;
 
-namespace Infrastructure.VisitorRepository
+namespace Infrastructure.Repository
 {
     public class QrCodeRepository : IQrCodeRepository
     {

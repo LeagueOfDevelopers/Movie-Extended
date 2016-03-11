@@ -72,14 +72,13 @@
     <Compile Include="Models\Entities\Language.cs" />
     <Compile Include="Models\Entities\Movie.cs" />
     <Compile Include="Models\Entities\Session.cs" />
-    <Compile Include="Models\SessionKeeper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="VisitorRepository\ICinemaRepository.cs" />
-    <Compile Include="VisitorRepository\ICompanyRepository.cs" />
-    <Compile Include="VisitorRepository\IFileRepository.cs" />
-    <Compile Include="VisitorRepository\ILanguageRepository.cs" />
-    <Compile Include="VisitorRepository\IMovieRepository.cs" />
-    <Compile Include="VisitorRepository\IQrCodeRepository.cs" />
+    <Compile Include="Repository\ICinemaRepository.cs" />
+    <Compile Include="Repository\ICompanyRepository.cs" />
+    <Compile Include="Repository\IFileRepository.cs" />
+    <Compile Include="Repository\ILanguageRepository.cs" />
+    <Compile Include="Repository\IMovieRepository.cs" />
+    <Compile Include="Repository\IQrCodeRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

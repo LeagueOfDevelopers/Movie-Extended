@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using Domain.Models.Entities;
 using Domain.Models.FrontendEntities;
-using Domain.VisitorRepository;
+using Domain.Repository;
+using Infrastructure.VisitorRepository;
 using Journalist;
 using NHibernate.Linq;
 
-namespace Infrastructure.VisitorRepository
+namespace Infrastructure.Repository
 {
     public class LanguageRepository : ILanguageRepository
     {

@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Domain.Models;
 using Domain.Models.Entities;
 
-namespace Domain.Models
+namespace Infrastructure.Repository
 {
     public class SessionKeeper : ISessionKeeper
     {

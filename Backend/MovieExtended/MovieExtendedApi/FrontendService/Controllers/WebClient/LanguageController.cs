@@ -5,7 +5,7 @@ using System.Web.Http;
 using Domain.Models;
 using Domain.Models.Entities;
 using Domain.Models.FrontendEntities;
-using Domain.VisitorRepository;
+using Domain.Repository;
 using Journalist;
 
 namespace FrontendService.Controllers.WebClient

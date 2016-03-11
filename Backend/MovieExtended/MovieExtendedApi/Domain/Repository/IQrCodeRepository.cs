@@ -1,4 +1,4 @@
-﻿namespace Domain.VisitorRepository
+﻿namespace Domain.Repository
 {
     public interface IQrCodeRepository
     {

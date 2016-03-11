@@ -9,7 +9,7 @@ using System.Web;
 using System.Web.Http;
 using Domain.Models;
 using Domain.Models.Entities;
-using Domain.VisitorRepository;
+using Domain.Repository;
 using Journalist;
 using static Domain.Models.Entities.FileType;
 using File = Domain.Models.Entities.File;
@@ -108,25 +108,12 @@ namespace FrontendService.Controllers
 
 
 
-        [Route("image/set/{movieId}")]
-        [HttpPut]
-        public IHttpActionResult SetImage(int movieId)
-        {
-            var request = HttpContext.Current.Request;
-            var directory = HttpContext.Current.Server.MapPath("~/Posters");
-            var filePath = HttpContext.Current.Server.MapPath(string.Format("~/Posters/{0}.jpg", movieId));
-           // _movieRepository.SetPoster(movieId , );
-            Directory.CreateDirectory(directory);
-            using (var fs = new FileStream(filePath, FileMode.Create))
-            {
-                request.InputStream.CopyTo(fs);
-                
-                fs.Flush();
-                
-            }
+        //[Route("image/set/{movieId}")]
+        //[HttpPut]
+        //public IHttpActionResult SetImage(int movieId)
+        //{
 
-            return Ok("uploaded");
-        }
+        //}
 
 
         [Route("api/Files/Delete/{fileId}")]

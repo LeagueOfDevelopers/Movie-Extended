@@ -2,7 +2,7 @@
 using Domain.Models.Entities;
 using Domain.Models.FrontendEntities;
 
-namespace Domain.VisitorRepository
+namespace Domain.Repository
 {
     public interface ILanguageRepository
     {

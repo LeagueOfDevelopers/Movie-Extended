@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Web.Http;
 using Domain.Models;
-using Domain.VisitorRepository;
+using Domain.Repository;
 
 namespace FrontendService.Controllers.WebClient
 {

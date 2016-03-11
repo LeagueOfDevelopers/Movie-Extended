@@ -1,6 +1,7 @@
 ﻿using System.Web.Http;
 using Domain.Models;
-using Domain.VisitorRepository;
+using Domain.Repository;
+using Infrastructure.Repository;
 using Infrastructure.VisitorRepository;
 using SimpleInjector;
 using SimpleInjector.Integration.WebApi;
