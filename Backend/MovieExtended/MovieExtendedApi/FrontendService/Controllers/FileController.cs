@@ -37,7 +37,7 @@ namespace FrontendService.Controllers
             _movieRepository = movieRepository;
         }
 
-        [Route("file/{fileId}")]
+        [Route("file/get/{fileId}")]
         [HttpPut]
         public HttpResponseMessage Track(int fileId , [FromBody] Guid sessionId)
         {
