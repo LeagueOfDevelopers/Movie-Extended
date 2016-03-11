@@ -17,7 +17,7 @@ namespace UnitTestProject2
             var provider = new SessionProvider();
             provider.OpenSession();
             var fileRepo = new FileRepository(provider);
-            var language = new Language("english",fileRepo.GetFileData(1),fileRepo.GetFileData(4));
+            var language = new Language("english",new File( "~/AudioTrack/7.mp3",0), fileRepo.GetFileData(4));
             ISet<Language> languages = new HashSet<Language>();
             languages.Add(language);
             var labnguage2 = new Language("russian" , fileRepo.GetFileData(10),fileRepo.GetFileData(5));

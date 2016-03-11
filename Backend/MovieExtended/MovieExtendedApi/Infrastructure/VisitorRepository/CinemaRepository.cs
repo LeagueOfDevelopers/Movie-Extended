@@ -28,7 +28,7 @@ namespace Infrastructure.VisitorRepository
         {
             var session = _provider.GetCurrentSession();
             session.BeginTransaction();
-            session.Save(cinema);
+            session.SaveOrUpdate(cinema);
             session.Transaction.Commit();
         }
 

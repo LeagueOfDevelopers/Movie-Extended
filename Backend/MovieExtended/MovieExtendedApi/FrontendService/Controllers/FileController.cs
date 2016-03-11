@@ -92,7 +92,7 @@ namespace FrontendService.Controllers
                 }
                     case Subtitles:
                 {
-                    directory = HttpContext.Current.Server.MapPath("~/Subtitles");
+                    directory = HttpContext.Current.Server.MapPath("~/SubTitles");
                     filePath = HttpContext.Current.Server.MapPath(string.Format("~/SubTitles/{0}.srt", fileId));
 
                         break;
@@ -151,27 +151,18 @@ namespace FrontendService.Controllers
 
         [Route("save/track/{fileId}")]
         [HttpPost]
-        public void SaveTrack(int fileId)
+        public string SaveTrack(int fileId)
         {
             var request = HttpContext.Current.Request;
-            var fileStreamProvider = new MultipartFileStreamProvider(HttpContext.Current.Server.MapPath("~AudioTrack/"));
-            var audio = fileStreamProvider.FileData.First();
-            
-
-
-
-
+            var file = request.Files.AllKeys;
+            var audio = request.Files.GetMultiple(file[0]);
+            //audio.ForEach(postedFile => postedFile.SaveAs(
+            //    Path.Combine(HttpContext.Current.Server.MapPath("~/AudioTrack"),postedFile.FileName)) );
+            var postFile = audio[0];
+            return Path.GetExtension(postFile.FileName);
         }
 
-        [Route("poster")]
-        [HttpPut]
-        public HttpResponseMessage GetPoster([FromBody] Guid sessionId)
-        {
-            var movieId = _keeper.GetMovieId(sessionId);
-            var fileId = _movieRepository.GetPosterId(movieId);
-            return GetAnyFile(fileId);
-        }
-
+       
 
         }
 
