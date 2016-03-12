@@ -62,7 +62,7 @@
     <Compile Include="Models\FrontendEntities\FrontendCompany.cs" />
     <Compile Include="Models\FrontendEntities\FrontendFile.cs" />
     <Compile Include="Models\FrontendEntities\FrontendLanguage.cs" />
-    <Compile Include="Models\FrontendEntities\FrontendMovie.cs" />
+    <Compile Include="Models\FrontendMovie.cs" />
     <Compile Include="Models\ISessionKeeper.cs" />
     <Compile Include="Models\QrCodeGenerator.cs" />
     <Compile Include="Models\IQrCodeGenerator.cs" />

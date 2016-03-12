@@ -1,5 +1,4 @@
 ﻿using Domain.Repository;
-using Infrastructure.VisitorRepository;
 using Journalist;
 
 namespace Infrastructure.Repository

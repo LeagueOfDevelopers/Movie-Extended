@@ -4,7 +4,6 @@ using System.Linq;
 using Domain.Models.Entities;
 using Domain.Models.FrontendEntities;
 using Domain.Repository;
-using Infrastructure.VisitorRepository;
 using Journalist;
 using NHibernate.Linq;
 

@@ -1,7 +1,7 @@
 ﻿using System;
 using Domain.Models.Entities;
+using Infrastructure;
 using Infrastructure.Repository;
-using Infrastructure.VisitorRepository;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace LanguageRepositoryTests

@@ -1,8 +1,8 @@
 ﻿using System.Diagnostics;
 using System.Web;
 using System.Web.Http;
+using Infrastructure;
 using Infrastructure.Repository;
-using Infrastructure.VisitorRepository;
 using SimpleInjector.Integration.WebApi;
 
 namespace FrontendService

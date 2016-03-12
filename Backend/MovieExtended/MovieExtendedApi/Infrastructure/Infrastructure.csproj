@@ -58,9 +58,9 @@
     <Compile Include="Repository\LanguageRepository.cs" />
     <Compile Include="Repository\MovieRepository.cs" />
     <Compile Include="Repository\QrCodeRepository.cs" />
-    <Compile Include="Repository\SessionKeeper.cs" />
-    <Compile Include="Repository\SessionProvider.cs" />
-    <Compile Include="VisitorRepository\CinemaRepository.cs" />
+    <Compile Include="SessionKeeper.cs" />
+    <Compile Include="SessionProvider.cs" />
+    <Compile Include="Repository\CinemaRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Domain\Domain.csproj">
@@ -71,6 +71,7 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

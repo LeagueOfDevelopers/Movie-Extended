@@ -4,7 +4,7 @@ using System.Linq;
 using Domain.Models;
 using Domain.Models.Entities;
 
-namespace Infrastructure.Repository
+namespace Infrastructure
 {
     public class SessionKeeper : ISessionKeeper
     {

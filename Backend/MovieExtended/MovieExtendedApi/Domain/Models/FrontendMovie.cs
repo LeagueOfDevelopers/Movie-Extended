@@ -1,7 +1,8 @@
 ﻿using System;
 using Domain.Models.Entities;
+using Domain.Models.FrontendEntities;
 
-namespace Domain.Models.FrontendEntities
+namespace Domain.Models
 {
     public class FrontendMovie
     {

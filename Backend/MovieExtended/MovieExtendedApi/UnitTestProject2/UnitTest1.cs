@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Diagnostics.PerformanceData;
 using System.Reflection;
 using Domain.Models.Entities;
+using Infrastructure;
 using Infrastructure.Repository;
-using Infrastructure.VisitorRepository;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace UnitTestProject2

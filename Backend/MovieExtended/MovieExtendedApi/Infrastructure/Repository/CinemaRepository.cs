@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using Domain.Models.Entities;
 using Domain.Repository;
-using Infrastructure.Repository;
 using Journalist;
 using NHibernate.Linq;
 
-namespace Infrastructure.VisitorRepository
+namespace Infrastructure.Repository
 {
     public class CinemaRepository : ICinemaRepository
     {
