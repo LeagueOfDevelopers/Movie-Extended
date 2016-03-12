@@ -41,5 +41,9 @@ namespace Infrastructure
             
             }
         };
+        public string[] extensions =
+        {
+            ".mp3", ".srt", ".wav", ".jpg", "jpeg", "png", "sub"
+        };
     }
 }
