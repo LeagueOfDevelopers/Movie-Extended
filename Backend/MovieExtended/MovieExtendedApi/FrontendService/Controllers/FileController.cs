@@ -64,7 +64,7 @@ namespace FrontendService.Controllers
             responseMessage.Content.Headers.ContentType = new MediaTypeHeaderValue("application/octet-stream");
             responseMessage.Content.Headers.ContentDisposition = new ContentDispositionHeaderValue("attachment")
             {
-                FileName = Path.GetDirectoryName(returnFile.FilePath) + '.' + Path.GetExtension(returnFile.FilePath)
+                FileName = Path.GetFileName(returnFile.FilePath) 
 
             };
             return responseMessage;
