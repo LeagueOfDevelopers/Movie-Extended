@@ -3,18 +3,13 @@ package com.lod.movie_extended.application;
 import com.lod.movie_extended.BuildConfig;
 import com.lod.movie_extended.data.DataManager;
 import com.lod.movie_extended.data.local.DataBaseHelper;
-import com.lod.movie_extended.data.local.PreferencesHelper;
-import com.lod.movie_extended.data.model.ServiceHelper;
 import com.lod.movie_extended.data.model.Session;
-import com.lod.movie_extended.data.remote.Server;
+import com.lod.movie_extended.data.remote.ServerAPI;
 import com.lod.movie_extended.data.remote.ServerHelper;
 
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Mockito;
-import org.mockito.Spy;
 import org.robolectric.RobolectricGradleTestRunner;
 import org.robolectric.annotation.Config;
 
@@ -22,7 +17,9 @@ import rx.Observable;
 import rx.Subscriber;
 
 import static junit.framework.Assert.assertEquals;
+import static org.mockito.Mockito.atMost;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -35,22 +32,18 @@ import static org.mockito.Mockito.when;
 public class DataManagerTest {
 
     private DataManager dataManager;
-    private ServerHelper serverHelper;
     private DataBaseHelper dataBaseHelper;
-    private PreferencesHelper preferencesHelper;
-    private Server server;
+    private ServerHelper serverHelper;
     private Session session;
-    String qrCode = "qrCode";
+    String qrCode = "043169d9-b2e4-46f3-a35f-94b33f906387";
 
     @Before
     public void before() {
-        serverHelper = mock(ServerHelper.class);
         dataBaseHelper = mock(DataBaseHelper.class);
-        preferencesHelper = mock(PreferencesHelper.class);
-        server = mock(Server.class);
+        serverHelper = mock(ServerHelper.class);
         session = mock(Session.class);
-        when(session.getQrCode()).thenReturn("00000000-0000-0000-0000-000000000000");
-        dataManager = new DataManager(serverHelper,dataBaseHelper,preferencesHelper,server);
+        when(session.getQrCode()).thenReturn(qrCode);
+        dataManager = new DataManager(dataBaseHelper, serverHelper);
     }
 
     @Test
@@ -62,7 +55,7 @@ public class DataManagerTest {
     @Test
     public void shouldGetQrCodeFromDatabase() {
         DataBaseHelper dataBaseHelper = new DataBaseHelper();
-        dataManager = new DataManager(serverHelper,dataBaseHelper,preferencesHelper,server);
+        dataManager = new DataManager(dataBaseHelper, serverHelper);
         dataManager.setQrCode(qrCode);
 
         assertEquals(dataBaseHelper.getQrCode(),qrCode);
@@ -72,50 +65,116 @@ public class DataManagerTest {
     public void shouldGetSessionFromDatabase() {
         DataBaseHelper dataBaseHelper = spy(new DataBaseHelper());
         when(dataBaseHelper.getSession()).thenReturn(Observable.just(session));
-        DataManager dataManager = new DataManager(null,dataBaseHelper,null, Server.Creator.newService());
-        dataManager.setQrCode("00000000-0000-0000-0000-000000000000");
+        DataManager dataManager = new DataManager(dataBaseHelper,new ServerHelper());
+        dataManager.setQrCode(qrCode);
 
-        dataManager
-                .getSession()
-                .subscribe(new Subscriber<Session>() {
-                    @Override
-                    public void onCompleted() {
-                    }
+        dataManager.getSession().subscribe(new Subscriber<Session>() {
+            @Override
+            public void onCompleted() {
 
-                    @Override
-                    public void onError(Throwable e) {
-                        throw new RuntimeException();
-                    }
+            }
 
-                    @Override
-                    public void onNext(Session session) {
-                        Assert.assertNotNull(session);
-                    }
-                });
+            @Override
+            public void onError(Throwable e) {
+                throw new RuntimeException();
+            }
+
+            @Override
+            public void onNext(Session session) {
+
+            }
+        });
+        verify(dataBaseHelper,never()).saveSession(session);
     }
 
     @Test
     public void shouldGetSessionFromInternet() {
         DataBaseHelper dataBaseHelper = spy(new DataBaseHelper());
         when(dataBaseHelper.getSession()).thenReturn(Observable.just(null));
-        DataManager dataManager = new DataManager(null,dataBaseHelper,null, Server.Creator.newService());
-        dataManager.setQrCode("00000000-0000-0000-0000-000000000000");
-        dataManager
-                .getSession()
-                .subscribe(new Subscriber<Session>() {
-                    @Override
-                    public void onCompleted() {
-                    }
+        DataManager dataManager = new DataManager(dataBaseHelper, new ServerHelper());
+        dataManager.setQrCode(qrCode);
+        dataManager.getSession().subscribe(new Subscriber<Session>() {
+            @Override
+            public void onCompleted() {
 
-                    @Override
-                    public void onError(Throwable e) {
-                        throw new RuntimeException();
-                    }
+            }
 
-                    @Override
-                    public void onNext(Session session) {
-                        Assert.assertNotNull(session);
-                    }
-                });
+            @Override
+            public void onError(Throwable e) {
+                throw new RuntimeException();
+            }
+
+            @Override
+            public void onNext(Session session) {
+
+            }
+        });
+        verify(dataBaseHelper,atMost(1)).saveSession(session);
+    }
+
+    @Test
+    public void shouldGetSessionFromDataBaseAfterGettingFromInterner() {
+        DataBaseHelper dataBaseHelper = spy(new DataBaseHelper());
+        when(dataBaseHelper.getSession()).thenReturn(Observable.just(null));
+        DataManager dataManager = new DataManager(dataBaseHelper, new ServerHelper());
+        dataManager.setQrCode(qrCode);
+        //from internet
+        dataManager.getSession().subscribe(new Subscriber<Session>() {
+            @Override
+            public void onCompleted() {
+
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                throw new RuntimeException();
+            }
+
+            @Override
+            public void onNext(Session session) {
+
+            }
+        });
+        verify(dataBaseHelper,atMost(1)).saveSession(session);
+
+        //from internet
+        dataManager.getSession().subscribe(new Subscriber<Session>() {
+            @Override
+            public void onCompleted() {
+
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                throw new RuntimeException();
+            }
+
+            @Override
+            public void onNext(Session session) {
+
+            }
+        });
+        verify(dataBaseHelper,atMost(1)).saveSession(session);
+    }
+
+    @Test
+    public void shouldFailWithoutQrCode() {
+        dataManager = new DataManager(new DataBaseHelper(), serverHelper);
+        dataManager.getSession().subscribe(new Subscriber<Session>() {
+            @Override
+            public void onCompleted() {
+                throw new RuntimeException();
+            }
+
+            @Override
+            public void onError(Throwable e) {
+
+            }
+
+            @Override
+            public void onNext(Session session) {
+                throw new RuntimeException();
+            }
+        });
     }
 }

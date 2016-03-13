@@ -1,9 +1,8 @@
 package com.lod.movie_extended.data.model.player;
 
-import com.lod.movie_extended.data.model.player.Player;
-
-import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 import timber.log.Timber;
 
@@ -12,9 +11,8 @@ import timber.log.Timber;
  */
 public class PlayerLogger {
 
-    Player player;
-    ExecutorService loggingThread;
-    boolean doLogging;
+    private Player player;
+    private final ScheduledExecutorService loggingThread;
 
     public PlayerLogger() {
         loggingThread = Executors.newSingleThreadScheduledExecutor();
@@ -26,18 +24,16 @@ public class PlayerLogger {
 
     public void startLogging() {
         Timber.v("start Logging");
-        doLogging = true;
-        loggingThread.submit(new LoggingRunnable(player));
-
+        int sleepTimeInSeconds = 2;
+        loggingThread.scheduleAtFixedRate(new LoggingRunnable(player),0, sleepTimeInSeconds, TimeUnit.SECONDS);
     }
 
     public void stopLogging() {
         Timber.v("stop Logging");
-        doLogging = false;
+        loggingThread.shutdown();
     }
 
     private class LoggingRunnable implements Runnable {
-        int sleepTime = 2000;
         Player player;
 
         public LoggingRunnable(Player player) {
@@ -46,7 +42,6 @@ public class PlayerLogger {
 
         @Override
         public void run() {
-            while(doLogging) {
                 Timber.v("player playWhenReady " + player.getPlayWhenReady());
                 Timber.v("playerCurrentPosition " + player.getCurrentPosition());
                 Timber.v("player buffered percentage" + player.getBufferedPercentage());
@@ -55,23 +50,12 @@ public class PlayerLogger {
                 Timber.v("subtitles enabled " + player.isSubtitlesEnabled());
 
                 if(checkIfNeedStopLogging()) {
-                    break;
+                    startLogging();
                 }
-
-                sleep();
-            }
         }
 
         private boolean checkIfNeedStopLogging() {
             return player.getDuration() == player.getCurrentPosition();
-        }
-
-        private void sleep() {
-            try {
-                Thread.sleep(sleepTime);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
         }
     }
 }

@@ -2,12 +2,7 @@ package com.lod.movie_extended.ui.activity.main;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.Toast;
 
-import com.lod.movie_extended.data.DataManager;
-import com.lod.movie_extended.data.local.DataBaseHelper;
-import com.lod.movie_extended.data.model.Session;
-import com.lod.movie_extended.data.remote.Server;
 import com.lod.movie_extended.injection.App;
 import com.lod.movie_extended.R;
 import com.lod.movie_extended.injection.component.activity.DaggerMainComponent;
@@ -22,11 +17,6 @@ import javax.inject.Inject;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import rx.Subscriber;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.functions.Action0;
-import rx.functions.Action1;
-import rx.schedulers.Schedulers;
 import timber.log.Timber;
 
 public class MainActivity extends InjectActivityBase implements MainMvpView, ComponentGetter<MainComponent> {
@@ -49,7 +39,7 @@ public class MainActivity extends InjectActivityBase implements MainMvpView, Com
         }
 
 //        DataBaseHelper dataBaseHelper = new DataBaseHelper();
-//        DataManager dataManager = new DataManager(null,dataBaseHelper,null,Server.Creator.newService());
+//        DataManager dataManager = new DataManager(null,dataBaseHelper,null,ServerAPI.Creator.newService());
 //        dataManager.setQrCode("00000000-0000-0000-0000-000000000000");
 //        dataManager.getSession()
 //            .subscribeOn(Schedulers.io())

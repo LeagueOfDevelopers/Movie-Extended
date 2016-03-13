@@ -11,7 +11,7 @@ import com.lod.movie_extended.data.local.DataBaseHelper;
 import com.lod.movie_extended.data.local.PreferencesHelper;
 import com.lod.movie_extended.data.model.ColorHelper;
 import com.lod.movie_extended.data.model.ServiceHelper;
-import com.lod.movie_extended.data.remote.Server;
+import com.lod.movie_extended.data.remote.ServerAPI;
 import com.lod.movie_extended.data.remote.ServerHelper;
 import com.lod.movie_extended.injection.context.ApplicationContext;
 import com.lod.movie_extended.injection.scope.PerApplication;
@@ -66,8 +66,8 @@ public class ApplicationModule {
 
     @Provides
     @PerApplication
-    Server provideServer() {
-        return Server.Creator.newService();
+    ServerAPI provideServer() {
+        return ServerAPI.Creator.newService();
     }
 
     @Provides

@@ -19,8 +19,11 @@ import org.mockito.runners.MockitoJUnitRunner;
 
 import java.util.ArrayList;
 
+import rx.Observable;
+
 import static org.junit.Assert.assertNotNull;
 import static org.mockito.Mockito.doReturn;
+import static org.mockito.Mockito.when;
 
 /**
  * Created by Жамбыл on 2/11/2016.
@@ -51,9 +54,7 @@ public class LanguagesPresenterTest   {
     @Test
     public void assertGetLanguagesIsNotNull() {
         Session session = TestDataFactory.getTestSession();
-        doReturn(session)
-                .when(dataManager)
-                .getSession();
+        when(dataManager.getSession()).thenReturn(Observable.just(session));
 
         ArrayList<Language> languages = languagesPresenter.getLanguages();
 

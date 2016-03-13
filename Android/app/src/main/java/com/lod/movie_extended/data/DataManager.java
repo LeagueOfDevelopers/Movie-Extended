@@ -1,13 +1,15 @@
 package com.lod.movie_extended.data;
 
+import android.support.annotation.NonNull;
+
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.lod.movie_extended.data.local.DataBaseHelper;
-import com.lod.movie_extended.data.local.PreferencesHelper;
 import com.lod.movie_extended.data.model.Film;
 import com.lod.movie_extended.data.model.Language;
 import com.lod.movie_extended.data.model.Session;
 import com.lod.movie_extended.data.model.Token;
-import com.lod.movie_extended.data.remote.Server;
+import com.lod.movie_extended.data.remote.ServerAPI;
 import com.lod.movie_extended.data.remote.ServerHelper;
 import com.lod.movie_extended.injection.scope.PerApplication;
 
@@ -24,20 +26,15 @@ import timber.log.Timber;
 @PerApplication
 public class DataManager {
 
-    private final ServerHelper serverHelper;
     private final DataBaseHelper dataBaseHelper;
-    private PreferencesHelper preferencesHelper;
-    private Server server;
+    private ServerHelper serverHelper;
     private boolean filmTime;
     private boolean qrCodeProcessed;
 
     @Inject
-    public DataManager(ServerHelper serverHelper, DataBaseHelper dataBaseHelper, PreferencesHelper preferencesHelper,
-                       Server server) {
-        this.serverHelper = serverHelper;
+    public DataManager(DataBaseHelper dataBaseHelper, ServerHelper serverHelper) {
         this.dataBaseHelper = dataBaseHelper;
-        this.preferencesHelper = preferencesHelper;
-        this.server = server;
+        this.serverHelper = serverHelper;
     }
 
     public void setQrCode(String qrCode) {
@@ -51,45 +48,18 @@ public class DataManager {
         {
             Timber.v("getting session");
             String qrCode = dataBaseHelper.getQrCode();
-            Session session = dataBaseHelper.getSession().toBlocking().first();
-            if(session != null && session.getQrCode().equals(qrCode)) {
+            Session sessionFromDatabase = dataBaseHelper.getSession().toBlocking().first();
+            if(sessionFromDatabase != null && sessionFromDatabase.getQrCode().equals(qrCode)) {
                 Timber.e("getting session from database");
-                subscriber.onNext(session);
+                subscriber.onNext(sessionFromDatabase);
             }
             else {
                 Timber.e("getting session from internet");
-                Session session1 = loadSession(qrCode).toBlocking().first();
-                Timber.e(session1.getFilm().getLanguages().get(0).getName());
-                Timber.v("asdqwewwqe");
-                subscriber.onNext(session1);
-                subscriber.onCompleted();
+                Session sessionFromInternet = serverHelper.loadSession(qrCode).concatMap(dataBaseHelper::saveSession)
+                                                                                                .toBlocking().first();
+                subscriber.onNext(sessionFromInternet);
             }
         });
-    }
-
-    private Observable<Session> loadSession(String qrCode) {
-        return Observable.create((Observable.OnSubscribe<Session>) subscriber -> {
-            Session session = new Session();
-            session.setQrCode(qrCode);
-            Timber.v("on " + qrCode);
-            session.setToken(new Token(server.getToken(qrCode).toBlocking().first()));
-            Timber.v("token " + session.getToken().getValue());
-            server.getMovieLanguages(session.getToken().getValue())
-                    .toBlocking()
-                    .subscribe(jsonElements -> {
-                        ArrayList<Language> langList = new ArrayList<>();
-                        for (int i = 0; i < jsonElements.size(); i++) {
-                            Language lang = new Gson().fromJson(jsonElements.get(i), Language.class);
-                            langList.add(lang);
-                        }
-                        Film film = new Film();
-                        film.setName("Звездные войны");
-                        film.setLanguages(langList);
-                        session.setFilm(film);
-                    });
-
-            subscriber.onNext(session);
-        }).concatMap(dataBaseHelper::saveSession);
     }
 
     public boolean isFilmTime() {

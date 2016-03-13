@@ -1,7 +1,7 @@
 package server_tests.server;
 
 import com.lod.movie_extended.BuildConfig;
-import com.lod.movie_extended.data.remote.Server;
+import com.lod.movie_extended.data.remote.ServerAPI;
 import com.lod.movie_extended.util.DefaultConfig;
 import com.lod.movie_extended.util.RxSchedulersOverrideRule;
 
@@ -12,24 +12,19 @@ import org.junit.runner.RunWith;
 import org.robolectric.RobolectricGradleTestRunner;
 import org.robolectric.annotation.Config;
 
-import rx.Subscriber;
-import rx.schedulers.Schedulers;
-
-import static org.junit.Assert.*;
-
 /**
  * To work on unit tests, switch the Test Artifact in the Build Variants view.
  */
 
 @RunWith(RobolectricGradleTestRunner.class)
 @Config(constants = BuildConfig.class, sdk = DefaultConfig.EMULATE_SDK)
-public class ServerRequestTest {
+public class ServerAPIRequestTest {
 
-    private Server server;
+    private ServerAPI serverAPI;
 
     @Before
     public void setUp() {
-        server = Server.Creator.newService();
+        serverAPI = ServerAPI.Creator.newService();
     }
 
     @Rule
@@ -38,7 +33,7 @@ public class ServerRequestTest {
     @Test
     public void getToken_MustNotBeNullOrEmpty() throws Exception {
 //        String qrCode = "00000000-0000-0000-0000-000000000000";
-//        server.getSession(qrCode)
+//        serverAPI.getSession(qrCode)
 //                .subscribeOn(Schedulers.immediate())
 //                .subscribe(new Subscriber<String>() {
 //                    @Override

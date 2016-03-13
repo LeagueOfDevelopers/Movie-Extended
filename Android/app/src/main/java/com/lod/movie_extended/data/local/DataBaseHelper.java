@@ -34,6 +34,9 @@ public class DataBaseHelper {
     }
 
     public @Nullable String getQrCode() {
+        if(qrCode == null) {
+            throw new NullPointerException("qrCode is null");
+        }
         return qrCode;
     }
 
