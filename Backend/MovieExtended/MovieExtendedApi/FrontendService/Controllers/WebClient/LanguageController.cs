@@ -4,7 +4,6 @@ using System.Net;
 using System.Web.Http;
 using Domain.Models;
 using Domain.Models.Entities;
-using Domain.Models.FrontendEntities;
 using Domain.Repository;
 using Journalist;
 
@@ -37,12 +36,7 @@ namespace FrontendService.Controllers.WebClient
             _languageRepository.DeleteLanguageByLanguageId(languageId);
         }
 
-        [Route("api/Languages/All")]
-        [HttpGet]
-        public IEnumerable<FrontendLanguage> GetAllLanguages()
-        {
-            return _languageRepository.GetAllLanguages();
-        }
+        
 
         [Route("api/Languages/New")]
         [HttpPost]

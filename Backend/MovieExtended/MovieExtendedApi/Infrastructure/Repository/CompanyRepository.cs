@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using Domain.Models.Entities;
 using Domain.Repository;
@@ -48,6 +49,7 @@ namespace Infrastructure.Repository
             session.BeginTransaction();
             session.Save(company);
             session.Transaction.Commit();
+            
         }
 
         public void UpdateCompany(string jsonForUpdate)

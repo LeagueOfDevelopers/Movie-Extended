@@ -8,7 +8,7 @@ using NHibernate.Util;
 
 namespace Infrastructure
 {
-    class FileManager:IFileManager
+   public class FileManager:IFileManager
     {
         public FileManager()
         {

@@ -2,7 +2,6 @@
 using System.Web;
 using System.Web.Http;
 using Infrastructure;
-using Infrastructure.Repository;
 using SimpleInjector.Integration.WebApi;
 
 namespace FrontendService

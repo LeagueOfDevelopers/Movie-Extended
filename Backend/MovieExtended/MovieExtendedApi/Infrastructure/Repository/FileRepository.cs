@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using Domain.Models.Entities;
 using Domain.Repository;
@@ -46,7 +47,7 @@ namespace Infrastructure.Repository
         {
             var session = _provider.GetCurrentSession();
             session.BeginTransaction();
-            session.SaveOrUpdate(file);
+            session.Save(file);
             session.Transaction.Commit();
         }
 

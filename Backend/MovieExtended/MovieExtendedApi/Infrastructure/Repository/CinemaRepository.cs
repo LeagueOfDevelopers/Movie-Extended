@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using Domain.Models.Entities;
 using Domain.Repository;
@@ -21,6 +22,7 @@ namespace Infrastructure.Repository
         public IEnumerable<Cinema> GetAllCinemas()
         {
             var session = _provider.GetCurrentSession();
+
             return session.Query<Cinema>();
         }
 
@@ -28,7 +30,7 @@ namespace Infrastructure.Repository
         {
             var session = _provider.GetCurrentSession();
             session.BeginTransaction();
-            session.SaveOrUpdate(cinema);
+            session.Save(cinema);
             session.Transaction.Commit();
         }
 

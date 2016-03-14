@@ -48,6 +48,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="mapper\MovieMapper.cs" />
     <Compile Include="Mappings\CinemaMapping.cs" />
     <Compile Include="Mappings\CompanyMapping.cs" />
     <Compile Include="Mappings\FileMapping.cs" />
@@ -57,12 +58,11 @@
     <Compile Include="Models\Constants.cs" />
     <Compile Include="Models\Entities\Cinema.cs" />
     <Compile Include="Models\Entities\QrCodeFingerprint.cs" />
-    <Compile Include="Models\FrontendEntities\AndroidLanguage.cs" />
     <Compile Include="Models\FrontendEntities\FrontendCinema.cs" />
     <Compile Include="Models\FrontendEntities\FrontendCompany.cs" />
     <Compile Include="Models\FrontendEntities\FrontendFile.cs" />
     <Compile Include="Models\FrontendEntities\FrontendLanguage.cs" />
-    <Compile Include="Models\FrontendMovie.cs" />
+    <Compile Include="Models\FrontendEntities\FrontendMovie.cs" />
     <Compile Include="Models\IFileManager.cs" />
     <Compile Include="Models\ISessionKeeper.cs" />
     <Compile Include="Models\QrCodeGenerator.cs" />
@@ -84,6 +84,7 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -38,7 +38,6 @@ namespace LanguageRepositoryTests
             provider.OpenSession();
 
             var languageRepository = new LanguageRepository(provider);
-            var allLanguages = languageRepository.GetAllLanguages();
         }
 
         [TestMethod]
@@ -63,7 +62,6 @@ namespace LanguageRepositoryTests
             provider.OpenSession();
 
             var languageRepository = new LanguageRepository(provider);
-            var allLanguages = languageRepository.GetAllLanguages();
         }
     }
 }

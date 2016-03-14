@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Net;
 using System.Web.Http;
+using Domain.mapper;
 using Domain.Models;
 using Domain.Models.Entities;
+using Domain.Models.FrontendEntities;
 using Domain.Repository;
 using Journalist;
 
@@ -23,17 +25,19 @@ namespace FrontendService.Controllers.AndroidClient
 
         [Route("api/Session/Login")]
         [HttpPost]
-        public Movie Login([FromBody] string qr)
+        public FrontendMovie Login([FromBody] string qr)
         {
             var qrGuid = new Guid(qr);
             var necessaryMovie = _movieRepository.CheckAndroidToken(qrGuid);
+            
             var newSessionGuid = Guid.NewGuid();
             if (necessaryMovie != null)
             {
-                necessaryMovie.AndroidToken = newSessionGuid;
+                var frontendMovie = new MovieMapper().ToFrontendMovie(necessaryMovie);
+                frontendMovie.AndroidToken = newSessionGuid;
                 var newSession = new Session(newSessionGuid, necessaryMovie.Id);
                 _keeper.CreateSession(newSession);
-                return necessaryMovie;
+                return frontendMovie;
             }
             throw new HttpResponseException(HttpStatusCode.Unauthorized);
         }

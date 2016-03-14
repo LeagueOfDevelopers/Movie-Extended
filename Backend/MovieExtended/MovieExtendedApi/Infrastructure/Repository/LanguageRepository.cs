@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using Domain.Models.Entities;
-using Domain.Models.FrontendEntities;
+
 using Domain.Repository;
 using Journalist;
 using NHibernate.Linq;
@@ -19,19 +20,7 @@ namespace Infrastructure.Repository
             _provider = provider;
         }
 
-        public IEnumerable<FrontendLanguage> GetAllLanguages()
-        {
-            var session = _provider.GetCurrentSession();
-            var allLanguages = session.Query<Language>().AsEnumerable();
-            var convertedLanguages = new List<FrontendLanguage>();
-
-            foreach (var dblanguage in allLanguages)
-            {
-                var convertedLanguage = new FrontendLanguage(dblanguage);
-                convertedLanguages.Add(convertedLanguage);
-            }
-            return convertedLanguages;
-        }
+        
 
         public void SaveLanguage(Language language)
         {
