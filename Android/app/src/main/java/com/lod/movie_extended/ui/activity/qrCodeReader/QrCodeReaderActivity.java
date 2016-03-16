@@ -53,6 +53,7 @@ public class QrCodeReaderActivity extends AppCompatActivity
     public void startFilmPreparationActivity() {
         Timber.v("starting FilmPreparationActivity");
         startActivity(new Intent(this,FilmPreparationActivity.class));
+        setResult(1);
         finish();
     }
 

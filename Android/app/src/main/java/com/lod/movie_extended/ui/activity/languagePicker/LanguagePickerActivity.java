@@ -84,11 +84,10 @@ public class LanguagePickerActivity extends InjectActivityBase implements Langua
             public void onPageSelected(int position) {
                 LanguagesFragment currentFragment = (LanguagesFragment) languagesViewPagerAdapter.getItem(position);
                 if(currentFragment.isAllowedNext()) {
-                    nextTextView.setVisibility(View.VISIBLE);
-                    viewPager.setAllowedSwipeDirection(CustomViewPager.SwipeDirection.all);
+                    allowNext(View.VISIBLE, CustomViewPager.SwipeDirection.all);
                 }
                 else {
-                    nextTextView.setVisibility(View.INVISIBLE);
+                    allowNext(View.INVISIBLE, CustomViewPager.SwipeDirection.left);
                 }
                 setToolbarTitleByPosition(position);
                 setActiveDot(position);
@@ -98,6 +97,11 @@ public class LanguagePickerActivity extends InjectActivityBase implements Langua
             public void onPageScrollStateChanged(int state) {
             }
         });
+    }
+
+    private void allowNext(int visible, CustomViewPager.SwipeDirection swipeDirection) {
+        nextTextView.setVisibility(visible);
+        viewPager.setAllowedSwipeDirection(swipeDirection);
     }
 
     private void setToolbarTitleByPosition(int position) {
@@ -161,7 +165,6 @@ public class LanguagePickerActivity extends InjectActivityBase implements Langua
 
     @Override
     public void notifyLanguageHasBeenPicked() {
-        viewPager.setAllowedSwipeDirection(CustomViewPager.SwipeDirection.all);
-        nextTextView.setVisibility(View.VISIBLE);
+        allowNext(View.VISIBLE, CustomViewPager.SwipeDirection.all);
     }
 }
