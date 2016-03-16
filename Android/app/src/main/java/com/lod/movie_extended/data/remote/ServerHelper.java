@@ -1,19 +1,12 @@
 package com.lod.movie_extended.data.remote;
 
-import android.content.Context;
 import android.support.annotation.NonNull;
 
 import com.lod.movie_extended.data.model.Film;
-import com.lod.movie_extended.data.model.FilmBuilder;
-import com.lod.movie_extended.data.model.Language;
 import com.lod.movie_extended.data.model.Session;
-import com.lod.movie_extended.data.model.SessionFabric;
 import com.lod.movie_extended.data.model.Token;
 
-import java.util.ArrayList;
-
 import rx.Observable;
-import rx.Subscriber;
 
 /**
  * Created by Жамбыл on 09.01.2016.
@@ -30,7 +23,7 @@ public class ServerHelper {
         return Observable.create((Observable.OnSubscribe<Session>) subscriber -> {
             Session session = new Session();
             session.setQrCode(qrCode);
-            session.setToken(new Token(serverAPI.getToken(qrCode).toBlocking().first()));
+            session.setToken(new Token(serverAPI.sendQrCode(qrCode).toBlocking().first()));
             session.setFilm(loadFilm(session));
             subscriber.onNext(session);
         });

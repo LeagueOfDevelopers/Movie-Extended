@@ -23,7 +23,7 @@ public interface ServerAPI {
 
     @POST("session/login")
     @Headers("Content-Type:application/json")
-    Observable<String> getToken(@Body String qrCode);
+    Observable<String> sendQrCode(@Body String qrCode);
 
     class Creator {
         public static ServerAPI newService() {

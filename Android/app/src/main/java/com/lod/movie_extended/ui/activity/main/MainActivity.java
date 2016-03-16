@@ -37,29 +37,6 @@ public class MainActivity extends InjectActivityBase implements MainMvpView, Com
             startActivity(new Intent(MainActivity.this, FilmPreparationActivity.class));
             finish();
         }
-
-//        DataBaseHelper dataBaseHelper = new DataBaseHelper();
-//        DataManager dataManager = new DataManager(null,dataBaseHelper,null,ServerAPI.Creator.newService());
-//        dataManager.setQrCode("00000000-0000-0000-0000-000000000000");
-//        dataManager.getSession()
-//            .subscribeOn(Schedulers.io())
-//            .observeOn(AndroidSchedulers.mainThread())
-//            .subscribe(new Subscriber<Session>() {
-//                @Override
-//                public void onCompleted() {
-//                    System.out.print("onCompeled");
-//                }
-//
-//                @Override
-//                public void onError(Throwable e) {
-//                    System.out.print(e.getCause());
-//                }
-//
-//                @Override
-//                public void onNext(Session session) {
-//                    Timber.v(session.getFilm().getLanguages().get(0).getName());
-//                }
-//            });
     }
 
     @Override

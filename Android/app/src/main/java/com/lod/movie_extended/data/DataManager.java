@@ -30,6 +30,8 @@ public class DataManager {
     private ServerHelper serverHelper;
     private boolean filmTime;
     private boolean qrCodeProcessed;
+    private Language soundLanguage;
+    private Language subtitlesLanguage;
 
     @Inject
     public DataManager(DataBaseHelper dataBaseHelper, ServerHelper serverHelper) {
@@ -74,8 +76,23 @@ public class DataManager {
         return qrCodeProcessed;
     }
 
+    public Language getSubtitlesLanguage() {
+        return subtitlesLanguage;
+    }
+
+    public void setSubtitlesLanguage(Language subtitlesLanguage) {
+        this.subtitlesLanguage = subtitlesLanguage;
+    }
+
+    public Language getSoundLanguage() {
+        return soundLanguage;
+    }
+
+    public void setSoundLanguage(Language soundLanguage) {
+        this.soundLanguage = soundLanguage;
+    }
+
     private void setQrCodeProcessed(boolean qrCodeProcessed) {
         this.qrCodeProcessed = qrCodeProcessed;
     }
-
 }

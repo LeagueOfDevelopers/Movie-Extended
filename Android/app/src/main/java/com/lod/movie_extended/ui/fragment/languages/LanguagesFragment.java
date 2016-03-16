@@ -10,10 +10,13 @@ import android.view.ViewGroup;
 
 import com.lod.movie_extended.R;
 import com.lod.movie_extended.data.model.Language;
+import com.lod.movie_extended.events.LanguageSelected;
 import com.lod.movie_extended.injection.component.activity.FilmPreparationComponent;
+import com.lod.movie_extended.injection.component.activity.LanguagesPickerComponent;
 import com.lod.movie_extended.injection.component.fragment.DaggerLanguagesComponent;
 import com.lod.movie_extended.injection.component.fragment.LanguagesComponent;
 import com.lod.movie_extended.injection.module.fragment.LanguagesModule;
+import com.lod.movie_extended.ui.activity.languagePicker.LanguagePickerView;
 import com.lod.movie_extended.ui.base.ComponentGetter;
 import com.lod.movie_extended.ui.base.InjectFragmentBase;
 import com.lod.movie_extended.ui.base.Presenter;
@@ -42,6 +45,12 @@ public class LanguagesFragment extends InjectFragmentBase implements LanguagesMv
     LanguagesPresenter presenter;
 
     private LanguagesComponent component;
+    private boolean isAllowedNext;
+    private LanguagePickerView languagePickerView;
+
+    public LanguagesFragment(LanguagePickerView languagePickerView) {
+        this.languagePickerView = languagePickerView;
+    }
 
     @Nullable
     @Override
@@ -65,6 +74,16 @@ public class LanguagesFragment extends InjectFragmentBase implements LanguagesMv
     }
 
     @Override
+    public void allowNext() {
+        isAllowedNext = true;
+        languagePickerView.notifyLanguageHasBeenPicked();
+    }
+
+    public boolean isAllowedNext() {
+        return isAllowedNext;
+    }
+
+    @Override
     public int getContentView() {
         return LAYOUT;
     }
@@ -84,7 +103,7 @@ public class LanguagesFragment extends InjectFragmentBase implements LanguagesMv
     public LanguagesComponent getComponent() {
         if(component == null) {
             component = DaggerLanguagesComponent.builder()
-                    .filmPreparationComponent((FilmPreparationComponent) parentComponent)
+                    .languagesPickerComponent((LanguagesPickerComponent) parentComponent)
                     .languagesModule(new LanguagesModule())
                     .build();
         }

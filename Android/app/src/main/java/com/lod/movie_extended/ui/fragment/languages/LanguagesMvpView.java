@@ -11,4 +11,6 @@ import java.util.ArrayList;
 public interface LanguagesMvpView extends MvpView {
 
     void setLanguages(ArrayList<Language> languages);
+
+    void allowNext();
 }

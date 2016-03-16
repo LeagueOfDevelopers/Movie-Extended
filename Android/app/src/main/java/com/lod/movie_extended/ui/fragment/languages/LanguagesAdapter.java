@@ -1,5 +1,6 @@
 package com.lod.movie_extended.ui.fragment.languages;
 
+import android.content.Context;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -10,7 +11,7 @@ import android.widget.TextView;
 import com.lod.movie_extended.R;
 import com.lod.movie_extended.data.model.Language;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -19,61 +20,40 @@ import butterknife.OnClick;
 /**
  * Created by Жамбыл on 09.01.2016.
  */
-public class LanguagesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class LanguagesAdapter extends RecyclerView.Adapter<LanguagesAdapter.LanguageViewHolder> {
 
-    ArrayList<Language> languages;
-    private static final int TYPE_FOOTER = 1;
-
-    LanguagesPresenter languagesPresenter;
-
-    public LanguagesAdapter(LanguagesPresenter languagesPresenter) {
-        this.languagesPresenter = languagesPresenter;
+    private List<Language> languages;
+    private LanguagesPresenter presenter;
+    private Context context;
+    public LanguagesAdapter(LanguagesPresenter presenter, Context context) {
+        this.presenter = presenter;
+        this.context = context;
     }
 
-    public void setLanguages(ArrayList<Language> languages) {
+    public void setLanguages(List<Language> languages) {
         this.languages = languages;
     }
 
     @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public LanguageViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view =  LayoutInflater.from(parent.getContext()).inflate(R.layout.item_languages, parent, false);
         return new LanguageViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder  holder, int position) {
-        if (position == getBasicItemCount() && holder.getItemViewType() == TYPE_FOOTER) {
-            onBindFooterView(holder, position);
+    public void onBindViewHolder(LanguageViewHolder holder, int position) {
+        holder.languageNameTextView.setText(languages.get(position).getName());
+
+        if(presenter.getSelectedLanguage() != null && languages.get(position) == presenter.getSelectedLanguage()) {
+            holder.cardView.setCardBackgroundColor(context.getResources().getColor(R.color.primary_red));
         }
         else {
-            ((LanguageViewHolder) holder).languageNameTextView.setText(languages.get(position).getName());
+            holder.cardView.setCardBackgroundColor(context.getResources().getColor(R.color.colorPrimary));
         }
     }
-
-    private void onBindFooterView(RecyclerView.ViewHolder  holder, int position) {
-
-    }
-
-    @Override
-    public int getItemViewType(int position) {
-        if(position == getBasicItemCount()){
-            return TYPE_FOOTER;
-        }
-        return super.getItemViewType(position);
-    }
-
 
     @Override
     public int getItemCount() {
-        return languages.size();
-    }
-
-    @Override
-    public void onAttachedToRecyclerView(RecyclerView recyclerView) {
-        super.onAttachedToRecyclerView(recyclerView);
-    }
-
-    public int getBasicItemCount() {
         return languages.size();
     }
 
@@ -90,15 +70,10 @@ public class LanguagesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
         @OnClick(R.id.language_item_card_view)
         public void onClick(CardView cardView) {
-            languagesPresenter.onLanguageSelected();
-        }
-    }
-
-    class FooterAdapter extends RecyclerView.ViewHolder{
-
-        public FooterAdapter(View itemView) {
-            super(itemView);
-            ButterKnife.bind(this,itemView);
+            Language currentLanguage = languages.get(getAdapterPosition());
+            presenter.setSelectedLanguage(currentLanguage);
+            presenter.getMvpView().allowNext();
+            notifyDataSetChanged();
         }
     }
 }

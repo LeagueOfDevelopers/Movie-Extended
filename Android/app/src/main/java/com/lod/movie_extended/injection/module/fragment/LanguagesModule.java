@@ -26,8 +26,8 @@ public class LanguagesModule {
 
     @Provides
     @PerFragment
-    LanguagesAdapter provideLanguagesAdapter(LanguagesPresenter languagesPresenter) {
-        return new LanguagesAdapter(languagesPresenter);
+    LanguagesAdapter provideLanguagesAdapter(LanguagesPresenter languagesPresenter, Context context) {
+        return new LanguagesAdapter(languagesPresenter, context);
     }
 
     @Provides

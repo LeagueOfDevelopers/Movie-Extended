@@ -1,28 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/white">
+    android:layout_height="wrap_content"
+    android:background="@color/colorPrimary">
+
     <android.support.v7.widget.CardView
         android:id="@+id/language_item_card_view"
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
         android:elevation="5dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp">
+        app:cardBackgroundColor="@color/colorPrimary">
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="16dp">
+            android:padding="16dp"
+            >
 
             <TextView
                 android:id="@+id/language_name_text_view"
-                tools:text="text"
-                android:textSize="25sp"
-                android:gravity="center"
+                tools:text="English"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:paddingLeft="20dp"
                 android:layout_centerInParent="true"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
