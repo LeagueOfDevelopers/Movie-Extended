@@ -57,9 +57,23 @@ namespace Infrastructure.Repository
             return session.Query<Language>().Where(language => language.Name == languageName);
         }
 
-        public void UpdateLanguage(string jsonForUpdate)
+        public void UpdateLanguage(Language language)
         {
-            throw new NotImplementedException();
+            var session = _provider.GetCurrentSession();
+            session.Update(language);
         }
+
+
+        public Language GetLanguageById(int Id)
+        {
+            var session = _provider.GetCurrentSession();
+            return session.Query<Language>().SingleOrDefault(language => language.Id == Id);
+        }
+
+        public IEnumerable<Language> GetAllLanguages()
+        {
+            var session = _provider.GetCurrentSession();
+            return session.Query<Language>();
+        } 
     }
 }

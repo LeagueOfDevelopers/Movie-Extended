@@ -31,6 +31,6 @@ C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\Infrastructure\bin
 C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\Infrastructure\bin\Debug\Domain.pdb
 C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\Infrastructure\bin\Debug\Iesi.Collections.xml
 C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\Infrastructure\bin\Debug\NHibernate.xml
-C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\Infrastructure\obj\Debug\Infrastructure.csprojResolveAssemblyReference.cache
 C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\Infrastructure\obj\Debug\Infrastructure.dll
 C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\Infrastructure\obj\Debug\Infrastructure.pdb
+C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\Infrastructure\obj\Debug\Infrastructure.csprojResolveAssemblyReference.cache

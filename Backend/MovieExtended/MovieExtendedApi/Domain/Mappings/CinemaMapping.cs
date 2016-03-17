@@ -20,8 +20,9 @@ namespace Domain.Mappings
             Set(model =>model.Movie , mapper =>
             {
                mapper.Cascade(Cascade.All);
+               
                mapper.Key(movie => movie.Column("Movie") );
-            },action => action.OneToMany() );
+            },relation => relation.OneToMany()  );
         }
     }
 }

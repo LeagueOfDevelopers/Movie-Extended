@@ -20,13 +20,11 @@ namespace Domain.Mappings
                mapper.Cascade(Cascade.All);
                 mapper.Key(language => language.Column("Language") );
             }
-             , relation => relation.OneToMany() 
+             ,relation => relation.OneToMany()
             ); 
             Property(movie => movie.AndroidToken, mapper => mapper.Column("Token"));
-            OneToOne(model => model.Poster , mapper =>
-            {
-                mapper.Cascade(Cascade.All);
-            });
+            ManyToOne(movie => movie.Poster,mapper => mapper.Cascade(Cascade.All));
+           
         }
     }
 }

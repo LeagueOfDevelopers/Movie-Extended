@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics.PerformanceData;
-using System.Reflection;
+using System.Linq;
 using Domain.Models.Entities;
 using Infrastructure;
 using Infrastructure.Repository;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NHibernate.Util;
 
 namespace UnitTestProject2
 {
@@ -17,32 +17,28 @@ namespace UnitTestProject2
         {
             var provider = new SessionProvider();
             provider.OpenSession();
-            var language = new Language("english",new File( "~/AudioTrack/7.mp3",FileType.Track), new File("~/Subtitles/4.srt",FileType.Subtitles));
-            ISet<Language> languages = new HashSet<Language>();
-            languages.Add(language);
-            var labnguage2 = new Language("russian" , new File("~/AudioTrack/10.mp3",FileType.Track),new File("~/Subtitles/8.srt",FileType.Subtitles));
-            languages.Add(labnguage2);
-            var movie = new Movie("test test",languages);
-            movie.AndroidToken= Guid.NewGuid();
-            movie.Poster = new File("~/Posters/2.jpg",FileType.Poster);
-            var lang3 = new Language("japan",new File("~/AudioTrack/10.mp3",FileType.Track), new File("~/Subtitles/8.srt", FileType.Subtitles));
-            var lang4 = new Language("bashkirsky", new File("~/AudioTrack/7.mp3", FileType.Track), new File("~/Subtitles/4.srt", FileType.Subtitles));
-            ISet<Language> languages2 = new HashSet<Language>();
-            languages2.Add(lang3);
-            languages2.Add(lang4);
-            var movie2 = new Movie("testFilmNormal",languages2);
-            movie2.AndroidToken = Guid.NewGuid();
-            movie2.Poster = new File("~/Posters/10.jpg",FileType.Poster);
-            ISet<Movie> movies = new HashSet<Movie>();
-            movies.Add(movie);
-            movies.Add(movie2);
-            var cinema = new Cinema(11,"holaimos cinema","rileeva 55 64 " , movies);
-            ISet<Cinema> cinemas = new HashSet<Cinema>();
-            cinemas.Add(cinema);
-            var company = new Company(10,"holaimos company",new Uri("https://vk.com/im?sel=206421328"),cinemas );
             var companyRepo = new CompanyRepository(provider);
-            
+            var file1 = new File("way",FileType.Track);
+            file1.FileType=FileType.Track;
+            var file2 = new File("way",FileType.Subtitles);
+            file2.FileType=FileType.Subtitles;
+            var language1 = new Language("russian", file1, file2);
+            var language2 = new Language("english", new File(), new File());
+            var langset = new HashSet<Language>();
+            langset.Add(language1);
+            langset.Add(language2);
+            var movie1= new Movie("movie1",langset);
+            var movieset = new HashSet<Movie>();
+            movieset.Add(movie1);
+            var cinema_1= new Cinema("cinema_1","address",movieset);
+            var cinemaset = new HashSet<Cinema>();
+            cinemaset.Add(cinema_1);
+            var company = new Company("company",new Uri("https://vk.com/audios141213476?performer=1&q=Summer%20Of%20Haze"),cinemaset );
             companyRepo.SaveCompany(company);
+            //var session = provider.GetCurrentSession();
+            //session.Transaction.Begin();
+            //session.Save(company);
+            //session.Transaction.Commit();
         }
 
         [TestMethod]
@@ -50,9 +46,12 @@ namespace UnitTestProject2
         {
             var provider = new SessionProvider();
             provider.OpenSession();
-            var companyRepo = new CompanyRepository(provider);
-            var comp = companyRepo.GetCompanyByCompanyId(1);
-            
+            var langRepo = new LanguageRepository(provider);
+            var lang = langRepo.GetLanguageById(52);
+            lang.TrackFile= new File("~/AudioTrack/7.mp3",FileType.Track);
+            //lang.Subtitles = new File("~/Subtitles/4.srt",FileType.Subtitles);
+            langRepo.UpdateLanguage(lang);
+
 
 
         }

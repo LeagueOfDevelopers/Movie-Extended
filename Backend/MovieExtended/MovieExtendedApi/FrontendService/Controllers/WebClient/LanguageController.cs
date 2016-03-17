@@ -55,5 +55,11 @@ namespace FrontendService.Controllers.WebClient
             throw new HttpResponseException(HttpStatusCode.Unauthorized);
         }
 
+        [Route("language/all")]
+        [HttpPost]
+        public IEnumerable<Language> GetAllLanguages()
+        {
+            return _languageRepository.GetAllLanguages();
+        } 
     }
 }

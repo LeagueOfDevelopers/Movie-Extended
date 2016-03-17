@@ -54,7 +54,7 @@ namespace Infrastructure
             {
                 _transaction.Commit();
             }
-
+            _session?.Flush();
             _session?.Dispose();
         }
     }

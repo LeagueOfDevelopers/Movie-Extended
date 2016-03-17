@@ -9,6 +9,8 @@ namespace Domain.Repository
         void DeleteLanguageByLanguageId(int languageID);
         void DeleteLanguageByMovieId(int movie);
         IEnumerable<Language> GetLanguageByName(string languageName);
-        void UpdateLanguage(string jsonForUpdate);
+        void UpdateLanguage(Language language);
+        Language GetLanguageById(int Id);
+        IEnumerable<Language> GetAllLanguages();
     }
 }

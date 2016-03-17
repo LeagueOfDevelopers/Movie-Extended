@@ -20,7 +20,7 @@ namespace Domain.Mappings
             {
                 mapper.Cascade(Cascade.All);
                 mapper.Key(cinema => cinema.Column("Cinema") );
-            } ,relation => relation.OneToMany()  );
+            },relation =>relation.OneToMany() );
         }
     }
 }

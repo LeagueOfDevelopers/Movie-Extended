@@ -9,7 +9,7 @@
             FileType = fileType;
         }
 
-        protected File()
+        public File()
         {
         }
 
@@ -23,7 +23,7 @@
 
         public virtual string FilePath { get;  set; }
 
-        public virtual FileType FileType { get; protected set; }
+        public virtual FileType FileType { get;  set; }
     }
 
     public enum FileType
