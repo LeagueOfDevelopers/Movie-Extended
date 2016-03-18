@@ -8,7 +8,8 @@ import com.lod.movie_extended.injection.App;
 import com.lod.movie_extended.injection.component.activity.DaggerQrCodeReaderComponent;
 import com.lod.movie_extended.injection.component.activity.QrCodeReaderComponent;
 import com.lod.movie_extended.injection.module.activity.QrCodeReaderModule;
-import com.lod.movie_extended.ui.activity.filmPreparation.FilmPreparationActivity;
+import com.lod.movie_extended.ui.activity.filmShow.FilmShowActivity;
+import com.lod.movie_extended.ui.activity.main.MainActivity;
 import com.lod.movie_extended.ui.base.ComponentGetter;
 
 import javax.inject.Inject;
@@ -52,8 +53,8 @@ public class QrCodeReaderActivity extends AppCompatActivity
     @Override
     public void startFilmPreparationActivity() {
         Timber.v("starting FilmPreparationActivity");
-        startActivity(new Intent(this,FilmPreparationActivity.class));
-        setResult(1);
+        startActivity(new Intent(this,FilmShowActivity.class));
+        setResult(MainActivity.FINISH);
         finish();
     }
 
@@ -67,9 +68,9 @@ public class QrCodeReaderActivity extends AppCompatActivity
     public QrCodeReaderComponent getComponent() {
         if(component == null) {
             component = DaggerQrCodeReaderComponent.builder()
-                    .applicationComponent(App.instance().getComponent())
-                    .qrCodeReaderModule(new QrCodeReaderModule(this))
-                    .build();
+                .applicationComponent(App.getInstance().getComponent())
+                .qrCodeReaderModule(new QrCodeReaderModule(this))
+                .build();
         }
         return component;
     }

@@ -21,6 +21,13 @@ import org.robolectric.annotation.Config;
 import java.util.ArrayList;
 import java.util.List;
 
+import rx.Notification;
+import rx.Observable;
+import rx.Observer;
+import rx.Subscriber;
+import rx.functions.Action0;
+import rx.functions.Action1;
+
 import static junit.framework.Assert.assertEquals;
 import static org.mockito.Mockito.atLeast;
 import static org.mockito.Mockito.mock;
@@ -39,7 +46,7 @@ public class PlayerTest {
     @Before
     public void setUp() {
         testComponentCreator = new TestComponentCreator();
-        App.instance().setComponent(testComponentCreator.getComponent());
+        App.getInstance().setComponent(testComponentCreator.getComponent());
     }
 
     @Test

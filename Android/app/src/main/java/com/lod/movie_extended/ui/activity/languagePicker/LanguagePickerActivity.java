@@ -2,16 +2,14 @@ package com.lod.movie_extended.ui.activity.languagePicker;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.lod.movie_extended.R;
-import com.lod.movie_extended.data.model.Language;
+import com.lod.movie_extended.data.model.Film;
 import com.lod.movie_extended.injection.App;
 import com.lod.movie_extended.injection.component.activity.DaggerLanguagesPickerComponent;
 import com.lod.movie_extended.injection.component.activity.LanguagesPickerComponent;
@@ -28,7 +26,6 @@ import javax.inject.Inject;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
-import timber.log.Timber;
 
 /**
  * Created by Жамбыл on 3/16/2016.
@@ -57,6 +54,11 @@ public class LanguagePickerActivity extends InjectActivityBase implements Langua
         initDots();
         setToolbarTitleByPosition(0);
         initNextTextView();
+    }
+
+    @Override
+    public void notifyLanguageHasBeenPicked() {
+        allowNext(View.VISIBLE, CustomViewPager.SwipeDirection.all);
     }
 
     private void initNextTextView() {
@@ -146,25 +148,20 @@ public class LanguagePickerActivity extends InjectActivityBase implements Langua
         return presenter;
     }
 
+
     @Override
     public LanguagesPickerComponent getComponent() {
         if(component == null) {
             component = DaggerLanguagesPickerComponent.builder()
-                .applicationComponent(App.instance().getComponent())
+                .applicationComponent(App.getInstance().getComponent())
                 .languagesPickerModule(new LanguagesPickerModule(this))
                 .build();
         }
         return component;
     }
 
-
     @Override
     public void setComponent(LanguagesPickerComponent component) {
         this.component = component;
-    }
-
-    @Override
-    public void notifyLanguageHasBeenPicked() {
-        allowNext(View.VISIBLE, CustomViewPager.SwipeDirection.all);
     }
 }

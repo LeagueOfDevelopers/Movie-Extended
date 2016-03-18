@@ -17,6 +17,8 @@ import rx.Observable;
 import rx.Subscriber;
 
 import static junit.framework.Assert.assertEquals;
+import static junit.framework.Assert.assertNotNull;
+import static junit.framework.Assert.fail;
 import static org.mockito.Mockito.atMost;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.never;
@@ -35,7 +37,7 @@ public class DataManagerTest {
     private DataBaseHelper dataBaseHelper;
     private ServerHelper serverHelper;
     private Session session;
-    String qrCode = "043169d9-b2e4-46f3-a35f-94b33f906387";
+    String qrCode = "00000000-0000-0000-0000-000000000000";
 
     @Before
     public void before() {
@@ -65,7 +67,7 @@ public class DataManagerTest {
     public void shouldGetSessionFromDatabase() {
         DataBaseHelper dataBaseHelper = spy(new DataBaseHelper());
         when(dataBaseHelper.getSession()).thenReturn(Observable.just(session));
-        DataManager dataManager = new DataManager(dataBaseHelper,new ServerHelper());
+        DataManager dataManager = new DataManager(dataBaseHelper,new ServerHelper(ServerAPI.Creator.newService()));
         dataManager.setQrCode(qrCode);
 
         dataManager.getSession().subscribe(new Subscriber<Session>() {
@@ -76,12 +78,12 @@ public class DataManagerTest {
 
             @Override
             public void onError(Throwable e) {
-                throw new RuntimeException();
+                fail();
             }
 
             @Override
-            public void onNext(Session session) {
-
+            public void onNext(Session ses) {
+                assertEquals(ses,session);
             }
         });
         verify(dataBaseHelper,never()).saveSession(session);
@@ -91,7 +93,7 @@ public class DataManagerTest {
     public void shouldGetSessionFromInternet() {
         DataBaseHelper dataBaseHelper = spy(new DataBaseHelper());
         when(dataBaseHelper.getSession()).thenReturn(Observable.just(null));
-        DataManager dataManager = new DataManager(dataBaseHelper, new ServerHelper());
+        DataManager dataManager = new DataManager(dataBaseHelper, new ServerHelper(ServerAPI.Creator.newService()));
         dataManager.setQrCode(qrCode);
         dataManager.getSession().subscribe(new Subscriber<Session>() {
             @Override
@@ -101,22 +103,29 @@ public class DataManagerTest {
 
             @Override
             public void onError(Throwable e) {
-                throw new RuntimeException();
+                fail();
             }
 
             @Override
             public void onNext(Session session) {
-
+                assertSession(session);
             }
         });
         verify(dataBaseHelper,atMost(1)).saveSession(session);
     }
 
+    private void assertSession(Session session) {
+        assertNotNull(session);
+        assertNotNull(session.getFilm());
+        assertNotNull(session.getFilm().getSoundLanguages());
+        assertNotNull(session.getFilm().getSubtitleLanguages());
+    }
+
     @Test
-    public void shouldGetSessionFromDataBaseAfterGettingFromInterner() {
+    public void shouldGetSessionFromDataBaseAfterGettingFromInternet() {
         DataBaseHelper dataBaseHelper = spy(new DataBaseHelper());
         when(dataBaseHelper.getSession()).thenReturn(Observable.just(null));
-        DataManager dataManager = new DataManager(dataBaseHelper, new ServerHelper());
+        DataManager dataManager = new DataManager(dataBaseHelper, new ServerHelper(ServerAPI.Creator.newService()));
         dataManager.setQrCode(qrCode);
         //from internet
         dataManager.getSession().subscribe(new Subscriber<Session>() {
@@ -127,12 +136,12 @@ public class DataManagerTest {
 
             @Override
             public void onError(Throwable e) {
-                throw new RuntimeException();
+                fail();
             }
 
             @Override
             public void onNext(Session session) {
-
+                assertSession(session);
             }
         });
         verify(dataBaseHelper,atMost(1)).saveSession(session);
@@ -146,12 +155,12 @@ public class DataManagerTest {
 
             @Override
             public void onError(Throwable e) {
-                throw new RuntimeException();
+                fail();
             }
 
             @Override
             public void onNext(Session session) {
-
+                assertSession(session);
             }
         });
         verify(dataBaseHelper,atMost(1)).saveSession(session);
@@ -163,7 +172,7 @@ public class DataManagerTest {
         dataManager.getSession().subscribe(new Subscriber<Session>() {
             @Override
             public void onCompleted() {
-                throw new RuntimeException();
+                fail();
             }
 
             @Override
@@ -173,7 +182,7 @@ public class DataManagerTest {
 
             @Override
             public void onNext(Session session) {
-                throw new RuntimeException();
+                fail();
             }
         });
     }

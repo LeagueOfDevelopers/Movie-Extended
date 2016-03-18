@@ -1,18 +1,13 @@
 package com.lod.movie_extended.ui.activity.film;
 
 import android.content.Context;
-import android.content.Intent;
-import android.support.annotation.Nullable;
-import android.support.v7.graphics.Palette;
 
 import com.google.android.exoplayer.drm.UnsupportedDrmException;
 import com.lod.movie_extended.data.DataManager;
-import com.lod.movie_extended.data.model.ServiceHelper;
+import com.lod.movie_extended.data.model.NotificationServiceHelper;
 import com.lod.movie_extended.data.model.player.Player;
 import com.lod.movie_extended.data.model.player.PlayerListener;
-import com.lod.movie_extended.service.PlayerNotificationService;
 import com.lod.movie_extended.ui.base.BasePresenter;
-import com.lod.movie_extended.util.Constants;
 
 import timber.log.Timber;
 
@@ -25,13 +20,13 @@ public class FilmPresenter extends BasePresenter<FilmMvpView> implements
     private DataManager dataManager;
     private Context context;
     private Player player;
-    private ServiceHelper serviceHelper;
+    private NotificationServiceHelper notificationServiceHelper;
 
-    public FilmPresenter(DataManager dataManager, Context context, Player player, ServiceHelper serviceHelper) {
+    public FilmPresenter(DataManager dataManager, Context context, Player player, NotificationServiceHelper notificationServiceHelper) {
         this.dataManager = dataManager;
         this.context = context;
         this.player = player;
-        this.serviceHelper = serviceHelper;
+        this.notificationServiceHelper = notificationServiceHelper;
 
         if(!player.hasAudioUrlBeenSet) {
             Timber.v("setting audio url");
@@ -41,7 +36,7 @@ public class FilmPresenter extends BasePresenter<FilmMvpView> implements
 
     public void onCreate() {
         player.addListener(this);
-        serviceHelper.startNotificationService();
+        notificationServiceHelper.startNotificationService();
     }
 
     public void togglePlayer() {

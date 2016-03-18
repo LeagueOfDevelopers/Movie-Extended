@@ -1,5 +1,6 @@
 package com.lod.movie_extended.ui.fragment.languages;
 
+import com.lod.movie_extended.data.model.Film;
 import com.lod.movie_extended.data.model.Language;
 import com.lod.movie_extended.ui.base.MvpView;
 
@@ -13,4 +14,6 @@ public interface LanguagesMvpView extends MvpView {
     void setLanguages(ArrayList<Language> languages);
 
     void allowNext();
+
+    void setFilm(Film film);
 }

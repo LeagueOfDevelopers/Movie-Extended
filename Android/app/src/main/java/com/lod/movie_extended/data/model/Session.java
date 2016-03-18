@@ -1,6 +1,7 @@
 package com.lod.movie_extended.data.model;
 
 import com.google.gson.JsonArray;
+import com.google.gson.annotations.SerializedName;
 
 /**
  * Created by Жамбыл on 09.01.2016.
@@ -11,8 +12,9 @@ public class Session {
 
     private Token token;
     private long remainingTimeSeconds;
-    private JsonArray jsonArray;
     private String qrCode;
+    private int posterId;
+
     public Token getToken() {
         return token;
     }
@@ -37,19 +39,23 @@ public class Session {
         this.film = film;
     }
 
-    public JsonArray getJsonArray() {
-        return jsonArray;
-    }
-
-    public void setJsonArray(JsonArray jsonArray) {
-        this.jsonArray = jsonArray;
-    }
-
     public String getQrCode() {
         return qrCode;
     }
 
     public void setQrCode(String qrCode) {
         this.qrCode = qrCode;
+    }
+
+    public void setPosterId(int posterId) {
+        this.posterId = posterId;
+    }
+
+    public int getPosterId() {
+        return posterId;
+    }
+
+    public void setId() {
+
     }
 }

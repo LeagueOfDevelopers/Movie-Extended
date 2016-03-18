@@ -1,7 +1,7 @@
 package com.lod.movie_extended.presenter;
 
 import com.lod.movie_extended.data.DataManager;
-import com.lod.movie_extended.data.model.ServiceHelper;
+import com.lod.movie_extended.data.model.NotificationServiceHelper;
 import com.lod.movie_extended.data.model.Session;
 import com.lod.movie_extended.data.model.player.Player;
 import com.lod.movie_extended.ui.activity.filmPreparation.FilmPreparationMvpView;
@@ -23,7 +23,6 @@ import rx.Observable;
 
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNotNull;
-import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -39,7 +38,7 @@ public class FilmPreparationPresenterTest {
     private FilmPreparationPresenter filmPreparationPresenter;
     private Player player;
     private Session session;
-    private ServiceHelper serviceHelper;
+    private NotificationServiceHelper notificationServiceHelper;
 
     @Rule
     public final RxSchedulersOverrideRule mOverrideSchedulersRule = new RxSchedulersOverrideRule();
@@ -47,8 +46,8 @@ public class FilmPreparationPresenterTest {
     @Before
     public void setUp() {
         player = mock(Player.class);
-        serviceHelper = mock(ServiceHelper.class);
-        filmPreparationPresenter = new FilmPreparationPresenter(dataManager,player,serviceHelper);
+        notificationServiceHelper = mock(NotificationServiceHelper.class);
+        filmPreparationPresenter = new FilmPreparationPresenter(dataManager,player, notificationServiceHelper);
         filmPreparationPresenter.attachView(filmPreparationMvpView);
 
         session = TestDataFactory.getTestSession();

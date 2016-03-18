@@ -1,12 +1,12 @@
 package com.lod.movie_extended.util;
 
-import com.lod.movie_extended.data.model.FilmBuilder;
+import com.lod.movie_extended.data.model.Film;
 import com.lod.movie_extended.data.model.Language;
 import com.lod.movie_extended.data.model.Session;
-import com.lod.movie_extended.data.model.SessionFabric;
 import com.lod.movie_extended.data.model.Token;
 
-import rx.Observable;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Жамбыл on 2/11/2016.
@@ -14,21 +14,41 @@ import rx.Observable;
 public final class TestDataFactory {
 
     public static Session getTestSession() {
-        FilmBuilder filmBuilder = new FilmBuilder();
+        Session session  = new Session();
+        Film film = new Film();
+        film.setName("Mad Max");
+        List<Language> languages = new ArrayList<>();
 
-        Language russian = new Language();
         Language english = new Language();
-
-        russian.setName("Русский");
         english.setName("English");
 
-        filmBuilder.setName("Звездные войны");
-        filmBuilder.addLanguage(russian);
-        filmBuilder.addLanguage(english);
+        Language russian = new Language();
+        russian.setName("Русский");
 
-        Token token = new Token("token123");
+        Language ukraine = new Language();
+        ukraine.setName("Украинский");
 
-        Session session = SessionFabric.createSession(token,filmBuilder);
+        languages.add(english);
+        languages.add(russian);
+        languages.add(ukraine);
+
+        List<Language> subs = new ArrayList<>();
+
+        Language english2 = new Language();
+        english2.setName("English");
+
+        Language russian2 = new Language();
+        russian2.setName("Русский");
+
+        subs.add(english2);
+        subs.add(russian2);
+
+        film.setSubtitleLanguages(subs);
+        film.setSoundLanguages(languages);
+
+        film.setSelectedSoundLanguage(english);
+        film.setSelectedSubtitleLanguage(english2);
+        session.setFilm(film);
         return session;
     }
 }

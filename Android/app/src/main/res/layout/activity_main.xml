@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:background="@drawable/round"
+        android:background="@drawable/red_round"
         android:orientation="horizontal">
 
             <ImageView
@@ -22,7 +22,6 @@
                 />
         </RelativeLayout>
 
-
     <TextView
         android:layout_marginTop="20dp"
         android:layout_width="match_parent"
@@ -32,6 +31,6 @@
         android:gravity="center"
         android:textStyle="bold"
         android:textSize="20sp"
-        android:textColor="@color/primary_red"
+        android:textColor="@color/white"
         />
 </RelativeLayout>

@@ -7,12 +7,14 @@ import com.google.gson.annotations.SerializedName;
  */
 public class Language {
 
+    @SerializedName("Id")
+    private int id;
     @SerializedName("Name")
     private String name;
     @SerializedName("TrackFile")
     private TrackFile trackFile;
     @SerializedName("Subtitles")
-    private Subtitles subtitles;
+    private Subtitle subtitle;
 
     public String getName() {
         return name;
@@ -26,50 +28,49 @@ public class Language {
         return trackFile;
     }
 
-    public Subtitles getSubtitles() {
-        return subtitles;
+    public Subtitle getSubtitle() {
+        return subtitle;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setTrackFile(TrackFile trackFile) {
+        this.trackFile = trackFile;
+    }
+
+    public void setSubtitle(Subtitle subtitle) {
+        this.subtitle = subtitle;
+    }
 
     public static class TrackFile {
         @SerializedName("Id")
         private int id;
-        @SerializedName("FilePath")
-        private String filePath;
-        @SerializedName("FileType")
-        private String fileType;
+
+        public TrackFile(int id) {
+            this.id = id;
+        }
 
         public int getId() {
             return id;
-        }
-
-        public String getFilePath() {
-            return filePath;
-        }
-
-        public String getFileType() {
-            return fileType;
         }
     }
 
-    public static class Subtitles {
+    public static class Subtitle {
         @SerializedName("Id")
         private int id;
-        @SerializedName("FilePath")
-        private String filePath;
-        @SerializedName("FileType")
-        private String fileType;
+
+        public Subtitle(int id) {
+            this.id = id;
+        }
 
         public int getId() {
             return id;
-        }
-
-        public String getFilePath() {
-            return filePath;
-        }
-
-        public String getFileType() {
-            return fileType;
         }
     }
 }

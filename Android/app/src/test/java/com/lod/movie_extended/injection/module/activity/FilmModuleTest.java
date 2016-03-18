@@ -5,7 +5,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 
 import com.lod.movie_extended.data.DataManager;
-import com.lod.movie_extended.data.model.ServiceHelper;
+import com.lod.movie_extended.data.model.NotificationServiceHelper;
 import com.lod.movie_extended.data.model.player.Player;
 import com.lod.movie_extended.injection.scope.PerActivity;
 import com.lod.movie_extended.ui.activity.film.FilmPresenter;
@@ -30,7 +30,7 @@ public class FilmModuleTest {
 
     @Provides
     @PerActivity
-    FilmPresenter provideFilmPresenter(DataManager dataManager, Player player, ServiceHelper serviceHelper) {
+    FilmPresenter provideFilmPresenter(DataManager dataManager, Player player, NotificationServiceHelper notificationServiceHelper) {
         FilmPresenter filmPresenter = mock(FilmPresenter.class);
         doReturn(1).when(filmPresenter).test();
         return filmPresenter;

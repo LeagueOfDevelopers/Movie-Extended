@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.lod.movie_extended.R;
+import com.lod.movie_extended.data.model.Film;
 import com.lod.movie_extended.data.model.Language;
 
 import java.util.List;
@@ -22,6 +23,8 @@ import butterknife.OnClick;
  */
 public class LanguagesAdapter extends RecyclerView.Adapter<LanguagesAdapter.LanguageViewHolder> {
 
+    private Film film;
+    private boolean isSound;
     private List<Language> languages;
     private LanguagesPresenter presenter;
     private Context context;
@@ -30,9 +33,13 @@ public class LanguagesAdapter extends RecyclerView.Adapter<LanguagesAdapter.Lang
         this.context = context;
     }
 
-    public void setLanguages(List<Language> languages) {
-        this.languages = languages;
+
+    public void setFilm(Film film, boolean isSound) {
+        this.film = film;
+        this.isSound = isSound;
+        languages = isSound? film.getSoundLanguages():film.getSubtitleLanguages();
     }
+
 
     @Override
     public LanguageViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -43,9 +50,11 @@ public class LanguagesAdapter extends RecyclerView.Adapter<LanguagesAdapter.Lang
     @Override
     public void onBindViewHolder(LanguageViewHolder holder, int position) {
         holder.languageNameTextView.setText(languages.get(position).getName());
+        Language currentLanguage = isSound? film.getSelectedSoundLanguage(): film.getSelectedSubtitleLanguage();
 
-        if(presenter.getSelectedLanguage() != null && languages.get(position) == presenter.getSelectedLanguage()) {
+        if(currentLanguage != null && currentLanguage == languages.get(position)) {
             holder.cardView.setCardBackgroundColor(context.getResources().getColor(R.color.primary_red));
+            presenter.allowNext();
         }
         else {
             holder.cardView.setCardBackgroundColor(context.getResources().getColor(R.color.colorPrimary));
@@ -71,8 +80,13 @@ public class LanguagesAdapter extends RecyclerView.Adapter<LanguagesAdapter.Lang
         @OnClick(R.id.language_item_card_view)
         public void onClick(CardView cardView) {
             Language currentLanguage = languages.get(getAdapterPosition());
-            presenter.setSelectedLanguage(currentLanguage);
-            presenter.getMvpView().allowNext();
+            if(isSound) {
+                film.setSelectedSoundLanguage(currentLanguage);
+            }
+            else {
+                film.setSelectedSubtitleLanguage(currentLanguage);
+            }
+            presenter.allowNext();
             notifyDataSetChanged();
         }
     }

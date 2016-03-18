@@ -9,9 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.lod.movie_extended.R;
+import com.lod.movie_extended.data.model.Film;
 import com.lod.movie_extended.data.model.Language;
-import com.lod.movie_extended.events.LanguageSelected;
-import com.lod.movie_extended.injection.component.activity.FilmPreparationComponent;
 import com.lod.movie_extended.injection.component.activity.LanguagesPickerComponent;
 import com.lod.movie_extended.injection.component.fragment.DaggerLanguagesComponent;
 import com.lod.movie_extended.injection.component.fragment.LanguagesComponent;
@@ -47,9 +46,11 @@ public class LanguagesFragment extends InjectFragmentBase implements LanguagesMv
     private LanguagesComponent component;
     private boolean isAllowedNext;
     private LanguagePickerView languagePickerView;
+    private boolean isSound;
 
-    public LanguagesFragment(LanguagePickerView languagePickerView) {
+    public LanguagesFragment(LanguagePickerView languagePickerView, boolean isSound) {
         this.languagePickerView = languagePickerView;
+        this.isSound = isSound;
     }
 
     @Nullable
@@ -60,8 +61,19 @@ public class LanguagesFragment extends InjectFragmentBase implements LanguagesMv
         return view;
     }
 
+    @Override
+    public void allowNext() {
+        isAllowedNext = true;
+        languagePickerView.notifyLanguageHasBeenPicked();
+    }
+
+    @Override
+    public void setFilm(Film film) {
+
+    }
+
     private void initRecyclerView() {
-        languagesAdapter.setLanguages(presenter.getLanguages());
+        languagesAdapter.setFilm(presenter.getFilm(), isSound);
         languagesRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
         languagesRecyclerView.setAdapter(languagesAdapter);
@@ -71,12 +83,6 @@ public class LanguagesFragment extends InjectFragmentBase implements LanguagesMv
     @Override
     public void setLanguages(ArrayList<Language> languages) {
 
-    }
-
-    @Override
-    public void allowNext() {
-        isAllowedNext = true;
-        languagePickerView.notifyLanguageHasBeenPicked();
     }
 
     public boolean isAllowedNext() {

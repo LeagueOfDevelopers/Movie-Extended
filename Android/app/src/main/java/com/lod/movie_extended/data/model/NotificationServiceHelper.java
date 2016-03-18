@@ -1,15 +1,37 @@
-package com.lod.movie_extended.util;
+package com.lod.movie_extended.data.model;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 
 import com.lod.movie_extended.R;
+import com.lod.movie_extended.service.PlayerNotificationService;
 
 /**
- * Created by Жамбыл on 10.01.2016.
+ * Created by Жамбыл on 3/2/2016.
  */
-public class Constants {
+public class NotificationServiceHelper {
+
+    Context context;
+
+    public NotificationServiceHelper(Context context) {
+        this.context = context;
+    }
+
+    public void startNotificationService() {
+        startServiceWithAction(ACTION.START_FOREGROUND_ACTION);
+    }
+
+    public void stopNotificationService() {
+        startServiceWithAction(ACTION.STOP_FOREGROUND_ACTION);
+    }
+
+    private void startServiceWithAction(String toRightAction) {
+        Intent serviceIntent = new Intent(context, PlayerNotificationService.class);
+        serviceIntent.setAction(toRightAction);
+        context.startService(serviceIntent);
+    }
 
     public interface ACTION {
         String MAIN_ACTION = "com.lod.movie_extended.action.main";

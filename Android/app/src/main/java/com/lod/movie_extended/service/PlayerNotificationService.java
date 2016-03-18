@@ -8,7 +8,6 @@ import android.app.PendingIntent;
 import android.app.Service;
 import android.content.ComponentName;
 import android.content.Intent;
-import android.content.res.Configuration;
 import android.media.AudioManager;
 import android.media.MediaMetadataRetriever;
 import android.media.RemoteControlClient;
@@ -19,13 +18,13 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.widget.RemoteViews;
 
+import com.lod.movie_extended.data.model.NotificationServiceHelper;
 import com.lod.movie_extended.injection.App;
 import com.lod.movie_extended.R;
 import com.lod.movie_extended.data.DataManager;
 import com.lod.movie_extended.data.model.player.Player;
 import com.lod.movie_extended.data.model.player.PlayerListener;
 import com.lod.movie_extended.ui.activity.filmPreparation.FilmPreparationActivity;
-import com.lod.movie_extended.util.Constants;
 
 import javax.inject.Inject;
 
@@ -59,7 +58,7 @@ public class PlayerNotificationService extends Service implements PlayerListener
     @Override
     public void onCreate() {
         super.onCreate();
-        App.instance().getComponent().inject(this);
+        App.getInstance().getComponent().inject(this);
         player.addListener(this);
     }
 
@@ -91,19 +90,19 @@ public class PlayerNotificationService extends Service implements PlayerListener
                 .putString(MediaMetadataRetriever.METADATA_KEY_ALBUM, "album")
                 .putString(MediaMetadataRetriever.METADATA_KEY_TITLE, "title")
                 .putLong(MediaMetadataRetriever.METADATA_KEY_DURATION, 12)
-                .putBitmap(RemoteControlClientCompat.MetadataEditorCompat.METADATA_KEY_ARTWORK, Constants.getDefaultAlbumArt(this))
+                .putBitmap(RemoteControlClientCompat.MetadataEditorCompat.METADATA_KEY_ARTWORK, NotificationServiceHelper.getDefaultAlbumArt(this))
                 .apply();
     }
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         switch (intent.getAction()) {
-            case Constants.ACTION.START_FOREGROUND_ACTION:
+            case NotificationServiceHelper.ACTION.START_FOREGROUND_ACTION:
                 createAndShowNotification(false);
                 registerRemoteControlClient();
                 break;
 
-            case Constants.ACTION.PLAY_OR_PAUSE:
+            case NotificationServiceHelper.ACTION.PLAY_OR_PAUSE:
                 if (!getIsPlaying()) {
                     play();
                 } else {
@@ -111,15 +110,15 @@ public class PlayerNotificationService extends Service implements PlayerListener
                 }
                 break;
 
-            case Constants.ACTION.MOVE_TO_LEFT:
+            case NotificationServiceHelper.ACTION.MOVE_TO_LEFT:
                 moveToLeft();
                 break;
 
-            case Constants.ACTION.MOVE_TO_RIGHT:
+            case NotificationServiceHelper.ACTION.MOVE_TO_RIGHT:
                 moveToRight();
                 break;
 
-            case Constants.ACTION.STOP_FOREGROUND_ACTION:
+            case NotificationServiceHelper.ACTION.STOP_FOREGROUND_ACTION:
                 onDestroy();
                 break;
         }
@@ -172,7 +171,7 @@ public class PlayerNotificationService extends Service implements PlayerListener
         }
         notification.contentView = smallView;
         notification.bigContentView = bigView;
-        notificationManager.notify(Constants.NOTIFICATION_ID.FOREGROUND_SERVICE,notification);
+        notificationManager.notify(NotificationServiceHelper.NOTIFICATION_ID.FOREGROUND_SERVICE,notification);
     }
 
     public void moveToLeft() {
@@ -190,7 +189,7 @@ public class PlayerNotificationService extends Service implements PlayerListener
         bigView = getRemoteViews(R.layout.notification_player_big);
         Notification notification = createNotification(smallView,bigView);
         if(foreground) {
-            startForeground(Constants.NOTIFICATION_ID.FOREGROUND_SERVICE, notification);
+            startForeground(NotificationServiceHelper.NOTIFICATION_ID.FOREGROUND_SERVICE, notification);
         }
     }
 
@@ -214,7 +213,7 @@ public class PlayerNotificationService extends Service implements PlayerListener
         RemoteViews view = new RemoteViews(getPackageName(),layoutId);
         setOnPendingClickListeners(view);
         setTextViewText(view);
-        view.setImageViewBitmap(R.id.status_bar_album_art, Constants.getDefaultAlbumArt(this));
+        view.setImageViewBitmap(R.id.status_bar_album_art, NotificationServiceHelper.getDefaultAlbumArt(this));
         if(getIsPlaying()) {
             view.setImageViewResource(R.id.status_bar_play, R.mipmap.apollo_holo_dark_pause);
         }
@@ -232,14 +231,14 @@ public class PlayerNotificationService extends Service implements PlayerListener
     }
 
     private void setOnPendingClickListeners(RemoteViews view) {
-        view.setOnClickPendingIntent(R.id.status_bar_play, getPendingIntent(Constants.ACTION.PLAY_OR_PAUSE));
-        view.setOnClickPendingIntent(R.id.status_bar_next, getPendingIntent(Constants.ACTION.MOVE_TO_RIGHT));
-        view.setOnClickPendingIntent(R.id.status_bar_prev, getPendingIntent(Constants.ACTION.MOVE_TO_LEFT));
+        view.setOnClickPendingIntent(R.id.status_bar_play, getPendingIntent(NotificationServiceHelper.ACTION.PLAY_OR_PAUSE));
+        view.setOnClickPendingIntent(R.id.status_bar_next, getPendingIntent(NotificationServiceHelper.ACTION.MOVE_TO_RIGHT));
+        view.setOnClickPendingIntent(R.id.status_bar_prev, getPendingIntent(NotificationServiceHelper.ACTION.MOVE_TO_LEFT));
     }
 
     private PendingIntent getMainPendingIntent() {
         Intent intent = new Intent(this, FilmPreparationActivity.class);
-        intent.setAction(Constants.ACTION.MAIN_ACTION);
+        intent.setAction(NotificationServiceHelper.ACTION.MAIN_ACTION);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         return PendingIntent.getActivity(this, 0, intent, 0);
     }

@@ -1,19 +1,14 @@
 package com.lod.movie_extended.data;
 
-import android.support.annotation.NonNull;
-
-import com.google.gson.Gson;
-import com.google.gson.JsonArray;
 import com.lod.movie_extended.data.local.DataBaseHelper;
 import com.lod.movie_extended.data.model.Film;
 import com.lod.movie_extended.data.model.Language;
 import com.lod.movie_extended.data.model.Session;
-import com.lod.movie_extended.data.model.Token;
-import com.lod.movie_extended.data.remote.ServerAPI;
 import com.lod.movie_extended.data.remote.ServerHelper;
 import com.lod.movie_extended.injection.scope.PerApplication;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -45,23 +40,30 @@ public class DataManager {
     }
 
     public Observable<Session> getSession() {
-        Timber.e("Observable.create");
         return Observable.create((Observable.OnSubscribe<Session>) subscriber ->
         {
-            Timber.v("getting session");
             String qrCode = dataBaseHelper.getQrCode();
             Session sessionFromDatabase = dataBaseHelper.getSession().toBlocking().first();
+
             if(sessionFromDatabase != null && sessionFromDatabase.getQrCode().equals(qrCode)) {
                 Timber.e("getting session from database");
                 subscriber.onNext(sessionFromDatabase);
             }
             else {
                 Timber.e("getting session from internet");
-                Session sessionFromInternet = serverHelper.loadSession(qrCode).concatMap(dataBaseHelper::saveSession)
-                                                                                                .toBlocking().first();
+                Session sessionFromInternet = serverHelper.loadSession(qrCode)
+                        .concatMap(dataBaseHelper::saveSession).toBlocking().first();
+
+                setDefaultSelectedLanguages(sessionFromInternet);
                 subscriber.onNext(sessionFromInternet);
             }
         });
+    }
+
+    private void setDefaultSelectedLanguages(Session session) {
+        Film film = session.getFilm();
+        film.setSelectedSubtitleLanguage(film.getSubtitleLanguages().get(0));
+        film.setSelectedSoundLanguage(film.getSoundLanguages().get(0));
     }
 
     public boolean isFilmTime() {

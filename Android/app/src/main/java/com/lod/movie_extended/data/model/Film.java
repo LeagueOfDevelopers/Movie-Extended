@@ -2,17 +2,22 @@ package com.lod.movie_extended.data.model;
 
 import android.graphics.Bitmap;
 
-import java.util.ArrayList;
+import com.google.gson.annotations.SerializedName;
+
+import java.util.List;
 
 /**
  * Created by Жамбыл on 09.01.2016.
  */
 public class Film {
-
-    private ArrayList<Language> languages;
+    private List<Language> soundLanguages;
+    private List<Language> subtitleLanguages;
+    private Language selectedSoundLanguage;
+    private Language selectedSubtitleLanguage;
     private Bitmap poster;
-    private Language selectedLanguage;
-    private String Name;
+    private String name;
+    private int id;
+
     public Bitmap getPoster() {
         return poster;
     }
@@ -21,27 +26,57 @@ public class Film {
         this.poster = poster;
     }
 
-    public ArrayList<Language> getLanguages() {
-        return languages;
+    public List<Language> getSoundLanguages() {
+        return soundLanguages;
     }
 
-    public void setLanguages(ArrayList<Language> languages) {
-        this.languages = languages;
+    public void setSoundLanguages(List<Language> soundLanguages) {
+        this.soundLanguages = soundLanguages;
     }
 
-    public Language getSelectedLanguage() {
-        return selectedLanguage;
+    public Language getSelectedSoundLanguage() {
+        return selectedSoundLanguage;
     }
 
-    public void setSelectedLanguage(Language selectedLanguage) {
-        this.selectedLanguage = selectedLanguage;
+    public List<Language> getSubtitleLanguages() {
+        return subtitleLanguages;
+    }
+
+    public void setSubtitleLanguages(List<Language> subtitleLanguages) {
+        this.subtitleLanguages = subtitleLanguages;
+    }
+
+    public void setSelectedSubtitleLanguage(Language selectedSubtitleLanguage) {
+        if(!subtitleLanguages.contains(selectedSubtitleLanguage)) {
+            throw new IllegalArgumentException();
+        }
+        this.selectedSubtitleLanguage = selectedSubtitleLanguage;
+    }
+
+    public void setSelectedSoundLanguage(Language selectedSoundLanguage) {
+        if(!soundLanguages.contains(selectedSoundLanguage)) {
+            throw new IllegalArgumentException();
+        }
+        this.selectedSoundLanguage = selectedSoundLanguage;
+    }
+
+    public Language getSelectedSubtitleLanguage() {
+        return selectedSubtitleLanguage;
     }
 
     public String getName() {
-        return Name;
+        return name;
     }
 
     public void setName(String name) {
-        Name = name;
+        this.name = name;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

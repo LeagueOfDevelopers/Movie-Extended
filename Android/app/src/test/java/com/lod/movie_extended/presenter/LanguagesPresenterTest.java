@@ -56,7 +56,7 @@ public class LanguagesPresenterTest   {
         Session session = TestDataFactory.getTestSession();
         when(dataManager.getSession()).thenReturn(Observable.just(session));
 
-//        ArrayList<Language> languages = languagesPresenter.getLanguages();
+//        ArrayList<Language> languages = languagesPresenter.getSoundLanguages();
 
 //        assertNotNull(languages);
     }

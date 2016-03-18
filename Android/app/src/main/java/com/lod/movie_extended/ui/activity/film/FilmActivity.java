@@ -224,7 +224,7 @@ public class FilmActivity extends InjectActivityBase implements FilmMvpView, Com
         if(component == null) {
             component = DaggerFilmComponent.builder()
                     .filmModule(new FilmModule(this))
-                    .applicationComponent(App.instance().getComponent())
+                    .applicationComponent(App.getInstance().getComponent())
                     .build();
         }
         return component;

@@ -20,9 +20,9 @@ public class LanguagesViewPagerAdapter extends FragmentPagerAdapter{
     public LanguagesViewPagerAdapter(FragmentManager fm, LanguagePickerView languagePickerView) {
         super(fm);
         fragments = new ArrayList<>();
-        fragments.add(new LanguagesFragment(languagePickerView));
-        fragments.add(new LanguagesFragment(languagePickerView));
-        fragments.add(new LanguagesFragment(languagePickerView));
+        fragments.add(new LanguagesFragment(languagePickerView,true));
+        fragments.add(new LanguagesFragment(languagePickerView,false));
+        fragments.add(new LanguagesFragment(languagePickerView,true));
     }
 
     @Override

@@ -1,18 +1,14 @@
 package com.lod.movie_extended.ui.activity.filmPreparation;
 
-import com.google.gson.JsonArray;
 import com.lod.movie_extended.data.DataManager;
-import com.lod.movie_extended.data.model.Language;
-import com.lod.movie_extended.data.model.ServiceHelper;
+import com.lod.movie_extended.data.model.NotificationServiceHelper;
 import com.lod.movie_extended.data.model.player.Player;
 import com.lod.movie_extended.data.model.player.PlayerListener;
 import com.lod.movie_extended.data.model.Session;
-import com.lod.movie_extended.data.model.Token;
 import com.lod.movie_extended.ui.base.BasePresenter;
 
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
-import rx.functions.Action1;
 import rx.schedulers.Schedulers;
 import timber.log.Timber;
 
@@ -24,12 +20,12 @@ public class FilmPreparationPresenter extends BasePresenter<FilmPreparationMvpVi
     private DataManager dataManager;
     private Session currentSession;
     private Player player;
-    private ServiceHelper serviceHelper;
+    private NotificationServiceHelper notificationServiceHelper;
 
-    public FilmPreparationPresenter(DataManager dataManager, Player player, ServiceHelper serviceHelper) {
+    public FilmPreparationPresenter(DataManager dataManager, Player player, NotificationServiceHelper notificationServiceHelper) {
         this.dataManager = dataManager;
         this.player = player;
-        this.serviceHelper = serviceHelper;
+        this.notificationServiceHelper = notificationServiceHelper;
     }
 
     public void onCreate() {

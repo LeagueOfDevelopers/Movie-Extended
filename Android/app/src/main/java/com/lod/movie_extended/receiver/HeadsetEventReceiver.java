@@ -22,7 +22,7 @@ public class HeadsetEventReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         Timber.v("onReceive");
-        App.instance().getComponent().inject(this);
+        App.getInstance().getComponent().inject(this);
         if (intent.getAction().equals(Intent.ACTION_HEADSET_PLUG)) {
             int state = intent.getIntExtra("state", -1);
             switch (state) {

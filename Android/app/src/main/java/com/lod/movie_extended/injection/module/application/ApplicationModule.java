@@ -10,7 +10,7 @@ import com.lod.movie_extended.R;
 import com.lod.movie_extended.data.local.DataBaseHelper;
 import com.lod.movie_extended.data.local.PreferencesHelper;
 import com.lod.movie_extended.data.model.ColorHelper;
-import com.lod.movie_extended.data.model.ServiceHelper;
+import com.lod.movie_extended.data.model.NotificationServiceHelper;
 import com.lod.movie_extended.data.remote.ServerAPI;
 import com.lod.movie_extended.data.remote.ServerHelper;
 import com.lod.movie_extended.injection.context.ApplicationContext;
@@ -60,8 +60,8 @@ public class ApplicationModule {
 
     @Provides
     @PerApplication
-    ServerHelper provideServerHelper() {
-        return new ServerHelper();
+    ServerHelper provideServerHelper(ServerAPI serverAPI) {
+        return new ServerHelper(serverAPI);
     }
 
     @Provides
@@ -105,7 +105,7 @@ public class ApplicationModule {
 
     @Provides
     @PerApplication
-    ServiceHelper provideServiceHelper(@ApplicationContext Context context) {
-        return new ServiceHelper(context);
+    NotificationServiceHelper provideServiceHelper(@ApplicationContext Context context) {
+        return new NotificationServiceHelper(context);
     }
 }

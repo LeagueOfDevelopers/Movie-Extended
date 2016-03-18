@@ -54,7 +54,7 @@ public class Player implements ExoPlayer.Listener, MediaCodecAudioTrackRenderer.
 
     public Player() {
         Timber.v("constructor");
-        App.instance().getComponent().inject(this);
+        App.getInstance().getComponent().inject(this);
         player.addListener(this);
         listeners = new CopyOnWriteArrayList<>();
         playerLogger.setPlayer(this);

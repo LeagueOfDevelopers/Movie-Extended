@@ -159,7 +159,7 @@ public class FilmPreparationActivity extends InjectActivityBase
     public FilmPreparationComponent getComponent() {
         if(component == null) {
             component = DaggerFilmPreparationComponent.builder()
-                    .applicationComponent(App.instance().getComponent())
+                    .applicationComponent(App.getInstance().getComponent())
                     .filmPreparationModule(new FilmPreparationModule(this))
                     .build();
         }

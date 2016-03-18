@@ -8,7 +8,7 @@ import android.content.Context;
 import com.lod.movie_extended.data.local.DataBaseHelper;
 import com.lod.movie_extended.data.local.PreferencesHelper;
 import com.lod.movie_extended.data.model.ColorHelper;
-import com.lod.movie_extended.data.model.ServiceHelper;
+import com.lod.movie_extended.data.model.NotificationServiceHelper;
 import com.lod.movie_extended.data.remote.ServerAPI;
 import com.lod.movie_extended.data.remote.ServerHelper;
 import com.lod.movie_extended.injection.context.ApplicationContext;
@@ -99,7 +99,7 @@ public class ApplicationModuleTest{
 
     @Provides
     @PerApplication
-    ServiceHelper provideServiceHelper(@ApplicationContext Context context) {
-        return mock(ServiceHelper.class);
+    NotificationServiceHelper provideServiceHelper(@ApplicationContext Context context) {
+        return mock(NotificationServiceHelper.class);
     }
 }

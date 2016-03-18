@@ -10,7 +10,7 @@ import com.lod.movie_extended.data.DataManager;
 import com.lod.movie_extended.data.local.DataBaseHelper;
 import com.lod.movie_extended.data.local.PreferencesHelper;
 import com.lod.movie_extended.data.model.ColorHelper;
-import com.lod.movie_extended.data.model.ServiceHelper;
+import com.lod.movie_extended.data.model.NotificationServiceHelper;
 import com.lod.movie_extended.data.model.player.ExtractorRendererBuilder;
 import com.lod.movie_extended.data.model.player.Player;
 import com.lod.movie_extended.data.remote.ServerHelper;
@@ -61,7 +61,7 @@ public interface ApplicationComponent{
 
     ColorHelper getColorHelper();
 
-    ServiceHelper getServiceHelper();
+    NotificationServiceHelper getServiceHelper();
 
     ServerHelper getServerHelper();
 

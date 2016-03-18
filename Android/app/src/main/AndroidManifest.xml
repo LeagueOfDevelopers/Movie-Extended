@@ -25,7 +25,9 @@
         </activity>
 
         <activity android:name=".ui.activity.qrCodeReader.QrCodeReaderActivity"/>
+        <activity android:name=".ui.activity.filmShow.FilmShowActivity">
 
+        </activity>
         <activity android:name=".ui.activity.filmPreparation.FilmPreparationActivity"/>
 
         <activity android:name=".ui.activity.film.FilmActivity"/>

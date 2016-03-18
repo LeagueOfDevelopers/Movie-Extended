@@ -103,17 +103,17 @@ public class RemoteControlClientCompat {
                     sRemoteControlClientClass.getConstructor(PendingIntent.class, Looper.class)
                             .newInstance(pendingIntent, looper);
         } catch (Exception e) {
-            Log.e(TAG, "Error creating new instance of " + sRemoteControlClientClass.getName(), e);
+            Log.e(TAG, "Error creating new getInstance of " + sRemoteControlClientClass.getName(), e);
         }
     }
 
     /**
      * Class used to modify metadata in a {@link android.media.RemoteControlClient} object. Use
-     * {@link android.media.RemoteControlClient#editMetadata(boolean)} to create an instance of an
-     * editor, on which you set the metadata for the RemoteControlClient instance. Once all the
+     * {@link android.media.RemoteControlClient#editMetadata(boolean)} to create an getInstance of an
+     * editor, on which you set the metadata for the RemoteControlClient getInstance. Once all the
      * information has been set, use {@link #apply()} to make it the new metadata that should be
      * displayed for the associated client. Once the metadata has been "applied", you cannot reuse
-     * this instance of the MetadataEditor.
+     * this getInstance of the MetadataEditor.
      *
      * MetadataEditorCompat 用來改變 RemoteControlClient 裡的 metadata.
      * 利用 RemoteControlClient 裡的方法 #editMetadata(boolean) 來產生 editor
@@ -241,7 +241,7 @@ public class RemoteControlClientCompat {
         }
 
         /**
-         * Clears all the metadata that has been set since the MetadataEditor instance was
+         * Clears all the metadata that has been set since the MetadataEditor getInstance was
          * created with {@link android.media.RemoteControlClient#editMetadata(boolean)}.
          */
         public void clear() {
@@ -255,7 +255,7 @@ public class RemoteControlClientCompat {
         }
 
         /**
-         * Associates all the metadata that has been set since the MetadataEditor instance was
+         * Associates all the metadata that has been set since the MetadataEditor getInstance was
          * created with {@link android.media.RemoteControlClient#editMetadata(boolean)}, or since
          * {@link #clear()} was called, with the RemoteControlClient. Once "applied", this
          * MetadataEditor cannot be reused to edit the RemoteControlClient's metadata.
@@ -275,7 +275,7 @@ public class RemoteControlClientCompat {
      * Creates a {@link android.media.RemoteControlClient.MetadataEditor}.
      * @param startEmpty Set to false if you want the MetadataEditor to contain the metadata that
      *     was previously applied to the RemoteControlClient, or true if it is to be created empty.
-     * @return a new MetadataEditor instance.
+     * @return a new MetadataEditor getInstance.
      */
     public MetadataEditorCompat editMetadata(boolean startEmpty) {
         Object metadataEditor;
