@@ -18,16 +18,17 @@ namespace UnitTestProject2
             var provider = new SessionProvider();
             provider.OpenSession();
             var companyRepo = new CompanyRepository(provider);
-            var file1 = new File("way",FileType.Track);
-            file1.FileType=FileType.Track;
-            var file2 = new File("way",FileType.Subtitles);
-            file2.FileType=FileType.Subtitles;
+            var file1 = new File("Russian1track",FileType.Track);
+            var file2 = new File("Russian1subtitles",FileType.Subtitles);
+            var file3 = new File("EnglishTrack",FileType.Track);
+            var file4 = new File("SubtitlesEnglish" , FileType.Subtitles);
             var language1 = new Language("russian", file1, file2);
-            var language2 = new Language("english", new File(), new File());
+            var language2 = new Language("english", file3, file4);
             var langset = new HashSet<Language>();
             langset.Add(language1);
             langset.Add(language2);
-            var movie1= new Movie("movie1",langset);
+            var poster= new File("Poster",FileType.Poster);
+            var movie1= new Movie("movie1",langset,poster);
             var movieset = new HashSet<Movie>();
             movieset.Add(movie1);
             var cinema_1= new Cinema("cinema_1","address",movieset);
@@ -47,13 +48,23 @@ namespace UnitTestProject2
             var provider = new SessionProvider();
             provider.OpenSession();
             var langRepo = new LanguageRepository(provider);
-            var lang = langRepo.GetLanguageById(52);
-            lang.TrackFile= new File("~/AudioTrack/7.mp3",FileType.Track);
+            var lang = langRepo.GetLanguageById(2);
+            lang.TrackFile.FilePath = "2idTrack";
+            lang.Subtitles.FilePath = "2idSubtitle";
+            
             //lang.Subtitles = new File("~/Subtitles/4.srt",FileType.Subtitles);
             langRepo.UpdateLanguage(lang);
 
+        }
 
-
+        [TestMethod]
+        public void getMovie()
+        {
+            var provider = new SessionProvider();
+            provider.OpenSession();
+            var movieRepo = new MovieRepository(provider);
+            var film = movieRepo.CheckAndroidToken(new Guid("00000000-0000-0000-0000-000000000000"));
+            film.Poster.FilePath = film.Poster.FilePath;
         }
     }
 }

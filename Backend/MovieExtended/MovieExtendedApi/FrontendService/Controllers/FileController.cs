@@ -31,10 +31,10 @@ namespace FrontendService.Controllers
             Require.NotNull(movieRepository , nameof(IMovieRepository));
             _movieRepository = movieRepository;
         }
-
-        [Route("file/get/{fileId}")]
-        [HttpPut]
-        public HttpResponseMessage Track(int fileId , [FromBody] Guid sessionId)
+        
+        [Route("file/get/{fileId}/token/{sessionId}")]
+        [HttpGet]
+        public HttpResponseMessage Track(int fileId , Guid sessionId)
         {
             if (_keeper.CheckIfSessionExists(sessionId))
             return GetAnyFile(fileId);

@@ -12,7 +12,24 @@ namespace Domain.mapper
     {
         public  FrontendMovie ToFrontendMovie(Movie movie)
         {
-            return new FrontendMovie(movie.Id,movie.Name,movie.Language,movie.Poster);
+            var frontendMovie = new FrontendMovie();
+            frontendMovie.Id = movie.Id;
+            frontendMovie.Name = movie.Name;
+            frontendMovie.Poster = new FrontendFile();
+            frontendMovie.Poster.Id = movie.Poster.Id;
+            frontendMovie.Language=new HashSet<FrontendLanguage>();
+            foreach (var language in movie.Language)
+            {
+                var frontendLanguage = new FrontendLanguage();
+                frontendLanguage.Id = language.Id;
+                frontendLanguage.Name = language.Name;
+                frontendLanguage.Subtitles= new FrontendFile();
+                frontendLanguage.TrackFile = new FrontendFile();
+                frontendLanguage.Subtitles.Id = language.Subtitles.Id;
+                frontendLanguage.TrackFile.Id = language.TrackFile.Id;
+                frontendMovie.Language.Add(frontendLanguage);
+            }
+            return frontendMovie;
         }
     }
 }

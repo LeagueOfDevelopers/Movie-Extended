@@ -33,6 +33,7 @@ namespace FrontendService.Controllers.AndroidClient
             var newSessionGuid = Guid.NewGuid();
             if (necessaryMovie != null)
             {
+
                 var frontendMovie = new MovieMapper().ToFrontendMovie(necessaryMovie);
                 frontendMovie.AndroidToken = newSessionGuid;
                 var newSession = new Session(newSessionGuid, necessaryMovie.Id);
@@ -65,7 +66,7 @@ namespace FrontendService.Controllers.AndroidClient
         //    return diff.TotalMilliseconds;
         //}
         [Route("time/{movieId}")]
-        [HttpGet]
+        [HttpPost]
         public void SetMovieStartTime( int movieId)
         {
             _keeper.SetMovieTime(movieId,DateTime.Now);

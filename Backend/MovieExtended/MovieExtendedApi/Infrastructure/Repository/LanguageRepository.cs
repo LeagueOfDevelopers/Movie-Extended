@@ -60,7 +60,10 @@ namespace Infrastructure.Repository
         public void UpdateLanguage(Language language)
         {
             var session = _provider.GetCurrentSession();
+            session.Transaction.Begin();
             session.Update(language);
+            session.Flush();
+            session.Transaction.Commit();
         }
 
 

@@ -21,11 +21,15 @@ namespace Domain.Models.FrontendEntities
                 this.Language.Add(frontendLangugeEntity);
             }
             this.Poster.Id = Poster.Id;
-
         }
-        public virtual int Id { get; protected set; }
 
-        public virtual string Name { get; protected set; }
+        public FrontendMovie()
+        {
+            
+        }
+        public virtual int Id { get;  set; }
+
+        public virtual string Name { get;  set; }
 
         public virtual ISet<FrontendLanguage> Language { get; set; }
 

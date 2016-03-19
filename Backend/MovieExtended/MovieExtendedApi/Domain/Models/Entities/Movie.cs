@@ -14,12 +14,15 @@ namespace Domain.Models.Entities
 
         }
 
-        public Movie(string name , ISet<Language> language)
+        public Movie(string name , ISet<Language> language,File poster)
         {
             Name = name;
             Language= language;
-            
+            Poster = poster;
+
         }
+
+        
 
         protected Movie()
         {
