@@ -1,8 +1,12 @@
 package com.lod.movie_extended.injection.module.activity;
 
+import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 
 import com.lod.movie_extended.data.DataManager;
+import com.lod.movie_extended.data.model.NotificationServiceHelper;
+import com.lod.movie_extended.data.model.player.Player;
+import com.lod.movie_extended.injection.context.ActivityContext;
 import com.lod.movie_extended.injection.scope.PerActivity;
 import com.lod.movie_extended.ui.activity.filmShow.FilmShowPresenter;
 
@@ -23,7 +27,18 @@ public class FilmShowModule {
 
     @Provides
     @PerActivity
-    FilmShowPresenter provideFilmShowPresenter(DataManager dataManager) {
-        return new FilmShowPresenter(dataManager);
+    @ActivityContext
+    Context provideContext() {
+        return activity;
+    }
+
+
+    @Provides
+    @PerActivity
+    FilmShowPresenter provideFilmShowPresenter(DataManager dataManager,
+                                               Player player,
+                                               NotificationServiceHelper notificationServiceHelper,
+                                               @ActivityContext Context context) {
+        return new FilmShowPresenter(dataManager, player, notificationServiceHelper, context);
     }
 }

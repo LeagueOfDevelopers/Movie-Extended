@@ -55,13 +55,6 @@
             android:layout_gravity="center_vertical"
             android:src="@mipmap/inactive_dot"
             android:layout_margin="5dp"/>
-        <ImageView
-            android:id="@+id/thirdDot"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:src="@mipmap/inactive_dot"
-            android:layout_margin="5dp"/>
     </LinearLayout>
 
 </RelativeLayout>

@@ -28,15 +28,13 @@ public class FilmPresenter extends BasePresenter<FilmMvpView> implements
         this.player = player;
         this.notificationServiceHelper = notificationServiceHelper;
 
-        if(!player.hasAudioUrlBeenSet) {
-            Timber.v("setting audio url");
-            player.startAudio("http://movieextended1.azurewebsites.net/api/file/get/1");
-        }
+        Timber.v("setting audio url");
+        player.startAudio("http://movieextended1.azurewebsites.net/api/file/get/1");
     }
 
     public void onCreate() {
         player.addListener(this);
-        notificationServiceHelper.startNotificationService();
+        notificationServiceHelper.start();
     }
 
     public void togglePlayer() {
@@ -73,6 +71,11 @@ public class FilmPresenter extends BasePresenter<FilmMvpView> implements
     @Override
     public void onWiredHeadsetNotOn() {
         getMvpView().showHeadsetError();
+    }
+
+    @Override
+    public void onWiredHeadsetOn() {
+
     }
 
 

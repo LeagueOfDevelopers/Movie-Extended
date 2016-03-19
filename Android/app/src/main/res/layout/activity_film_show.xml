@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
 
@@ -10,21 +12,21 @@
         android:layout_height="match_parent"
         android:src="@mipmap/mad_max_poster"
         android:scaleType="fitXY"
-        />
+    />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/black"
         android:alpha="0.5"
-        >
+        android:orientation="horizontal">
 
     </LinearLayout>
     <TextView
         android:id="@+id/film_name_text_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="MAD MAX"
+        tools:text="MAD MAX"
         android:textSize="30sp"
         android:textStyle="bold"
         android:layout_marginLeft="22dp"
@@ -39,17 +41,6 @@
         android:layout_marginTop="300dp"
         android:background="@color/black"
         android:orientation="vertical">
-
-        <!--<TextView-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:text="Выберете язык"-->
-            <!--android:textSize="20sp"-->
-            <!--android:textStyle="bold"-->
-            <!--android:textColor="@color/white"-->
-            <!--android:layout_marginTop="50dp"-->
-            <!--android:layout_marginLeft="30dp"-->
-            <!--fontPath="fonts/Roboto-Light.ttf"/>-->
 
         <TextView
             android:layout_width="match_parent"
@@ -66,7 +57,7 @@
             android:id="@+id/sound_language_text_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="English"
+            tools:text="English"
             android:textColor="@color/white"
             android:textSize="15sp"
             android:layout_marginTop="1dp"
@@ -88,7 +79,7 @@
             android:id="@+id/subtitle_language_text_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="English"
+            tools:text="English"
             android:textColor="@color/white"
             android:textSize="15sp"
             android:layout_marginTop="1dp"
@@ -120,8 +111,19 @@
         android:layout_height="60dp"
         android:layout_alignParentBottom="true"
         android:orientation="horizontal"
+        android:background="@color/black"
         >
-
+        <TextView
+            android:id="@+id/info_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Фильм скоро начнется"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:visibility="invisible"
+            android:layout_centerInParent="true"
+            />
         <ImageView
             android:id="@+id/headset"
             android:layout_width="35dp"
@@ -132,6 +134,7 @@
             />
 
         <TextView
+            android:id="@+id/mute_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="MUTE"
@@ -144,6 +147,7 @@
             />
 
         <TextView
+            android:id="@+id/sub_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="SUB"
@@ -156,4 +160,20 @@
             android:layout_marginLeft="15dp"
             />
     </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/blackScreen"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/black"
+        android:alpha="0"
+        android:orientation="horizontal"/>
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:visibility="visible"
+        android:layout_centerInParent="true"
+        />
 </RelativeLayout>

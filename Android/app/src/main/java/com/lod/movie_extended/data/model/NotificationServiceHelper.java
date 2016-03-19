@@ -8,6 +8,8 @@ import android.graphics.BitmapFactory;
 import com.lod.movie_extended.R;
 import com.lod.movie_extended.service.PlayerNotificationService;
 
+import timber.log.Timber;
+
 /**
  * Created by Жамбыл on 3/2/2016.
  */
@@ -19,17 +21,21 @@ public class NotificationServiceHelper {
         this.context = context;
     }
 
-    public void startNotificationService() {
-        startServiceWithAction(ACTION.START_FOREGROUND_ACTION);
+    public void start() {
+        startServiceWithAction(ACTION.START_FOREGROUND_ACTION, context);
+    }
+    public void start(Context context) {
+        startServiceWithAction(ACTION.START_FOREGROUND_ACTION, context);
     }
 
-    public void stopNotificationService() {
-        startServiceWithAction(ACTION.STOP_FOREGROUND_ACTION);
+    public void stop() {
+        startServiceWithAction(ACTION.STOP_FOREGROUND_ACTION, context);
     }
 
-    private void startServiceWithAction(String toRightAction) {
-        Intent serviceIntent = new Intent(context, PlayerNotificationService.class);
+    private void startServiceWithAction(String toRightAction, Context context) {
+        Intent serviceIntent = new Intent(this.context, PlayerNotificationService.class);
         serviceIntent.setAction(toRightAction);
+        Timber.v("Starting notification");
         context.startService(serviceIntent);
     }
 

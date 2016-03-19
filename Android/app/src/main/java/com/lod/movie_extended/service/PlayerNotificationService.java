@@ -25,6 +25,7 @@ import com.lod.movie_extended.data.DataManager;
 import com.lod.movie_extended.data.model.player.Player;
 import com.lod.movie_extended.data.model.player.PlayerListener;
 import com.lod.movie_extended.ui.activity.filmPreparation.FilmPreparationActivity;
+import com.lod.movie_extended.ui.activity.filmShow.FilmShowActivity;
 
 import javax.inject.Inject;
 
@@ -191,6 +192,9 @@ public class PlayerNotificationService extends Service implements PlayerListener
         if(foreground) {
             startForeground(NotificationServiceHelper.NOTIFICATION_ID.FOREGROUND_SERVICE, notification);
         }
+        else  {
+            notificationManager.notify(NotificationServiceHelper.NOTIFICATION_ID.FOREGROUND_SERVICE, notification);
+        }
     }
 
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
@@ -198,7 +202,7 @@ public class PlayerNotificationService extends Service implements PlayerListener
     private Notification createNotification(RemoteViews smallView, RemoteViews bigView) {
         notification = new Notification.Builder(this)
                 .setSmallIcon(R.mipmap.star_wars)
-                .setContentIntent(getMainPendingIntent())
+//                .setContentIntent(getMainPendingIntent())
                 .setContent(smallView)
                 .setPriority(Notification.PRIORITY_MAX)
                 .build();
@@ -237,7 +241,7 @@ public class PlayerNotificationService extends Service implements PlayerListener
     }
 
     private PendingIntent getMainPendingIntent() {
-        Intent intent = new Intent(this, FilmPreparationActivity.class);
+        Intent intent = new Intent(this, FilmShowActivity.class);
         intent.setAction(NotificationServiceHelper.ACTION.MAIN_ACTION);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         return PendingIntent.getActivity(this, 0, intent, 0);
@@ -251,6 +255,7 @@ public class PlayerNotificationService extends Service implements PlayerListener
 
     @Override
     public void onStateChanged(boolean playWhenReady) {
+        Timber.v("state changed");
         setPlayOrPauseImage();
         if(!playWhenReady) {
             stopForeground(false);
@@ -265,6 +270,11 @@ public class PlayerNotificationService extends Service implements PlayerListener
     @Override
     public void onWiredHeadsetNotOn() {
         //do nothing
+    }
+
+    @Override
+    public void onWiredHeadsetOn() {
+
     }
 }
 

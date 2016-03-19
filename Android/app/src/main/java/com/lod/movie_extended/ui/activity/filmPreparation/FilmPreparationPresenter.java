@@ -90,6 +90,11 @@ public class FilmPreparationPresenter extends BasePresenter<FilmPreparationMvpVi
         getMvpView().onShowHeadsetError();
     }
 
+    @Override
+    public void onWiredHeadsetOn() {
+
+    }
+
     public void togglePlayer(boolean isPlaying) {
         player.setPlayWhenReady(!isPlaying);
     }

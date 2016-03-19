@@ -22,7 +22,6 @@ public class LanguagesViewPagerAdapter extends FragmentPagerAdapter{
         fragments = new ArrayList<>();
         fragments.add(new LanguagesFragment(languagePickerView,true));
         fragments.add(new LanguagesFragment(languagePickerView,false));
-        fragments.add(new LanguagesFragment(languagePickerView,true));
     }
 
     @Override
@@ -32,7 +31,7 @@ public class LanguagesViewPagerAdapter extends FragmentPagerAdapter{
 
     @Override
     public int getCount() {
-        return 3;
+        return 2;
     }
 
 

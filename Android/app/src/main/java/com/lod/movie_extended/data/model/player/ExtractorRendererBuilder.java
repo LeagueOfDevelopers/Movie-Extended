@@ -20,7 +20,6 @@ import com.google.android.exoplayer.upstream.DefaultAllocator;
 import com.google.android.exoplayer.upstream.DefaultBandwidthMeter;
 import com.google.android.exoplayer.upstream.DefaultUriDataSource;
 import com.google.android.exoplayer.util.MimeTypes;
-import com.lod.movie_extended.data.model.player.Player;
 
 import timber.log.Timber;
 
@@ -34,7 +33,9 @@ public class ExtractorRendererBuilder {
 
     private final Context context;
     private final String userAgent;
-    private Uri uri;
+    private Uri audioUrl;
+    Uri subUrl;
+    private Player player;
 
     public ExtractorRendererBuilder(Context context, String userAgent) {
         this.context = context;
@@ -42,17 +43,23 @@ public class ExtractorRendererBuilder {
     }
 
     public void startBuildingRenderers(Player player, String audiUri) {
-        this.uri = Uri.parse(audiUri);
+        this.audioUrl = Uri.parse(audiUri);
         buildRenderers(player);
     }
 
-    public void setSubtitlesUrl() {
+    public void setSubtitlesUrl(String subtitleUrl) {
+        subUrl = Uri.parse(subtitleUrl);
+        rebuildRenderers();
+    }
 
+    private void rebuildRenderers() {
+        buildRenderers(player);
     }
 
     private void buildRenderers(Player player) {
-        if(uri == null) {
-            Timber.e("uri is null");
+        this.player = player;
+        if(audioUrl == null) {
+            Timber.e("audioUrl is null");
             return;
         }
 
@@ -62,18 +69,21 @@ public class ExtractorRendererBuilder {
         DefaultBandwidthMeter bandwidthMeter = new DefaultBandwidthMeter(player.getMainHandler(),null);
         DataSource dataSource = new DefaultUriDataSource(context, bandwidthMeter, userAgent);
         Extractor extractor = new Mp3Extractor();
-        Uri subUrl = Uri.parse("http://movieextended1.azurewebsites.net/api/File/Get/54");
 
         MediaFormat mediaFormat = MediaFormat.createTextFormat(0, MimeTypes.APPLICATION_SUBRIP, MediaFormat.NO_VALUE, C.MATCH_LONGEST_US, null);
-        SingleSampleSource textSource = new SingleSampleSource(subUrl, new DefaultUriDataSource(context, bandwidthMeter, userAgent)
-                , mediaFormat);
-        ExtractorSampleSource audioSource = new ExtractorSampleSource(uri, dataSource, allocator,
+        ExtractorSampleSource audioSource = new ExtractorSampleSource(audioUrl, dataSource, allocator,
                 BUFFER_SEGMENT_COUNT * BUFFER_SEGMENT_SIZE, extractor);
         MediaCodecAudioTrackRenderer audioRenderer = new MediaCodecAudioTrackRenderer(audioSource,
                 null, true, player.getMainHandler(), player,
                 AudioCapabilities.getCapabilities(context), AudioManager.STREAM_MUSIC);
-        TrackRenderer textRenderer = new TextTrackRenderer(textSource, player,
-                player.getMainHandler().getLooper());
+        TrackRenderer textRenderer = null;
+
+        if(subUrl != null) {
+            SingleSampleSource textSource = new SingleSampleSource(subUrl, new DefaultUriDataSource(context, bandwidthMeter, userAgent)
+                    , mediaFormat);
+            textRenderer = new TextTrackRenderer(textSource, player,
+                    player.getMainHandler().getLooper());
+        }
 
         // Invoke the callback.
         TrackRenderer[] renderers = new TrackRenderer[Player.RENDERER_COUNT];

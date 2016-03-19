@@ -8,4 +8,5 @@ public interface PlayerListener {
     void onStateChanged(boolean playWhenReady);
     void onError(Exception e);
     void onWiredHeadsetNotOn();
+    void onWiredHeadsetOn();
 }

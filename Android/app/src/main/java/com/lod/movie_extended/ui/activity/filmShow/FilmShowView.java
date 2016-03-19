@@ -9,4 +9,10 @@ import com.lod.movie_extended.ui.base.MvpView;
 public interface FilmShowView extends MvpView {
 
     void setFilm(Film film);
+
+    void showError();
+
+    void setHeadsetFooter();
+
+    void setNormalFooter();
 }

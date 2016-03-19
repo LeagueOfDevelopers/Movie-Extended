@@ -24,13 +24,16 @@ public class LanguagesPresenter extends BasePresenter<LanguagesMvpView> {
     private DataManager dataManager;
     private Bus events;
     private Language selectedLanguage;
-
+    private Film film;
     public LanguagesPresenter(DataManager dataManager, Bus bus) {
         this.dataManager = dataManager;
         this.events = bus;
     }
     public Film getFilm() {
-        return dataManager.getSession().toBlocking().first().getFilm();
+        if(film == null) {
+            film = dataManager.getSession().toBlocking().first().getFilm();
+        }
+        return film;
     }
 
     public void allowNext() {

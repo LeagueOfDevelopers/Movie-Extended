@@ -9,7 +9,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.lod.movie_extended.R;
-import com.lod.movie_extended.data.model.Film;
 import com.lod.movie_extended.injection.App;
 import com.lod.movie_extended.injection.component.activity.DaggerLanguagesPickerComponent;
 import com.lod.movie_extended.injection.component.activity.LanguagesPickerComponent;
@@ -70,7 +69,6 @@ public class LanguagePickerActivity extends InjectActivityBase implements Langua
         dots = new ArrayList<>();
         dots.add((ImageView) findViewById(R.id.firstDot));
         dots.add((ImageView) findViewById(R.id.secondDot));
-        dots.add((ImageView) findViewById(R.id.thirdDot));
     }
 
     private void initViewPager() {
@@ -102,6 +100,16 @@ public class LanguagePickerActivity extends InjectActivityBase implements Langua
     }
 
     private void allowNext(int visible, CustomViewPager.SwipeDirection swipeDirection) {
+        String infoText;
+        if (viewPager.getCurrentItem() == 0) {
+            infoText = "Далее";
+            nextTextView.setOnClickListener(v -> viewPager.setCurrentItem(viewPager.getCurrentItem()+1));
+        }
+        else {
+            infoText = "Закрыть";
+            nextTextView.setOnClickListener(v -> finish());
+        }
+        nextTextView.setText(infoText);
         nextTextView.setVisibility(visible);
         viewPager.setAllowedSwipeDirection(swipeDirection);
     }
@@ -113,9 +121,6 @@ public class LanguagePickerActivity extends InjectActivityBase implements Langua
                 break;
             case 1:
                 toolbar.setTitle("Язык субтитров");
-                break;
-            case 2:
-                toolbar.setTitle("Поехали");
                 break;
         }
         setSupportActionBar(toolbar);

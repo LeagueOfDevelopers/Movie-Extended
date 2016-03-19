@@ -2,9 +2,16 @@ package com.lod.movie_extended.ui.activity.filmShow;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.lod.movie_extended.R;
 import com.lod.movie_extended.data.model.Film;
@@ -12,6 +19,7 @@ import com.lod.movie_extended.injection.App;
 import com.lod.movie_extended.injection.component.activity.DaggerFilmShowComponent;
 import com.lod.movie_extended.injection.component.activity.FilmShowComponent;
 import com.lod.movie_extended.injection.module.activity.FilmShowModule;
+import com.lod.movie_extended.receiver.HeadsetEventReceiver;
 import com.lod.movie_extended.ui.activity.languagePicker.LanguagePickerActivity;
 import com.lod.movie_extended.ui.base.ComponentGetter;
 import com.lod.movie_extended.ui.base.InjectActivityBase;
@@ -22,6 +30,7 @@ import javax.inject.Inject;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import timber.log.Timber;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 /**
@@ -36,6 +45,9 @@ public class FilmShowActivity extends InjectActivityBase implements FilmShowView
     @Inject
     FilmShowPresenter presenter;
 
+    @Inject
+    HeadsetEventReceiver headsetEventReceiver;
+
     @Bind(R.id.film_name_text_view)
     TextView filmNameTextView;
 
@@ -45,15 +57,42 @@ public class FilmShowActivity extends InjectActivityBase implements FilmShowView
     @Bind(R.id.subtitle_language_text_view)
     TextView subtitleLanguageTextView;
 
+    @Bind(R.id.info_text_view)
+    TextView infoTextView;
+
+    @Bind(R.id.mute_text_view)
+    TextView muteTextView;
+
+    @Bind(R.id.sub_text_view)
+    TextView subTextView;
+
+    @Bind(R.id.headset)
+    ImageView headsetImageView;
+
+    @Bind(R.id.blackScreen)
+    LinearLayout blackScreen;
+
+    @Bind(R.id.progressBar)
+    ProgressBar progressBar;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        showLoadingScreen();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
         presenter.loadSession();
+        IntentFilter intentFilter = new IntentFilter(Intent.ACTION_HEADSET_PLUG);
+        registerReceiver(headsetEventReceiver,intentFilter);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        unregisterReceiver(headsetEventReceiver);
     }
 
     @OnClick(R.id.fab)
@@ -100,8 +139,60 @@ public class FilmShowActivity extends InjectActivityBase implements FilmShowView
 
     @Override
     public void setFilm(Film film) {
+        presenter.setFilmTime(true);
+        hideLoadingScreen();
+        toggleFooter(true);
+
         filmNameTextView.setText(film.getName().toUpperCase());
         soundLanguageTextView.setText(film.getSelectedSoundLanguage().getName());
         subtitleLanguageTextView.setText(film.getSelectedSubtitleLanguage().getName());
+    }
+
+    @Override
+    public void showError() {
+        Toast.makeText(FilmShowActivity.this, "Server error", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void setHeadsetFooter() {
+        toggleFooter(false, "Воткни");
+    }
+
+    @Override
+    public void setNormalFooter() {
+        toggleFooter(true);
+    }
+
+    private void showLoadingScreen() {
+        blackScreen.setAlpha(1.0f);
+        progressBar.setVisibility(View.VISIBLE);
+        progressBar.setProgressDrawable(new ColorDrawable(0xFF000000));
+    }
+
+    private void hideLoadingScreen() {
+        blackScreen.setAlpha(0.0f);
+        progressBar.setVisibility(View.INVISIBLE);
+    }
+
+    private void toggleFooter(boolean normalFooterView) {
+        toggleFooter(normalFooterView,"");
+    }
+
+    private void toggleFooter(boolean normalFooterView, String infoText) {
+        if(!infoText.equals("")) {
+            infoTextView.setText(infoText);
+        }
+
+        if(normalFooterView) {
+            infoTextView.setVisibility(View.INVISIBLE);
+            muteTextView.setVisibility(View.VISIBLE);
+            subTextView.setVisibility(View.VISIBLE);
+            headsetImageView.setVisibility(View.VISIBLE);
+        } else {
+            infoTextView.setVisibility(View.VISIBLE);
+            muteTextView.setVisibility(View.INVISIBLE);
+            subTextView.setVisibility(View.INVISIBLE);
+            headsetImageView.setVisibility(View.INVISIBLE);
+        }
     }
 }

@@ -13,6 +13,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 import rx.Observable;
+import rx.functions.Action1;
 import timber.log.Timber;
 
 /**
@@ -22,11 +23,9 @@ import timber.log.Timber;
 public class DataManager {
 
     private final DataBaseHelper dataBaseHelper;
-    private ServerHelper serverHelper;
+    private final ServerHelper serverHelper;
     private boolean filmTime;
     private boolean qrCodeProcessed;
-    private Language soundLanguage;
-    private Language subtitlesLanguage;
 
     @Inject
     public DataManager(DataBaseHelper dataBaseHelper, ServerHelper serverHelper) {
@@ -46,16 +45,18 @@ public class DataManager {
             Session sessionFromDatabase = dataBaseHelper.getSession().toBlocking().first();
 
             if(sessionFromDatabase != null && sessionFromDatabase.getQrCode().equals(qrCode)) {
-                Timber.e("getting session from database");
+                Timber.i("getting session from database");
                 subscriber.onNext(sessionFromDatabase);
             }
             else {
-                Timber.e("getting session from internet");
-                Session sessionFromInternet = serverHelper.loadSession(qrCode)
-                        .concatMap(dataBaseHelper::saveSession).toBlocking().first();
-
-                setDefaultSelectedLanguages(sessionFromInternet);
-                subscriber.onNext(sessionFromInternet);
+                Timber.i("getting session from internet");
+                serverHelper.loadSession(qrCode)
+                .doOnNext(session -> {
+                    dataBaseHelper.saveSession(session);
+                    setDefaultSelectedLanguages(session);
+                    subscriber.onNext(session);
+                })
+                .toBlocking().subscribe();
             }
         });
     }
@@ -76,22 +77,6 @@ public class DataManager {
 
     public boolean hasQrCodeBeenProcessed() {
         return qrCodeProcessed;
-    }
-
-    public Language getSubtitlesLanguage() {
-        return subtitlesLanguage;
-    }
-
-    public void setSubtitlesLanguage(Language subtitlesLanguage) {
-        this.subtitlesLanguage = subtitlesLanguage;
-    }
-
-    public Language getSoundLanguage() {
-        return soundLanguage;
-    }
-
-    public void setSoundLanguage(Language soundLanguage) {
-        this.soundLanguage = soundLanguage;
     }
 
     private void setQrCodeProcessed(boolean qrCodeProcessed) {

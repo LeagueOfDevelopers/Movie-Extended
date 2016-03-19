@@ -32,7 +32,6 @@ public class Player implements ExoPlayer.Listener, MediaCodecAudioTrackRenderer.
 
     public static final int TYPE_AUDIO = 0;
     public static final int TYPE_TEXT = 1;
-    public boolean hasAudioUrlBeenSet;
     private final CopyOnWriteArrayList<PlayerListener> listeners;
     private boolean lastReportedPlayWhenReady;
     private CaptionListener captionListener;
@@ -51,6 +50,7 @@ public class Player implements ExoPlayer.Listener, MediaCodecAudioTrackRenderer.
     PlayerLogger playerLogger;
     @Inject
     TimeHelper timeHelper;
+    private boolean hasBeenStarted;
 
     public Player() {
         Timber.v("constructor");
@@ -59,6 +59,10 @@ public class Player implements ExoPlayer.Listener, MediaCodecAudioTrackRenderer.
         listeners = new CopyOnWriteArrayList<>();
         playerLogger.setPlayer(this);
         disableSubtitles();
+    }
+
+    public boolean hasBeenStarted() {
+        return hasBeenStarted;
     }
 
     public boolean setPlayWhenReady(boolean playWhenReady) {
@@ -82,12 +86,16 @@ public class Player implements ExoPlayer.Listener, MediaCodecAudioTrackRenderer.
     }
 
     public void startAudio(String audioUrl) {
-        hasAudioUrlBeenSet = true;
+        hasBeenStarted = true;
         rendererBuilder.startBuildingRenderers(this,audioUrl);
         startLogging();
-        player.setPlayWhenReady(true);
+        setPlayWhenReady(true);
         timeHelper.setFilmDuration(player.getDuration());
         maybeReportPlayerState();
+    }
+
+    public void setSubtitleUrl(String subtitleUrl) {
+        rendererBuilder.setSubtitlesUrl(subtitleUrl);
     }
 
     public boolean isSubtitlesEnabled() {
@@ -143,9 +151,30 @@ public class Player implements ExoPlayer.Listener, MediaCodecAudioTrackRenderer.
         return mainHandler;
     }
 
+    public void notifyHeadsetNotOn() {
+        if(listeners.isEmpty()){
+            return;
+        }
+        for (PlayerListener listener : listeners) {
+            listener.onWiredHeadsetNotOn();
+        }
+
+        maybeReportPlayerState();
+    }
+
+    public void notifyHeadsetOn() {
+        if(listeners.isEmpty()){
+            return;
+        }
+        for (PlayerListener listener : listeners) {
+            listener.onWiredHeadsetOn();
+        }
+        maybeReportPlayerState();
+    }
+
     private boolean checkHeadset(boolean playWhenReady) {
         if(playWhenReady && !audioManager.isWiredHeadsetOn()) {
-            onWiredHeadsetNotOn();
+            notifyHeadsetNotOn();
             return true;
         }
         return false;
@@ -156,22 +185,10 @@ public class Player implements ExoPlayer.Listener, MediaCodecAudioTrackRenderer.
     }
 
     private void processPlay() {
-        Timber.v("dif " + (timeHelper.getCurrentFilmTime() - player.getCurrentPosition()));
-        if(timeHelper.getCurrentFilmTime() - player.getCurrentPosition() > 300) {
-            Timber.v("seeking to " + timeHelper.getCurrentFilmTime());
-            player.seekTo(timeHelper.getCurrentFilmTime());
-        }
-        else {
-            Timber.v("not seeking");
+        if(!player.getPlayWhenReady()) {
+            player.setPlayWhenReady(true);
         }
         unmute();
-    }
-
-    private void onWiredHeadsetNotOn() {
-        for (PlayerListener listener : listeners) {
-            listener.onWiredHeadsetNotOn();
-        }
-        maybeReportPlayerState();
     }
 
     private void mute() {
@@ -195,7 +212,6 @@ public class Player implements ExoPlayer.Listener, MediaCodecAudioTrackRenderer.
         isPlaying = true;
         setVolume(1f);
     }
-
     private void maybeReportPlayerState() {
         boolean playWhenReady = isPlaying;
         if (lastReportedPlayWhenReady != playWhenReady) {
@@ -209,6 +225,7 @@ public class Player implements ExoPlayer.Listener, MediaCodecAudioTrackRenderer.
     public void onStop() {
         stopLogging();
     }
+
     private void stopLogging() {
         playerLogger.stopLogging();
     }
