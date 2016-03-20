@@ -106,16 +106,6 @@ namespace FrontendService.Controllers
             return Ok("uploaded");
         }
 
-
-
-        //[Route("image/set/{movieId}")]
-        //[HttpPut]
-        //public IHttpActionResult SetImage(int movieId)
-        //{
-
-        //}
-
-
         [Route("api/Files/Delete/{fileId}")]
         [HttpPost]
 

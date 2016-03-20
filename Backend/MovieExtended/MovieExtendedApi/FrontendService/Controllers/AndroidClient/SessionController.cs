@@ -12,6 +12,7 @@ namespace FrontendService.Controllers.AndroidClient
 {
     public class SessionController : ApiController
     {
+        
         private readonly ISessionKeeper _keeper;
         private readonly IMovieRepository _movieRepository;
 
@@ -43,28 +44,6 @@ namespace FrontendService.Controllers.AndroidClient
             throw new HttpResponseException(HttpStatusCode.Unauthorized);
         }
 
-        //[Route("api/Session/{sessionId}/StartTime")]
-        //[HttpGet]
-        //public string GetMovieStartTime(Guid sessionId)
-        //{
-        //    if (!_keeper.CheckIfSessionExists(sessionId))
-        //    {
-        //        throw new HttpResponseException(HttpStatusCode.Unauthorized);
-        //    }
-        //    if (_keeper.GetSessionState(sessionId) != SessionState.Active)
-        //    {
-        //        throw new HttpResponseException(HttpStatusCode.NotAcceptable);
-        //    }
-        //    var datetime = _keeper.GetMovieStartTime(sessionId);
-        //    return ConvertToUnixTimestamp(datetime).ToString();
-        //}
-
-        //private static double ConvertToUnixTimestamp(DateTime date)
-        //{
-        //    var origin = new DateTime(1970, 1, 1, 0, 0, 0, 0);
-        //    var diff = date - origin;
-        //    return diff.TotalMilliseconds;
-        //}
         [Route("time/{movieId}")]
         [HttpPost]
         public void SetMovieStartTime( int movieId)
@@ -87,8 +66,12 @@ namespace FrontendService.Controllers.AndroidClient
             return _keeper.GetCurrentMovieTime(movieId);
         }
 
-
-        
+        [Route("clear/session/all")]
+        [HttpGet]
+        public void DeleteSessions()
+        {
+            _keeper.ClearSessionsAndTimes();
+        }
     
     }
 }

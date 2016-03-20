@@ -42,30 +42,6 @@ namespace Infrastructure
             return session.MovieId;
         }
 
-        //        _sessions.RemoveAll(session => session.MovieId == movieId);
-        //    {
-        //    if (state == SessionState.Closed)
-        //{
-
-        //public void SetState(Guid movieId, SessionState state, DateTime changingOccured)
-        // private readonly Dictionary<Guid, DateTime> _timeMarks = new Dictionary<Guid, DateTime>();
-        //        _timeMarks.Remove(movieId);
-        //    }
-        //    if (state == SessionState.Active)
-        //    {
-        //        _timeMarks.Add(movieId, changingOccured);
-        //        foreach (var session in _sessions.Where(s => s.MovieId == movieId))
-        //        {
-        //            session.SessionState = state;
-        //        }
-        //    }
-        //}
-
-        //public DateTime GetMovieStartTime(Guid sessionId)
-        //{
-        //    var movieId = GetMovieId(sessionId);
-        //    return _timeMarks[movieId];
-        //}
         public void SetMovieTime(int movieId, DateTime movieStartTime)
         {
             _movieStartTime.Add(movieId,movieStartTime);
@@ -86,6 +62,11 @@ namespace Infrastructure
 
             return DateTime.Now-GetMovieStartTime(movieId);
         }
-        
+
+        public void ClearSessionsAndTimes()
+        {
+            _sessions.Clear();
+            _movieStartTime.Clear();
+        }
     }
 }
