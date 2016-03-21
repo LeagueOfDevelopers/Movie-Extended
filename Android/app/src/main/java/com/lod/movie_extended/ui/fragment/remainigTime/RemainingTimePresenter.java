@@ -18,6 +18,6 @@ public class RemainingTimePresenter extends BasePresenter<RemainingTimeMvp> {
     }
 
     public long getRemainingTime() {
-        return currentSession.getRemainingTimeSeconds();
+        return 0;
     }
 }

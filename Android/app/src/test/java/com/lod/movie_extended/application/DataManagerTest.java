@@ -67,7 +67,7 @@ public class DataManagerTest {
     public void shouldGetSessionFromDatabase() {
         DataBaseHelper dataBaseHelper = spy(new DataBaseHelper());
         when(dataBaseHelper.getSession()).thenReturn(Observable.just(session));
-        DataManager dataManager = new DataManager(dataBaseHelper,new ServerHelper(ServerAPI.Creator.newService()));
+        DataManager dataManager = new DataManager(dataBaseHelper,new ServerHelper(ServerAPI.Creator.newService(), null));
         dataManager.setQrCode(qrCode);
 
         dataManager.getSession().subscribe(new Subscriber<Session>() {
@@ -93,7 +93,7 @@ public class DataManagerTest {
     public void shouldGetSessionFromInternet() {
         DataBaseHelper dataBaseHelper = spy(new DataBaseHelper());
         when(dataBaseHelper.getSession()).thenReturn(Observable.just(null));
-        DataManager dataManager = new DataManager(dataBaseHelper, new ServerHelper(ServerAPI.Creator.newService()));
+        DataManager dataManager = new DataManager(dataBaseHelper, new ServerHelper(ServerAPI.Creator.newService(), null));
         dataManager.setQrCode(qrCode);
         dataManager.getSession().subscribe(new Subscriber<Session>() {
             @Override
@@ -125,7 +125,7 @@ public class DataManagerTest {
     public void shouldGetSessionFromDataBaseAfterGettingFromInternet() {
         DataBaseHelper dataBaseHelper = spy(new DataBaseHelper());
         when(dataBaseHelper.getSession()).thenReturn(Observable.just(null));
-        DataManager dataManager = new DataManager(dataBaseHelper, new ServerHelper(ServerAPI.Creator.newService()));
+        DataManager dataManager = new DataManager(dataBaseHelper, new ServerHelper(ServerAPI.Creator.newService(), null));
         dataManager.setQrCode(qrCode);
         //from internet
         dataManager.getSession().subscribe(new Subscriber<Session>() {

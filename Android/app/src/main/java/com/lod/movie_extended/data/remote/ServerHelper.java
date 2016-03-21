@@ -1,5 +1,6 @@
 package com.lod.movie_extended.data.remote;
 
+import android.net.Uri;
 import android.support.annotation.NonNull;
 
 import com.google.gson.JsonArray;
@@ -7,11 +8,16 @@ import com.google.gson.JsonObject;
 import com.lod.movie_extended.data.model.Film;
 import com.lod.movie_extended.data.model.Language;
 import com.lod.movie_extended.data.model.Session;
+import com.lod.movie_extended.data.model.SessionDeserializer;
 import com.lod.movie_extended.data.model.Token;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
+import retrofit.http.Url;
 import rx.Observable;
 import rx.functions.Action1;
 import timber.log.Timber;
@@ -22,74 +28,38 @@ import timber.log.Timber;
 public class ServerHelper {
 
     private ServerAPI serverAPI;
-    public ServerHelper(ServerAPI serverAPI) {
+    private SessionDeserializer deserializer;
+
+    public ServerHelper(ServerAPI serverAPI, SessionDeserializer deserializer) {
         this.serverAPI = serverAPI;
+        this.deserializer = deserializer;
     }
 
     public Observable<Session> loadSession(String qrCode) {
         return Observable.create((Observable.OnSubscribe<Session>) subscriber -> {
             serverAPI.getData(qrCode)
                 .doOnNext(jsonElements -> {
-                    Session session = deserializeSession(jsonElements);
+                    Session session = deserializer.get(jsonElements);
                     session.setQrCode(qrCode);
+                    setFilmStartTime(session);
                     subscriber.onNext(session);
                 })
                 .toBlocking().subscribe();
         });
     }
 
-    private Session deserializeSession(JsonObject jsonObject) {
-        Session session = new Session();
-        session.setFilm(deserializeFilm(jsonObject));
-        session.setToken(new Token(jsonObject.get("AndroidToken").getAsString()));
-        session.setPosterId(jsonObject.getAsJsonObject().get("Poster").getAsJsonObject().get("Id").getAsInt());
-        return session;
-    }
-
-    private Film deserializeFilm(JsonObject jsonObject) {
-        Film film = new Film();
-        film.setId(jsonObject.get("Id").getAsInt());
-        film.setName(jsonObject.get("Name").getAsString());
-        List<List<Language>> languages = deserializeLanguages(jsonObject);
-        film.setSoundLanguages(languages.get(0));
-        film.setSubtitleLanguages(languages.get(1));
-        return film;
-    }
-
-    private List<List<Language>> deserializeLanguages(JsonObject jsonObject) {
-        List<Language> subLanguages = new ArrayList<>();
-        List<Language> soundLanguage = new ArrayList<>();
-        JsonArray languagesJson = jsonObject.get("Language").getAsJsonArray();
-
-        for (int i = 0; i < languagesJson.size(); i++) {
-            Language language = deserializeLanguage(languagesJson, i);
-            addLanguage(subLanguages, soundLanguage, language);
+    private void setFilmStartTime(Session session) {
+        Date filmStartTime=null;
+        try {
+            filmStartTime = serverAPI.getFilmStartTime(session.getFilm().getId()).toBlocking().first();
         }
-
-        List<List<Language>> result = new ArrayList<>();
-        result.add(soundLanguage);
-        result.add(subLanguages);
-        return result;
+        catch (Exception ignored) {
+        }
+        session.setFilmStartTime(filmStartTime);
     }
 
-    private void addLanguage(List<Language> subLanguages, List<Language> soundLanguage, Language language) {
-        if(language.getTrackFile() != null) {
-            soundLanguage.add(language);
-        }
-        if(language.getSubtitle() != null) {
-            subLanguages.add(language);
-        }
-    }
-
-    @NonNull
-    private Language deserializeLanguage(JsonArray languagesJson, int index) {
-        Language language = new Language();
-        language.setName(languagesJson.get(index).getAsJsonObject().get("Name").getAsString());
-        language.setId(languagesJson.get(index).getAsJsonObject().get("Id").getAsInt());
-        language.setTrackFile(new Language.TrackFile(languagesJson.get(index)
-                .getAsJsonObject().get("TrackFile").getAsJsonObject().get("Id").getAsInt()));
-        language.setSubtitle(new Language.Subtitle(languagesJson.get(index)
-                .getAsJsonObject().get("Subtitles").getAsJsonObject().get("Id").getAsInt()));
-        return language;
+    public Uri getDownloadUrl(int id, Token token) {
+        return Uri.parse(String.format("http://movieextended1.azurewebsites.net/file/get/%d/token/%s",
+                id, token.getValue()));
     }
 }

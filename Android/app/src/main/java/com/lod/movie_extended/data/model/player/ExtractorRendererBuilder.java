@@ -34,7 +34,7 @@ public class ExtractorRendererBuilder {
     private final Context context;
     private final String userAgent;
     private Uri audioUrl;
-    Uri subUrl;
+    private Uri subUrl;
     private Player player;
 
     public ExtractorRendererBuilder(Context context, String userAgent) {
@@ -42,13 +42,19 @@ public class ExtractorRendererBuilder {
         this.userAgent = userAgent;
     }
 
-    public void startBuildingRenderers(Player player, String audiUri) {
-        this.audioUrl = Uri.parse(audiUri);
+    public void startBuildingRenderers(Player player, Uri audiUrl,Uri subtitlesUri) {
+        this.audioUrl = audiUrl;
+        this.subUrl = subtitlesUri;
         buildRenderers(player);
     }
 
-    public void setSubtitlesUrl(String subtitleUrl) {
-        subUrl = Uri.parse(subtitleUrl);
+    public void setAudioUrl(Uri audioUrl) {
+        this.audioUrl = audioUrl;
+        rebuildRenderers();
+    }
+
+    public void setSubtitlesUrl(Uri subtitleUrl) {
+        subUrl = subtitleUrl;
         rebuildRenderers();
     }
 

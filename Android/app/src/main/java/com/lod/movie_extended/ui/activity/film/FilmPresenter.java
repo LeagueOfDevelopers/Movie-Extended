@@ -29,7 +29,7 @@ public class FilmPresenter extends BasePresenter<FilmMvpView> implements
         this.notificationServiceHelper = notificationServiceHelper;
 
         Timber.v("setting audio url");
-        player.startAudio("http://movieextended1.azurewebsites.net/api/file/get/1");
+//        player.setAudioUrl("http://movieextended1.azurewebsites.net/api/file/get/1");
     }
 
     public void onCreate() {

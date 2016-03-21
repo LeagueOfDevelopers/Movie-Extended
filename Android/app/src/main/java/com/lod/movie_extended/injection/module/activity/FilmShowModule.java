@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import com.lod.movie_extended.data.DataManager;
 import com.lod.movie_extended.data.model.NotificationServiceHelper;
 import com.lod.movie_extended.data.model.player.Player;
+import com.lod.movie_extended.data.remote.ServerHelper;
 import com.lod.movie_extended.injection.context.ActivityContext;
 import com.lod.movie_extended.injection.scope.PerActivity;
 import com.lod.movie_extended.ui.activity.filmShow.FilmShowPresenter;
@@ -38,7 +39,7 @@ public class FilmShowModule {
     FilmShowPresenter provideFilmShowPresenter(DataManager dataManager,
                                                Player player,
                                                NotificationServiceHelper notificationServiceHelper,
-                                               @ActivityContext Context context) {
-        return new FilmShowPresenter(dataManager, player, notificationServiceHelper, context);
+                                               ServerHelper serverHelper) {
+        return new FilmShowPresenter(dataManager, player, notificationServiceHelper, serverHelper);
     }
 }

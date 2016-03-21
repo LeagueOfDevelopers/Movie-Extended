@@ -31,7 +31,7 @@ public class ServerHelperTest {
 
     @Test
     public void shouldGetData() {
-        serverHelper = new ServerHelper(ServerAPI.Creator.newService());
+        serverHelper = new ServerHelper(ServerAPI.Creator.newService(), null);
         serverHelper.loadSession(validQrCode).subscribe(new Subscriber<Session>() {
             @Override
             public void onCompleted() {
@@ -56,14 +56,14 @@ public class ServerHelperTest {
     @Test
     public void shouldCallServer() {
         ServerAPI serverAPI = mock(ServerAPI.class);
-        serverHelper = new ServerHelper(serverAPI);
+        serverHelper = new ServerHelper(serverAPI, null);
         serverHelper.loadSession(validQrCode);
         verify(serverAPI,atMost(1)).getData(validQrCode);
     }
 
     @Test
     public void shouldFailOnInvalidQRCode() {
-        serverHelper = new ServerHelper(ServerAPI.Creator.newService());
+        serverHelper = new ServerHelper(ServerAPI.Creator.newService(), null);
         serverHelper.loadSession(invalidString).subscribe(new Subscriber<Session>() {
             @Override
             public void onCompleted() {

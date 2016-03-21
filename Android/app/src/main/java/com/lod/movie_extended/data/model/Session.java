@@ -1,7 +1,6 @@
 package com.lod.movie_extended.data.model;
 
-import com.google.gson.JsonArray;
-import com.google.gson.annotations.SerializedName;
+import java.util.Date;
 
 /**
  * Created by Жамбыл on 09.01.2016.
@@ -9,11 +8,10 @@ import com.google.gson.annotations.SerializedName;
 public class Session {
 
     private Film film;
-
     private Token token;
-    private long remainingTimeSeconds;
     private String qrCode;
     private int posterId;
+    private Date filmStartTime;
 
     public Token getToken() {
         return token;
@@ -25,14 +23,6 @@ public class Session {
 
     public Film getFilm() {
         return film;
-    }
-
-    public void setRemainingTimeSeconds(long remainingTimeMs) {
-        this.remainingTimeSeconds = remainingTimeMs;
-    }
-
-    public long getRemainingTimeSeconds() {
-        return remainingTimeSeconds;
     }
 
     public void setFilm(Film film) {
@@ -55,7 +45,11 @@ public class Session {
         return posterId;
     }
 
-    public void setId() {
+    public Date getFilmStartTime() {
+        return this.filmStartTime;
+    }
 
+    public void setFilmStartTime(Date filmStartTime) {
+        this.filmStartTime = filmStartTime;
     }
 }

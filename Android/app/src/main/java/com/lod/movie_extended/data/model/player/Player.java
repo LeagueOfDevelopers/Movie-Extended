@@ -2,6 +2,7 @@ package com.lod.movie_extended.data.model.player;
 
 import android.media.AudioManager;
 import android.media.MediaCodec;
+import android.net.Uri;
 import android.os.Handler;
 
 import com.google.android.exoplayer.DummyTrackRenderer;
@@ -16,6 +17,7 @@ import com.google.android.exoplayer.text.TextRenderer;
 import com.google.android.exoplayer.upstream.BandwidthMeter;
 import com.lod.movie_extended.injection.App;
 
+import java.util.Date;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
@@ -50,22 +52,22 @@ public class Player implements ExoPlayer.Listener, MediaCodecAudioTrackRenderer.
     PlayerLogger playerLogger;
     @Inject
     TimeHelper timeHelper;
-    private boolean hasBeenStarted;
 
     public Player() {
         Timber.v("constructor");
         App.getInstance().getComponent().inject(this);
         player.addListener(this);
         listeners = new CopyOnWriteArrayList<>();
-        playerLogger.setPlayer(this);
         disableSubtitles();
-    }
-
-    public boolean hasBeenStarted() {
-        return hasBeenStarted;
+        playerLogger.setPlayer(this);
+        startLogging();
     }
 
     public boolean setPlayWhenReady(boolean playWhenReady) {
+        if(!player.getPlayWhenReady()) {
+            mute();
+            player.setPlayWhenReady(true);
+        }
         if (checkHeadset(playWhenReady)) {
             return false;
         }
@@ -85,16 +87,22 @@ public class Player implements ExoPlayer.Listener, MediaCodecAudioTrackRenderer.
         return isPlaying;
     }
 
-    public void startAudio(String audioUrl) {
-        hasBeenStarted = true;
-        rendererBuilder.startBuildingRenderers(this,audioUrl);
-        startLogging();
+    public void setFilmStartTime(Date filmStartTime) {
+        timeHelper.setFilmStartTime(filmStartTime);
+    }
+
+    public void startAudioWithSubtitles(Uri audioUrl, Uri subtitlesUrl) {
+        rendererBuilder.startBuildingRenderers(this,audioUrl,subtitlesUrl);
         setPlayWhenReady(true);
         timeHelper.setFilmDuration(player.getDuration());
         maybeReportPlayerState();
     }
 
-    public void setSubtitleUrl(String subtitleUrl) {
+    public void setAudioUrl(Uri audioUrl) {
+        startAudioWithSubtitles(audioUrl,null);
+    }
+
+    public void setSubtitleUrl(Uri subtitleUrl) {
         rendererBuilder.setSubtitlesUrl(subtitleUrl);
     }
 
@@ -185,9 +193,9 @@ public class Player implements ExoPlayer.Listener, MediaCodecAudioTrackRenderer.
     }
 
     private void processPlay() {
-        if(!player.getPlayWhenReady()) {
-            player.setPlayWhenReady(true);
-        }
+        long seekTime = timeHelper.getCurrentFilmTime();
+        Timber.e("SEEKING TO " + seekTime);
+        player.seekTo(seekTime);
         unmute();
     }
 

@@ -124,28 +124,33 @@
             android:visibility="invisible"
             android:layout_centerInParent="true"
             />
-        <ImageView
-            android:id="@+id/headset"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
-            android:layout_centerVertical="true"
-            android:src="@mipmap/ic_headset_white_36dp"
-            android:layout_marginLeft="22dp"
-            />
-
-        <TextView
-            android:id="@+id/mute_text_view"
+        <RelativeLayout
+            android:id="@+id/play_pause_view"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="MUTE"
-            android:layout_toRightOf="@+id/headset"
-            android:textColor="@color/white"
-            android:textStyle="bold"
-            android:textSize="20sp"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="15dp"
-            />
+            android:layout_height="match_parent">
 
+            <ImageView
+                android:id="@+id/headset"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_centerVertical="true"
+                android:src="@mipmap/ic_headset_white_36dp"
+                android:layout_marginLeft="22dp"
+                />
+
+            <TextView
+                android:id="@+id/play_pause_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="MUTE"
+                android:layout_toRightOf="@+id/headset"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="15dp"
+                />
+        </RelativeLayout>
         <TextView
             android:id="@+id/sub_text_view"
             android:layout_width="wrap_content"

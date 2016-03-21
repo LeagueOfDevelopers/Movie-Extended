@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,7 +31,6 @@ import javax.inject.Inject;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import timber.log.Timber;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 /**
@@ -60,8 +60,8 @@ public class FilmShowActivity extends InjectActivityBase implements FilmShowView
     @Bind(R.id.info_text_view)
     TextView infoTextView;
 
-    @Bind(R.id.mute_text_view)
-    TextView muteTextView;
+    @Bind(R.id.play_pause_text_view)
+    TextView playPauseTextView;
 
     @Bind(R.id.sub_text_view)
     TextView subTextView;
@@ -75,16 +75,21 @@ public class FilmShowActivity extends InjectActivityBase implements FilmShowView
     @Bind(R.id.progressBar)
     ProgressBar progressBar;
 
+    @Bind(R.id.play_pause_view)
+    RelativeLayout playPauseView;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         showLoadingScreen();
+        playPauseView.setOnClickListener(v -> presenter.togglePlayer());
+        subTextView.setOnClickListener(v -> startActivity(new Intent(this,null)));
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        presenter.loadSession();
+        presenter.loadSessionIfNeed();
         IntentFilter intentFilter = new IntentFilter(Intent.ACTION_HEADSET_PLUG);
         registerReceiver(headsetEventReceiver,intentFilter);
     }
@@ -163,6 +168,16 @@ public class FilmShowActivity extends InjectActivityBase implements FilmShowView
         toggleFooter(true);
     }
 
+    @Override
+    public void setPlayView() {
+        playPauseTextView.setText("PLAY");
+    }
+
+    @Override
+    public void setPauseView() {
+        playPauseTextView.setText("MUTE");
+    }
+
     private void showLoadingScreen() {
         blackScreen.setAlpha(1.0f);
         progressBar.setVisibility(View.VISIBLE);
@@ -175,7 +190,7 @@ public class FilmShowActivity extends InjectActivityBase implements FilmShowView
     }
 
     private void toggleFooter(boolean normalFooterView) {
-        toggleFooter(normalFooterView,"");
+        toggleFooter(normalFooterView, "");
     }
 
     private void toggleFooter(boolean normalFooterView, String infoText) {
@@ -185,12 +200,12 @@ public class FilmShowActivity extends InjectActivityBase implements FilmShowView
 
         if(normalFooterView) {
             infoTextView.setVisibility(View.INVISIBLE);
-            muteTextView.setVisibility(View.VISIBLE);
+            playPauseTextView.setVisibility(View.VISIBLE);
             subTextView.setVisibility(View.VISIBLE);
             headsetImageView.setVisibility(View.VISIBLE);
         } else {
             infoTextView.setVisibility(View.VISIBLE);
-            muteTextView.setVisibility(View.INVISIBLE);
+            playPauseTextView.setVisibility(View.INVISIBLE);
             subTextView.setVisibility(View.INVISIBLE);
             headsetImageView.setVisibility(View.INVISIBLE);
         }

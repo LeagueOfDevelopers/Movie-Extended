@@ -11,6 +11,7 @@ import com.lod.movie_extended.data.local.DataBaseHelper;
 import com.lod.movie_extended.data.local.PreferencesHelper;
 import com.lod.movie_extended.data.model.ColorHelper;
 import com.lod.movie_extended.data.model.NotificationServiceHelper;
+import com.lod.movie_extended.data.model.SessionDeserializer;
 import com.lod.movie_extended.data.remote.ServerAPI;
 import com.lod.movie_extended.data.remote.ServerHelper;
 import com.lod.movie_extended.injection.context.ApplicationContext;
@@ -60,8 +61,14 @@ public class ApplicationModule {
 
     @Provides
     @PerApplication
-    ServerHelper provideServerHelper(ServerAPI serverAPI) {
-        return new ServerHelper(serverAPI);
+    ServerHelper provideServerHelper(ServerAPI serverAPI, SessionDeserializer deserializer) {
+        return new ServerHelper(serverAPI, deserializer);
+    }
+
+    @Provides
+    @PerApplication
+    SessionDeserializer provideSessionDeserializer() {
+        return new SessionDeserializer();
     }
 
     @Provides

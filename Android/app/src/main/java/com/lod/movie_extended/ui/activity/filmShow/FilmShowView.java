@@ -15,4 +15,8 @@ public interface FilmShowView extends MvpView {
     void setHeadsetFooter();
 
     void setNormalFooter();
+
+    void setPlayView();
+
+    void setPauseView();
 }
