@@ -90,7 +90,7 @@ public class FilmShowActivity extends InjectActivityBase implements FilmShowView
     @Override
     protected void onResume() {
         super.onResume();
-        presenter.loadSessionIfNeed();
+        presenter.loadSession();
         IntentFilter intentFilter = new IntentFilter(Intent.ACTION_HEADSET_PLUG);
         registerReceiver(headsetEventReceiver,intentFilter);
     }

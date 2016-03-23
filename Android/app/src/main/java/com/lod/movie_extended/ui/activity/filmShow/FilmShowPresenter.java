@@ -1,6 +1,5 @@
 package com.lod.movie_extended.ui.activity.filmShow;
 
-import android.content.Context;
 import android.net.Uri;
 
 import com.lod.movie_extended.data.DataManager;
@@ -25,7 +24,7 @@ public class FilmShowPresenter extends BasePresenter<FilmShowView> implements Pl
     private DataManager dataManager;
     private Player player;
     private NotificationServiceHelper notificationServiceHelper;
-    private Session currentSession;
+    private Session previousSession;
     private ServerHelper serverHelper;
 
     public FilmShowPresenter(DataManager dataManager, Player player, NotificationServiceHelper notificationServiceHelper, ServerHelper serverHelper) {
@@ -36,13 +35,7 @@ public class FilmShowPresenter extends BasePresenter<FilmShowView> implements Pl
         player.addListener(this);
     }
 
-    public void loadSessionIfNeed() {
-        if(currentSession==null) {
-            loadSession();
-        }
-    }
-
-    private void loadSession() {
+    public void loadSession() {
         dataManager.getSession()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
@@ -59,13 +52,27 @@ public class FilmShowPresenter extends BasePresenter<FilmShowView> implements Pl
 
                 @Override
                 public void onNext(Session session) {
-                    currentSession = session;
                     getMvpView().setFilm(session.getFilm());
-                    player.setFilmStartTime(session.getFilmStartTime());
-                    loadDefaultTrack(session);
+                    if(previousSession == null) {
+                        loadDefaultTrack(session);
+                        player.setFilmStartTime(session.getFilmStartTime());
+                    }
+                    else {
+                        loadAnotherDataIfNeed(session);
+                    }
                     notificationServiceHelper.start();
+                    previousSession = session;
                 }
             });
+    }
+
+    private void loadAnotherDataIfNeed(Session session) {
+        if(previousSession.getFilm().getSelectedSoundLanguage() != session.getFilm().getSelectedSoundLanguage()) {
+           player.setAudioUrl(serverHelper.getDownloadUrl(session.getFilm().getSelectedSoundLanguage().getId(),session.getToken()));
+        }
+        if(previousSession.getFilm().getSelectedSubtitleLanguage() != session.getFilm().getSelectedSubtitleLanguage()){
+            player.setSubtitleUrl(serverHelper.getDownloadUrl(session.getFilm().getSelectedSubtitleLanguage().getId(),session.getToken()));
+        }
     }
 
 
@@ -107,13 +114,13 @@ public class FilmShowPresenter extends BasePresenter<FilmShowView> implements Pl
     }
 
     private void loadDefaultTrack(Session session) {
-        Uri audioUrl = gerDefaultAudioUrl(session);
+        Uri audioUrl = getDefaultAudioUrl(session);
         Uri subUrl = getDefaultSubUrl(session);
         Timber.e("sub url " + subUrl);
         player.startAudioWithSubtitles(audioUrl,subUrl);
     }
 
-    private Uri gerDefaultAudioUrl(Session session) {
+    private Uri getDefaultAudioUrl(Session session) {
         Language defaultLanguage = session.getFilm().getSelectedSoundLanguage();
         int languageDownloadId = defaultLanguage.getTrackFile().getId();
         return serverHelper.getDownloadUrl(languageDownloadId,session.getToken());
