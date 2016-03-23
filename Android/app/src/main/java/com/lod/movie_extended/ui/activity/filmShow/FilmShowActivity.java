@@ -22,6 +22,7 @@ import com.lod.movie_extended.injection.component.activity.FilmShowComponent;
 import com.lod.movie_extended.injection.module.activity.FilmShowModule;
 import com.lod.movie_extended.receiver.HeadsetEventReceiver;
 import com.lod.movie_extended.ui.activity.languagePicker.LanguagePickerActivity;
+import com.lod.movie_extended.ui.activity.sub.SubActivity;
 import com.lod.movie_extended.ui.base.ComponentGetter;
 import com.lod.movie_extended.ui.base.InjectActivityBase;
 import com.lod.movie_extended.ui.base.Presenter;
@@ -83,7 +84,7 @@ public class FilmShowActivity extends InjectActivityBase implements FilmShowView
         super.onCreate(savedInstanceState);
         showLoadingScreen();
         playPauseView.setOnClickListener(v -> presenter.togglePlayer());
-        subTextView.setOnClickListener(v -> startActivity(new Intent(this,null)));
+        subTextView.setOnClickListener(v -> startActivity(new Intent(this, SubActivity.class)));
     }
 
     @Override

@@ -63,7 +63,7 @@ public class DataManager {
 
     private void setDefaultSelectedLanguages(Session session) {
         Film film = session.getFilm();
-        film.setSelectedSubtitleLanguage(film.getSubtitleLanguages().get(0));
+        film.setSelectedSubtitleLanguage(film.getSubtitleLanguages().get(1));
         film.setSelectedSoundLanguage(film.getSoundLanguages().get(0));
     }
 

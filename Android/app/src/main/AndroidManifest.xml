@@ -31,7 +31,7 @@
         <activity android:name=".ui.activity.filmPreparation.FilmPreparationActivity"/>
 
         <activity android:name=".ui.activity.film.FilmActivity"/>
-
+        <activity android:name=".ui.activity.sub.SubActivity"/>
         <service android:name=".service.PlayerNotificationService"/>
 
         <receiver android:name=".receiver.HeadsetEventReceiver"/>

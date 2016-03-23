@@ -86,9 +86,9 @@ public class SubtitlesFragment extends InjectFragmentBase
     public SubtitlesComponent getComponent() {
         if(component == null) {
             component = DaggerSubtitlesComponent.builder()
-                    .filmComponent((FilmComponent) parentComponent)
-                    .subtitlesModule(new SubtitlesModule())
-                    .build();
+                .filmComponent((FilmComponent) parentComponent)
+                .subtitlesModule(new SubtitlesModule())
+                .build();
         }
         return component;
     }

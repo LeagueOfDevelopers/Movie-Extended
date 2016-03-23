@@ -15,6 +15,7 @@ import com.lod.movie_extended.ui.base.BasePresenter;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
+import timber.log.Timber;
 
 /**
  * Created by Жамбыл on 3/17/2016.
@@ -108,6 +109,7 @@ public class FilmShowPresenter extends BasePresenter<FilmShowView> implements Pl
     private void loadDefaultTrack(Session session) {
         Uri audioUrl = gerDefaultAudioUrl(session);
         Uri subUrl = getDefaultSubUrl(session);
+        Timber.e("sub url " + subUrl);
         player.startAudioWithSubtitles(audioUrl,subUrl);
     }
 
@@ -118,7 +120,7 @@ public class FilmShowPresenter extends BasePresenter<FilmShowView> implements Pl
     }
 
     private Uri getDefaultSubUrl(Session session) {
-        Language defaultLanguage = session.getFilm().getSelectedSoundLanguage();
+        Language defaultLanguage = session.getFilm().getSelectedSubtitleLanguage();
         int subtitleDownloadId = defaultLanguage.getSubtitle().getId();
         return serverHelper.getDownloadUrl(subtitleDownloadId,session.getToken());
     }

@@ -96,6 +96,6 @@ public class FilmPreparationPresenter extends BasePresenter<FilmPreparationMvpVi
     }
 
     public void togglePlayer(boolean isPlaying) {
-        player.setPlayWhenReady(!isPlaying);
+//        player.setPlayWhenReady(!isPlaying);
     }
 }

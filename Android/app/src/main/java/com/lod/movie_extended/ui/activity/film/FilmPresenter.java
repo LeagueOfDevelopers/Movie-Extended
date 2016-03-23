@@ -39,7 +39,7 @@ public class FilmPresenter extends BasePresenter<FilmMvpView> implements
 
     public void togglePlayer() {
         boolean playing = player.getPlayWhenReady();
-        player.setPlayWhenReady(!playing);
+//        player.setPlayWhenReady(!playing);
     }
 
     public boolean isPlaying() {

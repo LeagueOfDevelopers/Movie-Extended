@@ -65,10 +65,11 @@ public class Player implements ExoPlayer.Listener, MediaCodecAudioTrackRenderer.
 
     public boolean setPlayWhenReady(boolean playWhenReady) {
         if(!player.getPlayWhenReady()) {
-            mute();
             player.setPlayWhenReady(true);
+            processPlay();
+            mute();
         }
-        if (checkHeadset(playWhenReady)) {
+        if (playWhenReady && checkHeadset()) {
             return false;
         }
 
@@ -94,6 +95,7 @@ public class Player implements ExoPlayer.Listener, MediaCodecAudioTrackRenderer.
     public void startAudioWithSubtitles(Uri audioUrl, Uri subtitlesUrl) {
         rendererBuilder.startBuildingRenderers(this,audioUrl,subtitlesUrl);
         setPlayWhenReady(true);
+
         timeHelper.setFilmDuration(player.getDuration());
         maybeReportPlayerState();
     }
@@ -180,8 +182,8 @@ public class Player implements ExoPlayer.Listener, MediaCodecAudioTrackRenderer.
         maybeReportPlayerState();
     }
 
-    private boolean checkHeadset(boolean playWhenReady) {
-        if(playWhenReady && !audioManager.isWiredHeadsetOn()) {
+    private boolean checkHeadset() {
+        if(!audioManager.isWiredHeadsetOn()) {
             notifyHeadsetNotOn();
             return true;
         }
@@ -195,7 +197,9 @@ public class Player implements ExoPlayer.Listener, MediaCodecAudioTrackRenderer.
     private void processPlay() {
         long seekTime = timeHelper.getCurrentFilmTime();
         Timber.e("SEEKING TO " + seekTime);
-        player.seekTo(seekTime);
+        if(seekTime != -1) {
+            player.seekTo(seekTime);
+        }
         unmute();
     }
 

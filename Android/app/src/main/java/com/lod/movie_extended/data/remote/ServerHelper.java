@@ -49,7 +49,7 @@ public class ServerHelper {
     }
 
     private void setFilmStartTime(Session session) {
-        Date filmStartTime=null;
+        Date filmStartTime = null;
         try {
             filmStartTime = serverAPI.getFilmStartTime(session.getFilm().getId()).toBlocking().first();
         }

@@ -28,7 +28,9 @@ public class HeadsetEventReceiver extends BroadcastReceiver {
             switch (state) {
                 case 0:
                     Timber.v("Headset is unplugged");
-                    player.setPlayWhenReady(false);
+                    if(player.getPlayWhenReady()) {
+                        player.setPlayWhenReady(false);
+                    }
                     player.notifyHeadsetNotOn();
                     break;
                 case 1:

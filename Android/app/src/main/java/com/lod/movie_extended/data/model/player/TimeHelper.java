@@ -22,14 +22,12 @@ public class TimeHelper {
         Date now = new Date();
         Timber.e("Current time " + now.getTime());
         Timber.e("Film start time " + filmStartTime.getTime());
-
-        long dif = now.getTime() - filmStartTime.getTime();
-        Timber.e("Dif " + dif);
-        dif = dif - 3*60*60*1000;
-        if(dif>filmDuration) {
-            Timber.v("time is out");
-            return filmDuration;
+        if(filmStartTime.getTime() < 10) {
+            return -1;
         }
+        long dif = now.getTime() - filmStartTime.getTime();
+        dif = dif - 3*60*60*1000;
+        Timber.e("Dif " + dif);
         return dif;
     }
 
