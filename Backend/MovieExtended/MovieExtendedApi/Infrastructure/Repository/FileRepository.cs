@@ -60,7 +60,9 @@ namespace Infrastructure.Repository
         public void Update(int fileId, string filePath)
         {
             var session = _provider.GetCurrentSession();
-            session.Update(session.Query<File>().SingleOrDefault(file => file.Id == fileId).FilePath = filePath);
+            var fileupdate = session.Query<File>().SingleOrDefault(file1 =>file1.Id==fileId);
+            fileupdate.FilePath = filePath;
+            session.Update(fileupdate);
 
 
 

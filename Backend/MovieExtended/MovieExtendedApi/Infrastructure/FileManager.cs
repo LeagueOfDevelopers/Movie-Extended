@@ -1,12 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Web;
-using System.Xml;
+using System.Web.Http;
+using System.Web.Http.Results;
 using System.Xml.Linq;
-using System.Xml.Serialization;
 using Domain.Models;
 using Domain.Models.Entities;
 using NHibernate.Util;
@@ -22,7 +23,7 @@ namespace Infrastructure
             ReadExtensions();
         }
 
-        public void CreateFolders()
+        private void CreateFolders()
         {
             folders.ForEach(pair =>
             {
@@ -41,10 +42,60 @@ namespace Infrastructure
             extensionString.Split(',').ForEach(s => extensions.Add(s));
 
        }
+        public HttpResponseMessage GetAnyFile(string filepath)
+        {
 
-       
+            var responseMessage = new HttpResponseMessage(HttpStatusCode.OK);
+            var stream = new FileStream(HttpContext.Current.Server.MapPath(filepath), FileMode.Open,
+                FileAccess.Read);
 
-        private Dictionary<FileType, string> folders = new Dictionary<FileType, string>
+            responseMessage.Content = new StreamContent(stream);
+
+
+            responseMessage.Content.Headers.ContentType = new MediaTypeHeaderValue("application/octet-stream");
+            responseMessage.Content.Headers.ContentDisposition = new ContentDispositionHeaderValue("attachment")
+            {
+                FileName = Path.GetFileName(filepath)
+
+            };
+            return responseMessage;
+        }
+
+       public void DeleteFile(string filepath)
+       {
+           Directory.Delete(filepath);
+       }
+
+       public bool CheckExtension(string extension)
+       {
+           return extensions.Contains(extension);
+       }
+
+       public string CreateTrackPath(string filename)
+       {
+           var path = folders[FileType.Track];
+           return Path.Combine(path, filename);
+       }
+
+       public string CreateImagePath(string filename)
+       {
+            var path = folders[FileType.Poster];
+            return Path.Combine(path, filename);
+        }
+
+       public string CreateSubtitlePath(string filename)
+       {
+            var path = folders[FileType.Subtitles];
+            return Path.Combine(path, filename);
+        }
+
+       public void SaveFileAs(HttpPostedFile file, string filepath)
+       {
+           file.SaveAs(filepath);
+       }
+
+
+       private Dictionary<FileType, string> folders = new Dictionary<FileType, string>
         {
             {
                 FileType.Track, HttpContext.Current.Server.MapPath("~/AudioTrack")

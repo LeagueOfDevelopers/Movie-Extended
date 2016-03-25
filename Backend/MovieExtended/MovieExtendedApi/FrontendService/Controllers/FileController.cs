@@ -20,58 +20,35 @@ namespace FrontendService.Controllers
     {
         private readonly IFileRepository _fileRepository;
         private readonly ISessionKeeper _keeper;
-        private readonly IMovieRepository _movieRepository;
         private readonly IFileManager _fileManager;
+        private readonly ILanguageRepository _languageRepository;
 
-        public FileController(IFileRepository fileRepository, ISessionKeeper keeper , IMovieRepository movieRepository , IFileManager fileManager)
+        public FileController(IFileRepository fileRepository, ISessionKeeper keeper ,
+            IFileManager fileManager , ILanguageRepository languageRepository)
         {
             Require.NotNull(keeper, nameof(ISessionKeeper));
             _keeper = keeper;
             Require.NotNull(fileRepository, nameof(IFileRepository));
             _fileRepository = fileRepository;
-            Require.NotNull(movieRepository , nameof(IMovieRepository));
-            _movieRepository = movieRepository;
             Require.NotNull(fileManager,nameof(IFileManager));
             _fileManager=fileManager;
+            Require.NotNull(languageRepository,nameof(ILanguageRepository));
+            _languageRepository = languageRepository;
         }
         
-        [Route("file/get/{fileId}/token/{sessionId}")]
+        [Route("file/{fileId}/token/{sessionId}")]
         [HttpGet]
-        public HttpResponseMessage Track(int fileId , Guid sessionId)
+        public HttpResponseMessage GetAnyFile(int fileId , Guid sessionId)
         {
-            if (_keeper.CheckIfSessionExists(sessionId))
-            return GetAnyFile(fileId);
-            return new HttpResponseMessage
-            {
-                StatusCode = HttpStatusCode.Unauthorized
-            };
+            if (!_keeper.CheckIfSessionExists(sessionId)) return  new HttpResponseMessage(HttpStatusCode.Unauthorized);
+            var file = _fileRepository.GetFileData(fileId);
+            if (file==null) return new HttpResponseMessage(HttpStatusCode.NoContent);
+            return _fileManager.GetAnyFile(file.FilePath);
         }
 
         
 
-        private HttpResponseMessage GetAnyFile(int fileId)
-        {
-            var returnFile = _fileRepository.GetFileData(fileId);
-            if (returnFile == null)
-            {
-                return new HttpResponseMessage(HttpStatusCode.NoContent);
-            }
-
-            var responseMessage = new HttpResponseMessage(HttpStatusCode.OK);
-            var stream = new FileStream(HttpContext.Current.Server.MapPath(returnFile.FilePath), FileMode.Open,
-                FileAccess.Read);
-
-            responseMessage.Content = new StreamContent(stream);
-
-
-            responseMessage.Content.Headers.ContentType = new MediaTypeHeaderValue("application/octet-stream");
-            responseMessage.Content.Headers.ContentDisposition = new ContentDispositionHeaderValue("attachment")
-            {
-                FileName = Path.GetFileName(returnFile.FilePath) 
-
-            };
-            return responseMessage;
-        }
+        
 
         [Route("api/myfileupload/{fileId}/fileType/{filetype}")]
         [HttpPost]
@@ -124,29 +101,53 @@ namespace FrontendService.Controllers
             return _fileRepository.GetAllFiles();
         }
 
-        [Route("save/track/{languageId}")]
+        [Route("save/track/{fileId}")]
         [HttpPost]
-        public IHttpActionResult SaveTrack(int languageId)
+        public HttpResponseMessage SaveTrack(int fileId)
         {
             var request = HttpContext.Current.Request;
             var allKeys = request.Files.AllKeys;
             var files = request.Files.GetMultiple(allKeys[0]);
             var audio = files[0];
-            if (extensions.Contains(Path.GetExtension(audio.FileName)))
-            {
-                var directory = HttpContext.Current.Server.MapPath("~/AudioTrack");
-                var filePath = Path.Combine(directory, audio.FileName);
-                audio.SaveAs(filePath);
-                return Ok("uploaded");
-            }
-        else
-            {
-                return StatusCode(HttpStatusCode.NotAcceptable);
-            }
+            if (!_fileManager.CheckExtension(audio.FileName))
+                return new HttpResponseMessage(HttpStatusCode.NotAcceptable);
+            var filepath = _fileManager.CreateTrackPath(audio.FileName);
+            _fileRepository.Update(fileId,filepath);
+            _fileManager.SaveFileAs(audio,filepath);
+            return new HttpResponseMessage(HttpStatusCode.Accepted);
         }
 
-        public string[] extensions  = { ".mp3", ".srt", ".wav", ".jpg", "jpeg", "png", "sub" };
+        [Route("save/poster/{fileId}")]
+        [HttpPost]
+        public HttpResponseMessage SaveImage(int fileId)
+        {
+            var request = HttpContext.Current.Request;
+            var allKeys = request.Files.AllKeys;
+            var files = request.Files.GetMultiple(allKeys[0]);
+            var poster = files[0];
+            if (!_fileManager.CheckExtension(poster.FileName))
+                return new HttpResponseMessage(HttpStatusCode.NotAcceptable);
+            var filepath = _fileManager.CreateImagePath(poster.FileName);
+            _fileRepository.Update(fileId, filepath);
+            _fileManager.SaveFileAs(poster, filepath);
+            return new HttpResponseMessage(HttpStatusCode.Accepted);
+        }
 
+        [Route("save/subtitle/{fileId}")]
+        [HttpPost]
+        public HttpResponseMessage SaveSubtitle(int fileId)
+        {
+            var request = HttpContext.Current.Request;
+            var allKeys = request.Files.AllKeys;
+            var files = request.Files.GetMultiple(allKeys[0]);
+            var subtitle = files[0];
+            if (!_fileManager.CheckExtension(subtitle.FileName))
+                return new HttpResponseMessage(HttpStatusCode.NotAcceptable);
+            var filepath = _fileManager.CreateSubtitlePath(subtitle.FileName);
+            _fileRepository.Update(fileId, filepath);
+            _fileManager.SaveFileAs(subtitle, filepath);
+            return new HttpResponseMessage(HttpStatusCode.Accepted);
+        }
     }
 
     }
