@@ -21,8 +21,9 @@ namespace FrontendService.Controllers
         private readonly IFileRepository _fileRepository;
         private readonly ISessionKeeper _keeper;
         private readonly IMovieRepository _movieRepository;
+        private readonly IFileManager _fileManager;
 
-        public FileController(IFileRepository fileRepository, ISessionKeeper keeper , IMovieRepository movieRepository)
+        public FileController(IFileRepository fileRepository, ISessionKeeper keeper , IMovieRepository movieRepository , IFileManager fileManager)
         {
             Require.NotNull(keeper, nameof(ISessionKeeper));
             _keeper = keeper;
@@ -30,6 +31,8 @@ namespace FrontendService.Controllers
             _fileRepository = fileRepository;
             Require.NotNull(movieRepository , nameof(IMovieRepository));
             _movieRepository = movieRepository;
+            Require.NotNull(fileManager,nameof(IFileManager));
+            _fileManager=fileManager;
         }
         
         [Route("file/get/{fileId}/token/{sessionId}")]

@@ -1,10 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Web;
+using System.Xml;
+using System.Xml.Linq;
+using System.Xml.Serialization;
 using Domain.Models;
 using Domain.Models.Entities;
 using NHibernate.Util;
+
 
 namespace Infrastructure
 {
@@ -13,6 +19,7 @@ namespace Infrastructure
         public FileManager()
         {
             CreateFolders();
+            ReadExtensions();
         }
 
         public void CreateFolders()
@@ -25,6 +32,17 @@ namespace Infrastructure
                 }
             } );
         }
+
+       private void ReadExtensions()
+       {
+            extensions = new List<string>();
+           var document  = XDocument.Load(HttpContext.Current.Server.MapPath(@"\extensions.xml"));
+           var extensionString = document.Root.Value;
+            extensionString.Split(',').ForEach(s => extensions.Add(s));
+
+           Debug.WriteLine(extensions.Count);
+
+       }
 
        
 
@@ -41,9 +59,7 @@ namespace Infrastructure
             
             }
         };
-        public string[] extensions =
-        {
-            ".mp3", ".srt", ".wav", ".jpg", "jpeg", "png", "sub"
-        };
+
+       public List<string> extensions;
     }
 }
