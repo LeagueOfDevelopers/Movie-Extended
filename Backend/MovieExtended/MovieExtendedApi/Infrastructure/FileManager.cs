@@ -40,8 +40,6 @@ namespace Infrastructure
            var extensionString = document.Root.Value;
             extensionString.Split(',').ForEach(s => extensions.Add(s));
 
-           Debug.WriteLine(extensions.Count);
-
        }
 
        
