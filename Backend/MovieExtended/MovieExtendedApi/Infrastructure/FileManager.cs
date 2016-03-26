@@ -46,7 +46,7 @@ namespace Infrastructure
         {
 
             var responseMessage = new HttpResponseMessage(HttpStatusCode.OK);
-            var stream = new FileStream(HttpContext.Current.Server.MapPath(filepath), FileMode.Open,
+            var stream = new FileStream(filepath, FileMode.Open,
                 FileAccess.Read);
 
             responseMessage.Content = new StreamContent(stream);
@@ -66,9 +66,9 @@ namespace Infrastructure
            Directory.Delete(filepath);
        }
 
-       public bool CheckExtension(string extension)
+       public bool CheckExtension(string filename)
        {
-           return extensions.Contains(extension);
+           return extensions.Contains(Path.GetExtension(filename));
        }
 
        public string CreateTrackPath(string filename)

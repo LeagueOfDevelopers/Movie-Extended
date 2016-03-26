@@ -20,10 +20,7 @@ namespace Infrastructure.Repository
         }
 
 
-        public void DownLoadFileFromDataBase(int fileId)
-        {
-            throw new NotImplementedException();
-        }
+        
 
         public void DeleteFileByFileId(int fileId)
         {

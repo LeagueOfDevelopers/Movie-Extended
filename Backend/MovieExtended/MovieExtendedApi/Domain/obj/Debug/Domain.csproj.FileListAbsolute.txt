@@ -28,3 +28,11 @@ C:\AndroidNew\Projects\Movie-Extended\Backend\MovieExtended\MovieExtendedApi\Dom
 C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\Domain\obj\Debug\Domain.csprojResolveAssemblyReference.cache
 =======
 >>>>>>> 566bebc4e1865e7985c5d96196ac5f08fffd4932
+C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\Domain\bin\Debug\Newtonsoft.Json.dll
+C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\Domain\bin\Debug\System.Net.Http.Formatting.dll
+C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\Domain\bin\Debug\System.Web.Http.dll
+C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\Domain\bin\Debug\Newtonsoft.Json.xml
+C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\Domain\bin\Debug\System.Net.Http.Formatting.xml
+C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\Domain\bin\Debug\System.Web.Http.xml
+C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\Domain\bin\Debug\ru\System.Net.Http.Formatting.resources.dll
+C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\Domain\bin\Debug\ru\System.Web.Http.resources.dll
