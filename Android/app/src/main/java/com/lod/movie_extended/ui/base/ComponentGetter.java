@@ -1,7 +1,5 @@
 package com.lod.movie_extended.ui.base;
 
-import dagger.Component;
-
 /**
  * Created by Жамбыл on 09.01.2016.
  */

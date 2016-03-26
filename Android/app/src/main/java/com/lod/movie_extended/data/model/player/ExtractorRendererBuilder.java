@@ -90,7 +90,9 @@ public class ExtractorRendererBuilder {
             textRenderer = new TextTrackRenderer(textSource, player,
                     player.getMainHandler().getLooper());
         }
-
+        if(textRenderer == null) {
+            throw new NullPointerException();
+        }
         // Invoke the callback.
         TrackRenderer[] renderers = new TrackRenderer[Player.RENDERER_COUNT];
         renderers[Player.TYPE_AUDIO] = audioRenderer;

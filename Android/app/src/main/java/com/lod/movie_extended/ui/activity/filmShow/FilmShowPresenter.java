@@ -3,6 +3,7 @@ package com.lod.movie_extended.ui.activity.filmShow;
 import android.net.Uri;
 
 import com.lod.movie_extended.data.DataManager;
+import com.lod.movie_extended.data.local.DataBaseHelper;
 import com.lod.movie_extended.data.model.Language;
 import com.lod.movie_extended.data.model.NotificationServiceHelper;
 import com.lod.movie_extended.data.model.Session;
@@ -24,14 +25,18 @@ public class FilmShowPresenter extends BasePresenter<FilmShowView> implements Pl
     private DataManager dataManager;
     private Player player;
     private NotificationServiceHelper notificationServiceHelper;
-    private Session previousSession;
     private ServerHelper serverHelper;
+    private DataBaseHelper dataBaseHelper;
 
-    public FilmShowPresenter(DataManager dataManager, Player player, NotificationServiceHelper notificationServiceHelper, ServerHelper serverHelper) {
+    public FilmShowPresenter(DataManager dataManager, Player player,
+                             NotificationServiceHelper notificationServiceHelper,
+                             ServerHelper serverHelper,
+                             DataBaseHelper dataBaseHelper) {
         this.dataManager = dataManager;
         this.player = player;
         this.notificationServiceHelper = notificationServiceHelper;
         this.serverHelper = serverHelper;
+        this.dataBaseHelper = dataBaseHelper;
         player.addListener(this);
     }
 
@@ -47,47 +52,23 @@ public class FilmShowPresenter extends BasePresenter<FilmShowView> implements Pl
 
                 @Override
                 public void onError(Throwable e) {
+                    e.printStackTrace();
                     getMvpView().showError();
                 }
 
                 @Override
                 public void onNext(Session session) {
-                    getMvpView().setFilm(session.getFilm());
-                    if(previousSession == null) {
-                        loadDefaultTrack(session);
-                        player.setFilmStartTime(session.getFilmStartTime());
-                    }
-                    else {
-                        loadAnotherDataIfNeed(session);
-                    }
+                    handleSession(session);
                     notificationServiceHelper.start();
-                    previousSession = session;
+                    onStateChanged(false);
                 }
             });
     }
 
-    private void loadAnotherDataIfNeed(Session session) {
-        if(previousSession.getFilm().getSelectedSoundLanguage() != session.getFilm().getSelectedSoundLanguage()) {
-           player.setAudioUrl(serverHelper.getDownloadUrl(session.getFilm().getSelectedSoundLanguage().getId(),session.getToken()));
-        }
-        if(previousSession.getFilm().getSelectedSubtitleLanguage() != session.getFilm().getSelectedSubtitleLanguage()){
-            player.setSubtitleUrl(serverHelper.getDownloadUrl(session.getFilm().getSelectedSubtitleLanguage().getId(),session.getToken()));
-        }
-    }
-
-
-    public boolean isFilmTime() {
-        return dataManager.isFilmTime();
-    }
-
-    public void setFilmTime(boolean filmTime) {
-        dataManager.setFilmTime(filmTime);
-    }
-
     @Override
     public void onStateChanged(boolean playWhenReady) {
-        if(getMvpView()!=null) {
-            if (playWhenReady) {
+        if(getMvpView() != null) {
+            if (player.getPlayWhenReady()) {
                 getMvpView().setPauseView();
             } else {
                 getMvpView().setPlayView();
@@ -101,22 +82,57 @@ public class FilmShowPresenter extends BasePresenter<FilmShowView> implements Pl
 
     @Override
     public void onWiredHeadsetNotOn() {
-        getMvpView().setHeadsetFooter();
+        if(getMvpView() != null) {
+            getMvpView().setHeadsetFooter();
+        }
     }
 
     @Override
     public void onWiredHeadsetOn() {
-        getMvpView().setNormalFooter();
+        if(getMvpView() != null) {
+            getMvpView().setNormalFooter();
+        }
     }
 
     public void togglePlayer() {
         player.setPlayWhenReady(!player.getPlayWhenReady());
     }
 
+    public boolean isFilmTime() {
+        return dataManager.isFilmTime();
+    }
+
+    private void setFilmTime(boolean filmTime) {
+        dataManager.setFilmTime(filmTime);
+    }
+
+    private void handleSession(Session session) {
+        getMvpView().setFilmData(session.getFilm());
+        if(dataBaseHelper.getPreviousSoundLanguage() == null) {
+            player.setFilmStartTime(session.getFilmStartTime());
+            loadDefaultTrack(session);
+        }
+        else {
+            loadAnotherDataIfNeed(session);
+        }
+        dataBaseHelper.savePreviousSoundLanguage(session.getFilm().getSelectedSoundLanguage());
+        dataBaseHelper.savePreviousSubLanguage(session.getFilm().getSelectedSubtitleLanguage());
+    }
+
+    private void loadAnotherDataIfNeed(Session session) {
+        if(session.getFilm().getSelectedSoundLanguage() != dataBaseHelper.getPreviousSoundLanguage()) {
+            player.setAudioUrl(serverHelper.getDownloadUrl(session.getFilm().getSelectedSoundLanguage().getId(),session.getToken()));
+            Timber.i("Changing audio url");
+        }
+        if(session.getFilm().getSelectedSubtitleLanguage() != dataBaseHelper.getPreviousSubtitleLanguage()) {
+            player.setSubtitleUrl(serverHelper.getDownloadUrl(session.getFilm().getSelectedSubtitleLanguage().getId(),session.getToken()));
+            Timber.i("Changing sub url");
+        }
+    }
+
     private void loadDefaultTrack(Session session) {
         Uri audioUrl = getDefaultAudioUrl(session);
         Uri subUrl = getDefaultSubUrl(session);
-        Timber.e("sub url " + subUrl);
         player.startAudioWithSubtitles(audioUrl,subUrl);
     }
 

@@ -2,8 +2,6 @@ package com.lod.movie_extended.data.model;
 
 import android.graphics.Bitmap;
 
-import com.google.gson.annotations.SerializedName;
-
 import java.util.List;
 
 /**

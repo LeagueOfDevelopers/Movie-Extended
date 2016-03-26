@@ -1,6 +1,5 @@
 package com.lod.movie_extended.ui.activity.languagePicker;
 
-import com.lod.movie_extended.data.model.Film;
 import com.lod.movie_extended.ui.base.MvpView;
 
 /**

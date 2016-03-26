@@ -1,26 +1,14 @@
 package com.lod.movie_extended.data.remote;
 
 import android.net.Uri;
-import android.support.annotation.NonNull;
 
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
-import com.lod.movie_extended.data.model.Film;
-import com.lod.movie_extended.data.model.Language;
 import com.lod.movie_extended.data.model.Session;
 import com.lod.movie_extended.data.model.SessionDeserializer;
 import com.lod.movie_extended.data.model.Token;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
-import retrofit.http.Url;
 import rx.Observable;
-import rx.functions.Action1;
-import timber.log.Timber;
 
 /**
  * Created by Жамбыл on 09.01.2016.
@@ -53,7 +41,8 @@ public class ServerHelper {
         try {
             filmStartTime = serverAPI.getFilmStartTime(session.getFilm().getId()).toBlocking().first();
         }
-        catch (Exception ignored) {
+        catch (Exception e) {
+            e.printStackTrace();
         }
         session.setFilmStartTime(filmStartTime);
     }

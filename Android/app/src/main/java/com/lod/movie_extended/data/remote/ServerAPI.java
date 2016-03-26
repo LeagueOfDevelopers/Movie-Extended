@@ -2,14 +2,10 @@ package com.lod.movie_extended.data.remote;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
-import com.lod.movie_extended.data.model.Film;
-import com.lod.movie_extended.data.model.Language;
 
 import java.util.Date;
 
-import retrofit.Callback;
 import retrofit.GsonConverterFactory;
 import retrofit.Retrofit;
 import retrofit.RxJavaCallAdapterFactory;

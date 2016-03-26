@@ -6,8 +6,6 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.squareup.otto.Bus;
 
-import javax.inject.Inject;
-
 
 /**
  * Created by Жамбыл on 10.01.2016.

@@ -1,6 +1,5 @@
 package com.lod.movie_extended.data.model.player;
 
-import java.security.Timestamp;
 import java.util.Date;
 
 import timber.log.Timber;
@@ -19,12 +18,13 @@ public class TimeHelper {
     }
 
     public long getCurrentFilmTime() {
+        if(filmStartTime == null) {
+            throw new IllegalStateException();
+        }
         Date now = new Date();
         Timber.e("Current time " + now.getTime());
+
         Timber.e("Film start time " + filmStartTime.getTime());
-        if(filmStartTime.getTime() < 10) {
-            return -1;
-        }
         long dif = now.getTime() - filmStartTime.getTime();
         dif = dif - 3*60*60*1000;
         Timber.e("Dif " + dif);

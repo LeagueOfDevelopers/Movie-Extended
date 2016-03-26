@@ -24,7 +24,6 @@ import com.lod.movie_extended.R;
 import com.lod.movie_extended.data.DataManager;
 import com.lod.movie_extended.data.model.player.Player;
 import com.lod.movie_extended.data.model.player.PlayerListener;
-import com.lod.movie_extended.ui.activity.filmPreparation.FilmPreparationActivity;
 import com.lod.movie_extended.ui.activity.filmShow.FilmShowActivity;
 
 import javax.inject.Inject;
@@ -99,7 +98,8 @@ public class PlayerNotificationService extends Service implements PlayerListener
     public int onStartCommand(Intent intent, int flags, int startId) {
         switch (intent.getAction()) {
             case NotificationServiceHelper.ACTION.START_FOREGROUND_ACTION:
-                createAndShowNotification(false);
+                createAndShowNotification();
+
                 registerRemoteControlClient();
                 break;
 
@@ -149,7 +149,7 @@ public class PlayerNotificationService extends Service implements PlayerListener
     private void play() {
         Timber.v("notification play");
         player.setPlayWhenReady(true);
-        createAndShowNotification(true);
+        createAndShowNotification();
     }
 
     private void pause() {
@@ -185,11 +185,11 @@ public class PlayerNotificationService extends Service implements PlayerListener
         return player.getPlayWhenReady();
     }
 
-    public void createAndShowNotification(boolean foreground) {
+    public void createAndShowNotification() {
         smallView = getRemoteViews(R.layout.notification_player_small);
         bigView = getRemoteViews(R.layout.notification_player_big);
         Notification notification = createNotification(smallView,bigView);
-        if(foreground) {
+        if(getIsPlaying()) {
             startForeground(NotificationServiceHelper.NOTIFICATION_ID.FOREGROUND_SERVICE, notification);
         }
         else  {
@@ -255,7 +255,6 @@ public class PlayerNotificationService extends Service implements PlayerListener
 
     @Override
     public void onStateChanged(boolean playWhenReady) {
-        Timber.v("state changed");
         setPlayOrPauseImage();
         if(!playWhenReady) {
             stopForeground(false);

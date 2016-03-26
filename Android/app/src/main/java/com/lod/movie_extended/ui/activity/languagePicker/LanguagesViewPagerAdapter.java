@@ -3,7 +3,6 @@ package com.lod.movie_extended.ui.activity.languagePicker;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.widget.ListView;
 
 import com.lod.movie_extended.ui.fragment.languages.LanguagesFragment;
 

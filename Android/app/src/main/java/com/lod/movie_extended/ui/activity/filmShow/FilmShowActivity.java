@@ -1,5 +1,6 @@
 package com.lod.movie_extended.ui.activity.filmShow;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -7,6 +8,8 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
@@ -41,43 +44,22 @@ public class FilmShowActivity extends InjectActivityBase implements FilmShowView
 
     private static final int LAYOUT = R.layout.activity_film_show;
 
+    @Inject FilmShowPresenter presenter;
+    @Inject HeadsetEventReceiver headsetEventReceiver;
+
+    @Bind(R.id.film_name_text_view) TextView filmNameTextView;
+    @Bind(R.id.sound_language_text_view) TextView soundLanguageTextView;
+    @Bind(R.id.subtitle_language_text_view) TextView subtitleLanguageTextView;
+    @Bind(R.id.info_text_view) TextView infoTextView;
+    @Bind(R.id.play_pause_text_view) TextView playPauseTextView;
+    @Bind(R.id.sub_text_view) TextView subTextView;
+    @Bind(R.id.headset) ImageView headsetImageView;
+    @Bind(R.id.progressBar) ProgressBar progressBar;
+    @Bind(R.id.play_pause_view) RelativeLayout playPauseView;
+    @Bind(R.id.blackScreen) LinearLayout blackScreen;
+    @Bind(R.id.background) LinearLayout background;
+
     private FilmShowComponent component;
-
-    @Inject
-    FilmShowPresenter presenter;
-
-    @Inject
-    HeadsetEventReceiver headsetEventReceiver;
-
-    @Bind(R.id.film_name_text_view)
-    TextView filmNameTextView;
-
-    @Bind(R.id.sound_language_text_view)
-    TextView soundLanguageTextView;
-
-    @Bind(R.id.subtitle_language_text_view)
-    TextView subtitleLanguageTextView;
-
-    @Bind(R.id.info_text_view)
-    TextView infoTextView;
-
-    @Bind(R.id.play_pause_text_view)
-    TextView playPauseTextView;
-
-    @Bind(R.id.sub_text_view)
-    TextView subTextView;
-
-    @Bind(R.id.headset)
-    ImageView headsetImageView;
-
-    @Bind(R.id.blackScreen)
-    LinearLayout blackScreen;
-
-    @Bind(R.id.progressBar)
-    ProgressBar progressBar;
-
-    @Bind(R.id.play_pause_view)
-    RelativeLayout playPauseView;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -85,30 +67,30 @@ public class FilmShowActivity extends InjectActivityBase implements FilmShowView
         showLoadingScreen();
         playPauseView.setOnClickListener(v -> presenter.togglePlayer());
         subTextView.setOnClickListener(v -> startActivity(new Intent(this, SubActivity.class)));
+        IntentFilter intentFilter = new IntentFilter(Intent.ACTION_HEADSET_PLUG);
+        registerReceiver(headsetEventReceiver,intentFilter);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        unregisterReceiver(headsetEventReceiver);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
         presenter.loadSession();
-        IntentFilter intentFilter = new IntentFilter(Intent.ACTION_HEADSET_PLUG);
-        registerReceiver(headsetEventReceiver,intentFilter);
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        unregisterReceiver(headsetEventReceiver);
-    }
-
-    @OnClick(R.id.fab)
-    public void onFabClick() {
-        startActivity(new Intent(this,LanguagePickerActivity.class));
     }
 
     @Override
     protected void attachBaseContext(Context newBase) {
         super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
+    }
+
+    @OnClick(R.id.fab)
+    public void onFabClick() {
+        startActivity(new Intent(this,LanguagePickerActivity.class));
     }
 
     @Override
@@ -144,8 +126,7 @@ public class FilmShowActivity extends InjectActivityBase implements FilmShowView
     }
 
     @Override
-    public void setFilm(Film film) {
-        presenter.setFilmTime(true);
+    public void setFilmData(Film film) {
         hideLoadingScreen();
         toggleFooter(true);
 
@@ -172,11 +153,17 @@ public class FilmShowActivity extends InjectActivityBase implements FilmShowView
     @Override
     public void setPlayView() {
         playPauseTextView.setText("PLAY");
+        Animation animation = AnimationUtils.loadAnimation(this, R.anim.fade_in);
+        animation.setFillAfter(true);
+        background.startAnimation(animation);
     }
 
     @Override
     public void setPauseView() {
         playPauseTextView.setText("MUTE");
+        Animation animation = AnimationUtils.loadAnimation(this, R.anim.fade_out);
+        animation.setFillAfter(true);
+        background.startAnimation(animation);
     }
 
     private void showLoadingScreen() {

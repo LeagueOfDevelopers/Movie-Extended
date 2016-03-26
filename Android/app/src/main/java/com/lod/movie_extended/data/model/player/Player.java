@@ -60,8 +60,7 @@ public class Player implements ExoPlayer.Listener, MediaCodecAudioTrackRenderer.
         listeners = new CopyOnWriteArrayList<>();
         disableSubtitles();
         playerLogger.setPlayer(this);
-        startLogging();
-    }
+     }
 
     public boolean setPlayWhenReady(boolean playWhenReady) {
         if(!player.getPlayWhenReady()) {
@@ -73,10 +72,10 @@ public class Player implements ExoPlayer.Listener, MediaCodecAudioTrackRenderer.
             return false;
         }
 
-        if(playWhenReady) {
+        if(playWhenReady && !getPlayWhenReady()) {
             processPlay();
         }
-        else {
+        else if(!playWhenReady && getPlayWhenReady()){
             processPause();
         }
 
@@ -93,6 +92,9 @@ public class Player implements ExoPlayer.Listener, MediaCodecAudioTrackRenderer.
     }
 
     public void startAudioWithSubtitles(Uri audioUrl, Uri subtitlesUrl) {
+        if(!playerLogger.isWorking()) {
+            startLogging();
+        }
         rendererBuilder.startBuildingRenderers(this,audioUrl,subtitlesUrl);
         setPlayWhenReady(true);
 
@@ -101,7 +103,7 @@ public class Player implements ExoPlayer.Listener, MediaCodecAudioTrackRenderer.
     }
 
     public void setAudioUrl(Uri audioUrl) {
-        startAudioWithSubtitles(audioUrl,null);
+        rendererBuilder.setAudioUrl(audioUrl);
     }
 
     public void setSubtitleUrl(Uri subtitleUrl) {
@@ -182,6 +184,10 @@ public class Player implements ExoPlayer.Listener, MediaCodecAudioTrackRenderer.
         maybeReportPlayerState();
     }
 
+    public void onStop() {
+        stopLogging();
+    }
+
     private boolean checkHeadset() {
         if(!audioManager.isWiredHeadsetOn()) {
             notifyHeadsetNotOn();
@@ -219,11 +225,11 @@ public class Player implements ExoPlayer.Listener, MediaCodecAudioTrackRenderer.
     private void setVolume(float volume) {
         player.sendMessage(audioRenderer,MediaCodecAudioTrackRenderer.MSG_SET_VOLUME, volume);
     }
-
     private void unmute() {
         isPlaying = true;
         setVolume(1f);
     }
+
     private void maybeReportPlayerState() {
         boolean playWhenReady = isPlaying;
         if (lastReportedPlayWhenReady != playWhenReady) {
@@ -232,10 +238,6 @@ public class Player implements ExoPlayer.Listener, MediaCodecAudioTrackRenderer.
             }
             lastReportedPlayWhenReady = playWhenReady;
         }
-    }
-
-    public void onStop() {
-        stopLogging();
     }
 
     private void stopLogging() {

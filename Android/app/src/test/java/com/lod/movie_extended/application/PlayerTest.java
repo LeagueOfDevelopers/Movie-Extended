@@ -9,7 +9,6 @@ import com.lod.movie_extended.data.model.player.Player;
 import com.lod.movie_extended.data.model.player.PlayerListener;
 import com.lod.movie_extended.data.model.player.TimeHelper;
 import com.lod.movie_extended.injection.App;
-import com.lod.movie_extended.injection.module.application.AudioModuleTest;
 import com.lod.movie_extended.util.TestComponentCreator;
 
 import org.junit.Before;
@@ -20,13 +19,6 @@ import org.robolectric.annotation.Config;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import rx.Notification;
-import rx.Observable;
-import rx.Observer;
-import rx.Subscriber;
-import rx.functions.Action0;
-import rx.functions.Action1;
 
 import static junit.framework.Assert.assertEquals;
 import static org.mockito.Mockito.atLeast;

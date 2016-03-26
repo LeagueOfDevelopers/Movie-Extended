@@ -1,7 +1,6 @@
 package com.lod.movie_extended.presenter;
 
 import com.lod.movie_extended.data.DataManager;
-import com.lod.movie_extended.data.model.Language;
 import com.lod.movie_extended.data.model.Session;
 import com.lod.movie_extended.ui.fragment.languages.LanguagesMvpView;
 import com.lod.movie_extended.ui.fragment.languages.LanguagesPresenter;
@@ -17,12 +16,8 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import java.util.ArrayList;
-
 import rx.Observable;
 
-import static org.junit.Assert.assertNotNull;
-import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.when;
 
 /**

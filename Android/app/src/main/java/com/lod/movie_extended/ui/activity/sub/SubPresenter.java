@@ -4,7 +4,6 @@ import com.google.android.exoplayer.text.Cue;
 import com.lod.movie_extended.data.DataManager;
 import com.lod.movie_extended.data.model.player.CaptionListener;
 import com.lod.movie_extended.data.model.player.Player;
-import com.lod.movie_extended.data.model.player.PlayerListener;
 import com.lod.movie_extended.ui.base.BasePresenter;
 
 import java.util.List;

@@ -6,8 +6,6 @@ import com.google.zxing.Result;
 import com.lod.movie_extended.data.DataManager;
 import com.lod.movie_extended.ui.base.BasePresenter;
 
-import javax.inject.Inject;
-
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
 
 /**

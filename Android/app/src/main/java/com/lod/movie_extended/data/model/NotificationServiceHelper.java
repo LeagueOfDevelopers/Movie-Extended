@@ -1,5 +1,6 @@
 package com.lod.movie_extended.data.model;
 
+import android.app.NotificationManager;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -16,6 +17,7 @@ import timber.log.Timber;
 public class NotificationServiceHelper {
 
     Context context;
+    NotificationManager notificationManager;
 
     public NotificationServiceHelper(Context context) {
         this.context = context;

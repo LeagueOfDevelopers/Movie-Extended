@@ -3,14 +3,12 @@ package com.lod.movie_extended.injection;
 import android.app.Application;
 
 import com.lod.movie_extended.BuildConfig;
-import com.lod.movie_extended.R;
 import com.lod.movie_extended.injection.component.application.ApplicationComponent;
 import com.lod.movie_extended.injection.component.application.DaggerApplicationComponent;
 import com.lod.movie_extended.injection.module.application.ApplicationModule;
 import com.lod.movie_extended.injection.module.application.AudioModule;
 import com.lod.movie_extended.util.Logger;
 import timber.log.Timber;
-import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
 
 /**
  * Created by Жамбыл on 09.01.2016.

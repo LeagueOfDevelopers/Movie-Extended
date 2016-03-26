@@ -21,8 +21,6 @@ import org.mockito.runners.MockitoJUnitRunner;
 
 import rx.Observable;
 
-import static org.junit.Assert.assertNotEquals;
-import static org.junit.Assert.assertNotNull;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;

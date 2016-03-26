@@ -12,16 +12,11 @@ import com.lod.movie_extended.data.model.player.TimeHelper;
 import com.lod.movie_extended.injection.context.ApplicationContext;
 import com.lod.movie_extended.injection.scope.PerApplication;
 
-import org.junit.runner.RunWith;
-import org.mockito.Mock;
-import org.mockito.runners.MockitoJUnitRunner;
-
 import javax.inject.Named;
 
 import dagger.Module;
 import dagger.Provides;
 
-import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 

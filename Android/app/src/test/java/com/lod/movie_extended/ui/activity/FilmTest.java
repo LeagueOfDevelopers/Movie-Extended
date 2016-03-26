@@ -3,7 +3,6 @@ package com.lod.movie_extended.ui.activity;
 import android.support.v7.app.AppCompatActivity;
 
 import com.lod.movie_extended.BuildConfig;
-import com.lod.movie_extended.injection.App;
 import com.lod.movie_extended.injection.component.activity.DaggerFilmComponentTest;
 import com.lod.movie_extended.injection.module.activity.FilmModuleTest;
 import com.lod.movie_extended.ui.activity.film.FilmActivity;

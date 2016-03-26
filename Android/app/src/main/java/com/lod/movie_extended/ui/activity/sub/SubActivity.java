@@ -15,7 +15,6 @@ import com.lod.movie_extended.ui.base.InjectActivityBase;
 import com.lod.movie_extended.ui.base.Presenter;
 
 import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -87,8 +86,17 @@ public class SubActivity extends InjectActivityBase implements SubMvpView, Compo
     public void setCues(List<Cue> cues) {
         if(!cues.isEmpty()) {
             try {
-                String s = new String(cues.get(0).text.toString().getBytes("ISO-8859-1"), "UTF-8");
-                Timber.v("AS STRING " + s);
+                String iso = new String(cues.get(0).text.toString().getBytes("ISO-8859-1"), "UTF-8");
+                Timber.v("AS ISO " + iso);
+
+                String utf8 = new String(cues.get(0).text.toString().getBytes("UTF-8"), "UTF-8");
+                Timber.v("AS utf8 " + utf8);
+                String windows = new String(cues.get(0).text.toString().getBytes("WINDOWS-1256"),"WINDOWS-1256" );
+                Timber.v("AS windows " + windows);
+
+                String koi8 = new String(cues.get(0).text.toString().getBytes("KOI8_R"),"UTF-8" );
+                Timber.v("AS koi8 " + koi8);
+
             } catch (UnsupportedEncodingException e) {
                 e.printStackTrace();
             }

@@ -2,18 +2,13 @@ package com.lod.movie_extended.data;
 
 import com.lod.movie_extended.data.local.DataBaseHelper;
 import com.lod.movie_extended.data.model.Film;
-import com.lod.movie_extended.data.model.Language;
 import com.lod.movie_extended.data.model.Session;
 import com.lod.movie_extended.data.remote.ServerHelper;
 import com.lod.movie_extended.injection.scope.PerApplication;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.inject.Inject;
 
 import rx.Observable;
-import rx.functions.Action1;
 import timber.log.Timber;
 
 /**

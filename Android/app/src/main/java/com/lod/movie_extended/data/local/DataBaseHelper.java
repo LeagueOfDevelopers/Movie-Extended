@@ -2,11 +2,10 @@ package com.lod.movie_extended.data.local;
 
 import android.support.annotation.Nullable;
 
+import com.lod.movie_extended.data.model.Language;
 import com.lod.movie_extended.data.model.Session;
-import com.lod.movie_extended.data.model.Token;
 
 import rx.Observable;
-import rx.Subscriber;
 import timber.log.Timber;
 
 
@@ -17,6 +16,8 @@ public class DataBaseHelper {
 
     private Session session;
     private String qrCode;
+    private Language selectedSoundLanguage;
+    private Language selectedSubtitleLanguage;
 
     public Observable<Session> saveSession(Session session) {
         this.session = session;
@@ -42,5 +43,21 @@ public class DataBaseHelper {
 
     public void setQrCode(String qrCode) {
         this.qrCode = qrCode;
+    }
+
+    public void savePreviousSoundLanguage(Language selectedSoundLanguage) {
+        this.selectedSoundLanguage = selectedSoundLanguage;
+    }
+
+    public void savePreviousSubLanguage(Language selectedSubtitleLanguage) {
+        this.selectedSubtitleLanguage = selectedSubtitleLanguage;
+    }
+
+    public Language getPreviousSoundLanguage() {
+        return selectedSoundLanguage;
+    }
+
+    public Language getPreviousSubtitleLanguage() {
+        return selectedSubtitleLanguage;
     }
 }

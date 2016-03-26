@@ -3,7 +3,6 @@ package com.lod.movie_extended.util;
 import com.lod.movie_extended.data.model.Film;
 import com.lod.movie_extended.data.model.Language;
 import com.lod.movie_extended.data.model.Session;
-import com.lod.movie_extended.data.model.Token;
 
 import java.util.ArrayList;
 import java.util.List;
