@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Net;
 using System.Net.Http;
-using System.Net.Http.Headers;
 using System.Web;
 using System.Web.Http;
 using Domain.Models;
@@ -21,10 +19,9 @@ namespace FrontendService.Controllers
         private readonly IFileRepository _fileRepository;
         private readonly ISessionKeeper _keeper;
         private readonly IFileManager _fileManager;
-        private readonly ILanguageRepository _languageRepository;
 
         public FileController(IFileRepository fileRepository, ISessionKeeper keeper ,
-            IFileManager fileManager , ILanguageRepository languageRepository)
+            IFileManager fileManager )
         {
             Require.NotNull(keeper, nameof(ISessionKeeper));
             _keeper = keeper;
@@ -32,8 +29,6 @@ namespace FrontendService.Controllers
             _fileRepository = fileRepository;
             Require.NotNull(fileManager,nameof(IFileManager));
             _fileManager=fileManager;
-            Require.NotNull(languageRepository,nameof(ILanguageRepository));
-            _languageRepository = languageRepository;
         }
         
         [Route("file/{fileId}/token/{sessionId}")]

@@ -37,7 +37,7 @@ namespace Infrastructure
        private void ReadExtensions()
        {
             extensions = new List<string>();
-           var document  = XDocument.Load(HttpContext.Current.Server.MapPath(@"\extensions.xml"));
+           var document  = XDocument.Load(HttpContext.Current.Server.MapPath(@"~\extensions.xml"));
            var extensionString = document.Root.Value;
             extensionString.Split(',').ForEach(s => extensions.Add(s));
 

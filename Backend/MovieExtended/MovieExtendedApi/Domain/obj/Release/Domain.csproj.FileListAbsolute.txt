@@ -7,3 +7,11 @@ C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\Domain\bin\Release
 C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\Domain\obj\Release\Domain.csprojResolveAssemblyReference.cache
 C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\Domain\obj\Release\Domain.dll
 C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\Domain\obj\Release\Domain.pdb
+C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\Domain\bin\Release\Newtonsoft.Json.dll
+C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\Domain\bin\Release\System.Net.Http.Formatting.dll
+C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\Domain\bin\Release\System.Web.Http.dll
+C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\Domain\bin\Release\Newtonsoft.Json.xml
+C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\Domain\bin\Release\System.Net.Http.Formatting.xml
+C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\Domain\bin\Release\System.Web.Http.xml
+C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\Domain\bin\Release\ru\System.Net.Http.Formatting.resources.dll
+C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\Domain\bin\Release\ru\System.Web.Http.resources.dll
