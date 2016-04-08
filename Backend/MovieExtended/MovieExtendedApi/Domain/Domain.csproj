@@ -34,6 +34,10 @@
       <HintPath>..\packages\Iesi.Collections.4.0.0.4000\lib\net40\Iesi.Collections.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Journalist.LanguageExtensions, Version=0.9.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Journalist.LanguageExtensions.0.9.4\lib\net451\Journalist.LanguageExtensions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
@@ -79,6 +83,7 @@
     <Compile Include="Models\FrontendEntities\FrontendMovie.cs" />
     <Compile Include="Models\IFileManager.cs" />
     <Compile Include="Models\ISessionKeeper.cs" />
+    <Compile Include="Models\Password.cs" />
     <Compile Include="Models\QrCodeGenerator.cs" />
     <Compile Include="Models\IQrCodeGenerator.cs" />
     <Compile Include="Models\Token.cs" />
