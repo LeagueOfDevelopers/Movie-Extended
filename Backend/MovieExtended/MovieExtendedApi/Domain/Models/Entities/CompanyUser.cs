@@ -24,5 +24,6 @@ namespace Domain.Models.Entities
         public virtual string FirstName { get; set; }
         public virtual  string LastName { get; set; }
         public virtual Company Company { get; set; }
+        public virtual string MD5Hash { get; set; }
     }
 }
