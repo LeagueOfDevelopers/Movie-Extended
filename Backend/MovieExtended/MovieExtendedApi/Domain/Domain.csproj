@@ -68,6 +68,7 @@
     <Compile Include="mapper\MovieMapper.cs" />
     <Compile Include="Mappings\CinemaMapping.cs" />
     <Compile Include="Mappings\CompanyMapping.cs" />
+    <Compile Include="Mappings\CompanyUserMapping.cs" />
     <Compile Include="Mappings\FileMapping.cs" />
     <Compile Include="Mappings\LanguageMapping.cs" />
     <Compile Include="Mappings\MovieMapping.cs" />

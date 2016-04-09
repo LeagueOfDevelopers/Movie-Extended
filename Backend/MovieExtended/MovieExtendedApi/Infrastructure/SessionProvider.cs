@@ -25,6 +25,7 @@ namespace Infrastructure
             modelMapper.AddMapping<MovieMapping>();
             modelMapper.AddMapping<LanguageMapping>();
             modelMapper.AddMapping<FileMapping>();
+            modelMapper.AddMapping<CompanyUserMapping>();
             modelMapper.AddMapping<QrCodeFingerprintMapping>();
             configuration.AddDeserializedMapping(modelMapper.CompileMappingForAllExplicitlyAddedEntities(), null);
 

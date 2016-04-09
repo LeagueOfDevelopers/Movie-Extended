@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.Diagnostics;
+using Domain.Models;
 using Domain.Models.Entities;
 using Infrastructure;
 using Infrastructure.Repository;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using NHibernate.Util;
 
 namespace UnitTestProject2
 {
@@ -65,6 +65,16 @@ namespace UnitTestProject2
             var movieRepo = new MovieRepository(provider);
             var film = movieRepo.CheckAndroidToken(new Guid("00000000-0000-0000-0000-000000000000"));
             film.Poster.FilePath = film.Poster.FilePath;
+        }
+
+        [TestMethod]
+        public void PasswordTests()
+        {
+            var pass = new Password("slipknot");
+            var md5Hash = pass.Value;
+            Debug.WriteLine(md5Hash);
+
+
         }
     }
 }

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using NHibernate.Mapping;
 
 namespace Domain.Models.Entities
 {

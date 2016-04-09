@@ -1,6 +1,4 @@
-﻿using System;
-using Domain.Models.Entities;
-using Infrastructure;
+﻿using Infrastructure;
 using Infrastructure.Repository;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
