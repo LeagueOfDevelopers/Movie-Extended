@@ -12,7 +12,7 @@ import dagger.Component;
  */
 @PerActivity
 @Component(dependencies = ApplicationComponent.class, modules = SubModule.class)
-public interface SubComponent {
+public interface SubComponent extends BaseComponent {
 
     void inject(SubActivity subActivity);
 }

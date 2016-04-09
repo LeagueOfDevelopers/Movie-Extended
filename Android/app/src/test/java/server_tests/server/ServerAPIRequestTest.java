@@ -42,7 +42,7 @@ public class ServerAPIRequestTest {
 //                    }
 //
 //                    @Override
-//                    public void onError(Throwable e) {
+//                    public void PlayerError(Throwable e) {
 //                        throw new RuntimeException("");
 //                    }
 //

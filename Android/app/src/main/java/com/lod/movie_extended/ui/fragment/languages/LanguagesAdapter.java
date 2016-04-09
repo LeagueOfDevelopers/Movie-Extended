@@ -33,13 +33,11 @@ public class LanguagesAdapter extends RecyclerView.Adapter<LanguagesAdapter.Lang
         this.context = context;
     }
 
-
     public void setFilm(Film film, boolean isSound) {
         this.film = film;
         this.isSound = isSound;
         languages = isSound? film.getSoundLanguages():film.getSubtitleLanguages();
     }
-
 
     @Override
     public LanguageViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {

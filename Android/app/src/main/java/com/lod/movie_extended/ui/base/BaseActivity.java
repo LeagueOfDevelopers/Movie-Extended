@@ -4,13 +4,17 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
+import com.lod.movie_extended.injection.component.activity.BaseComponent;
 import com.squareup.otto.Bus;
 
 
 /**
  * Created by Жамбыл on 10.01.2016.
  */
-public abstract class InjectActivityBase extends AppCompatActivity implements MvpView, Injector{
+public abstract class BaseActivity<T extends BaseComponent>
+        extends AppCompatActivity implements MvpView, Injector{
+
+    private T component;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -36,4 +40,19 @@ public abstract class InjectActivityBase extends AppCompatActivity implements Mv
     public Bus getBus() {
         return null;
     }
+
+    protected T getComponent() {
+        if(component == null) {
+            component = createComponent();
+        }
+        return component;
+    }
+
+    protected void setComponent(T component) {
+        this.component = component;
+    }
+
+    protected abstract T createComponent();
+
+
 }

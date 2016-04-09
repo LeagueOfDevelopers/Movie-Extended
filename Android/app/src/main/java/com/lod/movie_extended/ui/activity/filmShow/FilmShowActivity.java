@@ -1,6 +1,5 @@
 package com.lod.movie_extended.ui.activity.filmShow;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -26,8 +25,7 @@ import com.lod.movie_extended.injection.module.activity.FilmShowModule;
 import com.lod.movie_extended.receiver.HeadsetEventReceiver;
 import com.lod.movie_extended.ui.activity.languagePicker.LanguagePickerActivity;
 import com.lod.movie_extended.ui.activity.sub.SubActivity;
-import com.lod.movie_extended.ui.base.ComponentGetter;
-import com.lod.movie_extended.ui.base.InjectActivityBase;
+import com.lod.movie_extended.ui.base.BaseActivity;
 import com.lod.movie_extended.ui.base.Presenter;
 
 import javax.inject.Inject;
@@ -40,7 +38,7 @@ import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 /**
  * Created by Жамбыл on 3/17/2016.
  */
-public class FilmShowActivity extends InjectActivityBase implements FilmShowView, ComponentGetter<FilmShowComponent>{
+public class FilmShowActivity extends BaseActivity<FilmShowComponent> implements FilmShowView{
 
     private static final int LAYOUT = R.layout.activity_film_show;
 
@@ -58,8 +56,6 @@ public class FilmShowActivity extends InjectActivityBase implements FilmShowView
     @Bind(R.id.play_pause_view) RelativeLayout playPauseView;
     @Bind(R.id.blackScreen) LinearLayout blackScreen;
     @Bind(R.id.background) LinearLayout background;
-
-    private FilmShowComponent component;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -110,19 +106,11 @@ public class FilmShowActivity extends InjectActivityBase implements FilmShowView
     }
 
     @Override
-    public FilmShowComponent getComponent() {
-        if(component == null) {
-            component = DaggerFilmShowComponent.builder()
+    protected FilmShowComponent createComponent() {
+        return DaggerFilmShowComponent.builder()
                 .applicationComponent(App.getInstance().getComponent())
                 .filmShowModule(new FilmShowModule(this))
                 .build();
-        }
-        return component;
-    }
-
-    @Override
-    public void setComponent(FilmShowComponent component) {
-        this.component = component;
     }
 
     @Override
@@ -136,8 +124,13 @@ public class FilmShowActivity extends InjectActivityBase implements FilmShowView
     }
 
     @Override
-    public void showError() {
-        Toast.makeText(FilmShowActivity.this, "Server error", Toast.LENGTH_SHORT).show();
+    public void ServerError() {
+        Toast.makeText(FilmShowActivity.this, "Server Error", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void PlayerError(Exception e) {
+        Toast.makeText(FilmShowActivity.this, "Player Error", Toast.LENGTH_SHORT).show();
     }
 
     @Override

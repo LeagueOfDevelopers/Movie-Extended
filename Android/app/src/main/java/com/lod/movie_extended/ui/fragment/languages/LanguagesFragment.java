@@ -16,8 +16,7 @@ import com.lod.movie_extended.injection.component.fragment.DaggerLanguagesCompon
 import com.lod.movie_extended.injection.component.fragment.LanguagesComponent;
 import com.lod.movie_extended.injection.module.fragment.LanguagesModule;
 import com.lod.movie_extended.ui.activity.languagePicker.LanguagePickerView;
-import com.lod.movie_extended.ui.base.ComponentGetter;
-import com.lod.movie_extended.ui.base.InjectFragmentBase;
+import com.lod.movie_extended.ui.base.BaseFragment;
 import com.lod.movie_extended.ui.base.Presenter;
 
 import java.util.ArrayList;
@@ -30,7 +29,7 @@ import butterknife.ButterKnife;
 /**
  * Created by Жамбыл on 09.01.2016.
  */
-public class LanguagesFragment extends InjectFragmentBase implements LanguagesMvpView, ComponentGetter<LanguagesComponent> {
+public class LanguagesFragment extends BaseFragment<LanguagesComponent> implements LanguagesMvpView{
 
     private static final int LAYOUT = R.layout.fragment_languages;
 
@@ -43,7 +42,6 @@ public class LanguagesFragment extends InjectFragmentBase implements LanguagesMv
     @Inject
     LanguagesPresenter presenter;
 
-    private LanguagesComponent component;
     private boolean isAllowedNext;
     private LanguagePickerView languagePickerView;
     private boolean isSound;
@@ -59,6 +57,14 @@ public class LanguagesFragment extends InjectFragmentBase implements LanguagesMv
         View view = super.onCreateView(inflater, container,savedInstanceState);
         initRecyclerView();
         return view;
+    }
+
+    @Override
+    protected LanguagesComponent createComponent() {
+        return DaggerLanguagesComponent.builder()
+                .languagesPickerComponent((LanguagesPickerComponent) parentComponent)
+                .languagesModule(new LanguagesModule())
+                .build();
     }
 
     @Override
@@ -105,20 +111,4 @@ public class LanguagesFragment extends InjectFragmentBase implements LanguagesMv
         return presenter;
     }
 
-    @Override
-    public LanguagesComponent getComponent() {
-        if(component == null) {
-            component = DaggerLanguagesComponent.builder()
-                    .languagesPickerComponent((LanguagesPickerComponent) parentComponent)
-                    .languagesModule(new LanguagesModule())
-                    .build();
-        }
-
-        return component;
-    }
-
-    @Override
-    public void setComponent(LanguagesComponent component) {
-        this.component = component;
-    }
 }

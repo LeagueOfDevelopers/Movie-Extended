@@ -48,7 +48,7 @@ public class ServerHelper {
     }
 
     public Uri getDownloadUrl(int id, Token token) {
-        return Uri.parse(String.format("http://movieextended1.azurewebsites.net/file/get/%d/token/%s",
+        return Uri.parse(String.format("http://movieextended1.azurewebsites.net/file/%d/token/%s",
                 id, token.getValue()));
     }
 }

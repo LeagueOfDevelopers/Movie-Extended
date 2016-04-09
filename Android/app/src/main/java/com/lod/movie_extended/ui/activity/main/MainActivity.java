@@ -9,8 +9,7 @@ import com.lod.movie_extended.injection.component.activity.DaggerMainComponent;
 import com.lod.movie_extended.injection.component.activity.MainComponent;
 import com.lod.movie_extended.injection.module.activity.MainModule;
 import com.lod.movie_extended.ui.activity.filmShow.FilmShowActivity;
-import com.lod.movie_extended.ui.base.ComponentGetter;
-import com.lod.movie_extended.ui.base.InjectActivityBase;
+import com.lod.movie_extended.ui.base.BaseActivity;
 import com.lod.movie_extended.ui.activity.qrCodeReader.QrCodeReaderActivity;
 
 import javax.inject.Inject;
@@ -19,15 +18,13 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import timber.log.Timber;
 
-public class MainActivity extends InjectActivityBase implements MainMvpView, ComponentGetter<MainComponent> {
+public class MainActivity extends BaseActivity<MainComponent> implements MainMvpView {
 
     private final static int LAYOUT = R.layout.activity_main;
     public static final int FINISH = 1;
 
     @Inject
     MainPresenter presenter;
-
-    private MainComponent component;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,18 +66,10 @@ public class MainActivity extends InjectActivityBase implements MainMvpView, Com
     }
 
     @Override
-    public MainComponent getComponent() {
-        if(component == null) {
-            component = DaggerMainComponent.builder()
+    protected MainComponent createComponent() {
+        return DaggerMainComponent.builder()
                 .applicationComponent(App.getInstance().getComponent())
                 .mainModule(new MainModule(this))
                 .build();
-        }
-        return component;
-    }
-
-    @Override
-    public void setComponent(MainComponent component) {
-        this.component = component;
     }
 }

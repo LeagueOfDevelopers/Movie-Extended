@@ -24,8 +24,8 @@ public class QrCodeReaderModuleTest {
 
     @Provides
     @PerActivity
-    QrCodeReaderPresenter provideQrCodeReaderPresenter(DataManager dataManager, ZXingScannerView zXingScannerView) {
-        return new QrCodeReaderPresenter(dataManager,zXingScannerView);
+    QrCodeReaderPresenter provideQrCodeReaderPresenter(DataManager dataManager) {
+        return new QrCodeReaderPresenter(dataManager);
     }
 
     @Provides

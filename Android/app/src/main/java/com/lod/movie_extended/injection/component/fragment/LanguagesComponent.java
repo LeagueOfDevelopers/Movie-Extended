@@ -1,5 +1,6 @@
 package com.lod.movie_extended.injection.component.fragment;
 
+import com.lod.movie_extended.injection.component.activity.BaseComponent;
 import com.lod.movie_extended.injection.component.activity.LanguagesPickerComponent;
 import com.lod.movie_extended.injection.module.fragment.LanguagesModule;
 import com.lod.movie_extended.injection.scope.PerFragment;
@@ -12,7 +13,7 @@ import dagger.Component;
  */
 @PerFragment
 @Component(dependencies = LanguagesPickerComponent.class, modules = LanguagesModule.class)
-public interface LanguagesComponent {
+public interface LanguagesComponent extends BaseComponent {
 
     void inject(LanguagesFragment languagesFragment);
 }

@@ -16,8 +16,6 @@ public class DataBaseHelper {
 
     private Session session;
     private String qrCode;
-    private Language selectedSoundLanguage;
-    private Language selectedSubtitleLanguage;
 
     public Observable<Session> saveSession(Session session) {
         this.session = session;
@@ -29,14 +27,13 @@ public class DataBaseHelper {
         return Observable.just(session);
     }
 
-
     public boolean isDataCached() {
         return true;
     }
 
-    public @Nullable String getQrCode() {
+    public String getQrCode() {
         if(qrCode == null) {
-            throw new NullPointerException("qrCode is null");
+            throw new IllegalStateException("qrCode is null");
         }
         return qrCode;
     }
@@ -45,19 +42,5 @@ public class DataBaseHelper {
         this.qrCode = qrCode;
     }
 
-    public void savePreviousSoundLanguage(Language selectedSoundLanguage) {
-        this.selectedSoundLanguage = selectedSoundLanguage;
-    }
 
-    public void savePreviousSubLanguage(Language selectedSubtitleLanguage) {
-        this.selectedSubtitleLanguage = selectedSubtitleLanguage;
-    }
-
-    public Language getPreviousSoundLanguage() {
-        return selectedSoundLanguage;
-    }
-
-    public Language getPreviousSubtitleLanguage() {
-        return selectedSubtitleLanguage;
-    }
 }

@@ -10,8 +10,7 @@ import com.lod.movie_extended.injection.App;
 import com.lod.movie_extended.injection.component.activity.DaggerSubComponent;
 import com.lod.movie_extended.injection.component.activity.SubComponent;
 import com.lod.movie_extended.injection.module.activity.SubModule;
-import com.lod.movie_extended.ui.base.ComponentGetter;
-import com.lod.movie_extended.ui.base.InjectActivityBase;
+import com.lod.movie_extended.ui.base.BaseActivity;
 import com.lod.movie_extended.ui.base.Presenter;
 
 import java.io.UnsupportedEncodingException;
@@ -27,10 +26,9 @@ import timber.log.Timber;
 /**
  * Created by Жамбыл on 3/21/2016.
  */
-public class SubActivity extends InjectActivityBase implements SubMvpView, ComponentGetter<SubComponent> {
+public class SubActivity extends BaseActivity<SubComponent> implements SubMvpView {
 
     private final int LAYOUT = R.layout.activity_sub;
-    private SubComponent component;
 
     @Inject
     SubPresenter presenter;
@@ -67,19 +65,11 @@ public class SubActivity extends InjectActivityBase implements SubMvpView, Compo
     }
 
     @Override
-    public SubComponent getComponent() {
-        if(component ==null){
-            component = DaggerSubComponent.builder()
+    protected SubComponent createComponent() {
+        return DaggerSubComponent.builder()
                 .applicationComponent(App.getInstance().getComponent())
                 .subModule(new SubModule())
                 .build();
-        }
-        return component;
-    }
-
-    @Override
-    public void setComponent(SubComponent component) {
-        this.component = component;
     }
 
     @Override

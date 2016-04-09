@@ -52,8 +52,8 @@ public class FilmShowPresenter extends BasePresenter<FilmShowView> implements Pl
 
                 @Override
                 public void onError(Throwable e) {
-                    e.printStackTrace();
-                    getMvpView().showError();
+                    getMvpView().ServerError();
+                    throw new RuntimeException(e);
                 }
 
                 @Override
@@ -78,6 +78,7 @@ public class FilmShowPresenter extends BasePresenter<FilmShowView> implements Pl
 
     @Override
     public void onError(Exception e) {
+        getMvpView().PlayerError(e);
     }
 
     @Override
@@ -107,26 +108,10 @@ public class FilmShowPresenter extends BasePresenter<FilmShowView> implements Pl
     }
 
     private void handleSession(Session session) {
-        getMvpView().setFilmData(session.getFilm());
-        if(dataBaseHelper.getPreviousSoundLanguage() == null) {
+        if(getMvpView() != null) {
+            getMvpView().setFilmData(session.getFilm());
             player.setFilmStartTime(session.getFilmStartTime());
             loadDefaultTrack(session);
-        }
-        else {
-            loadAnotherDataIfNeed(session);
-        }
-        dataBaseHelper.savePreviousSoundLanguage(session.getFilm().getSelectedSoundLanguage());
-        dataBaseHelper.savePreviousSubLanguage(session.getFilm().getSelectedSubtitleLanguage());
-    }
-
-    private void loadAnotherDataIfNeed(Session session) {
-        if(session.getFilm().getSelectedSoundLanguage() != dataBaseHelper.getPreviousSoundLanguage()) {
-            player.setAudioUrl(serverHelper.getDownloadUrl(session.getFilm().getSelectedSoundLanguage().getId(),session.getToken()));
-            Timber.i("Changing audio url");
-        }
-        if(session.getFilm().getSelectedSubtitleLanguage() != dataBaseHelper.getPreviousSubtitleLanguage()) {
-            player.setSubtitleUrl(serverHelper.getDownloadUrl(session.getFilm().getSelectedSubtitleLanguage().getId(),session.getToken()));
-            Timber.i("Changing sub url");
         }
     }
 

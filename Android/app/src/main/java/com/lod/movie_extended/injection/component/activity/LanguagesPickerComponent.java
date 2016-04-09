@@ -16,7 +16,7 @@ import dagger.Component;
  */
 @PerActivity
 @Component(dependencies = ApplicationComponent.class, modules = LanguagesPickerModule.class)
-public interface LanguagesPickerComponent {
+public interface LanguagesPickerComponent extends BaseComponent {
 
     Context getContext();
     DataManager getDataManager();

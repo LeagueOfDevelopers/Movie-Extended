@@ -8,15 +8,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.lod.movie_extended.injection.component.activity.BaseComponent;
 import com.squareup.otto.Bus;
 
 /**
  * Created by Жамбыл on 2/18/2016.
  */
-public abstract class InjectFragmentBase extends Fragment implements MvpView, Injector{
+public abstract class BaseFragment<T extends BaseComponent> extends Fragment implements MvpView, Injector{
 
     protected Object parentComponent;
     protected View view;
+    private T component;
 
     public static <Y extends Fragment> Fragment getNewInstance(Class<Y> clazz) {
         Y instance = (Y) createInstance(clazz);
@@ -40,7 +42,7 @@ public abstract class InjectFragmentBase extends Fragment implements MvpView, In
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        ComponentGetter componentGetter = (ComponentGetter) context;
+        BaseActivity componentGetter = (BaseActivity) context;
         parentComponent =  componentGetter.getComponent();
     }
 
@@ -72,4 +74,17 @@ public abstract class InjectFragmentBase extends Fragment implements MvpView, In
     public Bus getBus() {
         return null;
     }
+
+    protected T getComponent() {
+        if(component == null) {
+            component = createComponent();
+        }
+        return component;
+    }
+
+    protected void setComponent(T component) {
+        this.component = component;
+    }
+    protected abstract T createComponent();
+
 }

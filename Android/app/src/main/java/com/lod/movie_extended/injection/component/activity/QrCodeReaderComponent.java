@@ -12,7 +12,7 @@ import dagger.Component;
  */
 @PerActivity
 @Component(dependencies = ApplicationComponent.class, modules = QrCodeReaderModule.class)
-public interface QrCodeReaderComponent {
+public interface QrCodeReaderComponent  extends BaseComponent{
 
     void inject(QrCodeReaderActivity qrCodeReaderActivity);
 }

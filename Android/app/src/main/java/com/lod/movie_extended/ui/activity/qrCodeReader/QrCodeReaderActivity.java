@@ -10,20 +10,20 @@ import com.lod.movie_extended.injection.component.activity.QrCodeReaderComponent
 import com.lod.movie_extended.injection.module.activity.QrCodeReaderModule;
 import com.lod.movie_extended.ui.activity.filmShow.FilmShowActivity;
 import com.lod.movie_extended.ui.activity.main.MainActivity;
-import com.lod.movie_extended.ui.base.ComponentGetter;
 
 import javax.inject.Inject;
 
+import me.dm7.barcodescanner.zxing.ZXingScannerView;
 import timber.log.Timber;
 
 /**
  * Created by Жамбыл on 09.01.2016.
  */
 public class QrCodeReaderActivity extends AppCompatActivity
-        implements QrCodeReaderMvp, ComponentGetter<QrCodeReaderComponent> {
+        implements QrCodeReaderMvp{
 
-    @Inject
-    QrCodeReaderPresenter presenter;
+    @Inject QrCodeReaderPresenter presenter;
+    @Inject ZXingScannerView scannerView;
 
     private QrCodeReaderComponent component;
 
@@ -32,7 +32,7 @@ public class QrCodeReaderActivity extends AppCompatActivity
         super.onCreate(state);
         Timber.v("onCreate");
         getComponent().inject(this);
-        setContentView(presenter.getZXingScannerView());
+        setContentView(scannerView);
         presenter.attachView(this);
     }
 
@@ -59,12 +59,16 @@ public class QrCodeReaderActivity extends AppCompatActivity
     }
 
     @Override
+    public ZXingScannerView getScannerView() {
+        return scannerView;
+    }
+
+    @Override
     protected void onDestroy() {
         presenter.detachView();
         super.onDestroy();
     }
 
-    @Override
     public QrCodeReaderComponent getComponent() {
         if(component == null) {
             component = DaggerQrCodeReaderComponent.builder()
@@ -75,7 +79,6 @@ public class QrCodeReaderActivity extends AppCompatActivity
         return component;
     }
 
-    @Override
     public void setComponent(QrCodeReaderComponent component) {
         this.component = component;
     }

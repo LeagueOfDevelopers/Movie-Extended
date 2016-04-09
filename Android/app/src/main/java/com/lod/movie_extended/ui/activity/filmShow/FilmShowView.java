@@ -10,7 +10,7 @@ public interface FilmShowView extends MvpView {
 
     void setFilmData(Film film);
 
-    void showError();
+    void ServerError();
 
     void setHeadsetFooter();
 
@@ -19,4 +19,6 @@ public interface FilmShowView extends MvpView {
     void setPlayView();
 
     void setPauseView();
+
+    void PlayerError(Exception e);
 }

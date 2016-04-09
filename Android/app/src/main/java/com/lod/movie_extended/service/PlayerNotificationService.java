@@ -263,7 +263,7 @@ public class PlayerNotificationService extends Service implements PlayerListener
 
     @Override
     public void onError(Exception e) {
-        Timber.e("onError");
+        Timber.e("PlayerError");
     }
 
     @Override

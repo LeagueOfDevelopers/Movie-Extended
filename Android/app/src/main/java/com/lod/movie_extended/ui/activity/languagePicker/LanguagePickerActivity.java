@@ -13,8 +13,7 @@ import com.lod.movie_extended.injection.App;
 import com.lod.movie_extended.injection.component.activity.DaggerLanguagesPickerComponent;
 import com.lod.movie_extended.injection.component.activity.LanguagesPickerComponent;
 import com.lod.movie_extended.injection.module.activity.LanguagesPickerModule;
-import com.lod.movie_extended.ui.base.ComponentGetter;
-import com.lod.movie_extended.ui.base.InjectActivityBase;
+import com.lod.movie_extended.ui.base.BaseActivity;
 import com.lod.movie_extended.ui.base.Presenter;
 import com.lod.movie_extended.ui.fragment.languages.LanguagesFragment;
 
@@ -29,15 +28,12 @@ import butterknife.ButterKnife;
 /**
  * Created by Жамбыл on 3/16/2016.
  */
-public class LanguagePickerActivity extends InjectActivityBase implements LanguagePickerView, ComponentGetter<LanguagesPickerComponent> {
+public class LanguagePickerActivity extends BaseActivity<LanguagesPickerComponent> implements LanguagePickerView{
 
     private final static int LAYOUT = R.layout.activity_language_picker;
-    private LanguagesPickerComponent component;
     private List<ImageView> dots;
-    @Inject
-    LanguagePickerPresenter presenter;
-    @Inject
-    LanguagesViewPagerAdapter languagesViewPagerAdapter;
+    @Inject LanguagePickerPresenter presenter;
+    @Inject LanguagesViewPagerAdapter languagesViewPagerAdapter;
 
     @Bind(R.id.languages_selection_view_pager)
     CustomViewPager viewPager;
@@ -95,6 +91,7 @@ public class LanguagePickerActivity extends InjectActivityBase implements Langua
 
             @Override
             public void onPageScrollStateChanged(int state) {
+
             }
         });
     }
@@ -153,20 +150,11 @@ public class LanguagePickerActivity extends InjectActivityBase implements Langua
         return presenter;
     }
 
-
     @Override
-    public LanguagesPickerComponent getComponent() {
-        if(component == null) {
-            component = DaggerLanguagesPickerComponent.builder()
+    protected LanguagesPickerComponent createComponent() {
+        return  DaggerLanguagesPickerComponent.builder()
                 .applicationComponent(App.getInstance().getComponent())
                 .languagesPickerModule(new LanguagesPickerModule(this))
                 .build();
-        }
-        return component;
-    }
-
-    @Override
-    public void setComponent(LanguagesPickerComponent component) {
-        this.component = component;
     }
 }

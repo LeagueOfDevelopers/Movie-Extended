@@ -28,10 +28,15 @@ public class PlayerLogger {
     }
 
     public void startLogging() {
-        Timber.v("start Logging");
-        isWorking = true;
-        int sleepTimeInSeconds = 2;
-        loggingThread.scheduleAtFixedRate(new LoggingRunnable(player),0, sleepTimeInSeconds, TimeUnit.SECONDS);
+        if(!loggingThread.isShutdown()) {
+            Timber.v("start Logging");
+            isWorking = true;
+            int sleepTimeInSeconds = 2;
+            loggingThread.scheduleAtFixedRate(new LoggingRunnable(player), 0, sleepTimeInSeconds, TimeUnit.SECONDS);
+        }
+        else {
+            Timber.w("can't start logging when already have been paused");
+        }
     }
 
     public void stopLogging() {
@@ -48,7 +53,7 @@ public class PlayerLogger {
         long lastBufferedPosition;
         long lastDuration;
         boolean lastIsSubtitlesEnabled;
-        boolean newData;
+        boolean haveNewData;
 
         public LoggingRunnable(Player player) {
             this.player = player;
@@ -57,11 +62,11 @@ public class PlayerLogger {
         @Override
         public void run() {
             checkIfHasNewData();
-            if(newData) {
+            if(haveNewData) {
                 log();
-                newData = false;
+                haveNewData = false;
             }
-            setNewData();
+            retrieveNewData();
             if(checkIfNeedStopLogging()) {
                 stopLogging();
             }
@@ -74,11 +79,11 @@ public class PlayerLogger {
             lastBufferedPosition != player.getBufferedPosition() ||
             lastDuration != player.getDuration() ||
             lastIsSubtitlesEnabled != player.isSubtitlesEnabled()){
-                newData = true;
+                haveNewData = true;
             }
         }
 
-        private void setNewData() {
+        private void retrieveNewData() {
             lastPlayWhenReady = player.getPlayWhenReady();
             lastCurrentPosition = player.getCurrentPosition();
             lastBufferedPercentage = player.getBufferedPercentage();

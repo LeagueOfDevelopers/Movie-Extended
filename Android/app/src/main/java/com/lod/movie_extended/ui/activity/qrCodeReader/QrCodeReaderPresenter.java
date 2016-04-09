@@ -1,7 +1,5 @@
 package com.lod.movie_extended.ui.activity.qrCodeReader;
 
-import android.view.View;
-
 import com.google.zxing.Result;
 import com.lod.movie_extended.data.DataManager;
 import com.lod.movie_extended.ui.base.BasePresenter;
@@ -15,15 +13,8 @@ public class QrCodeReaderPresenter extends BasePresenter<QrCodeReaderMvp> implem
 
     private final DataManager dataManager;
 
-    public ZXingScannerView scannerView;
-
-    public QrCodeReaderPresenter(DataManager dataManager, ZXingScannerView scannerView) {
+    public QrCodeReaderPresenter(DataManager dataManager) {
         this.dataManager = dataManager;
-        this.scannerView = scannerView;
-    }
-
-    public View getZXingScannerView() {
-        return scannerView;
     }
 
     @Override
@@ -33,11 +24,11 @@ public class QrCodeReaderPresenter extends BasePresenter<QrCodeReaderMvp> implem
     }
 
     public void startCamera() {
-        scannerView.setResultHandler(this);
-        scannerView.startCamera();
+        getMvpView().getScannerView().setResultHandler(this);
+        getMvpView().getScannerView().startCamera();
     }
 
     public void stopCamera() {
-        scannerView.stopCamera();
+        getMvpView().getScannerView().stopCamera();
     }
 }

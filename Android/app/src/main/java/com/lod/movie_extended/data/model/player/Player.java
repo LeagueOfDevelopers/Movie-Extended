@@ -62,12 +62,14 @@ public class Player implements ExoPlayer.Listener, MediaCodecAudioTrackRenderer.
         playerLogger.setPlayer(this);
      }
 
+    //todo Refactor
     public boolean setPlayWhenReady(boolean playWhenReady) {
         if(!player.getPlayWhenReady()) {
             player.setPlayWhenReady(true);
             processPlay();
             mute();
         }
+
         if (playWhenReady && checkHeadset()) {
             return false;
         }
