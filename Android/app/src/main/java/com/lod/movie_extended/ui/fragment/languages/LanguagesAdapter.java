@@ -28,6 +28,7 @@ public class LanguagesAdapter extends RecyclerView.Adapter<LanguagesAdapter.Lang
     private List<Language> languages;
     private LanguagesPresenter presenter;
     private Context context;
+
     public LanguagesAdapter(LanguagesPresenter presenter, Context context) {
         this.presenter = presenter;
         this.context = context;

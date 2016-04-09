@@ -12,7 +12,7 @@ import com.squareup.otto.Bus;
  * Created by Жамбыл on 10.01.2016.
  */
 public abstract class BaseActivity<T extends BaseComponent>
-        extends AppCompatActivity implements MvpView, Injector{
+        extends AppCompatActivity implements MvpView, Injector<T>{
 
     private T component;
 
@@ -41,18 +41,16 @@ public abstract class BaseActivity<T extends BaseComponent>
         return null;
     }
 
-    protected T getComponent() {
+    public T getComponent() {
         if(component == null) {
             component = createComponent();
         }
         return component;
     }
 
-    protected void setComponent(T component) {
+    public void setComponent(T component) {
         this.component = component;
     }
 
     protected abstract T createComponent();
-
-
 }

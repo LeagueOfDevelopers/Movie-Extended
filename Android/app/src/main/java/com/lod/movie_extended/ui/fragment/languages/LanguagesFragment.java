@@ -33,14 +33,9 @@ public class LanguagesFragment extends BaseFragment<LanguagesComponent> implemen
 
     private static final int LAYOUT = R.layout.fragment_languages;
 
-    @Bind(R.id.recycler_view)
-    RecyclerView languagesRecyclerView;
-
-    @Inject
-    LanguagesAdapter languagesAdapter;
-
-    @Inject
-    LanguagesPresenter presenter;
+    @Bind(R.id.recycler_view) RecyclerView languagesRecyclerView;
+    @Inject LanguagesAdapter languagesAdapter;
+    @Inject LanguagesPresenter presenter;
 
     private boolean isAllowedNext;
     private LanguagePickerView languagePickerView;
@@ -73,22 +68,12 @@ public class LanguagesFragment extends BaseFragment<LanguagesComponent> implemen
         languagePickerView.notifyLanguageHasBeenPicked();
     }
 
-    @Override
-    public void setFilm(Film film) {
-
-    }
-
     private void initRecyclerView() {
         languagesAdapter.setFilm(presenter.getFilm(), isSound);
         languagesRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
         languagesRecyclerView.setAdapter(languagesAdapter);
         languagesRecyclerView.setHasFixedSize(true);
-    }
-
-    @Override
-    public void setLanguages(ArrayList<Language> languages) {
-
     }
 
     public boolean isAllowedNext() {

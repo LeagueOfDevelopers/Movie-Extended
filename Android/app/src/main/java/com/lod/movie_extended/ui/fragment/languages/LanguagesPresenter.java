@@ -14,8 +14,8 @@ public class LanguagesPresenter extends BasePresenter<LanguagesMvpView> {
 
     private DataManager dataManager;
     private Bus events;
-    private Language selectedLanguage;
     private Film film;
+
     public LanguagesPresenter(DataManager dataManager, Bus bus) {
         this.dataManager = dataManager;
         this.events = bus;

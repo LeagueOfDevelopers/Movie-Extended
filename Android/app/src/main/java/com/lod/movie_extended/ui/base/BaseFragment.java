@@ -14,7 +14,8 @@ import com.squareup.otto.Bus;
 /**
  * Created by Жамбыл on 2/18/2016.
  */
-public abstract class BaseFragment<T extends BaseComponent> extends Fragment implements MvpView, Injector{
+public abstract class BaseFragment<T extends BaseComponent>
+        extends Fragment implements MvpView, Injector<T>{
 
     protected Object parentComponent;
     protected View view;
@@ -75,16 +76,17 @@ public abstract class BaseFragment<T extends BaseComponent> extends Fragment imp
         return null;
     }
 
-    protected T getComponent() {
+    public T getComponent() {
         if(component == null) {
             component = createComponent();
         }
         return component;
     }
 
-    protected void setComponent(T component) {
+    public void setComponent(T component) {
         this.component = component;
     }
+
     protected abstract T createComponent();
 
 }

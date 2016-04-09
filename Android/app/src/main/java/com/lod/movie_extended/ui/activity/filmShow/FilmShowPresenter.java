@@ -67,7 +67,7 @@ public class FilmShowPresenter extends BasePresenter<FilmShowView> implements Pl
 
     @Override
     public void onStateChanged(boolean playWhenReady) {
-        if(getMvpView() != null) {
+        if(isViewAttached()) {
             if (player.getPlayWhenReady()) {
                 getMvpView().setPauseView();
             } else {
@@ -83,14 +83,14 @@ public class FilmShowPresenter extends BasePresenter<FilmShowView> implements Pl
 
     @Override
     public void onWiredHeadsetNotOn() {
-        if(getMvpView() != null) {
+        if(isViewAttached()) {
             getMvpView().setHeadsetFooter();
         }
     }
 
     @Override
     public void onWiredHeadsetOn() {
-        if(getMvpView() != null) {
+        if(isViewAttached()) {
             getMvpView().setNormalFooter();
         }
     }
@@ -99,16 +99,8 @@ public class FilmShowPresenter extends BasePresenter<FilmShowView> implements Pl
         player.setPlayWhenReady(!player.getPlayWhenReady());
     }
 
-    public boolean isFilmTime() {
-        return dataManager.isFilmTime();
-    }
-
-    private void setFilmTime(boolean filmTime) {
-        dataManager.setFilmTime(filmTime);
-    }
-
     private void handleSession(Session session) {
-        if(getMvpView() != null) {
+        if(isViewAttached()) {
             getMvpView().setFilmData(session.getFilm());
             player.setFilmStartTime(session.getFilmStartTime());
             loadDefaultTrack(session);
