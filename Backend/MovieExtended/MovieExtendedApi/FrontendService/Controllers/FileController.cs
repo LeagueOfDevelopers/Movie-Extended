@@ -109,7 +109,7 @@ namespace FrontendService.Controllers
             var filepath = _fileManager.CreateTrackPath(audio.FileName);
             _fileRepository.Update(fileId,filepath);
             _fileManager.SaveFileAs(audio,filepath);
-            return new HttpResponseMessage(HttpStatusCode.Accepted);
+            return new HttpResponseMessage(HttpStatusCode.OK);
         }
 
         [Route("save/poster/{fileId}")]
