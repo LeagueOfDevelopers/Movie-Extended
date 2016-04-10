@@ -41,46 +41,6 @@ namespace FrontendService.Controllers
             return _fileManager.GetAnyFile(file.FilePath);
         }
 
-        
-
-        
-
-        [Route("api/myfileupload/{fileId}/fileType/{filetype}")]
-        [HttpPost]
-        public IHttpActionResult MyFileUpload(int fileId , FileType filetype)
-        {
-            var request = HttpContext.Current.Request;
-            string directory;
-            string filePath;
-            switch (filetype)
-            {
-                    case FileType.Track :
-                {
-                    directory= HttpContext.Current.Server.MapPath("~/AudioTrack");
-                    filePath= HttpContext.Current.Server.MapPath(string.Format("~/AudioTrack/{0}.mp3", fileId));
-                        break;
-                }
-                    case Subtitles:
-                {
-                    directory = HttpContext.Current.Server.MapPath("~/SubTitles");
-                    filePath = HttpContext.Current.Server.MapPath(string.Format("~/SubTitles/{0}.srt", fileId));
-
-                        break;
-                }
-                default:
-                    return BadRequest("wrong type of file");
-            }
-            Directory.CreateDirectory(directory);
-            var fs = new FileStream(filePath, FileMode.Create);
-            request.InputStream.CopyTo(fs);
-
-            fs.Flush();
-            //request.GetBufferedInputStream().CopyToAsync(fs);
-
-
-            return Ok("uploaded");
-        }
-
         [Route("api/Files/Delete/{fileId}")]
         [HttpPost]
 

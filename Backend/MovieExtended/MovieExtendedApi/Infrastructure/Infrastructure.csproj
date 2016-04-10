@@ -53,6 +53,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceProcess" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
@@ -69,6 +70,7 @@
     <Compile Include="FileManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\CompanyRepository.cs" />
+    <Compile Include="Repository\CompanyUserRepository.cs" />
     <Compile Include="Repository\FileRepository.cs" />
     <Compile Include="Repository\LanguageRepository.cs" />
     <Compile Include="Repository\MovieRepository.cs" />
