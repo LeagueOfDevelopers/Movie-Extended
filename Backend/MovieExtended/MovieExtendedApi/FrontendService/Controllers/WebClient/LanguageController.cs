@@ -22,14 +22,14 @@ namespace FrontendService.Controllers.WebClient
             _keeper = keeper;
         }
 
-        [Route("api/Languages/DeleteByMovie/{movieId}")]
-        [HttpPost]
-        public void DeleteMovieFromLanguageById(int movieId)
-        {
-            _languageRepository.DeleteLanguageByMovieId(movieId);
-        }
+        //[Route("languages/DeleteByMovie/{movieId}")]
+        //[HttpPost]
+        //public void DeleteMovieFromLanguageById(int movieId)
+        //{
+        //    _languageRepository.DeleteLanguageByMovieId(movieId);
+        //}
 
-        [Route("api/Languages/DeleteByLang/{languageId}")]
+        [Route("language/delete/{languageId}")]
         [HttpPost]
         public void DeleteLanguageByLanguageId(int languageId)
         {
@@ -38,14 +38,14 @@ namespace FrontendService.Controllers.WebClient
 
         
 
-        [Route("api/Languages/New")]
+        [Route("language/new/{movieId}")]
         [HttpPost]
         public void SaveNewLanguageToDataBase([FromBody] Language newLanguage)
         {
             _languageRepository.SaveLanguage(newLanguage);
         }
 
-        [Route("api/Languages/Get")]
+        [Route("language/get/movie")]
         [HttpPost]
         public ISet<Language> GetLanguagesByMovieId([FromBody] string session)
         {
@@ -60,6 +60,13 @@ namespace FrontendService.Controllers.WebClient
         public IEnumerable<Language> GetAllLanguages()
         {
             return _languageRepository.GetAllLanguages();
-        } 
+        }
+
+        [Route("language/get/{languageId}")]
+        [HttpGet]
+        public Language GetLanguageById(int languageId)
+        {
+            return _languageRepository.GetLanguageById(languageId);
+        }
     }
 }

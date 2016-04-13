@@ -1,15 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Net;
 using System.Net.Http;
 using System.Web;
 using System.Web.Http;
 using Domain.Models;
-using Domain.Models.Entities;
 using Domain.Repository;
 using Journalist;
-using static Domain.Models.Entities.FileType;
 using File = Domain.Models.Entities.File;
 
 namespace FrontendService.Controllers
@@ -41,7 +38,7 @@ namespace FrontendService.Controllers
             return _fileManager.GetAnyFile(file.FilePath);
         }
 
-        [Route("api/Files/Delete/{fileId}")]
+        [Route("file/delete/{fileId}")]
         [HttpPost]
 
         public void DeleteFileByFileId(int fileId)
@@ -49,7 +46,7 @@ namespace FrontendService.Controllers
             _fileRepository.DeleteFileByFileId(fileId);
         }
 
-        [Route("api/Files/All")]
+        [Route("file/all")]
         [HttpGet]
         public IEnumerable<File> GettAllFiles()
         {

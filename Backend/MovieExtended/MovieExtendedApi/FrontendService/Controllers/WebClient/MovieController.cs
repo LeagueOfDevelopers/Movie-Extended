@@ -18,42 +18,42 @@ namespace FrontendService.Controllers.WebClient
         }
 
 
-        [Route("api/Movie/new")]
+        [Route("movie/new/{cinemaId}")]
         [HttpPost]
         public void SaveMovie([FromBody] Movie newMovie)
         {
             _movieRepository.SaveMovie(newMovie);
         }
 
-        [Route("api/Movie/All")]
+        [Route("movie/all")]
         [HttpGet]
         public IEnumerable<Movie> GetAllMoviesFromDatabase()
         {
             return _movieRepository.GetAllMovies();
         }
 
-        [Route("api/Movie/{movieId}")]
+        [Route("movie/get/{movieId}")]
         [HttpGet]
         public Movie GetMovieByMovieId(int movieId)
         {
             return _movieRepository.GetMovieByMovieId(movieId);
         }
 
-        [Route("api/Movie/Cinema/{cinemaId}")]
+        [Route("movie/cinema/{cinemaId}")]
         [HttpGet]
         public IEnumerable<Movie> GetMovieByCinemaId(int cinemaId)
         {
             return _movieRepository.GetMovieByCinemaId(cinemaId);
         }
 
-        [Route("api/Movie/Delete/{movieId}")]
+        [Route("movie/delete/{movieId}")]
         [HttpPost]
         public void DeleteMovieByMovieId(int movieId)
         {
             _movieRepository.DeleteMovieByMovieId(movieId);
         }
 
-        [Route("api/Movie/Delete/Cinema/{cinemaId}")]
+        [Route("movie/delete/cinema/{cinemaId}")]
         [HttpPost]
         public void DeleteMovieByCinemaId(int cinemaId)
         {

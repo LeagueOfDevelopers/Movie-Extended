@@ -15,3 +15,4 @@ C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\Domain\bin\Release
 C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\Domain\bin\Release\System.Web.Http.xml
 C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\Domain\bin\Release\ru\System.Net.Http.Formatting.resources.dll
 C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\Domain\bin\Release\ru\System.Web.Http.resources.dll
+C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\Domain\bin\Release\Journalist.LanguageExtensions.dll

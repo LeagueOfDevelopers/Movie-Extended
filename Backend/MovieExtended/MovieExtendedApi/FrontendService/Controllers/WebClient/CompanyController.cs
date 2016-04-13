@@ -14,28 +14,28 @@ namespace FrontendService.Controllers.WebClient
             _companyRepository = companyRepository;
         }
 
-        [Route("api/Company/All")]
+        [Route("company/all")]
         [HttpGet]
         public IEnumerable<Company> GetAlLCompanies()
         {
             return _companyRepository.GetAllCompanies();
         }
 
-        [Route("api/Company/New")]
+        [Route("company/new")]
         [HttpPost]
         public void SaveNewCompany([FromBody] Company company)
         {
             _companyRepository.SaveCompany(company);
         }
 
-        [Route("api/Company/Get/{companyId}")]
+        [Route("company/get/{companyId}")]
         [HttpGet]
         public Company GetCompanyById(int companyId)
         {
             return _companyRepository.GetCompanyByCompanyId(companyId);
         }
 
-        [Route("api/Company/Delete/{companyId}")]
+        [Route("company/delete/{companyId}")]
         [HttpPost]
         public void DeleteCompanyById(int companyId)
         {
