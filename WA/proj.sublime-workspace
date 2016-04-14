@@ -1,0 +1,712 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"get",
+				"get	Get Elements"
+			],
+			[
+				"inli",
+				"inline-block"
+			],
+			[
+				"bac",
+				"background-size"
+			],
+			[
+				"rgb",
+				"rgba()"
+			],
+			[
+				"achivments",
+				"achivmentsDocs"
+			],
+			[
+				"htg",
+				"http.get(options, cb);"
+			],
+			[
+				"ht",
+				"http.Client();"
+			],
+			[
+				"font",
+				"font-family"
+			],
+			[
+				"max",
+				"max-width"
+			],
+			[
+				"co",
+				"color"
+			],
+			[
+				"ma",
+				"mainColor"
+			],
+			[
+				"cur",
+				"cursor"
+			],
+			[
+				"ng-re",
+				"ng-repeat	AngularJS"
+			],
+			[
+				"ng-",
+				"ng-bind	AngularJS"
+			],
+			[
+				"ng-r",
+				"ng-repeat	AngularJS"
+			],
+			[
+				"tex",
+				"text-decoration"
+			],
+			[
+				"$loca",
+				"$locationProvider	AngularJS"
+			],
+			[
+				"fa",
+				"fadeIn"
+			],
+			[
+				"$state",
+				"$stateParams"
+			],
+			[
+				"bb",
+				"border-bottom"
+			],
+			[
+				"fsi",
+				"font-size"
+			],
+			[
+				"di",
+				"display"
+			],
+			[
+				"so",
+				"softBlue"
+			],
+			[
+				"c",
+				"color"
+			],
+			[
+				"inl",
+				"inline-block"
+			],
+			[
+				"f",
+				"font-size"
+			],
+			[
+				"bor",
+				"border-box"
+			],
+			[
+				"v",
+				"visibility"
+			],
+			[
+				"w",
+				"width"
+			],
+			[
+				"border-bo",
+				"border-bottom-width"
+			],
+			[
+				"bw",
+				"border-width"
+			],
+			[
+				"le",
+				"letter-spacing"
+			],
+			[
+				"t",
+				"top"
+			],
+			[
+				"pb",
+				"padding-bottom"
+			],
+			[
+				"m",
+				"margin-bottom"
+			],
+			[
+				"b",
+				"background"
+			],
+			[
+				"z",
+				"z-index"
+			],
+			[
+				"min",
+				"min-height"
+			],
+			[
+				"min-",
+				"min-height"
+			],
+			[
+				"li",
+				"line-height"
+			],
+			[
+				"con",
+				"console.log();"
+			],
+			[
+				"cons",
+				"console.log();"
+			],
+			[
+				"$sc",
+				"$scope	AngularJS"
+			],
+			[
+				"ng",
+				"ng-bind	AngularJS"
+			],
+			[
+				"ov",
+				"overflow"
+			],
+			[
+				"op",
+				"opacity"
+			],
+			[
+				"pos",
+				"position"
+			],
+			[
+				"in",
+				"inline-block"
+			],
+			[
+				"d",
+				"display"
+			],
+			[
+				"a",
+				"auto"
+			],
+			[
+				"h",
+				"height"
+			],
+			[
+				"sc",
+				"$scope	AngularJS"
+			],
+			[
+				"modu",
+				"verbose_module	AngularJS"
+			],
+			[
+				"uS",
+				"User"
+			],
+			[
+				"prot",
+				"prototype"
+			],
+			[
+				"s",
+				"slice"
+			],
+			[
+				"r",
+				"return"
+			],
+			[
+				"stude",
+				"student"
+			],
+			[
+				"for",
+				"forEach"
+			],
+			[
+				"str",
+				"string"
+			],
+			[
+				"exe",
+				"execute"
+			],
+			[
+				"show",
+				"showUsers"
+			],
+			[
+				"se",
+				"select"
+			],
+			[
+				"S",
+				"SELECT"
+			],
+			[
+				"fun",
+				"function"
+			],
+			[
+				"q",
+				"query"
+			],
+			[
+				"th",
+				"this"
+			],
+			[
+				"fu",
+				"function"
+			],
+			[
+				"te",
+				"title	Attr"
+			],
+			[
+				"local",
+				"localhost"
+			],
+			[
+				"php",
+				"phpinfo"
+			],
+			[
+				"ar",
+				"array"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+		[
+			[
+				[
+					"Packages/Nodejs/Nodejs.sublime-build",
+					""
+				],
+				[
+					"Packages/JSHint/JSHint.sublime-build",
+					""
+				]
+			],
+			[
+				"Packages/JSHint/JSHint.sublime-build",
+				""
+			]
+		]
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"js",
+				"JSHint"
+			],
+			[
+				"p",
+				"Package Control: Install Package"
+			],
+			[
+				"i",
+				"Insert Filepath"
+			],
+			[
+				"Package Control: i",
+				"Package Control: Install Package"
+			],
+			[
+				"sn pat",
+				"Snippet: JS singleton pattern"
+			],
+			[
+				"sni ser",
+				"Snippet: Snippet: HTTP Create Server"
+			],
+			[
+				"sni re",
+				"Snippet: require"
+			],
+			[
+				"Snippet: s",
+				"Snippet: Snippet: HTTP Create Server"
+			],
+			[
+				"Package Control:  i",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 488.0
+	},
+	"console":
+	{
+		"height": 160.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = '2915d1851351e5ee549c20394736b442' + '8bc59f460fa1548d1514676163dafc88'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/C/Users/user pc/Dropbox/repos/Movie-Extended/WA"
+	],
+	"file_history":
+	[
+		"/C/Users/user pc/Dropbox/repos/Movie-Extended/WA/gulpfile.js",
+		"/C/Users/user pc/Documents/GitHub/ActivityAggregator/Front-end/WebApp/public/admin/partials/achivment.html",
+		"/C/Program Files/iisnode/www/helloworld/web.config",
+		"/C/Program Files/iisnode/www/helloworld/hello.js",
+		"/C/Program Files/iisnode/www/express/web.config",
+		"/C/Users/user pc/Documents/GitHub/ActivityAggregator/Front-end/WebApp/bin/www",
+		"/C/Users/user pc/Documents/GitHub/ActivityAggregator/Front-end/WebApp/app.js",
+		"/C/Users/user pc/Documents/GitHub/ActivityAggregator/Front-end/WebApp/public/js/app.js",
+		"/C/Users/user pc/Documents/GitHub/ActivityAggregator/Front-end/WebApp/views/index.jade",
+		"/C/Users/user pc/Documents/GitHub/ActivityAggregator/Front-end/WebApp/public/js/controllers.js",
+		"/C/Users/user pc/Documents/GitHub/ActivityAggregator/Front-end/WebApp/public/partials/addAchivment.html",
+		"/C/Users/user pc/Documents/GitHub/ActivityAggregator/Front-end/WebApp/api/achivments.js",
+		"/C/Users/user pc/Documents/GitHub/ActivityAggregator/Front-end/WebApp/config.js",
+		"/C/Users/user pc/Documents/GitHub/ActivityAggregator/Front-end/WebApp/public/admin/js/controllers_main.js",
+		"/C/Users/user pc/Documents/GitHub/ActivityAggregator/Front-end/WebApp/api/students.js",
+		"/C/Program Files/iisnode/www/express/hello.js",
+		"/C/Program Files/iisnode/README.md",
+		"/C/Program Files/iisnode/www/configuration/web.config",
+		"/C/Program Files/iisnode/www/configuration/hello.js",
+		"/C/Users/user pc/Documents/GitHub/ActivityAggregator/Front-end/WebApp/web.config",
+		"/C/Users/user pc/Documents/GitHub/ActivityAggregator/Front-end/WebApp/routes/api.js",
+		"/C/Users/user pc/Documents/GitHub/ActivityAggregator/Front-end/WebApp/public/js/services.js",
+		"/C/Users/user pc/Documents/GitHub/ActivityAggregator/Front-end/WebApp/public/js/controllers_main.js",
+		"/C/Users/user pc/Documents/GitHub/ActivityAggregator/Front-end/WebApp/public/styles/main.scss",
+		"/C/Users/user pc/Documents/GitHub/ActivityAggregator/Front-end/WebApp/public/partials/studentsBase.html",
+		"/C/Users/user pc/Documents/GitHub/ActivityAggregator/Front-end/WebApp/public/partials/achivment.html",
+		"/C/Users/user pc/Documents/GitHub/ActivityAggregator/Front-end/WebApp/db/mongoose.js",
+		"/C/Users/user pc/Documents/GitHub/ActivityAggregator/Front-end/WebApp/api/admin.js",
+		"/C/Users/user pc/Documents/GitHub/ActivityAggregator/Front-end/WebApp/public/partials/profile_another.html",
+		"/C/Users/user pc/Downloads/Telegram Desktop/MovieExtendedRoutes.txt",
+		"/C/Users/user pc/Documents/Movie-Extended/front-end/WebApp/bin/www",
+		"/C/Program Files/iisnode/www/helloworld/helloClient.js",
+		"/C/Users/user pc/Documents/GitHub/ActivityAggregator/Front-end/WebApp/public/partials/profile.html",
+		"/C/Users/user pc/Documents/GitHub/ActivityAggregator/Front-end/WebApp/public/admin/js/services.js",
+		"/C/Users/user pc/Documents/GitHub/ActivityAggregator/Front-end/WebApp/public/admin/partials/profile.html",
+		"/C/Users/user pc/Documents/GitHub/ActivityAggregator/Front-end/WebApp/gulpfile.js",
+		"/C/Users/user pc/Documents/GitHub/ActivityAggregator/Front-end/WebApp/package.json",
+		"/C/Users/user pc/Documents/GitHub/ActivityAggregator/Front-end/WebApp/public/admin/partials/fullPhoto.html",
+		"/C/Users/user pc/Documents/GitHub/ActivityAggregator/Front-end/WebApp/public/admin/js/admin_controllers.js",
+		"/C/Users/user pc/AppData/Local/Programs/Python/Python35/README.txt",
+		"/C/Users/user pc/Documents/GitHub/ActivityAggregator/Front-end/WebApp/public/admin/partials/admin_inbox.html",
+		"/C/Users/user pc/Documents/GitHub/ActivityAggregator/Front-end/WebApp/public/admin/partials/invite.html",
+		"/C/Users/user pc/Documents/GitHub/ActivityAggregator/Front-end/WebApp/public/admin/js/admin_app.js",
+		"/C/Users/user pc/Documents/GitHub/ActivityAggregator/Front-end/WebApp/public/js/build/build.js",
+		"/C/Users/user pc/Documents/GitHub/ActivityAggregator/Front-end/WebApp/public/admin/partials/registry_admin.html",
+		"/C/Users/user pc/Documents/GitHub/ActivityAggregator/Front-end/WebApp/api/user.js",
+		"/C/Users/user pc/Documents/GitHub/ActivityAggregator/Front-end/WebApp/api/config.js",
+		"/C/Users/user pc/Documents/GitHub/ActivityAggregator/Front-end/WebApp/public/admin/js/build/build.js",
+		"/C/Users/user pc/Documents/GitHub/ActivityAggregator/Front-end/WebApp/views/admin.jade",
+		"/C/Users/user pc/Documents/GitHub/ActivityAggregator/Front-end/WebApp/public/partials/registry.html",
+		"/C/Users/user pc/Documents/GitHub/ActivityAggregator/Front-end/WebApp/public/admin/partials/authAdmin.html",
+		"/C/Users/user pc/Downloads/ring.css",
+		"/C/Users/user pc/Documents/Movie-Extended/front-end/WebApp/node_modules/body-parser/node_modules/bytes/History.md",
+		"/C/Users/user pc/AppData/Roaming/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+		"/C/Users/user pc/AppData/Roaming/Sublime Text 3/Packages/User/InsertFilepath.sublime-settings",
+		"/C/Users/user pc/Documents/GitHub/ActivityAggregator/Front-end/WebApp/bower_components/ng-dialog/css/ngDialog-theme-default.css",
+		"/C/Users/user pc/Documents/GitHub/ActivityAggregator/Front-end/WebApp/public/styles/main.css",
+		"/C/Users/user pc/Documents/GitHub/ActivityAggregator/Front-end/WebApp/public/partials/main.html",
+		"/C/Users/user pc/Documents/GitHub/ActivityAggregator/Front-end/WebApp/bower_components/ng-dialog/css/ngDialog.css",
+		"/C/Users/user pc/Documents/GitHub/ActivityAggregator/Front-end/WebApp/views/layout.jade",
+		"/C/Users/user pc/Desktop/GitHubLog.txt",
+		"/C/Users/user pc/Desktop/Новый текстовый документ.txt",
+		"/C/Users/user pc/Documents/GitHub/ActivityAggregator/Front-end/WebApp/bower_components/ng-dialog/README.md",
+		"/C/Users/user pc/Documents/GitHub/ActivityAggregator/Front-end/WebApp/public/styles/load.scss",
+		"/C/Users/user pc/Documents/GitHub/ActivityAggregator/Front-end/WebApp/public/partials/load.html",
+		"/C/Users/user pc/Documents/GitHub/ActivityAggregator/Front-end/WebApp/routes/index.js",
+		"/C/Users/user pc/Downloads/Telegram Desktop/000479.cpp",
+		"/C/Users/user pc/Documents/GitHub/ActivityAggregator/Front-end/WebApp/public/partials/auth.html",
+		"/C/Users/user pc/Documents/GitHub/ActivityAggregator/Front-end/WebApp/public/icons/logo.png",
+		"/C/Users/user pc/Documents/GitHub/ActivityAggregator/Front-end/WebApp/public/js/admin_app.js",
+		"/C/Users/user pc/Documents/GitHub/ActivityAggregator/Front-end/WebApp/public/js/admin_controllers.js",
+		"/C/Users/user pc/Documents/GitHub/ActivityAggregator/Front-end/WebApp/public/js/directives.js",
+		"/C/Users/user pc/Documents/GitHub/ActivityAggregator/Front-end/WebApp/public/partials/achivments_popup.html",
+		"/C/Users/user pc/Documents/GitHub/ActivityAggregator/Front-end/WebApp/public/partials/admin_inbox.html",
+		"/C/Users/user pc/Documents/GitHub/ActivityAggregator/Front-end/WebApp/api/reqParser.js",
+		"/C/Users/user pc/Documents/GitHub/ActivityAggregator/Front-end/WebApp/public/js/lib/ng-file-upload.js",
+		"/C/Users/user pc/Documents/GitHub/ActivityAggregator/Front-end/WebApp/public/index.html",
+		"/C/Users/user pc/Desktop/1iwE-uDw97w.jpg",
+		"/C/Users/user pc/Desktop/test/newsfeed.html",
+		"/C/Users/user pc/Desktop/test/m.css",
+		"/C/Users/user pc/Documents/GitHub/HockeyBets/tmp/news.tpl.php",
+		"/C/Users/user pc/Documents/GitHub/ActivityAggregator/Front-end/WebApp/public/partials/main_footer.html",
+		"/C/Users/user pc/Documents/GitHub/ActivityAggregator/Front-end/WebApp/public/js/config.js",
+		"/C/Users/user pc/Documents/GitHub/extendedmovie/bin/www",
+		"/C/Users/user pc/Documents/GitHub/ActivityAggregator/Front-end/WebApp/public/achivments_popup.html",
+		"/C/Users/user pc/Documents/GitHub/ActivityAggregator/Front-end/WebApp/public/jade/header.jade",
+		"/C/Users/user pc/Documents/GitHub/ActivityAggregator/Front-end/WebApp/public/jade/index.jade",
+		"/C/Users/user pc/Documents/GitHub/ActivityAggregator/Front-end/WebApp/public/jade/layout.jade",
+		"/C/Users/user pc/Documents/GitHub/ActivityAggregator/Front-end/WebApp/public/jade/studentsBase.jade",
+		"/C/Users/user pc/Documents/GitHub/ActivityAggregator/Front-end/WebApp/public/views/index.html",
+		"/C/Users/user pc/Documents/GitHub/ActivityAggregator/Front-end/WebApp/foundation.min.css",
+		"/C/Users/Default/AppData/Local/sys.js",
+		"/C/Users/user pc/Documents/GitHub/Movie-Extended/Front-End/WebApp/gulpfile.js",
+		"/C/Users/user pc/Documents/GitHub/Movie-Extended/Front-End/WebApp/public/angular/angular-route.min.js",
+		"/C/Users/user pc/Documents/GitHub/ActivityAggregator/Front-end/jade/public/styles/main.css",
+		"/C/Users/user pc/Documents/GitHub/ActivityAggregator/Front-end/jade/gulpfile.js",
+		"/C/Users/user pc/Documents/GitHub/ActivityAggregator/Front-end/jade/bower_components/font-awesome/css/font-awesome.css",
+		"/C/Users/user pc/Documents/GitHub/ActivityAggregator/Front-end/jade/bower_components/font-awesome/HELP-US-OUT.txt",
+		"/C/Users/user pc/Documents/GitHub/ActivityAggregator/Front-end/jade/bower_components/gulp/.bower.json",
+		"/C/Users/user pc/Documents/GitHub/ActivityAggregator/Front-end/jade/bower_components/font-awesome/css/font-awesome.min.css",
+		"/C/Users/user pc/Documents/GitHub/extendedmovie/app/js/services.js",
+		"/C/Users/user pc/Documents/GitHub/extendedmovie/app/js/controllers.js",
+		"/C/Users/user pc/Google Диск/AU_15/Анькин калькулятро/калькулятор/WindowsFormsApplication1/bin/Debug/log_result.txt",
+		"/C/Users/user pc/Google Диск/AU_15/Анькин калькулятро/калькулятор/WindowsFormsApplication1/bin/Debug/log.txt",
+		"/C/Users/user pc/Desktop/results.txt",
+		"/C/Users/user pc/AppData/Local/Temp/Rar$DIa0.865/app.css",
+		"/C/Users/user pc/AppData/Local/Temp/Rar$DIa0.632/foundation.css",
+		"/C/Users/user pc/Documents/GitHub/ActivityAggregator/Front-end/jade/index.html",
+		"/C/Users/user pc/Documents/GitHub/Movie-Extended/Front-End/WebApp/views/header.jade",
+		"/C/Users/user pc/Documents/GitHub/Movie-Extended/Front-End/WebApp/views/footer.jade",
+		"/C/Users/user pc/Documents/GitHub/Movie-Extended/Front-End/WebApp/views/registry.jade",
+		"/C/Users/user pc/Documents/GitHub/ActivityAggregator/Front-end/jade/main.css",
+		"/C/Users/user pc/Documents/GitHub/Movie-Extended/Front-End/WebApp/sass/style.scss",
+		"/C/Users/user pc/Desktop/arr.txt",
+		"/C/Users/user pc/Documents/GitHub/ActivityAggregator/Front-end/bower_components/angular/bower.json",
+		"/C/Users/user pc/Documents/GitHub/ActivityAggregator/Front-end/bower_components/angular/index.js",
+		"/C/Users/user pc/Documents/GitHub/ActivityAggregator/Front-end/package.json",
+		"/C/Users/user pc/Documents/GitHub/ActivityAggregator/Front-end/bower_components/angular/README.md",
+		"/C/Users/user pc/Desktop/Мой диск – Google Диск.html",
+		"/C/Users/user pc/Documents/GitHub/Movie-Extended/Front-End/WebApp/public/js/controllers.js",
+		"/C/Users/user pc/Documents/GitHub/Movie-Extended/Front-End/WebApp/public/partials/profile/cinemas/cinemas_list.html",
+		"/C/Users/user pc/Documents/GitHub/Movie-Extended/Front-End/WebApp/public/partials/profile/about_movie.html",
+		"/C/Users/user pc/Documents/GitHub/Movie-Extended/Front-End/WebApp/routes/api.js",
+		"/C/Users/user pc/Documents/GitHub/Movie-Extended/Front-End/WebApp/storage/storage.js",
+		"/C/Users/user pc/Documents/GitHub/Movie-Extended/Front-End/WebApp/public/javascripts/build.js",
+		"/C/Users/user pc/Documents/GitHub/Movie-Extended/Front-End/WebApp/views/profile.jade",
+		"/C/Users/user pc/Documents/GitHub/Movie-Extended/Front-End/WebApp/public/partials/profile/profile_movies.html",
+		"/C/Users/user pc/Documents/GitHub/Movie-Extended/Front-End/WebApp/public/js/MovieExtended.js"
+	],
+	"find":
+	{
+		"height": 26.0
+	},
+	"find_in_files":
+	{
+		"height": 93.0,
+		"where_history":
+		[
+			"C:\\Users\\user pc\\Documents\\GitHub\\ActivityAggregator\\Front-end\\WebApp"
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"input",
+			"form",
+			"card",
+			"achivment",
+			"ach",
+			"achivment",
+			"btn_edit_user_detail",
+			"newStudent",
+			"cry",
+			"achivment_result",
+			"detail_label",
+			"input",
+			"achivment_deta",
+			"config",
+			"function getStudents",
+			"achivment",
+			"card",
+			"ach",
+			"card",
+			"studentsBase",
+			"base",
+			"achivment",
+			"id",
+			"id_",
+			"newAch.",
+			"input",
+			"ngFileUpload",
+			"avatar",
+			"btn_add",
+			"achivment",
+			"btn",
+			"add_ach",
+			"achivment",
+			"\"></",
+			"ach",
+			"req.body",
+			"input",
+			"'",
+			"achivment_detail",
+			"\"",
+			"'",
+			"__",
+			"cinemaToShow",
+			"\"",
+			"projectContents",
+			" httpd-vhosts.conf ",
+			"Include httpd-vhosts.conf ",
+			"Include httpd-vhosts.conf \n",
+			"Include etc/extra/httpd-vhosts.conf \n",
+			"virtual"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"btn_ghost",
+			"newAdmin",
+			"newAch.info.",
+			"newAch.info",
+			"fields",
+			"\"",
+			"'",
+			"\"",
+			"_",
+			"cinemaToShowResolve",
+			"'",
+			""
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 26.0
+	},
+	"input":
+	{
+		"height": 39.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 32.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.nodejs":
+	{
+		"height": 177.0
+	},
+	"output.xdebug":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "proj.sublime-project",
+	"replace":
+	{
+		"height": 48.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 309.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

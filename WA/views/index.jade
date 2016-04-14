@@ -1,5 +1,30 @@
-extends layout
-
-block content
-  h1= title
-  p Welcome to #{title}
+doctype html
+html(lang='en', ng-app='meApp', ng-controller='appCtrl')
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    title(ng-bind='title')
+    link(rel='stylesheet', href='../styles/main.css')
+    link(rel='stylesheet', href='../styles/lib/font-awesome/css/font-awesome.min.css')
+    link(rel='stylesheet', href='../styles/lib/foundation.min.css')
+  body(ng-controller='pageCtrl', ng-cloak='')
+    .wrapper(ng-cloak='')
+      section.header.small-12.columns
+        a.logo(href='#') Movie Extended
+        nav.nav_bar(ng-cloak='')
+          ul
+            li
+              a(ui-sref='mainPage') Вход
+            li
+              a(ui-sref='studentsBase') Личный кабинет
+            li(ng-if='currentUser._id')
+              a#logout(ng-click='logout()')
+                i.fa.fa-sign-out
+      section(ui-view='page_content')
+      section(ui-view='footer')
+    script(type='text/javascript', src='../js/lib/angular.min.js')
+    script(type='text/javascript', src='../js/lib/angular-sanitize.min.js')
+    script(type='text/javascript', src='../js/lib/angular-ui-router.min.js')
+    script(type='text/javascript', src='../js/lib/ng-file-upload.js')
+    script(type='text/javascript', src='../js/lib/ng-file-upload-shim.js')
+    script(type='text/javascript', src='../js/build/build.js')

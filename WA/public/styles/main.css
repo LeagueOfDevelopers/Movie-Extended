@@ -1,0 +1,54 @@
+
+/*common*/
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+html {
+	height: 100%;
+}
+
+body {
+	font-family: Helvetica, sans-serif;
+	height: 100%;
+	background: #fafafa;
+}
+
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important; 
+}
+
+ a {
+  text-decoration: none; 
+}
+
+ul {
+  list-style: none; 
+}
+
+/*page*/
+
+.wrapper {
+  height: 100% !important;
+  position: relative; }
+
+.header {
+  height: 60px;
+  line-height: 60px;
+  background-color: #009fdf;
+  z-index: 1000;
+  position: fixed;
+  -webkit-box-shadow: 2px 3px 13px -4px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 2px 3px 13px -4px rgba(0, 0, 0, 0.5);
+  box-shadow: 2px 3px 13px -4px rgba(0, 0, 0, 0.5); }
+
+.page_content {
+  height: 100% !important;
+  font-family: Calibri;
+  padding-top: 60px; }
+
+.vertical_offset {
+  margin-top: 100px;
+  margin-bottom: 100px; }
