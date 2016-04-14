@@ -3,20 +3,20 @@ angular.module('meApp',
    'ui.router',
    'app.commonCtrl',
    'app.auth',
+   'app.account',
    'app.services',
-   'app.directives',
    'ngSanitize',
    'ngFileUpload'
  ])
 
   .config(
     [
-    '$urlRouterProvider',
-    '$stateProvider',
-    '$locationProvider',
+      '$urlRouterProvider',
+      '$stateProvider',
+      '$locationProvider',
      function ($urlRouterProvider, $stateProvider, $locationProvider) {
        $urlRouterProvider.otherwise("/auth");
-       $locationProvider.html5Mode(true);
+       //$locationProvider.html5Mode(true);
 
        $stateProvider
        
@@ -34,8 +34,11 @@ angular.module('meApp',
         url: '/account/:id',
         views: {
           'page_content': {
-            templateUrl: 'partials/account.html',
+            templateUrl: 'partials/account/account_main.html',
             controller: 'accountMainCtrl'
+          },
+          'account_content' : {
+            templateUrl: 'partials/account/account_empty.html'
           }
         }
        })

@@ -16,7 +16,9 @@ angular.module('app.commonCtrl',
      })
      $scope.showMessage = false;
      $scope.msg = '';
-     $scope.currentUser = {};
+     $scope.currentUser = {
+      id: '12345'
+     };
       auth();
 
       

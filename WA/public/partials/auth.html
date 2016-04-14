@@ -1,15 +1,17 @@
+<section class="page_content">
 <div class="verticalOffset">
 	<div class="row">
 		<div class="small-12 medium-5 medium-centered columns form_wrap">
-			<form method="post" class="auth_form">
-				<label class="form_label">
-					<inut class="form_input"></inut>
+			<form method="post" class="auth_form" name="auth">
+				<label class="form_label small-12 columns">Логин
+					<input class="form_input" type="email" ng-pattern="email" required ng-model="auth.email">
 				</label>
-				<label class="form_label">
-					<inut class="form_input"></inut>
+				<label class="form_label small-12 columns">Пароль
+					<input class="form_input" type="text" ng-model="auth.password" required>
 				</label>
-				<submit class="form_submit" value="Войти"></submit>
+				<input type="submit" class="form_submit" value="Войти" ng-click="submit()"></input>
 			</form>
 		</div>
 	</div>
 </div>
+</section>

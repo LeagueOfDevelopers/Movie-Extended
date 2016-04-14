@@ -7,6 +7,10 @@ angular.module('app.auth',
  [
   '$scope',
  function($scope) {
- 	
+ 	$scope.submit = function() {
+ 		if($scope.auth.email == 'jj' && $scope.auth.password == '111' ) {
+ 			$scope.$emit('auth');
+ 		}
+ 	}
  }
  ])

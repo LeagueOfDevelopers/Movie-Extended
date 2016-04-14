@@ -14,12 +14,13 @@ html(lang='en', ng-app='meApp', ng-controller='appCtrl')
         nav.nav_bar(ng-cloak='')
           ul
             li
-              a(ui-sref='mainPage') Вход
+              a(ui-sref='auth' ) Вход
             li
-              a(ui-sref='studentsBase') Личный кабинет
-            li(ng-if='currentUser._id')
+              a(ui-sref='account({id: currentUser.id})') Личный кабинет
+            li(ng-if='currentUser.id')
               a#logout(ng-click='logout()')
                 i.fa.fa-sign-out
+        .clearfix
       section(ui-view='page_content')
       section(ui-view='footer')
     script(type='text/javascript', src='../js/lib/angular.min.js')

@@ -11,7 +11,7 @@ html {
 }
 
 body {
-	font-family: Helvetica, sans-serif;
+	font-family: Helvetica, sans-serif !important;
 	height: 100%;
 	background: #fafafa;
 }
@@ -28,27 +28,104 @@ ul {
   list-style: none; 
 }
 
+.clearfix {
+	clear: both;
+}
+
 /*page*/
 
 .wrapper {
   height: 100% !important;
   position: relative; }
 
-.header {
-  height: 60px;
-  line-height: 60px;
-  background-color: #009fdf;
-  z-index: 1000;
-  position: fixed;
-  -webkit-box-shadow: 2px 3px 13px -4px rgba(0, 0, 0, 0.5);
-  -moz-box-shadow: 2px 3px 13px -4px rgba(0, 0, 0, 0.5);
-  box-shadow: 2px 3px 13px -4px rgba(0, 0, 0, 0.5); }
 
 .page_content {
   height: 100% !important;
   font-family: Calibri;
   padding-top: 60px; }
 
-.vertical_offset {
+.verticalOffset {
   margin-top: 100px;
   margin-bottom: 100px; }
+
+.header {
+  height: 60px;
+  line-height: 60px;
+  background-color: #fff;
+  z-index: 1000;
+  position: absolute;
+  top: 0;
+  -webkit-box-shadow: 2px 3px 13px -4px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 2px 3px 13px -4px rgba(0, 0, 0, 0.5);
+  box-shadow: 2px 3px 13px -4px rgba(0, 0, 0, 0.5); }
+
+  .nav_bar {
+    float: right;
+    height: 100%;
+    display: inline-block;
+} 
+
+.nav_bar ul {
+  height: 100%; }
+
+.nav_bar li {
+  display: inline-block;
+  color: #000;
+  margin-right: 25px;
+  height: 100%;
+  box-sizing: border-box;
+  transition: all .2s;
+  color: #fff;
+  font-size: 18px; }
+
+
+.nav_bar a {
+  display: inline-block;
+  height: 100%;
+  color: #000;
+  border-bottom: 0px solid #fff; }
+
+.nav_bar a:hover {
+	cursor: pointer;
+}
+
+.logo {
+	font-size: 24px;
+	color: #000;
+}
+
+  /*auth*/
+
+  .form_wrap {
+	height: 400px;
+  }
+
+  .auth_form {
+	height: 100%;
+  }
+
+  .form_label {
+	height: 80px;
+	font-size: 16px;
+	font-weight: bold;
+} 
+
+  .form_input {
+	font-weight: normal;
+	padding: 10px;
+	width: 100%;
+	font-size: 16px;
+  }
+
+  .form_submit {
+	font-style: 20px;
+	font-weight: bold;
+	padding: 5px;
+	width: 100%;
+  }
+
+  /* account */
+
+  .accWS {
+  	background: #ccc;
+  }
