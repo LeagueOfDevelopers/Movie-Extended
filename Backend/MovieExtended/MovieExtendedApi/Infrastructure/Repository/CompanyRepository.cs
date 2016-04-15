@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Domain.Models.Entities;
+using Domain.Models.FrontendEntities;
 using Domain.Repository;
 using Journalist;
 using NHibernate.Linq;
@@ -61,6 +62,14 @@ namespace Infrastructure.Repository
             var session = _provider.GetCurrentSession();
             var checkIfExists = session.Query<Company>().SingleOrDefault(company => company.Id == companyId);
             return checkIfExists != null;
+        }
+
+        public void CreateCinema(Cinema cinema, int companyId)
+        {
+            var session = _provider.GetCurrentSession();
+            var company = session.Query<Company>().SingleOrDefault(model => model.Id == companyId);
+            company.Cinema.Add(cinema);
+            session.Update(company);
         }
     }
 }

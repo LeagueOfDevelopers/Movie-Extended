@@ -20,6 +20,12 @@ namespace Domain.Models.Entities
             Movie = movie;
         }
 
+        public Cinema(string name, string address)
+        {
+            Name = name;
+            Address = address;
+        }
+
         protected Cinema()
         {
         }

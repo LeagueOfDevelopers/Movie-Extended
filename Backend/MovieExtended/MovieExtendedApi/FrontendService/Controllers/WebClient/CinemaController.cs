@@ -55,5 +55,12 @@ namespace FrontendService.Controllers.WebClient
         //{
         //    _cinemaRepository.DeleteCinemaByCompanyId(companyId);
         //}
+
+        [Route("create/movie/{cinemaId}")]
+        [HttpPost]
+        public void CreateMovie([FromBody] Movie movie, int cinemaId)
+        {
+            
+        }
     }
 }

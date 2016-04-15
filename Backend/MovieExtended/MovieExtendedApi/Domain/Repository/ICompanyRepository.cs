@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Domain.Models.Entities;
+using Domain.Models.FrontendEntities;
 
 namespace Domain.Repository
 {
@@ -11,5 +12,6 @@ namespace Domain.Repository
         void SaveCompany(Company company);
         void UpdateCompany(string jsonForUpdate);
         bool Exists(int companyId);
+        void CreateCinema(Cinema cinema, int companyId);
     }
 }

@@ -2,8 +2,13 @@
 
 namespace Domain.Models.FrontendEntities
 {
-    class FrontendCinema
+    public class FrontendCinema
     {
+        public FrontendCinema(string name , string address)
+        {
+            Name = name;
+            Address = address;
+        }
         public virtual int Id { get; protected set; }
 
         public virtual string Name { get; protected set; }

@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Web.Http;
 using Domain.Models.Entities;
+using Domain.Models.FrontendEntities;
 using Domain.Repository;
 
 namespace FrontendService.Controllers.WebClient
@@ -33,6 +34,13 @@ namespace FrontendService.Controllers.WebClient
         public Company GetCompanyById(int companyId)
         {
             return _companyRepository.GetCompanyByCompanyId(companyId);
+        }
+
+        [Route("create/cinema/{companyId}")]
+        [HttpPost]
+        public void CreateCinema([FromBody] Cinema cinema , int companyId )
+        {
+            _companyRepository.CreateCinema(cinema , companyId);
         }
 
         [Route("company/delete/{companyId}")]

@@ -68,5 +68,13 @@ namespace Infrastructure.Repository
         {
             throw new NotImplementedException();
         }
+
+        public void CreateMovie(Movie movie, int cinemaId)
+        {
+            var session = _provider.GetCurrentSession();
+            var cinema = session.Query<Cinema>().SingleOrDefault(model => model.Id == cinemaId);
+            cinema.Movie.Add(movie);
+            session.Update(cinema);
+        }
     }
 }
