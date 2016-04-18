@@ -4,8 +4,7 @@ angular.module('app.account',
  ])
 
 .controller('accountMainCtrl',
-[
- '$scope',
+['$scope',
  'API',
 function($scope, API) {
 	$scope.company = $scope.currentUser.company;
@@ -17,8 +16,7 @@ function($scope, API) {
 ])
 
 .controller('accountMoviesCtrl',
-[
- '$scope',
+['$scope',
  'API',
  '$state',
 function($scope, API, $state) {
@@ -40,8 +38,7 @@ function($scope, API, $state) {
 
 
 .controller('accountCinemasCtrl',
-[
- '$scope',
+['$scope',
  'API',
 function($scope, API) {
 	
@@ -50,8 +47,7 @@ function($scope, API) {
 
 
 .controller('accountMovieDetailCtrl',
-[
- '$scope',
+['$scope',
  'API',
 function($scope, API) {
 	
@@ -60,8 +56,7 @@ function($scope, API) {
 
 
 .controller('accountCinemaDetailCtrl',
-[
- '$scope',
+['$scope',
  'API',
 function($scope, API) {
 	
@@ -70,8 +65,7 @@ function($scope, API) {
 
 
 .controller('accountMovieAddCtrl',
-[
- '$scope',
+['$scope',
  'API',
 function($scope, API) {
 	
@@ -79,8 +73,7 @@ function($scope, API) {
 ])
 
 .controller('accountCinemaAddCtrl',
-[
- '$scope',
+['$scope',
  'API',
 function($scope, API) {
 	

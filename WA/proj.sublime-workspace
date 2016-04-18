@@ -295,6 +295,32 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "public/partials/account/account_empty.html",
+			"settings":
+			{
+				"buffer_size": 18,
+				"line_ending": "Windows",
+				"name": "account_empty.html"
+			}
+		},
+		{
+			"file": "public/js/account.js",
+			"settings":
+			{
+				"buffer_size": 1157,
+				"line_ending": "Windows",
+				"name": "account.js"
+			}
+		},
+		{
+			"file": "public/partials/auth.html",
+			"settings":
+			{
+				"buffer_size": 640,
+				"line_ending": "Windows"
+			}
+		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -381,10 +407,18 @@
 	},
 	"expanded_folders":
 	[
-		"/C/Users/user pc/Dropbox/repos/Movie-Extended/WA"
+		"/C/Users/user pc/Dropbox/repos/Movie-Extended/WA",
+		"/C/Users/user pc/Dropbox/repos/Movie-Extended/WA/public",
+		"/C/Users/user pc/Dropbox/repos/Movie-Extended/WA/public/js",
+		"/C/Users/user pc/Dropbox/repos/Movie-Extended/WA/public/partials",
+		"/C/Users/user pc/Dropbox/repos/Movie-Extended/WA/public/partials/account"
 	],
 	"file_history":
 	[
+		"/C/Users/user pc/Dropbox/repos/Movie-Extended/WA/public/partials/account/account_main.html",
+		"/C/Users/user pc/Dropbox/repos/Movie-Extended/WA/public/partials/account/account_movies.html",
+		"/C/Users/user pc/Dropbox/repos/Movie-Extended/WA/public/partials/account/account_cineams.html",
+		"/C/Users/user pc/Dropbox/repos/Movie-Extended/WA/package.json",
 		"/C/Users/user pc/Dropbox/repos/Movie-Extended/WA/gulpfile.js",
 		"/C/Users/user pc/Documents/GitHub/ActivityAggregator/Front-end/WebApp/public/admin/partials/achivment.html",
 		"/C/Program Files/iisnode/www/helloworld/web.config",
@@ -508,11 +542,7 @@
 		"/C/Users/user pc/Documents/GitHub/Movie-Extended/Front-End/WebApp/public/partials/profile/cinemas/cinemas_list.html",
 		"/C/Users/user pc/Documents/GitHub/Movie-Extended/Front-End/WebApp/public/partials/profile/about_movie.html",
 		"/C/Users/user pc/Documents/GitHub/Movie-Extended/Front-End/WebApp/routes/api.js",
-		"/C/Users/user pc/Documents/GitHub/Movie-Extended/Front-End/WebApp/storage/storage.js",
-		"/C/Users/user pc/Documents/GitHub/Movie-Extended/Front-End/WebApp/public/javascripts/build.js",
-		"/C/Users/user pc/Documents/GitHub/Movie-Extended/Front-End/WebApp/views/profile.jade",
-		"/C/Users/user pc/Documents/GitHub/Movie-Extended/Front-End/WebApp/public/partials/profile/profile_movies.html",
-		"/C/Users/user pc/Documents/GitHub/Movie-Extended/Front-End/WebApp/public/js/MovieExtended.js"
+		"/C/Users/user pc/Documents/GitHub/Movie-Extended/Front-End/WebApp/storage/storage.js"
 	],
 	"find":
 	{
@@ -610,8 +640,103 @@
 	"groups":
 	[
 		{
+			"selected": 2,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "public/partials/account/account_empty.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 18,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								11,
+								11
+							]
+						],
+						"settings":
+						{
+							"auto_name": "account_empty.html",
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"tabs_extra_last_activated": 1460715503.06,
+							"tabs_extra_last_activated_sheet_index": 0
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "public/js/account.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1157,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								276,
+								276
+							]
+						],
+						"settings":
+						{
+							"auto_name": "account.js",
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tabs_extra_last_activated": 1460788636.71,
+							"tabs_extra_last_activated_sheet_index": 1
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "public/partials/auth.html",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 640,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								528,
+								528
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"tabs_extra_last_activated": 1460788697.0,
+							"tabs_extra_last_activated_sheet_index": 2,
+							"tabs_extra_spawned": true,
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
 			]
 		}
 	],
@@ -699,6 +824,10 @@
 	"selected_group": 0,
 	"settings":
 	{
+		"xdebug":
+		{
+			"hide_conflict": false
+		}
 	},
 	"show_minimap": true,
 	"show_open_files": true,
