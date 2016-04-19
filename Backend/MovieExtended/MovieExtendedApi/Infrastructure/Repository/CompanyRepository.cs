@@ -64,12 +64,13 @@ namespace Infrastructure.Repository
             return checkIfExists != null;
         }
 
-        public void CreateCinema(Cinema cinema, int companyId)
+        public int CreateCinema(Cinema cinema, int companyId)
         {
             var session = _provider.GetCurrentSession();
             var company = session.Query<Company>().SingleOrDefault(model => model.Id == companyId);
             company.Cinema.Add(cinema);
             session.Update(company);
+            return cinema.Id;
         }
     }
 }

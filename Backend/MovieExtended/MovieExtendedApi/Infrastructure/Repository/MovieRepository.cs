@@ -90,5 +90,17 @@ namespace Infrastructure.Repository
             var movieforposter = session.Query<Movie>().SingleOrDefault(movie => movie.Id == movieId);
             return movieforposter.Poster.Id;
         }
+
+        public int  CreateLanguage(Language language, int movieId)
+        {
+            var session = _provider.GetCurrentSession();
+            var movie = session.Query<Movie>().SingleOrDefault(model => model.Id == movieId);
+            movie.Language.Add(language);
+            session.Transaction.Begin();
+            session.Update(movie);
+            session.Transaction.Commit();
+            return language.Id;
+
+        }
     }
 }

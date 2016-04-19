@@ -75,7 +75,7 @@
     <Compile Include="Mappings\MovieMapping.cs" />
     <Compile Include="Mappings\QrCodeFingerprintMapping.cs" />
     <Compile Include="Models\Constants.cs" />
-    <Compile Include="Models\Converters\CinemaConverter.cs" />
+    <Compile Include="Models\mapper\CinemaMapper.cs" />
     <Compile Include="Models\Entities\Cinema.cs" />
     <Compile Include="Models\Entities\CompanyUser.cs" />
     <Compile Include="Models\FrontendEntities\Credentials.cs" />

@@ -17,5 +17,6 @@ namespace Domain.Repository
         bool Exists(int movieId);
         Movie CheckAndroidToken(Guid token);
         int GetPosterId(int movieId);
+        int CreateLanguage(Language language, int movieId);
     }
 }

@@ -76,6 +76,17 @@ namespace UnitTestProject2
 
 
         }
+
+        [TestMethod]
+        public void TestCreating()
+        {
+            var provider = new SessionProvider();
+            provider.OpenSession();
+            var movie = new MovieRepository(provider);
+            var language = new Language("test", new File("edfed",FileType.Track),new File("wdwd",FileType.Subtitles));
+            var di = movie.CreateLanguage(language,2);
+            di = di - 1 + 1;
+        }
     }
 }
             

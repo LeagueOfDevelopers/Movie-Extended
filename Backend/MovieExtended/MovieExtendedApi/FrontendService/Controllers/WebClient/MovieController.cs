@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Dynamic;
 using System.Web.Http;
 using Domain.Models;
 using Domain.Models.Entities;
@@ -58,6 +59,13 @@ namespace FrontendService.Controllers.WebClient
         public void DeleteMovieByCinemaId(int cinemaId)
         {
             _movieRepository.GetMovieByCinemaId(cinemaId);
+        }
+
+        [Route("create/language/{movieId}")]
+        [HttpPost]
+        public void CreateLanguage([FromBody] Language language, int movieId)
+        {
+            
         }
     }
 }

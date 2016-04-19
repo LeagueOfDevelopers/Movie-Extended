@@ -12,6 +12,6 @@ namespace Domain.Repository
         void DeleteCinemaByCompanyId(int company);
         Cinema GetCinemaByCinemaId(int cinemaId);
         void UpdateCinema(string jsonForUpdate);
-        void CreateMovie(Movie movie, int cinemaId);
+        int CreateMovie(Movie movie, int cinemaId);
     }
 }
