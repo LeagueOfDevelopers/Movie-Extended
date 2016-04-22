@@ -3,10 +3,11 @@ using System.Collections.Generic;
 
 namespace Domain.Models.FrontendEntities
 {
-    class FrontendCompany
+   public class FrontendCompany
     {
-        public FrontendCompany(string name , Uri website )
+        public FrontendCompany(int id,string name , Uri website )
         {
+            Id = id;
             Name = name;
             Website = website;
         }

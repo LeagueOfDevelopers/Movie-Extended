@@ -66,6 +66,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="mapper\CinemaMapper.cs" />
+    <Compile Include="mapper\CompanyMapper.cs" />
     <Compile Include="mapper\MovieMapper.cs" />
     <Compile Include="Mappings\CinemaMapping.cs" />
     <Compile Include="Mappings\CompanyMapping.cs" />

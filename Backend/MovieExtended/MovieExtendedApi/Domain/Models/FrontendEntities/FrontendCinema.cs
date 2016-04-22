@@ -4,7 +4,7 @@ namespace Domain.Models.FrontendEntities
 {
     public class FrontendCinema
     {
-        public FrontendCinema(string name , string address)
+        public FrontendCinema(int id,string name , string address)
         {
             Name = name;
             Address = address;

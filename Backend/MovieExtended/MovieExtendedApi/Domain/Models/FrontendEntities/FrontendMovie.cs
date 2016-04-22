@@ -23,6 +23,12 @@ namespace Domain.Models.FrontendEntities
             this.Poster.Id = Poster.Id;
         }
 
+        public FrontendMovie(int id, string name)
+        {
+            Id = id;
+            Name = name;
+        }
+
         public FrontendMovie()
         {
             
