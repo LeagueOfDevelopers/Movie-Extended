@@ -32,7 +32,7 @@ function($scope, API, $state) {
 
 	$scope.showMovieDetail = function(id) {
 		$state.go('account.movies.detail', {movieId: id});
-	}
+	};
 }
 ])
 

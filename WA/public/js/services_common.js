@@ -35,7 +35,6 @@ angular.module('app.services', [])
 
     function query(path, params, log) {
 
- 
       var apiMethod = parsePath(path, this.apiUrls);
       return $q.when(send(apiMethod, params)).then(function(result) {
         if(log) {

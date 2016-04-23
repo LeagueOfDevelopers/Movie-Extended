@@ -308,16 +308,28 @@
 			"file": "public/js/account.js",
 			"settings":
 			{
-				"buffer_size": 1157,
+				"buffer_size": 1144,
 				"line_ending": "Windows",
 				"name": "account.js"
 			}
 		},
 		{
-			"file": "public/partials/auth.html",
+			"contents": "angular.module('app.services', [])\n\n  .service('API', \n    ['$rootScope',\n    '$q',\n    '$http',\n   function($rootScope, $q, $http){ \n      var config = { \n        apiUrls : {\n          BASE_URL: 'localhost:3000',\n\n      user: {\n        login: {\n          method: 'POST',\n          url: function(params) {\n            return '/api' + '/login';\n          }\n        },\n        getCurrent: {\n          method: 'POST',\n          url: function(params) {\n            return '/api' + '/isAuth';\n          }\n        },\n        logout: {\n          method: 'POST',\n          url: function(params) {\n            return '/api' + '/logout';\n          }\n        }\n      },\n\n    } \n  }\n\n    function query(path, params, log) {\n\n      var apiMethod = parsePath(path, this.apiUrls);\n      return $q.when(send(apiMethod, params)).then(function(result) {\n        if(log) {\n          console.log(result);\n          }\n          return result;\n\n      });\n\n    function parsePath(pathString, obj) {\n      var path = pathString.split('.');\n      if(Array.isArray(path)) {\n        for (var i = 0, l = path.length; i < l; i++) {\n          var item = path[i];\n          if(obj[item]) {\n            obj = obj[item]\n          } else {\n            return 'parse error';\n          }\n        } \n        return obj;\n      } else {\n        return obj[path];\n      }\n    };\n\n    function send(apiMethod, params) {\n      if(log) {\n        console.log(apiMethod.url(params));\n      }\n      return $http({\n        method: apiMethod.method,\n        url   : this.apiUrls.BASE_URL + apiMethod.url(params),\n        data  : params && params.data ? params.data : null\n      }).success(function(res) {\n        return {\n          data: res,\n          method: apiMethod\n        };\n      });\n    };\n\n  };\n\n  return {\n    query: query.bind(config)\n  }\n\n\n  }])\n\n\n  .service('avatar',\n    [ \n    function() {\n    return  function(student) {\n       return student.photoUri ? 'background-image: url(' + student.photoUri + ')' : ''; \n      }\n  }])\n\n \n\n  .service('UserManager',\n   ['$rootScope',\n    '$q',\n    '$http',\n   function ($rootScope, $q, $http) {\n        \n        var apiUrl = '/api';\n\n        function getUser() {\n          var reqUrl = apiUrl + '/auth/isAuth';\n            return $http.post(reqUrl).success(function (data) {\n                    return data.user;\n            });\n        }\n\n        function Current() {\n            return $q.when(getUser()).then(function (result) {\n                return  result.data.user || result;\n            });\n\n        }\n\n       function update() {\n          return $q.when(updateUser()).then(function(res) {\n            return res;\n          })\n        } \n      \n\n        function updateUser() {\n          return $http.get('/api/auth/update').success(function(result) {\n            console.log('ok');\n            return result.data;\n         })\n        };\n\n        function logout() {\n            return $http.post('/api/auth/logout').success(function (data) {\n                var defaultAction = true;\n                return data && data.result\n                    ? data.result : defaultAction;\n            });\n        }\n\n        return {\n            Current: Current,\n            logout: logout,\n            update: update\n        }\n    }])\n\n",
+			"file": "public/js/services_common.js",
+			"file_size": 3388,
+			"file_write_time": 131055986383953428,
 			"settings":
 			{
-				"buffer_size": 640,
+				"buffer_size": 3244,
+				"line_ending": "Windows",
+				"name": "services_common.js"
+			}
+		},
+		{
+			"file": "public/js/app.js",
+			"settings":
+			{
+				"buffer_size": 1027,
 				"line_ending": "Windows"
 			}
 		}
@@ -409,9 +421,7 @@
 	[
 		"/C/Users/user pc/Dropbox/repos/Movie-Extended/WA",
 		"/C/Users/user pc/Dropbox/repos/Movie-Extended/WA/public",
-		"/C/Users/user pc/Dropbox/repos/Movie-Extended/WA/public/js",
-		"/C/Users/user pc/Dropbox/repos/Movie-Extended/WA/public/partials",
-		"/C/Users/user pc/Dropbox/repos/Movie-Extended/WA/public/partials/account"
+		"/C/Users/user pc/Dropbox/repos/Movie-Extended/WA/public/js"
 	],
 	"file_history":
 	[
@@ -640,7 +650,7 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 3,
 			"sheets":
 			[
 				{
@@ -664,8 +674,42 @@
 						{
 							"auto_name": "account_empty.html",
 							"syntax": "Packages/HTML/HTML.sublime-syntax",
-							"tabs_extra_last_activated": 1460715503.06,
-							"tabs_extra_last_activated_sheet_index": 0
+							"tabs_extra_last_activated": 1460966981.37,
+							"tabs_extra_last_activated_sheet_index": 0,
+							"tabs_extra_spawned": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "public/js/account.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1144,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								696,
+								696
+							]
+						],
+						"settings":
+						{
+							"auto_name": "account.js",
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tabs_extra_last_activated": 1461124884.87,
+							"tabs_extra_last_activated_sheet_index": 1,
+							"tabs_extra_spawned": true,
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -675,28 +719,30 @@
 					"type": "text"
 				},
 				{
-					"buffer": 1,
-					"file": "public/js/account.js",
+					"buffer": 2,
+					"file": "public/js/services_common.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1157,
+						"buffer_size": 3244,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								276,
-								276
+								2507,
+								2507
 							]
 						],
 						"settings":
 						{
-							"auto_name": "account.js",
+							"auto_name": "services_common.js",
 							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"tabs_extra_last_activated": 1460788636.71,
-							"tabs_extra_last_activated_sheet_index": 1
+							"tab_size": 2,
+							"tabs_extra_last_activated": 1461134928.79,
+							"tabs_extra_last_activated_sheet_index": 3,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -706,32 +752,33 @@
 					"type": "text"
 				},
 				{
-					"buffer": 2,
-					"file": "public/partials/auth.html",
+					"buffer": 3,
+					"file": "public/js/app.js",
 					"semi_transient": true,
 					"settings":
 					{
-						"buffer_size": 640,
+						"buffer_size": 1027,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								528,
-								528
+								0,
+								0
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/HTML/HTML.sublime-syntax",
-							"tabs_extra_last_activated": 1460788697.0,
-							"tabs_extra_last_activated_sheet_index": 2,
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 2,
+							"tabs_extra_last_activated": 1461134982.56,
+							"tabs_extra_last_activated_sheet_index": 3,
 							"tabs_extra_spawned": true,
-							"translate_tabs_to_spaces": false
+							"translate_tabs_to_spaces": true
 						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.x": -0.0,
+						"translation.y": 311.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -833,7 +880,7 @@
 	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 309.0,
+	"side_bar_width": 244.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{
