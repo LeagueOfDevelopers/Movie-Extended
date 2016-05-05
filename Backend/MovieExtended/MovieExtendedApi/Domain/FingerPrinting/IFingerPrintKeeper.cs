@@ -10,5 +10,7 @@ namespace Domain.FingerPrinting
    public interface IFingerPrintKeeper
     {
         void CreateHashes(string audiopath,Movie movie);
+       bool AudioHashExists(int id);
+       void DeleteHashes(int id);
     }
 }
