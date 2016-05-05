@@ -107,7 +107,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FingerPrintKeeper.cs" />
+    <Compile Include="FingerPrinting\FingerPrintKeeper.cs" />
+    <Compile Include="FingerPrinting\IFingerPrintKeeper.cs" />
     <Compile Include="mapper\CinemaMapper.cs" />
     <Compile Include="mapper\CompanyMapper.cs" />
     <Compile Include="mapper\MovieMapper.cs" />

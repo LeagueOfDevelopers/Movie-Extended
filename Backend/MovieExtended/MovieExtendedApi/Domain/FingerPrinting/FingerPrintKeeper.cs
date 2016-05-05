@@ -1,18 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
+using Domain.Models.Entities;
+using NAudio.Wave;
+using NHibernate.Criterion;
 using SoundFingerprinting;
 using SoundFingerprinting.Audio;
 using SoundFingerprinting.Audio.NAudio;
 using SoundFingerprinting.Builder;
 using SoundFingerprinting.Configuration;
+using SoundFingerprinting.DAO.Data;
 using SoundFingerprinting.InMemory;
 
-namespace Domain
+namespace Domain.FingerPrinting
 {
-  public  class FingerPrintKeeper
+  public  class FingerPrintKeeper:IFingerPrintKeeper
     {
       public FingerPrintKeeper()
       {
@@ -36,10 +37,7 @@ namespace Domain
             queryConfiguration.MaximumNumberOfTracksToReturnAsResult = 1;
         }
 
-      private void CreateHashes(string audiopath )
-      {
-          
-      }
+      
 
       private  FingerprintConfiguration fingerprintConfiguration;
       private  QueryConfiguration queryConfiguration;
@@ -48,5 +46,20 @@ namespace Domain
       private IFingerprintCommandBuilder _fingerprintCommandBuilder;
 
 
+      public void CreateHashes(string audiopath,Movie movie)
+      {
+            MediaFoundationReader reader = new MediaFoundationReader(audiopath);
+            var track = new TrackData(
+                "isrc"+movie.Id,
+                "artist"+movie.Id,
+                "title"+movie.Id,
+                "album"+movie.Id,
+                DateTime.Today.Year,
+                reader.TotalTime.TotalMilliseconds
+                );
+
+      }
+
+      
     }
 }
