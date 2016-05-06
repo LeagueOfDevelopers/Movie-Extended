@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Linq;
 using System.Net;
 using System.Web.Http;
+using Domain.FingerPrinting;
 using Domain.mapper;
 using Domain.Models;
 using Domain.Models.Entities;
@@ -15,16 +17,19 @@ namespace FrontendService.Controllers.AndroidClient
         
         private readonly ISessionKeeper _keeper;
         private readonly IMovieRepository _movieRepository;
+        private readonly IFingerPrintKeeper _fingerPrintKeeper;
 
-        public SessionController(IMovieRepository movieRepository, ISessionKeeper keeper)
+        public SessionController(IMovieRepository movieRepository, ISessionKeeper keeper,IFingerPrintKeeper fingerPrintKeeper)
         {
             Require.NotNull(keeper, nameof(ISessionKeeper));
             _keeper = keeper;
             Require.NotNull(movieRepository, nameof(IMovieRepository));
             _movieRepository = movieRepository;
+            Require.NotNull(fingerPrintKeeper,nameof(IFingerPrintKeeper));
+            _fingerPrintKeeper = fingerPrintKeeper;
         }
 
-        [Route("api/Session/Login")]
+        [Route("login")]
         [HttpPost]
         public FrontendMovie Login([FromBody] string qr)
         {
@@ -34,7 +39,13 @@ namespace FrontendService.Controllers.AndroidClient
             var newSessionGuid = Guid.NewGuid();
             if (necessaryMovie != null)
             {
-
+                if (!_fingerPrintKeeper.AudioHashExists(necessaryMovie.Id))
+                {
+                    var path =
+                        necessaryMovie.Language.SingleOrDefault(language => language.Name == "Russian")
+                            .TrackFile.FilePath;
+                    _fingerPrintKeeper.CreateHashes(path,necessaryMovie);
+                }
                 var frontendMovie = new MovieMapper().ToFrontendMovie(necessaryMovie);
                 frontendMovie.AndroidToken = newSessionGuid;
                 var newSession = new Session(newSessionGuid, necessaryMovie.Id);

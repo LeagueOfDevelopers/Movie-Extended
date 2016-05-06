@@ -1,4 +1,5 @@
 ﻿using System.Web.Http;
+using Domain.FingerPrinting;
 using Domain.Models;
 using Domain.Repository;
 using Infrastructure;
@@ -26,6 +27,7 @@ namespace FrontendService
             container.Register<ISessionKeeper>(() => container.GetInstance<SessionKeeper>(), Lifestyle.Singleton);
             container.RegisterWebApiControllers(GlobalConfiguration.Configuration);
             container.Register<IFileManager>(()=>container.GetInstance<FileManager>(),Lifestyle.Singleton);
+            container.Register<IFingerPrintKeeper>(()=> container.GetInstance<FingerPrintKeeper>(),Lifestyle.Singleton);
             container.Verify();
             return container;
         }
