@@ -29,6 +29,11 @@ namespace Infrastructure
                     Directory.CreateDirectory(pair.Value);
                 }
             } );
+            if (!Directory.Exists(HttpContext.Current.Server.MapPath("~/snippets")))
+            {
+                Directory.CreateDirectory(HttpContext.Current.Server.MapPath("~/snippets"));
+            }
+            
         }
 
        private void ReadExtensions()
@@ -91,6 +96,12 @@ namespace Infrastructure
            file.SaveAs(filepath);
        }
 
+       public string SaveSnippet(HttpPostedFile file)
+       {
+           var path = Path.Combine(HttpContext.Current.Server.MapPath("~/snippets"), file.FileName);
+           return "";//доделать
+       }
+
 
        private Dictionary<FileType, string> folders = new Dictionary<FileType, string>
         {
@@ -104,6 +115,8 @@ namespace Infrastructure
                 FileType.Poster, HttpContext.Current.Server.MapPath("~/Poster")
             
             }
+           
+
         };
 
        public List<string> extensions;

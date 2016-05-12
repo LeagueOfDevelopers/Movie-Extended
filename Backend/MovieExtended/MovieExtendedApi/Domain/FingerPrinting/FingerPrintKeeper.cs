@@ -20,6 +20,7 @@ namespace Domain.FingerPrinting
         private readonly IModelService _modelService;
         private readonly Dictionary<int,IModelReference> hashedTracks;
         private readonly IQueryCommandBuilder _queryCommandBuilder;
+        private readonly Dictionary<int, DateTime> _timekeeper; 
 
 
         private FingerprintConfiguration fingerprintConfiguration;
@@ -34,6 +35,7 @@ namespace Domain.FingerPrinting
             SetQueryConfiguration();
             hashedTracks = new Dictionary<int, IModelReference>();
             _queryCommandBuilder = new QueryCommandBuilder();
+            _timekeeper = new Dictionary<int, DateTime>();
         }
 
 
@@ -42,7 +44,7 @@ namespace Domain.FingerPrinting
             var reader = new MediaFoundationReader(audiopath);
             var track = new TrackData(
                 "isrc " + movie.Id,
-                "artist " + movie.Id,
+                 movie.Id.ToString(),
                 "title " + movie.Name,
                 "album " + movie.Id,
                 DateTime.Today.Year,
@@ -79,7 +81,18 @@ namespace Domain.FingerPrinting
                    .From(snippetway).WithConfigs(fingerprintConfiguration, queryConfiguration)
                    .UsingServices(_modelService, _audioService)
                    .QueryWithTimeSequenceInformation().Result;
-            return result.TimeInfo.Start+reader.TotalTime.TotalMilliseconds;
+            if (!result.IsSuccessful)
+            {
+                throw new Exception("fragment not found ",new NullReferenceException());
+            }
+            var id = Convert.ToInt32(result.BestMatch.Track.Artist);
+            _timekeeper.Add(id,DateTime.Now);
+            return result.TimeInfo.Start+reader.TotalTime.TotalSeconds;
+        }
+
+        public bool IfTimeExists(int movieId)
+        {
+            return _timekeeper.ContainsKey(movieId);
         }
 
 

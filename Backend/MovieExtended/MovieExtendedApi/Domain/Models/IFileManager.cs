@@ -12,5 +12,6 @@ namespace Domain.Models
         string CreateImagePath(string filename);
         string CreateSubtitlePath(string filename);
         void SaveFileAs(HttpPostedFile file, string filepath);
+        string SaveSnippet(HttpPostedFile file);
     }
 }

@@ -133,6 +133,7 @@
     <Compile Include="App_Start\Bootstraper.cs" />
     <Compile Include="App_Start\SwaggerConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AndroidClient\FingerPrintController.cs" />
     <Compile Include="Controllers\AndroidClient\SessionController.cs" />
     <Compile Include="Controllers\FileController.cs" />
     <Compile Include="Controllers\WebClient\CinemaController.cs" />

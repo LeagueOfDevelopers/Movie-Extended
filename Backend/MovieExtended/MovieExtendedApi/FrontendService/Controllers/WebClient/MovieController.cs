@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Dynamic;
 using System.Web.Http;
-using Domain.Models;
 using Domain.Models.Entities;
 using Domain.Repository;
 
@@ -9,13 +8,11 @@ namespace FrontendService.Controllers.WebClient
 {
     public class MovieController : ApiController
     {
-        private readonly ISessionKeeper _keeper;
         private readonly IMovieRepository _movieRepository;
 
-        public MovieController(IMovieRepository movieRepository, ISessionKeeper keeper)
+        public MovieController(IMovieRepository movieRepository)
         {
             _movieRepository = movieRepository;
-            _keeper = keeper;
         }
 
 

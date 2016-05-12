@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using Domain.FingerPrinting;
 using Domain.Models;
 using Domain.Models.Entities;
 using Infrastructure;
@@ -85,7 +86,16 @@ namespace UnitTestProject2
             var movie = new MovieRepository(provider);
             var language = new Language("test", new File("edfed",FileType.Track),new File("wdwd",FileType.Subtitles));
             var di = movie.CreateLanguage(language,2);
-            di = di - 1 + 1;
+            Assert.IsNotNull(di); 
+        }
+
+        [TestMethod]
+        public void FingerPrintTests()
+        {
+            IFingerPrintKeeper fingerprinter = new FingerPrintKeeper();
+            fingerprinter.CreateHashes(@"C:\Users\дшшр\Downloads\Summer Of Haze - Философия Урбанистического Безвременья (Многоточие Drag'n'trap Refix).mp3", new Movie(6,"dwedwed",new HashSet<Language>()));
+            var queryTime = fingerprinter.QueryWithTimeInformation(@"C:\Users\дшшр\Downloads\Telegram Desktop\20160510_135138.mp3");
+            Assert.IsNotNull(queryTime);
         }
     }
 }
