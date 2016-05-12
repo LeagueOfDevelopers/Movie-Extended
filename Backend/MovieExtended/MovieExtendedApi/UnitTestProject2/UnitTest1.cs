@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using Domain.FingerPrinting;
 using Domain.Models;
 using Domain.Models.Entities;
 using Infrastructure;
 using Infrastructure.Repository;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using File = Domain.Models.Entities.File;
 
 namespace UnitTestProject2
 {
@@ -74,8 +76,8 @@ namespace UnitTestProject2
             var pass = new Password("slipknot");
             var md5Hash = pass.Value;
             Debug.WriteLine(md5Hash);
-
-
+            var fejf = Path.GetRandomFileName();
+            var defde = Path.GetExtension(fejf);
         }
 
         [TestMethod]

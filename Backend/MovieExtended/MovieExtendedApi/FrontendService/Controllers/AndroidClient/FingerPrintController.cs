@@ -16,10 +16,12 @@ namespace FrontendService.Controllers.AndroidClient
         private readonly IFingerPrintKeeper _fingerPrintKeeper;
         private readonly IFileManager _fileManager;
 
-        public FingerPrintController(IFingerPrintKeeper fingerPrintKeeper)
+        public FingerPrintController(IFingerPrintKeeper fingerPrintKeeper , IFileManager fileManager)
         {
             Require.NotNull(fingerPrintKeeper,nameof(fingerPrintKeeper));
             _fingerPrintKeeper = fingerPrintKeeper;
+            Require.NotNull(fileManager,nameof(fileManager));
+            _fileManager = fileManager;
         }
 
         [HttpGet]
@@ -39,7 +41,8 @@ namespace FrontendService.Controllers.AndroidClient
             var audio = files[0];
             if (!_fileManager.CheckExtension(audio.FileName))
                 throw new Exception("Not supported");
-            
+            var snippetway =_fileManager.SaveSnippet(audio);
+            return _fingerPrintKeeper.QueryWithTimeInformation(snippetway);
         }
 
     }

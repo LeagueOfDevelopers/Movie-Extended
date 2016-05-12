@@ -98,8 +98,11 @@ namespace Infrastructure
 
        public string SaveSnippet(HttpPostedFile file)
        {
-           var path = Path.Combine(HttpContext.Current.Server.MapPath("~/snippets"), file.FileName);
-           return "";//доделать
+           var randomname = Path.GetRandomFileName();
+           var path = Path.Combine(HttpContext.Current.Server.MapPath("~/snippets"), randomname);
+           path= Path.ChangeExtension(path, Path.GetExtension(file.FileName));
+           file.SaveAs(path);
+           return path;//доделать
        }
 
 
