@@ -36,5 +36,7 @@ namespace Domain.Models.Entities
         public virtual Guid AndroidToken { get; set; }
 
         public virtual File  Poster { get; set; }
+
+        public virtual File RussianTrack { get; set; }
     }
 }

@@ -42,8 +42,8 @@ namespace FrontendService.Controllers.AndroidClient
                 if (!_fingerPrintKeeper.AudioHashExists(necessaryMovie.Id))
                 {
                     var path =
-                        necessaryMovie.Language.SingleOrDefault(language => language.Name == "Russian") // очень плохо 
-                            .TrackFile.FilePath;    // ДОБАВИТЬ СУЩНОСТЬ ОРИГИНАЛЬНОЙ ДОРОЖКИ
+                        necessaryMovie.RussianTrack 
+                            .FilePath;
                     _fingerPrintKeeper.CreateHashes(path,necessaryMovie);
                 }
                 var frontendMovie = new MovieMapper().ToFrontendMovie(necessaryMovie);
