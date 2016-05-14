@@ -30,7 +30,7 @@ namespace FrontendService.Controllers.WebClient
         //}
 
         [Route("language/delete/{languageId}")]
-        [HttpPost]
+        [HttpDelete]
         public void DeleteLanguageByLanguageId(int languageId)
         {
             _languageRepository.DeleteLanguageByLanguageId(languageId);
@@ -39,7 +39,7 @@ namespace FrontendService.Controllers.WebClient
         
 
         [Route("language/new/{movieId}")]
-        [HttpPost]
+        [HttpPut]
         public void SaveNewLanguageToDataBase([FromBody] Language newLanguage)
         {
             _languageRepository.SaveLanguage(newLanguage);
@@ -56,7 +56,7 @@ namespace FrontendService.Controllers.WebClient
         }
 
         [Route("language/all")]
-        [HttpPost]
+        [HttpGet]
         public IEnumerable<Language> GetAllLanguages()
         {
             return _languageRepository.GetAllLanguages();

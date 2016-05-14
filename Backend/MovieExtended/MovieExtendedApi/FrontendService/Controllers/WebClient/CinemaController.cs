@@ -22,7 +22,7 @@ namespace FrontendService.Controllers.WebClient
         }
 
         [Route("cinema/new/{companyId}")]
-        [HttpPost]
+        [HttpPut]
         public void SaveNewCinema([FromBody] Cinema cinema)
         {
             _cinemaRepository.SaveCinemaData(cinema);
@@ -43,7 +43,7 @@ namespace FrontendService.Controllers.WebClient
         //}
 
         [Route("cinema/delete/{cinemaId}")]
-        [HttpPost]
+        [HttpDelete]
         public void DeleteCinemaByCinemaId(int cinemaId)
         {
             _cinemaRepository.DeleteCinemaByCinemaId(cinemaId);
@@ -56,8 +56,8 @@ namespace FrontendService.Controllers.WebClient
         //    _cinemaRepository.DeleteCinemaByCompanyId(companyId);
         //}
 
-        [Route("create/movie/{cinemaId}")]
-        [HttpPost]
+        [Route("movie/create/{cinemaId}")]
+        [HttpPut]
         public void CreateMovie([FromBody] Movie movie, int cinemaId)
         {
             

@@ -39,7 +39,7 @@ namespace FrontendService.Controllers
         }
 
         [Route("file/delete/{fileId}")]
-        [HttpPost]
+        [HttpDelete]
 
         public void DeleteFileByFileId(int fileId)
         {
@@ -53,8 +53,8 @@ namespace FrontendService.Controllers
             return _fileRepository.GetAllFiles();
         }
 
-        [Route("save/track/{fileId}")]
-        [HttpPost]
+        [Route("track/save/{fileId}")]
+        [HttpPut]
         public HttpResponseMessage SaveTrack(int fileId)
         {
             var request = HttpContext.Current.Request;
@@ -69,8 +69,8 @@ namespace FrontendService.Controllers
             return new HttpResponseMessage(HttpStatusCode.OK);
         }
 
-        [Route("save/poster/{fileId}")]
-        [HttpPost]
+        [Route("poster/save/{fileId}")]
+        [HttpPut]
         public HttpResponseMessage SaveImage(int fileId)
         {
             var request = HttpContext.Current.Request;
@@ -85,8 +85,8 @@ namespace FrontendService.Controllers
             return new HttpResponseMessage(HttpStatusCode.Accepted);
         }
 
-        [Route("save/subtitle/{fileId}")]
-        [HttpPost]
+        [Route("subtitle/save/{fileId}")]
+        [HttpPut]
         public HttpResponseMessage SaveSubtitle(int fileId)
         {
             var request = HttpContext.Current.Request;

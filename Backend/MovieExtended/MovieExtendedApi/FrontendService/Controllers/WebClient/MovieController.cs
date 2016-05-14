@@ -17,7 +17,7 @@ namespace FrontendService.Controllers.WebClient
 
 
         [Route("movie/new/{cinemaId}")]
-        [HttpPost]
+        [HttpPut]
         public void SaveMovie([FromBody] Movie newMovie)
         {
             _movieRepository.SaveMovie(newMovie);
@@ -45,21 +45,21 @@ namespace FrontendService.Controllers.WebClient
         }
 
         [Route("movie/delete/{movieId}")]
-        [HttpPost]
+        [HttpDelete]
         public void DeleteMovieByMovieId(int movieId)
         {
             _movieRepository.DeleteMovieByMovieId(movieId);
         }
 
         [Route("movie/delete/cinema/{cinemaId}")]
-        [HttpPost]
+        [HttpDelete]
         public void DeleteMovieByCinemaId(int cinemaId)
         {
             _movieRepository.GetMovieByCinemaId(cinemaId);
         }
 
         [Route("create/language/{movieId}")]
-        [HttpPost]
+        [HttpPut]
         public void CreateLanguage([FromBody] Language language, int movieId)
         {
             

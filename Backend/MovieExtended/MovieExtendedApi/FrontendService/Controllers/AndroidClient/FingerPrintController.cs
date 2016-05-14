@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web;
 using System.Web.Http;
 using Domain.FingerPrinting;
@@ -25,14 +21,14 @@ namespace FrontendService.Controllers.AndroidClient
         }
 
         [HttpGet]
-        [Route("query/time/exists/{movieId}")]
-        public bool ExistsQueryTime(int movieId)
+        [Route("time/exists/{movieId}")]
+        public bool ExistsTime(int movieId)
         {
             return _fingerPrintKeeper.IfTimeExists(movieId);
         }
 
         [HttpPost]
-        [Route("query/time/get")]
+        [Route("time/create")]
         public double QueryWithTimeSequence()
         {
             var request = HttpContext.Current.Request;
@@ -45,5 +41,11 @@ namespace FrontendService.Controllers.AndroidClient
             return _fingerPrintKeeper.QueryWithTimeInformation(snippetway);
         }
 
+        [HttpGet]
+        [Route("time/current/{movieId}")]
+        public double GetCurrentMovieTime(int movieId)
+        {
+            return _fingerPrintKeeper.GetMovieTime(movieId);
+        }
     }
 }

@@ -95,6 +95,12 @@ namespace Domain.FingerPrinting
             return _timekeeper.ContainsKey(movieId);
         }
 
+        public double GetMovieTime(int movieId)
+        {
+            var syncTime = _timekeeper[movieId];
+            return (DateTime.Now - syncTime).TotalSeconds;
+        }
+
 
         private void SetFingerPrintConfiguration()
         {

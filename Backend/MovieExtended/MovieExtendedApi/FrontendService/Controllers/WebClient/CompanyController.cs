@@ -23,7 +23,7 @@ namespace FrontendService.Controllers.WebClient
         }
 
         [Route("company/new")]
-        [HttpPost]
+        [HttpPut]
         public void SaveNewCompany([FromBody] Company company)
         {
             _companyRepository.SaveCompany(company);
@@ -36,15 +36,15 @@ namespace FrontendService.Controllers.WebClient
             return _companyRepository.GetCompanyByCompanyId(companyId);
         }
 
-        [Route("create/cinema/{companyId}")]
-        [HttpPost]
+        [Route("cinema/create/{companyId}")]
+        [HttpPut]
         public void CreateCinema([FromBody] Cinema cinema , int companyId )
         {
             _companyRepository.CreateCinema(cinema , companyId);
         }
 
         [Route("company/delete/{companyId}")]
-        [HttpPost]
+        [HttpDelete]
         public void DeleteCompanyById(int companyId)
         {
             _companyRepository.DeleteCompanyById(companyId);
