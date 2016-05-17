@@ -296,10 +296,7 @@
 	"buffers":
 	[
 		{
-			"contents": "<div class=\"page_content\">\n	<div class=\"row\">\n		<div class=\"sideMenu_wrap small-3 columns\">\n			<ul class=\"sideMenu_menuList\">\n				<li class=\"sideMenu_menuItem\"><a ui-sref=\"account.movies({id: 1})\">Фильмы</a></li>\n				<li class=\"sideMenu_menuItem\"><a ui-sref=\"account.cinemas({id: 1})\">Кинотеатры</a></li>\n			</ul>\n		</div>\n\n		<div class=\"workSpace_wrap small-9 columns\">\n\n			<div class=\"workSpace_header\">\n				<ul class=\"breadCrumbs\">\n					<li><a href=\"#\">Личный кабинет</a></li>\n					<li><a href=\"#\">Кинотеатры</a></li>\n				</ul>\n			</div>\n\n				<div class=\"workSpace_content\">\n					<div class=\"workSpace_options\"></div>\n					<ul class=\"workSpace_itemList\">\n						(li>div.cinemaItem)*5\n					</ul>\n				</div>\n		</div>\n\n	</div>\n\n</div>",
 			"file": "public/partials/account/account_cineams.html",
-			"file_size": 1091,
-			"file_write_time": 131075210117011643,
 			"settings":
 			{
 				"buffer_size": 733,
@@ -310,15 +307,31 @@
 			"file": "public/partials/account/account_main.html",
 			"settings":
 			{
-				"buffer_size": 460,
+				"buffer_size": 613,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "public/partials/account/account_movies.html",
+			"file": "node_modules/gulp/index.js",
 			"settings":
 			{
-				"buffer_size": 18,
+				"buffer_size": 1522,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "gulpfile.js",
+			"settings":
+			{
+				"buffer_size": 609,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "views/index.jade",
+			"settings":
+			{
+				"buffer_size": 1382,
 				"line_ending": "Windows"
 			}
 		},
@@ -449,8 +462,9 @@
 	"expanded_folders":
 	[
 		"/C/Users/user pc/Dropbox/repos/Movie-Extended/WA",
+		"/C/Users/user pc/Dropbox/repos/Movie-Extended/WA/node_modules",
+		"/C/Users/user pc/Dropbox/repos/Movie-Extended/WA/node_modules/gulp",
 		"/C/Users/user pc/Dropbox/repos/Movie-Extended/WA/public",
-		"/C/Users/user pc/Dropbox/repos/Movie-Extended/WA/public/js",
 		"/C/Users/user pc/Dropbox/repos/Movie-Extended/WA/public/partials",
 		"/C/Users/user pc/Dropbox/repos/Movie-Extended/WA/public/partials/account",
 		"/C/Users/user pc/Dropbox/repos/Movie-Extended/WA/views"
@@ -682,7 +696,7 @@
 	"groups":
 	[
 		{
-			"selected": 6,
+			"selected": 3,
 			"sheets":
 			[
 				{
@@ -698,47 +712,15 @@
 						"selection":
 						[
 							[
-								685,
-								685
+								733,
+								733
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/HTML/HTML.sublime-syntax",
-							"tabs_extra_last_activated": 1463309906.32,
+							"tabs_extra_last_activated": 1463474911.82,
 							"tabs_extra_last_activated_sheet_index": 0,
-							"tabs_extra_spawned": true,
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 32.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "public/partials/account/account_main.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 460,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								417,
-								417
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.sublime-syntax",
-							"tabs_extra_last_activated": 1463309905.57,
-							"tabs_extra_last_activated_sheet_index": 1,
 							"tabs_extra_spawned": true,
 							"translate_tabs_to_spaces": false
 						},
@@ -750,12 +732,44 @@
 					"type": "text"
 				},
 				{
+					"buffer": 1,
+					"file": "public/partials/account/account_main.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 613,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								613,
+								613
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"tabs_extra_last_activated": 1463474913.94,
+							"tabs_extra_last_activated_sheet_index": 1,
+							"tabs_extra_spawned": true,
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
 					"buffer": 2,
-					"file": "public/partials/account/account_movies.html",
+					"file": "node_modules/gulp/index.js",
 					"semi_transient": true,
 					"settings":
 					{
-						"buffer_size": 18,
+						"buffer_size": 1522,
 						"regions":
 						{
 						},
@@ -768,20 +782,85 @@
 						],
 						"settings":
 						{
-							"syntax": "Packages/HTML/HTML.sublime-syntax",
-							"tabs_extra_last_activated": 1463309904.37,
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 2,
+							"tabs_extra_last_activated": 1463474917.48,
 							"tabs_extra_last_activated_sheet_index": 2,
-							"tabs_extra_spawned": true
+							"tabs_extra_spawned": true,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
 					"buffer": 3,
+					"file": "gulpfile.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 609,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tabs_extra_last_activated": 1463479984.45,
+							"tabs_extra_last_activated_sheet_index": 3
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "views/index.jade",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1382,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								921,
+								921
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Jade/Syntaxes/Jade.tmLanguage",
+							"tab_size": 2,
+							"tabs_extra_last_activated": 1463471978.06,
+							"tabs_extra_last_activated_sheet_index": 2,
+							"tabs_extra_spawned": true,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
 					"file": "public/partials/account/account_empty.html",
 					"semi_transient": false,
 					"settings":
@@ -800,7 +879,7 @@
 						"settings":
 						{
 							"syntax": "Packages/HTML/HTML.sublime-syntax",
-							"tabs_extra_last_activated": 1463321349.12,
+							"tabs_extra_last_activated": 1463471972.94,
 							"tabs_extra_last_activated_sheet_index": 3,
 							"tabs_extra_spawned": true
 						},
@@ -808,11 +887,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 6,
 					"type": "text"
 				},
 				{
-					"buffer": 4,
+					"buffer": 6,
 					"file": "public/js/account.js",
 					"semi_transient": false,
 					"settings":
@@ -840,11 +919,11 @@
 						"translation.y": 785.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 7,
 					"type": "text"
 				},
 				{
-					"buffer": 5,
+					"buffer": 7,
 					"file": "public/js/services_common.js",
 					"semi_transient": false,
 					"settings":
@@ -873,11 +952,11 @@
 						"translation.y": 99.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 8,
 					"type": "text"
 				},
 				{
-					"buffer": 6,
+					"buffer": 8,
 					"file": "public/js/app.js",
 					"semi_transient": false,
 					"settings":
@@ -889,28 +968,28 @@
 						"selection":
 						[
 							[
-								780,
-								780
+								735,
+								735
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
 							"tab_size": 2,
-							"tabs_extra_last_activated": 1463321360.04,
+							"tabs_extra_last_activated": 1463472068.78,
 							"tabs_extra_last_activated_sheet_index": 6,
 							"tabs_extra_spawned": true,
 							"translate_tabs_to_spaces": true
 						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.x": -0.0,
+						"translation.y": 399.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 4,
 					"type": "text"
 				},
 				{
-					"buffer": 7,
+					"buffer": 9,
 					"file": "package.json",
 					"semi_transient": false,
 					"settings":
@@ -939,7 +1018,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 7,
+					"stack_index": 9,
 					"type": "text"
 				}
 			]

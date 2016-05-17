@@ -30,6 +30,16 @@ angular.module('meApp',
            }
        })
 
+       .state('dev', { 
+        url: '/dev',
+        views: {
+          'page_content': {
+            templateUrl: 'partials/account/account_cinemas.html',
+            controller: 'accountCinemasCtrl'
+          }
+        }
+       })
+
        .state('account', {
         url: '/account/:id',
         abstract: true,
@@ -61,4 +71,6 @@ angular.module('meApp',
           }
         }
        })
+
+
      }]);

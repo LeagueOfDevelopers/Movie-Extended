@@ -5,6 +5,7 @@ var sass = require('gulp-sass');
 
 gulp.task('styles', function () {
 	return gulp.src('public/styles/*.scss')
+		.pipe(concat('main.scss'))
 		.pipe(sass().on('error', sass.logError))
 		.pipe(gulp.dest('public/styles/'));
 });
@@ -20,6 +21,6 @@ gulp.task('scripts', function() {
 
 //Watch task
 gulp.task('default', function() {
-    gulp.watch('public/styles/main.scss',['styles']);
+    gulp.watch('public/styles/*.scss',['styles']);
     gulp.watch('public/js/*.js',['scripts']);
 });

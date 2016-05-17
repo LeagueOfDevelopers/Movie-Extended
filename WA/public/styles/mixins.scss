@@ -1,0 +1,31 @@
+$mainColor: #009fdf;
+$softBlue: #87b1cd;
+$fontColor: #59595b;
+$bodyColor: #fafafa;
+$achivmentsIcons: url(../icons/achivments_icons.png);
+
+@mixin border-r($radius) {
+  -webkit-border-radius: $radius;
+     -moz-border-radius: $radius;
+      -ms-border-radius: $radius;
+          border-radius: $radius;
+}
+
+@mixin cardShadow() {
+  -webkit-box-shadow: 3px 4px 5px -4px rgba(0,0,0,0.5);
+     -moz-box-shadow: 3px 4px 5px -4px rgba(0,0,0,0.5);
+          box-shadow: 3px 4px 5px -4px rgba(0,0,0,0.5);
+}
+
+@mixin headerShadow() {
+   -webkit-box-shadow: 3px 4px 5px -4px rgba(0,0,0,0.5);
+     -moz-box-shadow: 3px 4px 5px -4px rgba(0,0,0,0.5);
+          box-shadow: 3px 4px 5px -4px rgba(0,0,0,0.5);
+}
+
+@mixin trans($t, $func) {
+  -webkit-transition: all $t $func;
+  -o-transition: all $t $func;
+  transition: all $t $func;
+}
+ 
