@@ -9,10 +9,11 @@ angular.module('app.commonCtrl',
    'UserManager',
    '$timeout',
   function ($scope, $state, UserManager, $timeout) {
+    
      $scope.BASE_URI = 'http://localhost:3000/';
      $scope.title = 'Movie Extended';
      $scope.$on('changeTitle', function(e, args) {
-      $scope.title = args.title;
+     $scope.title = args.title;
      })
      $scope.showMessage = false;
      $scope.msg = '';
@@ -26,8 +27,9 @@ angular.module('app.commonCtrl',
           UserManager.Current().then(function (result) {
             if(!result) {
               $scope.currentUser = null;
+            } else {
+              $scope.currentUser = result;
             }
-          $scope.currentUser = result;
         });
       };
 

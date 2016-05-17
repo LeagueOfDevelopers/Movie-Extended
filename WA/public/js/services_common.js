@@ -27,8 +27,106 @@ angular.module('app.services', [])
           url: function(params) {
             return '/api' + '/logout';
           }
+        },
+        update: {
+          method: 'POST',
+          url: function(params) {
+            return '';
+          }
         }
       },
+
+      cinemas: {
+
+        getAll: {
+          method: 'GET',
+          url: function(params) {
+            return '' + params.userId;
+          }
+        },
+        getDetail: {
+          method: 'GET',
+          url: function(params) {
+            return '' + params.userId + params.cinemaId;
+          }
+        },
+        addMovie: {
+          method: 'POST',
+          url: function(params) {
+            return '' + params.userId + params.cinemaId;
+          }
+        },
+        update: {
+          method: 'GET',
+          url: function(params) {
+            return '' + params.userId + params.cinemaId;
+          }
+        }
+      },
+
+      movies: {
+
+        getAll: {
+          method: 'GET',
+          url: function(params) {
+            return '' + params.userId;
+          }
+        },
+        getbySearchParams: {
+          method: 'GET',
+          url: function(params) {
+            return '' + params.userId;
+          }
+        },
+        getbyCinema: {
+          method: 'GET',
+          url: function(params) {
+            return '' + params.userId;
+          }
+        },
+        getDetail: {
+          method: 'GET',
+          url: function(params) {
+            return '' + params.userId;
+          }
+        },
+        getTrackList: {
+          method: 'GET',
+          url: function(params) {
+            return '' + params.userId;
+          }
+        },
+        addTrack: {
+          method: 'POST',
+          url: function(params) {
+            return '' + params.userId;
+          }
+        },
+        updateDetail: {
+          method: 'POST',
+          url: function(params) {
+            return '' + params.userId;
+          }
+        },
+
+      tracks: {
+
+        play: {
+          method: 'GET',
+          url: function(params) {
+            return '' + params.userId;
+          }
+        },
+         getQrToken: {
+          method: 'GET',
+          url: function(params) {
+            return '' + params.userId;
+          }
+        },
+
+      }
+
+      }
 
     } 
   }
@@ -107,37 +205,37 @@ angular.module('app.services', [])
 
         function getUser() {
           var reqUrl = apiUrl + '/auth/isAuth';
-            return $http.post(reqUrl).success(function (data) {
-                    return data.user;
+            return $http.post(reqUrl).success(function (res) {
+                    return res.user;
             });
         }
 
         function Current() {
-            return $q.when(getUser()).then(function (result) {
-                return  result.data.user || result;
+            return $q.when(getUser()).then(function (res) {
+                return  res.data.user || result;
             });
 
         }
 
        function update() {
-        return $q.when(updateUser()).then(function(res) {
-          return res;
-        })
+          return $q.when(updateUser()).then(function(user) {
+            return user;
+          })
         } 
       
 
         function updateUser() {
-          return $http.get('/api/auth/update').success(function(result) {
+          return $http.get('/api/auth/update').success(function(res) {
             console.log('ok');
-            return result.data;
+            return res.data;
          })
         };
 
         function logout() {
-            return $http.post('/api/auth/logout').success(function (data) {
+            return $http.post('/api/auth/logout').success(function (res) {
                 var defaultAction = true;
-                return data && data.result
-                    ? data.result : defaultAction;
+                return res && res.data
+                    ? res.data : defaultAction;
             });
         }
 

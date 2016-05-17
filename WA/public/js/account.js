@@ -22,7 +22,8 @@ function($scope, API) {
 function($scope, API, $state) {
 
 	$scope.moviesList = [];
-	API.query('movies.get', {companyId: $scope.company.id}).then(function(res) {
+	
+	API.query('movies.getAll', {companyId: $scope.company.id}).then(function(res) {
 		$scope.moviesList = res;
 	});
 
@@ -39,9 +40,13 @@ function($scope, API, $state) {
 
 .controller('accountCinemasCtrl',
 ['$scope',
+ '$state',
  'API',
-function($scope, API) {
+function($scope, $state, API) {
 	
+	$scope.cinemaList = [];
+
+	$scope.addCinema = function() {}
 }
 ])
 
@@ -68,7 +73,7 @@ function($scope, API) {
 ['$scope',
  'API',
 function($scope, API) {
-	
+
 }
 ])
 
