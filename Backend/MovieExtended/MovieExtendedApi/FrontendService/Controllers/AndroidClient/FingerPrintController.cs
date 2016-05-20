@@ -28,8 +28,8 @@ namespace FrontendService.Controllers.AndroidClient
         }
 
         [HttpPost]
-        [Route("time/create")]
-        public double QueryWithTimeSequence()
+        [Route("time/create/{movieId}")]
+        public double QueryWithTimeSequence(int movieId)
         {
             var request = HttpContext.Current.Request;
             var allKeys = request.Files.AllKeys;
@@ -38,7 +38,7 @@ namespace FrontendService.Controllers.AndroidClient
             if (!_fileManager.CheckExtension(audio.FileName))
                 throw new Exception("Not supported");
             var snippetway =_fileManager.SaveSnippet(audio);
-            return _fingerPrintKeeper.QueryWithTimeInformation(snippetway);
+            return _fingerPrintKeeper.QueryWithTimeInformation(snippetway ,movieId);
         }
 
         [HttpGet]

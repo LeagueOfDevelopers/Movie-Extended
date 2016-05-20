@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 using System.Net;
 using System.Web.Http;
 using Domain.FingerPrinting;
@@ -46,7 +45,7 @@ namespace FrontendService.Controllers.AndroidClient
                             .FilePath;
                     _fingerPrintKeeper.CreateHashes(path,necessaryMovie);
                 }
-                var frontendMovie = new MovieMapper().ToFrontendMovie(necessaryMovie);
+                var frontendMovie = new MovieMapper().ToFrontendMovie(necessaryMovie); // сделать получше
                 frontendMovie.AndroidToken = newSessionGuid;
                 var newSession = new Session(newSessionGuid, necessaryMovie.Id);
                 _keeper.CreateSession(newSession);

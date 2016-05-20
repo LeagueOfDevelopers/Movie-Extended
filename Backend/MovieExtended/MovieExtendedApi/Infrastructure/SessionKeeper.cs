@@ -1,20 +1,24 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using Domain.Models;
 using Domain.Models.Entities;
+using NHibernate.Util;
 
 namespace Infrastructure
 {
     public class SessionKeeper : ISessionKeeper
     {
-        private readonly List<Session> _sessions;
-        private readonly Dictionary<int,DateTime> _movieStartTime; 
+        private readonly ConcurrentBag<Session> _sessions;
+        private readonly Dictionary<int,DateTime> _movieStartTime;
+        private DateTime deleteTime;
 
         public SessionKeeper()
         {
-            _sessions = new List<Session>();
+            _sessions = new ConcurrentBag<Session>();
             _movieStartTime = new Dictionary<int, DateTime>();
+            deleteTime = DateTime.Now;
         }
 
         public void CreateSession(Session session)
@@ -65,8 +69,17 @@ namespace Infrastructure
 
         public void ClearSessionsAndTimes()
         {
-            _sessions.Clear();
+            foreach (var session in _sessions)
+            {
+                Session result = session;
+                _sessions.TryTake(out result);
+            }
             _movieStartTime.Clear();
+        }
+
+        public void DeleteOldSessions()
+        {
+            
         }
     }
 }

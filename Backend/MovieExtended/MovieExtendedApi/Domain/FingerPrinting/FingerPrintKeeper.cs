@@ -73,11 +73,12 @@ namespace Domain.FingerPrinting
             hashedTracks.Remove(id);
         }
 
-        public double QueryWithTimeInformation(string snippetway)
+        public  double QueryWithTimeInformation(string snippetway , int movieId)
         {
+            if (IfTimeExists(movieId))
+                return GetMovieTime(movieId);
             var reader = new MediaFoundationReader(snippetway);
-            var result =
-               _queryCommandBuilder.BuildQueryCommand()
+            var result = _queryCommandBuilder.BuildQueryCommand()
                    .From(snippetway).WithConfigs(fingerprintConfiguration, queryConfiguration)
                    .UsingServices(_modelService, _audioService)
                    .QueryWithTimeSequenceInformation().Result;

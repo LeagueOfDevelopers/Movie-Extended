@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Timers;
 using Domain.FingerPrinting;
 using Domain.Models;
 using Domain.Models.Entities;
@@ -19,26 +20,7 @@ namespace UnitTestProject2
         public void save()
         {
             var provider = new SessionProvider();
-            provider.OpenSession();
-            var companyRepo = new CompanyRepository(provider);
-            var file1 = new File("LocalTrack1",FileType.Track);
-            var file2 = new File("LocalSubtitle1",FileType.Subtitles);
-            var file3 = new File("LocalTrack2",FileType.Track);
-            var file4 = new File("LocalSubtitle2" , FileType.Subtitles);
-            var language1 = new Language("localtestLanguage", file1, file2);
-            var language2 = new Language("english", file3, file4);
-            var langset = new HashSet<Language>();
-            langset.Add(language1);
-            langset.Add(language2);
-            var poster= new File("Poster",FileType.Poster);
-            var movie1= new Movie("localMovieTest",langset,poster);
-            var movieset = new HashSet<Movie>();
-            movieset.Add(movie1);
-            var cinema_1= new Cinema("LocaltestCinema","address",movieset);
-            var cinemaset = new HashSet<Cinema>();
-            cinemaset.Add(cinema_1);
-            var company = new Company("LocalTestCompany",new Uri("https://vk.com/audios141213476?performer=1&q=Summer%20Of%20Haze"),cinemaset );
-            companyRepo.SaveCompany(company);
+            var movieRepo = new MovieRepository(provider);
             //var session = provider.GetCurrentSession();
             //session.Transaction.Begin();
             //session.Save(company);
@@ -67,7 +49,10 @@ namespace UnitTestProject2
             provider.OpenSession();
             var movieRepo = new MovieRepository(provider);
             var film = movieRepo.CheckAndroidToken(new Guid("00000000-0000-0000-0000-000000000000"));
-            film.Poster.FilePath = film.Poster.FilePath;
+            var choto_tam = movieRepo.GetMovieByMovieId(1);
+            choto_tam.RussianTrack=new File(@"C:\Users\дшшр\Downloads\Summer Of Haze - Философия Урбанистического Безвременья (Многоточие Drag'n'trap Refix).mp3", FileType.Track);
+            movieRepo.SaveMovie(
+                choto_tam);
         }
 
         [TestMethod]
@@ -95,10 +80,20 @@ namespace UnitTestProject2
         public void FingerPrintTests()
         {
             IFingerPrintKeeper fingerprinter = new FingerPrintKeeper();
-            fingerprinter.CreateHashes(@"C:\Users\дшшр\Downloads\Summer Of Haze - Философия Урбанистического Безвременья (Многоточие Drag'n'trap Refix).mp3", new Movie(6,"dwedwed",new HashSet<Language>()));
-            var queryTime = fingerprinter.QueryWithTimeInformation(@"C:\Users\дшшр\Downloads\Telegram Desktop\20160510_135138.mp3");
+            fingerprinter.CreateHashes(@"C:\Users\дшшр\Downloads\Dr_WS - Wichhouse.mp3", new Movie(6,"dwedwed",new HashSet<Language>()));
+            var queryTime = fingerprinter.QueryWithTimeInformation(@"C:\Users\дшшр\Downloads\Telegram Desktop\20160517_145213.mp3", 6);
+            
             Assert.IsNotNull(queryTime);
         }
+
+        [TestMethod]
+        public void TimerTests()
+        {
+            FingerPrintKeeper keeper;
+            Timer timer = new Timer();
+        }
+
+        
     }
 }
             

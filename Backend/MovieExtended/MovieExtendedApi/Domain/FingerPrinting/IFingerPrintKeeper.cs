@@ -8,7 +8,7 @@ namespace Domain.FingerPrinting
        void CreateHashes(string audiopath,Movie movie);
        bool AudioHashExists(int id);
        void DeleteHashes(int id);
-       double QueryWithTimeInformation(string snippetway);
+       double QueryWithTimeInformation(string snippetway , int movieId);
        bool IfTimeExists(int movieId);
        double GetMovieTime(int movieId);
     }
