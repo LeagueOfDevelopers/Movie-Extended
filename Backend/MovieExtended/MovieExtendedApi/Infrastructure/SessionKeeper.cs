@@ -12,13 +12,13 @@ namespace Infrastructure
     {
         private readonly ConcurrentBag<Session> _sessions;
         private readonly Dictionary<int,DateTime> _movieStartTime;
-        private DateTime deleteTime;
+        private  DateTime lastcheckTime { get; }
 
         public SessionKeeper()
         {
             _sessions = new ConcurrentBag<Session>();
             _movieStartTime = new Dictionary<int, DateTime>();
-            deleteTime = DateTime.Now;
+            lastcheckTime = DateTime.Now;
         }
 
         public void CreateSession(Session session)
@@ -81,5 +81,6 @@ namespace Infrastructure
         {
             
         }
+
     }
 }
