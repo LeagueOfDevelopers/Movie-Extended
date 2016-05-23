@@ -5,7 +5,7 @@ namespace Domain.FingerPrinting
 {
    public interface IFingerPrintKeeper
     {
-       void CreateHashes(string audiopath,Movie movie);
+       double CreateHashesAndGetMovieDurationTime(string audiopath,Movie movie); // creates hashes and return movie duration time 
        bool AudioHashExists(int id);
        void DeleteHashes(int id);
        double QueryWithTimeInformation(string snippetway , int movieId);

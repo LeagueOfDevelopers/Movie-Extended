@@ -81,7 +81,14 @@ namespace Infrastructure
         {
             foreach (var session in _sessions)
             {
-                
+                if ((DateTime.Now - session.CreationTime).TotalSeconds > session.Lifetime)
+                {
+                    var deletesession = new Session(session.SessionId ,
+                        session.MovieId , 
+                        session.CreationTime , 
+                        session.Lifetime);
+                    _sessions.TryTake(out deletesession);
+                }
             }
         }
 

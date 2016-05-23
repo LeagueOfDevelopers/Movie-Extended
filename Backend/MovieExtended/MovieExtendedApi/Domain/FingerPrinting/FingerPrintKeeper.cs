@@ -39,7 +39,7 @@ namespace Domain.FingerPrinting
         }
 
 
-        public void CreateHashes(string audiopath, Movie movie)
+        public double CreateHashesAndGetMovieDurationTime(string audiopath, Movie movie)
         {
             var reader = new MediaFoundationReader(audiopath);
             var track = new TrackData(
@@ -60,6 +60,7 @@ namespace Domain.FingerPrinting
                 .Hash()
                 .Result;
             _modelService.InsertHashDataForTrack(hashedFingerprints, trackReference);
+            return reader.TotalTime.TotalHours;
         }
 
         public bool AudioHashExists(int id)
@@ -101,6 +102,7 @@ namespace Domain.FingerPrinting
             var syncTime = _timekeeper[movieId];
             return (DateTime.Now - syncTime).TotalSeconds;
         }
+
 
 
         private void SetFingerPrintConfiguration()

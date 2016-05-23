@@ -80,7 +80,7 @@ namespace UnitTestProject2
         public void FingerPrintTests()
         {
             IFingerPrintKeeper fingerprinter = new FingerPrintKeeper();
-            fingerprinter.CreateHashes(@"C:\Users\дшшр\Downloads\Dr_WS - Wichhouse.mp3", new Movie(6,"dwedwed",new HashSet<Language>()));
+            fingerprinter.CreateHashesAndGetMovieDurationTime(@"C:\Users\дшшр\Downloads\Dr_WS - Wichhouse.mp3", new Movie(6,"dwedwed",new HashSet<Language>()));
             var queryTime = fingerprinter.QueryWithTimeInformation(@"C:\Users\дшшр\Downloads\Telegram Desktop\20160517_145213.mp3", 6);
             
             Assert.IsNotNull(queryTime);

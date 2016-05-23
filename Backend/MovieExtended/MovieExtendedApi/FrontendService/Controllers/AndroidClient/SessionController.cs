@@ -34,22 +34,24 @@ namespace FrontendService.Controllers.AndroidClient
         public FrontendMovie Login([FromBody] string qr)
         {
             var qrGuid = new Guid(qr);
-            var necessaryMovie = _movieRepository.CheckAndroidToken(qrGuid);
+            var movie = _movieRepository.CheckAndroidToken(qrGuid);
             
-            var newSessionGuid = Guid.NewGuid();
-            if (necessaryMovie != null)
+            var token = Guid.NewGuid();
+            double lifetime;
+            if (movie != null)
             {
-                if (!_fingerPrintKeeper.AudioHashExists(necessaryMovie.Id))
+                if (!_fingerPrintKeeper.AudioHashExists(movie.Id))
                 {
                     var path =
-                        necessaryMovie.RussianTrack 
+                        movie.RussianTrack 
                             .FilePath;
-                    _fingerPrintKeeper.CreateHashes(path,necessaryMovie);
+                    lifetime = _fingerPrintKeeper.CreateHashesAndGetMovieDurationTime(path,movie);
+                    var session = new Session(token, movie.Id , DateTime.Now,lifetime);
+                    _keeper.CreateSession(session);
                 }
-                var frontendMovie = new MovieMapper().ToFrontendMovie(necessaryMovie); // сделать получше
-                frontendMovie.AndroidToken = newSessionGuid;
-                var newSession = new Session(newSessionGuid, necessaryMovie.Id , DateTime.Now);
-                _keeper.CreateSession(newSession);
+                var frontendMovie = new MovieMapper().ToFrontendMovie(movie); // сделать получше
+                frontendMovie.AndroidToken = token;
+                
                 if ((DateTime.Now - _keeper.lastcheckTime).Hours==10)
                 {
                     _keeper.DeleteOldSessions();
