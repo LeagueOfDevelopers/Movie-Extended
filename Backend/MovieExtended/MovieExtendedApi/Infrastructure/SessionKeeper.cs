@@ -12,7 +12,7 @@ namespace Infrastructure
     {
         private readonly ConcurrentBag<Session> _sessions;
         private readonly Dictionary<int,DateTime> _movieStartTime;
-        private  DateTime lastcheckTime { get; }
+        public  DateTime lastcheckTime { get; set; }
 
         public SessionKeeper()
         {
@@ -72,14 +72,17 @@ namespace Infrastructure
             foreach (var session in _sessions)
             {
                 Session result = session;
-                _sessions.TryTake(out result);
+                _sessions.TryTake(out result); // delete this shit
             }
             _movieStartTime.Clear();
         }
 
         public void DeleteOldSessions()
         {
-            
+            foreach (var session in _sessions)
+            {
+                
+            }
         }
 
     }

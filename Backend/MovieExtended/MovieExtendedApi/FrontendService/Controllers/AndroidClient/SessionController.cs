@@ -8,6 +8,7 @@ using Domain.Models.Entities;
 using Domain.Models.FrontendEntities;
 using Domain.Repository;
 using Journalist;
+using NHibernate.Mapping;
 
 namespace FrontendService.Controllers.AndroidClient
 {
@@ -47,8 +48,12 @@ namespace FrontendService.Controllers.AndroidClient
                 }
                 var frontendMovie = new MovieMapper().ToFrontendMovie(necessaryMovie); // сделать получше
                 frontendMovie.AndroidToken = newSessionGuid;
-                var newSession = new Session(newSessionGuid, necessaryMovie.Id);
+                var newSession = new Session(newSessionGuid, necessaryMovie.Id , DateTime.Now);
                 _keeper.CreateSession(newSession);
+                if ((DateTime.Now - _keeper.lastcheckTime).Hours==10)
+                {
+                    _keeper.DeleteOldSessions();
+                }
                 return frontendMovie;
             }
             throw new HttpResponseException(HttpStatusCode.Unauthorized);

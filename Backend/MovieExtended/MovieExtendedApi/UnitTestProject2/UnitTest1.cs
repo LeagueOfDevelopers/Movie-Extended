@@ -89,8 +89,7 @@ namespace UnitTestProject2
         [TestMethod]
         public void TimerTests()
         {
-            FingerPrintKeeper keeper;
-            Timer timer = new Timer();
+            
         }
 
         

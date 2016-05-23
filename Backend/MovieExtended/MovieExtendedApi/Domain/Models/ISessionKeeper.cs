@@ -14,5 +14,6 @@ namespace Domain.Models
         TimeSpan GetCurrentMovieTime(int movieId);
         void ClearSessionsAndTimes();
         void DeleteOldSessions();
+        DateTime lastcheckTime { get; set; }
     }
 }
