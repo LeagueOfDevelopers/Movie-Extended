@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Net;
+using System.Net.Http;
+using System.Web;
 using Domain.Models.Entities;
 using NAudio.Wave;
 using SoundFingerprinting;
@@ -85,7 +88,7 @@ namespace Domain.FingerPrinting
                    .QueryWithTimeSequenceInformation().Result;
             if (!result.IsSuccessful)
             {
-                throw new Exception("fragment not found ",new NullReferenceException());
+                throw  new  HttpException("sequence not found");
             }
             var id = Convert.ToInt32(result.BestMatch.Track.Artist);
             _timekeeper.Add(id,DateTime.Now);
