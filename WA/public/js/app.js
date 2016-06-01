@@ -30,7 +30,7 @@ angular.module('meApp',
            }
        })
 
-       .state('dev', { 
+       .state('dev', {
         url: '/dev',
         views: {
           'page_content': {
@@ -39,6 +39,16 @@ angular.module('meApp',
           }
         }
        })
+           .state('movies', {
+               url: '/movies',
+               views: {
+                   'page_content': {
+                       templateUrl: 'partials/account/account_movies.html',
+                       controller: 'accountCinemasCtrl'
+                   }
+               }
+           })
+
 
        .state('account', {
         url: '/account/:id',

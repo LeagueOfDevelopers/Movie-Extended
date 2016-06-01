@@ -115,24 +115,39 @@ ul {
   display: block;
   width: 100%;
   font-size: 24px;
-  color: black; }
+  color: black;
+  position: relative; }
 
 .sideMenu_wrap {
   margin: 0;
   padding: 0;
-  background: red; }
+  min-height: 100%;
+  background: #E74C3C;
+  float: left; }
+
+.sideMenu_menuList {
+  width: 100%;
+  padding: 0; }
 
 .sideMenu_menuItem {
   padding: 5px;
-  background: blue; }
+  background: #2C3E50; }
 
 .workSpace_header {
   height: 40px;
   position: relative;
-  background: green; }
+  background: #E74C3C; }
+
+.workSpace_wrap {
+  padding: 0 !important; }
 
 .workSpace_content {
-  background: #ddd; }
+  background: #ddd;
+  position: relative; }
+
+.options {
+  display: inline-block;
+  float: right; }
 
 .options li {
   display: inline-block;
@@ -144,3 +159,6 @@ ul {
 .breadCrumbs {
   display: inline-block;
   width: auto; }
+
+.workSpace_itemList li {
+  display: inline-block; }

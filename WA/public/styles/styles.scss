@@ -14,7 +14,7 @@ html {
 body {
 	font-family: Helvetica, sans-serif !important;
 	height: 100%;
-  width: 100%;
+    width: 100%;
 	background: #fafafa;
 }
 
@@ -141,27 +141,46 @@ ul {
     width: 100%;
     font-size: 24px;
     color: black;
+    position: relative;
   }
 
   .sideMenu_wrap {
     margin: 0;
     padding: 0;
-    background: red;
+    min-height: 100%;
+    background: $mainRed;
+    float:left;
   }
+
+  .sideMenu_menuList{
+     width: 100%;
+     padding: 0 ;
+
+   }
 
   .sideMenu_menuItem {
     padding: 5px;
-    background: blue;
+    background: $mainDark;
   }
 
   .workSpace_header {
     height: 40px;
     position: relative;
-    background: green;
+    background: $mainRed;
+  }
+
+  .workSpace_wrap{
+     padding: 0 !important;
   }
 
   .workSpace_content {
     background: #ddd;
+    position: relative;
+  }
+
+  .options {
+    display: inline-block;
+    float: right;
   }
 
   .options li {
@@ -176,4 +195,12 @@ ul {
   .breadCrumbs {
     display:  inline-block;
     width: auto;
+  }
+
+  .workSpace_itemList li{
+    display: inline-block;
+  }
+
+  .cinemaItem{
+
   }
