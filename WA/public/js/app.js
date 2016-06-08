@@ -51,7 +51,7 @@ angular.module('meApp',
 
 
        .state('account', {
-        url: '/account/:id',
+        url: '/account/',
         abstract: true,
         template: '</ui-view>'
        })
@@ -70,7 +70,7 @@ angular.module('meApp',
        })
 
        .state('account.movies', {
-        url: '/account/:id/movies',
+        url: '/account/movies',
         views: {
           'page_content': {
             templateUrl: 'partials/account/account_main.html',
