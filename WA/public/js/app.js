@@ -30,8 +30,8 @@ angular.module('meApp',
            }
        })
 
-       .state('dev', {
-        url: '/dev',
+       .state('cinemas', {
+        url: '/cinemas',
         views: {
           'page_content': {
             templateUrl: 'partials/account/account_cinemas.html',
@@ -57,14 +57,14 @@ angular.module('meApp',
        })
 
        .state('account.cinemas', {
-        url: '/account/:id/cinemas',
+        url: '/account/cinemas',
         views: {
           'page_content': {
-            templateUrl: 'partials/account/account_main.html',
-            controller: 'accountMainCtrl'
+            templateUrl: 'partials/account/account_main.html'
+
           },
           'account_content' : {
-            templateUrl: 'partials/account/account_cinemas.html'
+            templateUrl: 'partials/account/cinema_look.html'
           }
         }
        })

@@ -6,14 +6,16 @@
 				<li class="sideMenu_menuItem"><a ui-sref="account.cinemas({id: 1})">Кинотеатры</a></li>
 			</ul>
 		</div>
-		<div class="wS_wrap small-9 columns">
-			<div class="wS_header">
-				<ul class="wS_breadCrumbs">
+		<div class="workSpace_wrap small-9 columns">
+			<div class="workSpace_header">
+				<ul class="workSpace_breadCrumbs">
 					<li><a href="#">Личный кабинет</a></li>
 					<li><a href="#">Кинотеатры</a></li>
 				</ul>
 			</div>
-			<div class="wS_content" ui-view="account_content"></div>
+			<div class="workSpace_content" ui-view="account_content">
+				<a href="#" class="addButton"> + </a>
+			</div>
 		</div>
 
 	</div>
