@@ -86,7 +86,7 @@ namespace Domain.FingerPrinting
                    .From(snippetway).WithConfigs(fingerprintConfiguration, queryConfiguration)
                    .UsingServices(_modelService, _audioService)
                    .QueryWithTimeSequenceInformation().Result;
-            if (!result.IsSuccessful)
+            if (!result.IsSuccessful || result.ResultEntries.Count>1)
             {
                 throw  new  HttpException("sequence not found");
             }
@@ -118,7 +118,7 @@ namespace Domain.FingerPrinting
         private void SetQueryConfiguration()
         {
             queryConfiguration = new QueryConfiguration();
-            queryConfiguration.MaximumNumberOfTracksToReturnAsResult = 1;
+            queryConfiguration.MaximumNumberOfTracksToReturnAsResult = 7;
         }
     }
 }
