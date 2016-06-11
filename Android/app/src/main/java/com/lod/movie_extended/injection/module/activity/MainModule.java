@@ -34,9 +34,5 @@ public class MainModule {
         return mActivity;
     }
 
-    @Provides
-    @PerActivity
-    MainPresenter provideMainPresenter(DataManager dataManager) {
-        return new MainPresenter(dataManager);
-    }
+
 }

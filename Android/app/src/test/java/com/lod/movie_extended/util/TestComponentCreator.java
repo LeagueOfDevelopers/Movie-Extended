@@ -14,7 +14,7 @@ public class TestComponentCreator {
     private ApplicationComponentTest applicationComponent;
     private AudioModuleTest audioModule;
 
-    public TestComponentCreator() {
+   public TestComponentCreator() {
         audioModule = new AudioModuleTest();
         applicationComponent = DaggerApplicationComponentTest.builder()
                 .applicationModuleTest(new ApplicationModuleTest(App.getInstance()))

@@ -36,11 +36,7 @@ public class LanguagesPickerModule {
         return mActivity;
     }
 
-    @Provides
-    @PerActivity
-    LanguagePickerPresenter provideMainPresenter(DataManager dataManager) {
-        return new LanguagePickerPresenter(dataManager);
-    }
+
 
     @Provides
     @PerActivity

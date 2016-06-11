@@ -35,13 +35,5 @@ public class FilmShowModule {
     }
 
 
-    @Provides
-    @PerActivity
-    FilmShowPresenter provideFilmShowPresenter(DataManager dataManager,
-                                               Player player,
-                                               NotificationServiceHelper notificationServiceHelper,
-                                               ServerHelper serverHelper,
-                                               DataBaseHelper dataBaseHelper) {
-        return new FilmShowPresenter(dataManager, player, notificationServiceHelper, serverHelper, dataBaseHelper);
-    }
+
 }

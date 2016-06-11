@@ -14,9 +14,5 @@ import dagger.Provides;
 @Module
 public class SubModule {
 
-    @Provides
-    @PerActivity
-    SubPresenter provideSubPresenter(DataManager dataManager, Player player) {
-        return new SubPresenter(dataManager,player);
-    }
+
 }

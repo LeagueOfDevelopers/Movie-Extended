@@ -22,6 +22,11 @@ import com.lod.movie_extended.injection.scope.PerApplication;
 import com.lod.movie_extended.receiver.HeadsetEventReceiver;
 import com.lod.movie_extended.service.PlayerNotificationService;
 import com.lod.movie_extended.data.model.player.PlayerLogger;
+import com.lod.movie_extended.ui.activity.filmShow.FilmShowPresenter;
+import com.lod.movie_extended.ui.activity.languagePicker.LanguagePickerPresenter;
+import com.lod.movie_extended.ui.activity.main.MainPresenter;
+import com.lod.movie_extended.ui.activity.qrCodeReader.QrCodeReaderPresenter;
+import com.lod.movie_extended.ui.activity.sub.SubPresenter;
 import com.squareup.otto.Bus;
 
 import dagger.Component;
@@ -70,6 +75,16 @@ public interface ApplicationComponent{
     PreferencesHelper getPreferencesHelper();
 
     HeadsetEventReceiver getHeadsetEventReceiver();
+
+    FilmShowPresenter getFilmShowPresenter();
+
+    QrCodeReaderPresenter getQrCodeReaderPresenter();
+
+    SubPresenter getSubPresenter();
+
+    MainPresenter getMainPresenter();
+
+    LanguagePickerPresenter getLanguagePickerPresenter();
 
     void inject(PlayerNotificationService playerNotificationService);
 
