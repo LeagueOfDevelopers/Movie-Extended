@@ -107,6 +107,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Authorization authentification\AuthorizationTokenInfo.cs" />
+    <Compile Include="Authorization authentification\IAuthorizer.cs" />
     <Compile Include="FingerPrinting\FingerPrintKeeper.cs" />
     <Compile Include="FingerPrinting\IFingerPrintKeeper.cs" />
     <Compile Include="mapper\CinemaMapper.cs" />
