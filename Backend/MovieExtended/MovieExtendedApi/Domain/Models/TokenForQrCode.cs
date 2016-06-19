@@ -1,8 +1,8 @@
 ﻿namespace Domain.Models
 {
-    public class Token
+    public class TokenForQrCode
     {
-        public Token(string value)
+        public TokenForQrCode(string value)
         {
             Value = value;
         }

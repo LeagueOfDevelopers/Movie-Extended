@@ -107,7 +107,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Authorization\Account.cs" />
     <Compile Include="Authorization\AuthorizationTokenInfo.cs" />
+    <Compile Include="Authorization\Authorizer.cs" />
     <Compile Include="Authorization\IAuthorizer.cs" />
     <Compile Include="FingerPrinting\FingerPrintKeeper.cs" />
     <Compile Include="FingerPrinting\IFingerPrintKeeper.cs" />
@@ -134,10 +136,10 @@
     <Compile Include="Models\FrontendEntities\FrontendMovie.cs" />
     <Compile Include="Models\IFileManager.cs" />
     <Compile Include="Models\ISessionKeeper.cs" />
-    <Compile Include="Models\Password.cs" />
+    <Compile Include="Authorization\Password.cs" />
     <Compile Include="Models\QrCodeGenerator.cs" />
     <Compile Include="Models\IQrCodeGenerator.cs" />
-    <Compile Include="Models\Token.cs" />
+    <Compile Include="Models\TokenForQrCode.cs" />
     <Compile Include="Models\Entities\Company.cs" />
     <Compile Include="Models\Entities\File.cs" />
     <Compile Include="Models\Entities\Language.cs" />
