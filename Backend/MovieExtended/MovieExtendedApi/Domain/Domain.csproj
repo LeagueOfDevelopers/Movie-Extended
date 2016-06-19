@@ -111,6 +111,7 @@
     <Compile Include="Authorization\AuthorizationTokenInfo.cs" />
     <Compile Include="Authorization\Authorizer.cs" />
     <Compile Include="Authorization\IAuthorizer.cs" />
+    <Compile Include="Authorization\MovExtPrinciple.cs" />
     <Compile Include="FingerPrinting\FingerPrintKeeper.cs" />
     <Compile Include="FingerPrinting\IFingerPrintKeeper.cs" />
     <Compile Include="mapper\CinemaMapper.cs" />

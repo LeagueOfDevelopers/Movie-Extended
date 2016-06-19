@@ -7,7 +7,7 @@ using Domain.Models;
 
 namespace Domain.Authorization_authentification
 {
-    interface IAuthorizer
+    public interface IAuthorizer
     {
         TimeSpan TokenLifeTime { get; }
 

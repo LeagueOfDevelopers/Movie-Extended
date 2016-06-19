@@ -7,7 +7,7 @@ using Journalist;
 
 namespace Domain.Authorization_authentification
 {
-    class AuthorizationTokenInfo
+    public class AuthorizationTokenInfo
     {
         public AuthorizationTokenInfo(int userId, string token, DateTime creationTime)
         {
