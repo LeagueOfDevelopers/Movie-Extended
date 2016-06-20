@@ -3,6 +3,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Web.Http.Filters;
 using System.Web.Http.Results;
+using Domain.Authorization;
 using Domain.Authorization_authentification;
 using Journalist;
 
@@ -42,7 +43,7 @@ namespace FrontendService.Authorization
             }
 
             var identity = new MovExtIdentity(tokenInfo.UserId, true);
-            var principal = new MovExtIdentity(tokenInfo.Role, identity);
+            var principal = new MovExtPrincipal( identity);
 
             Thread.CurrentPrincipal = principal;
             context.Principal = principal;
@@ -55,7 +56,7 @@ namespace FrontendService.Authorization
 
         private void SetupUnauthenticated()
         {
-            Thread.CurrentPrincipal = LodPrincipal.EmptyPrincipal;
+            Thread.CurrentPrincipal = MovExtPrincipal.EmptyPrincipal;
         }
     }
 }

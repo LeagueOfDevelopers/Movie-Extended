@@ -10,16 +10,9 @@ namespace FrontendService.Authorization
 {
     public class AuthorizationAttribute : AuthorizeAttribute
     {
-        private readonly AccountRole _accountRole;
-
-        public AuthorizationAttribute(AccountRole accountRole)
-        {
-            _accountRole = accountRole;
-        }
-
         protected override bool IsAuthorized(HttpActionContext actionContext)
         {
-            return Thread.CurrentPrincipal.IsInRole(_accountRole);
+            throw  new NotImplementedException();
         }
     }
 }
