@@ -187,20 +187,18 @@ span {
   display: inline-block;
   float: right; }
 
-.addButton {
-  position: relative;
+.addButton{
   display: inline-block;
-  width: 200px;
-  height: 2.5em;
-  line-height: 2.4em;
-  vertical-align: middle;
-  text-align: center;
+  font-family: arial,sans-serif;
+  font-size: 17px;
+  font-weight: bold;
+  color: rgb(68,68,68);
   text-decoration: none;
   user-select: none;
-  color: #000;
+  padding: .2em 1.2em;
   outline: none;
-  border: 1px solid rgba(110, 121, 128, 0.8);
-  border-top-color: rgba(0, 0, 0, 0.3);
-  border-radius: 5px;
-  background: #cedce7 linear-gradient(#cedce7, #596a72);
-  box-shadow: 0 -1px rgba(10, 21, 28, 0.9) inset, 0 1px rgba(255, 255, 255, 0.5) inset; }
+  border: 1px solid rgba(0,0,0,.1);
+  border-radius: 2px;
+  background: rgb(245,245,245) linear-gradient(#f4f4f4, #f1f1f1);
+  transition: all .218s ease 0s;
+}

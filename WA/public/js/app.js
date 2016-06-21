@@ -73,7 +73,7 @@ angular.module('meApp',
         url: '/account/movies',
         views: {
           'page_content': {
-            templateUrl: 'partials/account/account_main.html',
+            templateUrl: 'partials/account/movie_look.html',
             controller: 'accountMainCtrl'
           },
           'account_content' : {
