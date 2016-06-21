@@ -1,15 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="72d7c6d5-bd60-4f71-8ff8-dc22991b4f38" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WA/public/js/app.js" afterPath="$PROJECT_DIR$/WA/public/js/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WA/public/partials/account/account_main.html" afterPath="$PROJECT_DIR$/WA/public/partials/account/account_main.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WA/public/partials/account/account_movies.html" afterPath="$PROJECT_DIR$/WA/public/partials/account/account_movies.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WA/public/partials/account/movie_look.html" afterPath="$PROJECT_DIR$/WA/public/partials/account/movie_look.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WA/public/styles/main.css" afterPath="$PROJECT_DIR$/WA/public/styles/main.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WA/public/styles/styles.scss" afterPath="$PROJECT_DIR$/WA/public/styles/styles.scss" />
-    </list>
+    <list default="true" id="72d7c6d5-bd60-4f71-8ff8-dc22991b4f38" name="Default" comment="" />
     <ignored path="Movie-Extended.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
