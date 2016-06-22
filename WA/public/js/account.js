@@ -1,87 +1,89 @@
 angular.module('app.account',
- [
-  'ui.router'
- ])
+    [
+        'ui.router'
+    ])
 
-.controller('accountMainCtrl',
-['$scope',
- 'API',
-function($scope, API) {
-	$scope.company = $scope.currentUser.company;
-	$scope.breadCrumbs = {};
-	$scope.on('crumbsRefresh', function(e, args) {
-		$scope.breadCrumbs.push(args.crumb);
-	})
-}
-])
+    .controller('accountMainCtrl',
+        ['$scope',
+            'API',
+            function ($scope, API) {
+                $scope.company = $scope.currentUser.company;
+                $scope.breadCrumbs = {};
+                $scope.on('crumbsRefresh', function (e, args) {
+                    $scope.breadCrumbs.push(args.crumb);
+                })
+            }
+        ])
 
-.controller('accountMoviesCtrl',
-['$scope',
- 'API',
- '$state',
-function($scope, API, $state) {
+    .controller('accountMoviesCtrl',
+        ['$scope',
+            'API',
+            '$state',
+            function ($scope, API, $state) {
 
-	$scope.moviesList = [];
-	
-	API.query('movies.getAll', {companyId: $scope.company.id}).then(function(res) {
-		$scope.moviesList = res;
-	});
+                $scope.moviesList = [];
 
-	$scope.addMovie = function() {
-		$state.go('account.movies.add');
-	};
+                API.query('movies.getAll', {companyId: $scope.company.id}).then(function (res) {
+                    $scope.moviesList = res;
+                });
 
-	$scope.showMovieDetail = function(id) {
-		$state.go('account.movies.detail', {movieId: id});
-	};
-}
-])
+                $scope.addMovie = function () {
+                    $state.go('account.movies.add');
+                };
 
-
-.controller('accountCinemasCtrl',
-['$scope',
- '$state',
- 'API',
-function($scope, $state, API) {
-	
-	$scope.cinemaList = [];
-
-	$scope.addCinema = function() {}
-}
-])
+                $scope.showMovieDetail = function (id) {
+                    $state.go('account.movies.detail', {movieId: id});
+                };
+            }
+        ])
 
 
-.controller('accountMovieDetailCtrl',
-['$scope',
- 'API',
-function($scope, API) {
-	
-}
-])
+    .controller('accountCinemasCtrl',
+        ['$scope',
+            '$state',
+            'API',
+            function ($scope, $state, API) {
+
+                $scope.cinemaList = [];
+
+                $scope.addCinema = function () {
+                }
+            }
+        ])
 
 
-.controller('accountCinemaDetailCtrl',
-['$scope',
- 'API',
-function($scope, API) {
-	
-}
-])
+    .controller('accountMovieDetailCtrl',
+        ['$scope', 
+            '$state',
+            'API',
+            function ($scope, API) {
+
+            }
+        ])
 
 
-.controller('accountMovieAddCtrl',
-['$scope',
- 'API',
-function($scope, API) {
+    .controller('accountCinemaDetailCtrl',
+        ['$scope',
+            'API',
+            function ($scope, API) {
 
-}
-])
+            }
+        ])
 
-.controller('accountCinemaAddCtrl',
-['$scope',
- 'API',
-function($scope, API) {
-	
-}
-])
+
+    .controller('accountMovieAddCtrl',
+        ['$scope',
+            'API',
+            function ($scope, API) {
+
+            }
+        ])
+
+    .controller('accountCinemaAddCtrl',
+        ['$scope',
+            'API',
+            function ($scope, API) {
+
+            }
+        ])
 

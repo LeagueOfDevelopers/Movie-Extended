@@ -14,7 +14,7 @@ angular.module('app.commonCtrl',
      $scope.title = 'Movie Extended';
      $scope.$on('changeTitle', function(e, args) {
      $scope.title = args.title;
-     })
+     });
      $scope.showMessage = false;
      $scope.msg = '';
      $scope.currentUser = {
@@ -31,20 +31,20 @@ angular.module('app.commonCtrl',
               $scope.currentUser = result;
             }
         });
-      };
+      }
 
 
 
       $scope.$on('auth', function (e, args) {
            auth();
            $scope.$broadcast('userUpdated');
-      })     
+      });
 
       $scope.$on('userUpdate', function (e, args) {
            UserManager.update().then(function() {
             $scope.$emit('auth');
            })
-      })    
+      });
 
     $scope.logout = function() {
         UserManager.logout();

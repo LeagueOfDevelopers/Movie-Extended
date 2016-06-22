@@ -7,7 +7,7 @@ angular.module('meApp',
    'app.services',
    'ngSanitize',
    'ngFileUpload'
- ]) 
+ ])
 
   .config(
     [
@@ -19,7 +19,7 @@ angular.module('meApp',
        //$locationProvider.html5Mode(true);
 
        $stateProvider
-       
+
        .state('auth', {
           url: '/auth',
            views: {
@@ -39,18 +39,19 @@ angular.module('meApp',
           }
         }
        })
-           .state('movies', {
-               url: '/movies',
-               views: {
-                   'page_content': {
-                       templateUrl: 'partials/account/account_movies.html',
-                       controller: 'accountCinemasCtrl'
-                   }
+       .state('movies', {
+           url: '/movies',
+           views: {
+               'page_content': {
+                   templateUrl: 'partials/account/account_movies.html',
+                   controller: 'accountMoviesCtrl'
                }
-           })
+           }
+       })
 
 
-       .state('account', {
+
+           .state('account', {
         url: '/account/',
         abstract: true,
         template: '</ui-view>'
@@ -69,12 +70,13 @@ angular.module('meApp',
         }
        })
 
+
        .state('account.movies', {
         url: '/account/movies',
         views: {
           'page_content': {
             templateUrl: 'partials/account/movie_look.html',
-            controller: 'accountMainCtrl'
+            controller: 'accountMovieDetailCtrl'
           },
           'account_content' : {
             templateUrl: 'partials/account/account_movies.html'
