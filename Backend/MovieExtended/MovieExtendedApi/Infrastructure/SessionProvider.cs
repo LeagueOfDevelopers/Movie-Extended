@@ -27,6 +27,7 @@ namespace Infrastructure
             modelMapper.AddMapping<FileMapping>();
             modelMapper.AddMapping<CompanyUserMapping>();
             modelMapper.AddMapping<QrCodeFingerprintMapping>();
+            modelMapper.AddMapping<AccountMapping>();
             configuration.AddDeserializedMapping(modelMapper.CompileMappingForAllExplicitlyAddedEntities(), null);
 
             _factory = configuration.BuildSessionFactory();

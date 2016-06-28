@@ -1,4 +1,7 @@
-﻿using System.Linq;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using Domain.Authorization;
 using Domain.Models.Entities;
 using Domain.Models.FrontendEntities;
 using Domain.Repository;
@@ -33,6 +36,14 @@ namespace Infrastructure.Repository
                 companyUser.MD5Hash == credentials.Pass
             );
             return user.Id;
+        }
+
+        public List<Account> GetAllAccounts(Func<Account, bool> predicate)
+        {
+            var session = _provider.GetCurrentSession();
+            return predicate == null
+                ? session.Query<Account>().ToList()
+                : session.Query<Account>().Where(predicate).ToList();
         }
     }
 }

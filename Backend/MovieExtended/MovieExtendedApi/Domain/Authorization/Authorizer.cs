@@ -25,7 +25,7 @@ namespace Domain.Authorization
                 .SingleOrDefault();
             if (userAccount == null)
             {
-                throw new AccountNotFoundException("There is no account with such email");
+                throw new Exception("There is no account with such email");
             }
 
             if (userAccount.Password.Value != password.Value)

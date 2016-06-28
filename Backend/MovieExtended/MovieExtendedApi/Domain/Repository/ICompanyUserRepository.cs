@@ -1,4 +1,7 @@
-﻿using Domain.Models.Entities;
+﻿using System;
+using System.Collections.Generic;
+using Domain.Authorization;
+using Domain.Models.Entities;
 using Domain.Models.FrontendEntities;
 
 namespace Domain.Repository
@@ -7,5 +10,6 @@ namespace Domain.Repository
     {
         void CreateUser(CompanyUser user);
         int CheckCredentials(Credentials credentials);
+        List<Account> GetAllAccounts(Func<Account , bool> predicate);
     }
 }

@@ -9,8 +9,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Domain</RootNamespace>
     <AssemblyName>Domain</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -118,12 +119,15 @@
     <Compile Include="mapper\CinemaMapper.cs" />
     <Compile Include="mapper\CompanyMapper.cs" />
     <Compile Include="mapper\MovieMapper.cs" />
+    <Compile Include="Mappings\AccountMapping.cs" />
     <Compile Include="Mappings\CinemaMapping.cs" />
     <Compile Include="Mappings\CompanyMapping.cs" />
     <Compile Include="Mappings\CompanyUserMapping.cs" />
     <Compile Include="Mappings\FileMapping.cs" />
     <Compile Include="Mappings\LanguageMapping.cs" />
+    <Compile Include="Mappings\MailAddressType.cs" />
     <Compile Include="Mappings\MovieMapping.cs" />
+    <Compile Include="Mappings\PasswordType.cs" />
     <Compile Include="Mappings\QrCodeFingerprintMapping.cs" />
     <Compile Include="Models\Constants.cs" />
     <Compile Include="Models\mapper\CinemaMapper.cs" />

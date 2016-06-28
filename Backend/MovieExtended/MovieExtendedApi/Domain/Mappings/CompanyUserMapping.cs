@@ -14,7 +14,7 @@ namespace Domain.Mappings
                 mapper.Column("Id");
                 mapper.Generator(Generators.Identity);
             } );
-            Property(user =>user.FirstName,mapper => mapper.Column("FirstName"));
+            Property(user =>user.FirstName,mapper => mapper.Column("FirstName")); //TODO : delete this mapping
             Property(user => user.LastName, mapper => mapper.Column("Lastname"));
             Property(user => user.MD5Hash, mapper => mapper.Column("Hash"));
             Property(user => user.Email , mapper => mapper.Column("Email"));

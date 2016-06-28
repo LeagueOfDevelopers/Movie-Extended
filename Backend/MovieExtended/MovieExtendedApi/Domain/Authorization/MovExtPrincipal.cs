@@ -22,6 +22,6 @@ namespace Domain.Authorization
         public bool IsEmpty { get; private set; }
 
         public static IPrincipal EmptyPrincipal
-=> new MovExtPrincipal(MovExtIdentity.EmptyIdentity); { IsEmpty = true };
+=> new MovExtPrincipal(MovExtIdentity.EmptyIdentity) { IsEmpty = true };
     }
 }
