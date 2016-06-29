@@ -53,10 +53,10 @@ angular.module('app.account',
 
 
     .controller('accountMovieDetailCtrl',
-        ['$scope', 
+        ['$scope',
             '$state',
             'API',
-            function ($scope, API) {
+            function ($scope, $state, API) {
 
             }
         ])

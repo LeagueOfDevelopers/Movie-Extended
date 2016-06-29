@@ -179,6 +179,7 @@ span{
 .sideMenu_menuItem p{
   font-family: Helvetica, sans-serif ;
   font-size: 40px;
+  position: relative;
 }
 
 .workSpace_header {
@@ -209,6 +210,7 @@ span{
   padding-right: inherit;
   float: left;
 }
+
 .workSpace_breadCrumbs p{
   font-family: Helvetica, sans-serif;
   color: rgb(0,0,97);
@@ -247,3 +249,34 @@ span{
   transition: all .218s ease 0s;
 
 }
+
+.movie_description{
+  display: inline-block;
+  float: left;
+  width: 50%;
+}
+
+.movie_name{
+  font-family: Helvetica, sans-serif;
+  font-size: 25px;
+  word-spacing: normal;
+  text-align: center;
+}
+
+.movie_director{
+  font-family: Helvetica, sans-serif;
+  font-size: 20px;
+  word-spacing: normal;
+}
+
+.movie_plot{
+  font-family: Helvetica, sans-serif;
+  font-size: 17px;
+  word-spacing: normal;
+}
+
+.movie_img{
+  display: inline-block;
+  float: inherit;
+}
+

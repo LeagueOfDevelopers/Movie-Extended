@@ -142,8 +142,9 @@ span {
   padding: 20px; }
 
 .sideMenu_menuItem p {
-  font-family: Comic Sans MS, cursive;
-  font-size: 40px; }
+  font-family: Helvetica, sans-serif;
+  font-size: 40px;
+  position: relative; }
 
 .workSpace_header {
   height: 40px;
@@ -187,18 +188,42 @@ span {
   display: inline-block;
   float: right; }
 
-.addButton{
+.addButton {
   display: inline-block;
   font-family: arial,sans-serif;
-  font-size: 17px;
+  font-size: 11px;
   font-weight: bold;
-  color: rgb(68,68,68);
+  color: #444444;
   text-decoration: none;
   user-select: none;
   padding: .2em 1.2em;
   outline: none;
-  border: 1px solid rgba(0,0,0,.1);
+  border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 2px;
-  background: rgb(245,245,245) linear-gradient(#f4f4f4, #f1f1f1);
-  transition: all .218s ease 0s;
-}
+  background: whitesmoke linear-gradient(#f4f4f4, #f1f1f1);
+  transition: all .218s ease 0s; }
+
+.movie_description {
+  display: inline-block;
+  float: left;
+  width: 50%; }
+
+.movie_name {
+  font-family: Helvetica, sans-serif;
+  font-size: 25px;
+  word-spacing: normal;
+  text-align: center; }
+
+.movie_director {
+  font-family: Helvetica, sans-serif;
+  font-size: 20px;
+  word-spacing: normal; }
+
+.movie_plot {
+  font-family: Helvetica, sans-serif;
+  font-size: 17px;
+  word-spacing: normal; }
+
+.movie_img {
+  display: inline-block;
+  float: inherit; }
