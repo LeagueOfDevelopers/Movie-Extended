@@ -21,6 +21,7 @@ import com.lod.movie_extended.injection.scope.PerActivity;
 import com.lod.movie_extended.injection.scope.PerApplication;
 import com.lod.movie_extended.receiver.HeadsetEventReceiver;
 import com.lod.movie_extended.receiver.PlayerReceiver;
+import com.lod.movie_extended.ui.activity.audioRecord.AudioRecordPresenter;
 import com.lod.movie_extended.ui.activity.filmShow.FilmShowPresenter;
 import com.lod.movie_extended.ui.activity.languagePicker.LanguagePickerPresenter;
 import com.lod.movie_extended.ui.activity.main.MainPresenter;
@@ -158,4 +159,10 @@ public class ApplicationModule {
     SubPresenter provideSubPresenter(DataManager dataManager, Player player) {
         return new SubPresenter(dataManager,player);
     }
+
+   /* @Provides
+    @PerApplication
+    AudioRecordPresenter provideAudioRecordPresenter(DataManager dataManager){
+        return  new AudioRecordPresenter(dataManager);
+    }*/
 }
