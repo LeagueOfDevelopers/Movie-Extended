@@ -21,7 +21,27 @@ html(lang='en', ng-app='meApp', ng-controller='appCtrl')
               a#logout(ng-click='logout()')
                 i.fa.fa-sign-out
         .clearfix
-      section(ui-view='page_content')
+
+      section.sideMenu_wrap.small-3.columns
+        ul.sideMenu_menuList
+          li.sideMenu_menuItem
+            a(ui-sref='account.movies({id: 1})') Фильмы
+          li.sideMenu_menuItem
+            a(ui-sref='account.cinemas({id: 1})') Кинотеатры
+         .clearfix
+
+      section.workSpace_wrap.small-9.columns
+         div.workSpace_header
+           ul.workSpace_breadCrumbs
+             li
+               a(href='#') Личный кабинет
+             li
+               a(href='#') Кинотеатры
+             ul.options
+               i.fa.fa-search
+               i.fa.fa-bars
+         .clearfix
+
       section(ui-view='account_content')
       section(ui-view='footer')
     script(type='text/javascript', src='../js/lib/angular.min.js')

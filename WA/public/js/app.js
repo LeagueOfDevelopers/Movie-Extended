@@ -23,7 +23,7 @@ angular.module('meApp',
        .state('auth', {
           url: '/auth',
            views: {
-             'page_content': {
+             'account_content': {
                templateUrl: 'partials/auth.html',
                controller: 'authCtrl'
              }
@@ -33,51 +33,33 @@ angular.module('meApp',
        .state('cinemas', {
         url: '/cinemas',
         views: {
-          'page_content': {
-            templateUrl: 'partials/account/account_cinemas.html',
-            controller: 'accountCinemasCtrl'
+          'account_content': {
+            templateUrl: 'partials/account/account_cinemas.html'
           }
         }
        })
        .state('movies', {
            url: '/movies',
            views: {
-               'page_content': {
-                   templateUrl: 'partials/account/account_movies.html',
-                   controller: 'accountMoviesCtrl'
+               'account_content': {
+                   templateUrl: 'partials/account/account_movies.html'
                }
            }
        })
 
-
-
-           .state('account', {
-        url: '/account/',
-        abstract: true,
-        template: '</ui-view>'
-       })
-
-       .state('account.cinemas', {
-        url: '/account/cinemas',
+       .state('cinema', {
+        url: '/cinema',
         views: {
-          'page_content': {
-            templateUrl: 'partials/account/account_main.html'
-
-          },
-          'account_content' : {
+          'account_content@' : {
             templateUrl: 'partials/account/cinema_look.html'
           }
         }
        })
 
 
-       .state('account.movies', {
-        url: '/account/movies',
+       .state('movie', {
+        url: '/movie',
         views: {
-          'page_content': {
-            templateUrl: 'partials/account/account_main.html',
-            controller: 'accountMovieDetailCtrl'
-          },
           'account_content' : {
             templateUrl: 'partials/account/movie_look.html'
           }

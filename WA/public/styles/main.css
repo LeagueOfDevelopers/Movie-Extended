@@ -119,6 +119,12 @@ span {
 .account {
   width: 100%; }
 
+.account_content {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  display: inline-block; }
+
 .sideMenu_menuItem a {
   text-align: center;
   display: block;
@@ -128,7 +134,7 @@ span {
   position: relative; }
 
 .sideMenu_wrap {
-  margin: 0;
+  margin-top: 60px;
   padding: 0;
   float: left; }
 
@@ -154,12 +160,14 @@ span {
 .workSpace_wrap {
   width: 85%;
   padding: 0;
-  min-height: 100vh;
-  box-shadow: 0 0 15px; }
+  margin-top: 60px;
+  min-height: 50px;
+  display: inline-block; }
 
 .workSpace_content {
   background: #ddd;
-  position: relative; }
+  position: relative;
+  display: inline-block; }
 
 .workSpace_content ul {
   border-bottom: solid 1px black;
