@@ -149,12 +149,9 @@ span{
   width: 100% ;
 }
 
-.account_content{
+.account_content.ng-scope{
   position:relative;
-  height: 100%;
-  width: 100%;
   display:inline-block;
-
 }
 
 .sideMenu_menuItem a {
@@ -195,7 +192,6 @@ span{
   position: relative;
   background: rgba(199, 86, 67, 0.6);
 }
-
 .workSpace_wrap{
   width: 85%;
   padding: 0 ;
@@ -205,9 +201,18 @@ span{
 }
 
 .workSpace_content {
+  min-width: 100vh;
   background: #ddd;
   position: relative;
   display: inline-block;
+}
+
+.workSpace_content.small-10.columns{
+  width: 100%;
+}
+
+.workSpace_content.small-up-1.medium-up-2.large-up-3{
+  width: 100%;
 }
 
 .workSpace_content ul{
@@ -232,6 +237,7 @@ span{
   display: inline-block;
   vertical-align: bottom;
 }
+
 
 .options {
   display: inline-block;
@@ -290,3 +296,9 @@ span{
   float: inherit;
 }
 
+.cinemaName{
+  font-family: Helvetica, sans-serif;
+  font-size: 25px;
+  word-spacing: normal;
+  text-align: center;
+}
