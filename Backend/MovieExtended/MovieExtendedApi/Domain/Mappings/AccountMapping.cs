@@ -18,6 +18,7 @@ namespace Domain.Mappings
                 mapper.Type<MailAddressType>();
             });
             Property(account => account.Firstname , mapper => mapper.Column("FirstName")  );
+            Property(account => account.Lastname, mapper => mapper.Column("LastName"));
             Property(account => account.Password , mapper =>
             {
                 mapper.Column("Password");

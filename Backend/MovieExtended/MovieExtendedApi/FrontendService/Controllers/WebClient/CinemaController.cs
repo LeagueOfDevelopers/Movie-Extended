@@ -2,6 +2,7 @@
 using System.Web.Http;
 using Domain.Models.Entities;
 using Domain.Repository;
+using FrontendService.Authorization;
 
 namespace FrontendService.Controllers.WebClient
 {
@@ -21,6 +22,7 @@ namespace FrontendService.Controllers.WebClient
             return _cinemaRepository.GetAllCinemas();
         }
 
+        [Authorize]
         [Route("cinema/new/{companyId}")]
         [HttpPut]
         public void SaveNewCinema([FromBody] Cinema cinema)

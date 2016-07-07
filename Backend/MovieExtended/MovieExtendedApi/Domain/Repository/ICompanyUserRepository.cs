@@ -8,7 +8,7 @@ namespace Domain.Repository
 {
    public interface ICompanyUserRepository
     {
-        void CreateUser(CompanyUser user);
+        void CreateUser(Account user);
         int CheckCredentials(Credentials credentials);
         List<Account> GetAllAccounts(Func<Account , bool> predicate);
     }

@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Net.Mail;
 using System.Timers;
+using Domain.Authorization;
 using Domain.FingerPrinting;
 using Domain.Models;
 using Domain.Models.Entities;
@@ -87,9 +89,13 @@ namespace UnitTestProject2
         }
 
         [TestMethod]
-        public void TimerTests()
+        public void SaveAdminToDb()//Not test
         {
-            
+            var provider = new SessionProvider();
+            provider.OpenSession();
+            var compusrepo = new CompanyUserRepository(provider);
+            Account acc = new Account("admin" , "admin ", new MailAddress("example@mail.ru"), new Password("slipknot4997"));
+            compusrepo.CreateUser(acc);
         }
 
         

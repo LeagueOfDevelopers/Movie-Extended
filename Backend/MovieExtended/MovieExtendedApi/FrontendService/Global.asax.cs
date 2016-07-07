@@ -12,7 +12,7 @@ namespace FrontendService
         {
             var container = new Bootstraper().Configure();
             GlobalConfiguration.Configuration.DependencyResolver = new SimpleInjectorWebApiDependencyResolver(container);
-
+            
             GlobalConfiguration.Configure(WebApiConfig.Register);
         }
 

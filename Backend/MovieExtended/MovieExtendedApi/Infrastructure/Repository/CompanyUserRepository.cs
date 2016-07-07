@@ -10,7 +10,7 @@ using NHibernate.Linq;
 
 namespace Infrastructure.Repository
 {
-    class CompanyUserRepository : ICompanyUserRepository
+   public class CompanyUserRepository : ICompanyUserRepository
     {
         private readonly SessionProvider _provider;
         public CompanyUserRepository(SessionProvider provider)
@@ -18,7 +18,7 @@ namespace Infrastructure.Repository
             Require.NotNull(provider,nameof(SessionProvider));
             _provider = provider;
         }
-        public void CreateUser(CompanyUser user)
+        public void CreateUser(Account user)
         {
             var sesssion = _provider.GetCurrentSession();
             sesssion.BeginTransaction();
@@ -33,7 +33,7 @@ namespace Infrastructure.Repository
             var user = session.Query<CompanyUser>().SingleOrDefault(companyUser =>
             
                 companyUser.Email == credentials.Email&&
-                companyUser.MD5Hash == credentials.Pass
+                companyUser.MD5Hash == credentials.Password
             );
             return user.Id;
         }

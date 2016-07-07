@@ -12,10 +12,10 @@ namespace Domain.Models.FrontendEntities
        public Credentials(string emal, string password)
        {
            Email = emal;
-           Pass = password;
+           Password = password;
        }
         [EmailAddress]
         public virtual string Email { get; set; }
-        public virtual string Pass { get; set; }
+        public virtual string Password { get; set; }
     }
 }

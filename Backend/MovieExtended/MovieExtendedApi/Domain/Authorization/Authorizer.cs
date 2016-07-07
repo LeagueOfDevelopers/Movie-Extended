@@ -9,7 +9,7 @@ using Journalist;
 
 namespace Domain.Authorization
 {
-    class Authorizer : IAuthorizer
+   public class Authorizer : IAuthorizer
     {
         public TimeSpan TokenLifeTime { get; }
 
@@ -17,7 +17,6 @@ namespace Domain.Authorization
         {
             Require.NotEmpty(email, nameof(email));
             Require.NotNull(password, nameof(password));
-
             var userAccount = _userRepository
                 .GetAllAccounts(
                     account => account.Email.Address == email

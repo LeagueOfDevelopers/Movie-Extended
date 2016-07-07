@@ -29,7 +29,7 @@ namespace FrontendService.Controllers.AndroidClient
             _fingerPrintKeeper = fingerPrintKeeper;
         }
 
-        [Route("login")]
+        [Route("token")]
         [HttpPost]
         public FrontendMovie Login([FromBody] string qr)
         {

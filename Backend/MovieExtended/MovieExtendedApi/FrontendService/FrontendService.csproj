@@ -18,8 +18,8 @@
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
-    <IISExpressAnonymousAuthentication />
-    <IISExpressWindowsAuthentication />
+    <IISExpressAnonymousAuthentication>enabled</IISExpressAnonymousAuthentication>
+    <IISExpressWindowsAuthentication>enabled</IISExpressWindowsAuthentication>
     <IISExpressUseClassicPipelineMode />
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
@@ -127,7 +127,9 @@
   <ItemGroup>
     <Content Include="extensions.xml" />
     <Content Include="Global.asax" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\Bootstraper.cs" />
@@ -141,6 +143,7 @@
     <Compile Include="Controllers\FileController.cs" />
     <Compile Include="Controllers\WebClient\AuthorizationController.cs" />
     <Compile Include="Controllers\WebClient\CinemaController.cs" />
+    <Compile Include="Controllers\WebClient\CompanyAdminsController.cs" />
     <Compile Include="Controllers\WebClient\QrCodeController.cs" />
     <Compile Include="Controllers\WebClient\CompanyController.cs" />
     <Compile Include="Controllers\WebClient\LanguageController.cs" />

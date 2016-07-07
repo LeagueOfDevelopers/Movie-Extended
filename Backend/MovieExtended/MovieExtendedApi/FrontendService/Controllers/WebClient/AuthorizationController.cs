@@ -8,6 +8,7 @@ using Journalist;
 
 namespace FrontendService.Controllers.WebClient
 {
+    [AllowAnonymous]
     public class AuthorizationController : ApiController
     {
         private readonly IAuthorizer _authorizer;
@@ -24,7 +25,7 @@ namespace FrontendService.Controllers.WebClient
         {
             try
             {
-                var token = _authorizer.Authorize(credentials.Email, new Password(credentials.Pass));
+                var token = _authorizer.Authorize(credentials.Email, new Password(credentials.Password));
                 return token;
             }
                            
