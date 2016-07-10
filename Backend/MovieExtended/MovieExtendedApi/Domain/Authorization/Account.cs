@@ -1,5 +1,7 @@
-﻿using System.Net.Mail;
+﻿using System.Collections.Generic;
+using System.Net.Mail;
 using Domain.Models;
+using Domain.Models.Entities;
 using Journalist;
 
 namespace Domain.Authorization
@@ -26,6 +28,7 @@ namespace Domain.Authorization
             Password = password;
         }
 
+
         protected Account()
         {
         }
@@ -39,6 +42,8 @@ namespace Domain.Authorization
         public virtual MailAddress Email { get; protected set; }
 
         public virtual Password Password { get; set; }
+        
+        public virtual ISet<Company> Companies { get; set; } 
 
 
 

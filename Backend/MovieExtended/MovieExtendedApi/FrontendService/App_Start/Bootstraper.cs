@@ -26,8 +26,6 @@ namespace FrontendService
             container.Register<ICompanyRepository>(() => container.GetInstance<CompanyRepository>(), Lifestyle.Singleton);
             container.Register<IFileRepository>(() => container.GetInstance<FileRepository>(), Lifestyle.Singleton);
             container.Register<ICinemaRepository>(() => container.GetInstance<CinemaRepository>(), Lifestyle.Singleton);
-            container.Register<IQrCodeRepository>(() => container.GetInstance<QrCodeRepository>(), Lifestyle.Singleton);
-            container.Register<IQrCodeGenerator>(() => container.GetInstance<QrCodeGenerator>(), Lifestyle.Singleton);
             container.Register<ICompanyUserRepository>(() => container.GetInstance<CompanyUserRepository>() , Lifestyle.Singleton);
             container.Register<ISessionKeeper>(() => container.GetInstance<SessionKeeper>(), Lifestyle.Singleton);
             

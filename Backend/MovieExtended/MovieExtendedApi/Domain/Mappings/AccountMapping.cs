@@ -23,7 +23,12 @@ namespace Domain.Mappings
             {
                 mapper.Column("Password");
                 mapper.Type<PasswordType>();
-            }  );
+            });
+            Set(account => account.Companies , mapper =>
+            {
+                mapper.Cascade(Cascade.All);
+                mapper.Key(keyMapper => keyMapper.Column("Company"));
+            },relation => relation.OneToMany()  );
         }
     }
 }
