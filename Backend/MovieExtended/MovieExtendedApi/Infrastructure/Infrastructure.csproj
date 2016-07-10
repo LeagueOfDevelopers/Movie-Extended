@@ -75,7 +75,6 @@
     <Compile Include="Repository\FileRepository.cs" />
     <Compile Include="Repository\LanguageRepository.cs" />
     <Compile Include="Repository\MovieRepository.cs" />
-    <Compile Include="Repository\QrCodeRepository.cs" />
     <Compile Include="SessionKeeper.cs" />
     <Compile Include="SessionProvider.cs" />
     <Compile Include="Repository\CinemaRepository.cs" />

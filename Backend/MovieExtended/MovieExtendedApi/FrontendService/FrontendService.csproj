@@ -144,7 +144,6 @@
     <Compile Include="Controllers\WebClient\AuthorizationController.cs" />
     <Compile Include="Controllers\WebClient\CinemaController.cs" />
     <Compile Include="Controllers\WebClient\CompanyAdminsController.cs" />
-    <Compile Include="Controllers\WebClient\QrCodeController.cs" />
     <Compile Include="Controllers\WebClient\CompanyController.cs" />
     <Compile Include="Controllers\WebClient\LanguageController.cs" />
     <Compile Include="Controllers\WebClient\MovieController.cs" />
