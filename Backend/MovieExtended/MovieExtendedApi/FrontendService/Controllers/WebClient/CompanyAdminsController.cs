@@ -15,8 +15,8 @@ namespace FrontendService.Controllers.WebClient
             Require.NotNull(companyUserRepository , nameof(companyUserRepository));
             _companyUserRepository = companyUserRepository;
         }
-
-        [HttpPost]
+        [AllowAnonymous]
+        [HttpPut]
         [Route("register")]
         public IHttpActionResult RegisterNewAdminCinema([FromBody] Account account)
         {
@@ -31,5 +31,7 @@ namespace FrontendService.Controllers.WebClient
             }
             return Ok();
         }
+
+
     }
 }

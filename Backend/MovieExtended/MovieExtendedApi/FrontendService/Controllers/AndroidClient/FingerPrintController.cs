@@ -7,6 +7,7 @@ using Journalist;
 
 namespace FrontendService.Controllers.AndroidClient
 {
+    [AllowAnonymous]
     public class FingerPrintController : ApiController
     {
         private readonly IFingerPrintKeeper _fingerPrintKeeper;

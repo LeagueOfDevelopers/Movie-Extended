@@ -12,6 +12,7 @@ using NHibernate.Mapping;
 
 namespace FrontendService.Controllers.AndroidClient
 {
+    [AllowAnonymous]
     public class SessionController : ApiController
     {
         

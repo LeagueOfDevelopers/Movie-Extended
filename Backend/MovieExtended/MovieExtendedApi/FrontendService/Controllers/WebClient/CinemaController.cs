@@ -62,7 +62,7 @@ namespace FrontendService.Controllers.WebClient
         [HttpPut]
         public void CreateMovie([FromBody] Movie movie, int cinemaId)
         {
-            
+
         }
     }
 }
