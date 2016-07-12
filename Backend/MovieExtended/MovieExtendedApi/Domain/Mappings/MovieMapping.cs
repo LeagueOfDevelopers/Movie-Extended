@@ -25,6 +25,7 @@ namespace Domain.Mappings
             Property(movie => movie.AndroidToken, mapper => mapper.Column("Token"));
             ManyToOne(movie => movie.Poster,mapper => mapper.Cascade(Cascade.All));
             ManyToOne(movie => movie.RussianTrack ,mapper => mapper.Cascade(Cascade.All) );
+            Property(movie =>movie.IdAdmin , mapper => mapper.Column("IdAdmin"));
            
         }
     }

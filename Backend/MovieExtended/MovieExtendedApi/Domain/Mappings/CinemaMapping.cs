@@ -22,6 +22,7 @@ namespace Domain.Mappings
                
                mapper.Key(movie => movie.Column("Movie") );
             },relation => relation.OneToMany()  );
+            Property(cinema =>cinema.IdAdmin ,  mapper => mapper.Column("IdAdmin")  );
         }
     }
 }

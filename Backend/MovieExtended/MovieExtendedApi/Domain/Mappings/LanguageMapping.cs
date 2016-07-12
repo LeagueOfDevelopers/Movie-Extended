@@ -24,7 +24,7 @@ namespace Domain.Mappings
                 mapper.Cascade(Cascade.All);
 
             });
-            
+            Property(language =>language.IdAdmin , mapper => mapper.Column("IdAdmin"));
         }
     }
 }

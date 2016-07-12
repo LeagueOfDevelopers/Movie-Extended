@@ -21,6 +21,7 @@ namespace Domain.Mappings
                 mapper.Cascade(Cascade.All);
                 mapper.Key(cinema => cinema.Column("Cinema") );
             },relation =>relation.OneToMany() );
+            Property(company => company.IdAdmin , mapper => mapper.Column("IdAdmin"));
         }
     }
 }
