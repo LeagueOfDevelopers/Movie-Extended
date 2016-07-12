@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Web.Http;
 using Domain.Models.Entities;
 using Domain.Repository;
@@ -61,9 +62,10 @@ namespace FrontendService.Controllers.WebClient
 
         [Route("movie/create/{cinemaId}")]
         [HttpPut]
-        public void CreateMovie([FromBody] Movie movie, int cinemaId)
+        public int CreateMovie([FromBody] Movie movie, int cinemaId)
         {
-
+            int IdAdmin = Convert.ToInt32(ActionContext.RequestContext.Principal.Identity.Name);
+            return _cinemaRepository.CreateMovie(movie,cinemaId , IdAdmin);
         }
     }
 }

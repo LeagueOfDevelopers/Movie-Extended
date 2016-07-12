@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Dynamic;
 using System.Web.Http;
 using Domain.Models.Entities;
@@ -60,9 +61,10 @@ namespace FrontendService.Controllers.WebClient
 
         [Route("create/language/{movieId}")]
         [HttpPut]
-        public void CreateLanguage([FromBody] Language language, int movieId)
+        public int CreateLanguage([FromBody] Language language, int movieId)
         {
-            
+            int IdAdmin = Convert.ToInt32(ActionContext.RequestContext.Principal.Identity.Name);
+            return _movieRepository.CreateLanguage(language,movieId,IdAdmin);
         }
     }
 }

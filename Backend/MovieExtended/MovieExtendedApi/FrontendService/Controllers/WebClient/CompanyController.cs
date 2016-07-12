@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Web.Http;
 using Domain.Models.Entities;
 using Domain.Models.FrontendEntities;
@@ -26,6 +27,7 @@ namespace FrontendService.Controllers.WebClient
         [HttpPut]
         public void SaveNewCompany([FromBody] Company company)
         {
+            company.IdAdmin = Convert.ToInt32(ActionContext.RequestContext.Principal.Identity.Name);
             _companyRepository.SaveCompany(company);
         }
 
@@ -40,7 +42,8 @@ namespace FrontendService.Controllers.WebClient
         [HttpPut]
         public void CreateCinema([FromBody] Cinema cinema , int companyId )
         {
-            _companyRepository.CreateCinema(cinema , companyId);
+            var IdAdmin = Convert.ToInt32(ActionContext.RequestContext.Principal.Identity.Name);
+            _companyRepository.CreateCinema(cinema , companyId , IdAdmin);
         }
 
         [Route("company/delete/{companyId}")]

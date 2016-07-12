@@ -12,6 +12,6 @@ namespace Domain.Repository
         void SaveCompany(Company company);
         void UpdateCompany(string jsonForUpdate);
         bool Exists(int companyId);
-        int CreateCinema(Cinema cinema, int companyId);
+        int CreateCinema(Cinema cinema, int companyId , int AdminId);
     }
 }

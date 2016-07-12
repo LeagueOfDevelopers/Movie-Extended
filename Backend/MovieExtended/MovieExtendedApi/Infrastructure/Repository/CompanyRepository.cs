@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Authentication;
 using Domain.Models.Entities;
 using Domain.Models.FrontendEntities;
 using Domain.Repository;
@@ -64,13 +65,18 @@ namespace Infrastructure.Repository
             return checkIfExists != null;
         }
 
-        public int CreateCinema(Cinema cinema, int companyId)
+        public int CreateCinema(Cinema cinema, int companyId ,int AdminId)
         {
             var session = _provider.GetCurrentSession();
             var company = session.Query<Company>().SingleOrDefault(model => model.Id == companyId);
+            if (company.IdAdmin== AdminId)
+            {
+            cinema.IdAdmin = AdminId;
             company.Cinema.Add(cinema);
             session.Update(company);
             return cinema.Id;
+            }
+            throw new AuthenticationException();
         }
     }
 }

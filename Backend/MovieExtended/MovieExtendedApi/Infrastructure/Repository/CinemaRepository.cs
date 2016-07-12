@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Authentication;
 using Domain.Models.Entities;
 using Domain.Repository;
 using Journalist;
@@ -69,13 +70,19 @@ namespace Infrastructure.Repository
             throw new NotImplementedException();
         }
 
-        public int CreateMovie(Movie movie, int cinemaId)
+        public int CreateMovie(Movie movie, int cinemaId , int IdAdmin)
         {
             var session = _provider.GetCurrentSession();
             var cinema = session.Query<Cinema>().SingleOrDefault(model => model.Id == cinemaId);
+            if (cinema.IdAdmin == IdAdmin)
+            {
+            movie.IdAdmin = IdAdmin;
             cinema.Movie.Add(movie);
             session.Update(cinema);
             return movie.Id;
+            }
+            throw new AuthenticationException();
+           
         }
     }
 }
