@@ -31,5 +31,7 @@ namespace Domain.Models.Entities
         public virtual Uri Website { get; protected set; }
 
         public  virtual ISet<Cinema> Cinema { get; set; }
+
+        public virtual int IdAdmin { get; set; }
     }
 }

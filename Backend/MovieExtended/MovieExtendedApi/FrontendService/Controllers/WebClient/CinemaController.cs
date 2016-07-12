@@ -28,6 +28,7 @@ namespace FrontendService.Controllers.WebClient
         public void SaveNewCinema([FromBody] Cinema cinema)
         {
             _cinemaRepository.SaveCinemaData(cinema);
+            
         }
 
         [Route("cinema/get/{cinemaId}")]

@@ -24,6 +24,8 @@
         public virtual string FilePath { get;  set; }
 
         public virtual FileType FileType { get;  set; }
+
+        public virtual int IdAdmin { get; set; }
     }
 
     public enum FileType

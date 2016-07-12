@@ -29,6 +29,8 @@
         
         public virtual File Subtitles { get; set; }
 
+        public virtual int IdAdmin { get; set; }
+
 
     }
 }

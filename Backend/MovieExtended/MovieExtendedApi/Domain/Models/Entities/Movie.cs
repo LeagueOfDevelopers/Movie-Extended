@@ -38,5 +38,7 @@ namespace Domain.Models.Entities
         public virtual File  Poster { get; set; }
 
         public virtual File RussianTrack { get; set; }
+
+        public virtual int IdAdmin { get; set; }
     }
 }

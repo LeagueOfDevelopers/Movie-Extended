@@ -37,5 +37,7 @@ namespace Domain.Models.Entities
         public virtual string Address { get; protected set; }
 
         public virtual ISet<Movie> Movie { get; set; }
+
+        public virtual int IdAdmin { get; set; }
     }
 }
