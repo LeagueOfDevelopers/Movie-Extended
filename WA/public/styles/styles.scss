@@ -152,6 +152,7 @@ span{
 .account_content.ng-scope{
   position:relative;
   display:inline-block;
+  width: 83%;
 }
 
 .sideMenu_menuItem a {
@@ -302,3 +303,45 @@ span{
   word-spacing: normal;
   text-align: center;
 }
+
+.addMovieName{
+  display: inline-block;
+  font-family: Helvetica, sans-serif ;
+  font-size: 17px;
+}
+
+.addMovieDirector{
+  display: inline-block;
+  font-family: Helvetica, sans-serif ;
+  font-size: 17px;
+}
+
+.addMoviePlot{
+  display: block;
+  width: 95%;
+  height: 100px;
+  font-family: Helvetica, sans-serif ;
+  font-size: 15px;
+}
+
+.addMoviePoster{
+  display: inline-block;
+  font-family: Helvetica, sans-serif ;
+}
+
+.addMoviePosterLabel{
+  display: inline-block;
+  font-family: Helvetica, sans-serif ;
+  font-size: 17px;
+}
+
+.addMovieButton{
+  display: block;
+  width: 150px;
+}
+
+.addMovieCancel{
+  display: inline-block;
+  width: 150px;
+}
+

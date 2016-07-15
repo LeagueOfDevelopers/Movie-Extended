@@ -66,5 +66,13 @@ angular.module('meApp',
         }
        })
 
+        .state('addmovie', {
+         url: '/addmovie',
+         views: {
+           'account_content' : {
+             templateUrl: 'partials/account/movie_add.html'
+            }
+         }
+        })
 
      }]);
