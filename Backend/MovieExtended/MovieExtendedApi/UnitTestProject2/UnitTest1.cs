@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
 using System.Net.Mail;
-using System.Timers;
 using Domain.Authorization;
 using Domain.FingerPrinting;
 using Domain.Models;
@@ -11,6 +8,7 @@ using Domain.Models.Entities;
 using Infrastructure;
 using Infrastructure.Repository;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NAudio.Wave;
 using File = Domain.Models.Entities.File;
 
 namespace UnitTestProject2
@@ -57,15 +55,6 @@ namespace UnitTestProject2
                 choto_tam);
         }
 
-        [TestMethod]
-        public void PasswordTests()
-        {
-            var pass = new Password("slipknot");
-            var md5Hash = pass.Value;
-            Debug.WriteLine(md5Hash);
-            var fejf = Path.GetRandomFileName();
-            var defde = Path.GetExtension(fejf);
-        }
 
         [TestMethod]
         public void TestCreating()
@@ -74,8 +63,8 @@ namespace UnitTestProject2
             provider.OpenSession();
             var movie = new MovieRepository(provider);
             var language = new Language("test", new File("edfed",FileType.Track),new File("wdwd",FileType.Subtitles));
-            var di = movie.CreateLanguage(language,2);
-            Assert.IsNotNull(di); 
+            //var di = movie.CreateLanguage(language,2);
+            //Assert.IsNotNull(di); 
         }
 
         [TestMethod]
@@ -83,9 +72,9 @@ namespace UnitTestProject2
         {
             IFingerPrintKeeper fingerprinter = new FingerPrintKeeper();
             fingerprinter.CreateHashesAndGetMovieDurationTime(@"C:\Users\дшшр\Downloads\Dr_WS - Wichhouse.mp3", new Movie(6,"dwedwed",new HashSet<Language>()));
-            var queryTime = fingerprinter.QueryWithTimeInformation(@"C:\Users\дшшр\Downloads\Telegram Desktop\20160517_145213.mp3", 6);
-            
-            Assert.IsNotNull(queryTime);
+            var queryTime = fingerprinter.QueryWithTimeInformation(@"C:\Users\дшшр\Downloads\Dr_WS - Wichhouse.mp3", 6);
+            MediaFoundationReader mediaFoundationReader = new MediaFoundationReader(@"C:\Users\дшшр\Downloads\Dr_WS - Wichhouse.mp3");
+            Assert.IsNotNull(mediaFoundationReader.TotalTime.Hours);
         }
 
         [TestMethod]

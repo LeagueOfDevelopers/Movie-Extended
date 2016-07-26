@@ -51,3 +51,5 @@ C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\Infrastructure\bin
 C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\Infrastructure\bin\Release\Ninject.xml
 C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\Infrastructure\bin\Release\MathNet.Numerics.pdb
 C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\Infrastructure\bin\Release\MathNet.Numerics.xml
+C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\Infrastructure\bin\Release\SoundFingerprinting.Audio.Bass.dll
+C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\Infrastructure\bin\Release\Bass.Net.dll

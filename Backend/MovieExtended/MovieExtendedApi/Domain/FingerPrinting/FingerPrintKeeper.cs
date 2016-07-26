@@ -1,18 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Net;
 using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web;
 using Domain.Models.Entities;
 using NAudio.Wave;
 using SoundFingerprinting;
 using SoundFingerprinting.Audio;
+using SoundFingerprinting.Audio.Bass;
 using SoundFingerprinting.Audio.NAudio;
 using SoundFingerprinting.Builder;
 using SoundFingerprinting.Configuration;
 using SoundFingerprinting.DAO;
 using SoundFingerprinting.DAO.Data;
 using SoundFingerprinting.InMemory;
+using File = System.IO.File;
 
 namespace Domain.FingerPrinting
 {
@@ -44,14 +48,15 @@ namespace Domain.FingerPrinting
 
         public double CreateHashesAndGetMovieDurationTime(string audiopath, Movie movie)
         {
-            var reader = new MediaFoundationReader(audiopath);
+            ITagService service = new BassTagService();
+            var info = service.GetTagInfo(audiopath);
             var track = new TrackData(
                 "isrc " + movie.Id,
                  movie.Id.ToString(),
                 "title " + movie.Name,
                 "album " + movie.Id,
                 DateTime.Today.Year,
-                reader.TotalTime.TotalMilliseconds
+                info.Duration
                 );
             var trackReference = _modelService.InsertTrack(track);
             hashedTracks.Add(movie.Id,trackReference);
@@ -63,7 +68,7 @@ namespace Domain.FingerPrinting
                 .Hash()
                 .Result;
             _modelService.InsertHashDataForTrack(hashedFingerprints, trackReference);
-            return reader.TotalTime.TotalHours;
+            return info.Duration;
         }
 
         public bool AudioHashExists(int id)
@@ -81,7 +86,7 @@ namespace Domain.FingerPrinting
         {
             if (IfTimeExists(movieId))
                 return GetMovieTime(movieId);
-            var reader = new MediaFoundationReader(snippetway);
+            var reader = new AudioFileReader(snippetway);
             var result = _queryCommandBuilder.BuildQueryCommand()
                    .From(snippetway).WithConfigs(fingerprintConfiguration, queryConfiguration)
                    .UsingServices(_modelService, _audioService)

@@ -20,7 +20,6 @@ C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\FrontendService\bi
 C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\FrontendService\bin\Newtonsoft.Json.dll
 C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\FrontendService\bin\NHibernate.dll
 C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\FrontendService\bin\SimpleInjector.dll
-C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\FrontendService\bin\SimpleInjector.Extensions.ExecutionContextScoping.dll
 C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\FrontendService\bin\SimpleInjector.Integration.WebApi.dll
 C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\FrontendService\bin\System.Net.Http.Formatting.dll
 C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\FrontendService\bin\System.Web.Http.dll
@@ -44,12 +43,8 @@ C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\FrontendService\bi
 C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\FrontendService\obj\Release\FrontendService.csprojResolveAssemblyReference.cache
 C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\FrontendService\obj\Release\FrontendService.dll
 C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\FrontendService\obj\Release\FrontendService.pdb
-C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\FrontendService\bin\Microsoft.Azure.AppService.ApiApps.Service.dll
 C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\FrontendService\bin\Microsoft.Web.Infrastructure.dll
-C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\FrontendService\bin\Swashbuckle.Core.dll
-C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\FrontendService\bin\System.IdentityModel.Tokens.Jwt.dll
 C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\FrontendService\bin\WebActivatorEx.dll
-C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\FrontendService\bin\System.IdentityModel.Tokens.Jwt.xml
 C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\FrontendService\bin\x64\bass.dll
 C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\FrontendService\bin\x64\basscd.dll
 C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\FrontendService\bin\x64\bassenc.dll
@@ -79,7 +74,9 @@ C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\FrontendService\bi
 C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\FrontendService\bin\SoundFingerprinting.Audio.NAudio.dll
 C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\FrontendService\bin\SoundFingerprinting.Infrastructure.dll
 C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\FrontendService\bin\Ninject.dll
-C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\FrontendService\bin\MathNet.Numerics.dll
 C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\FrontendService\bin\Ninject.xml
+C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\FrontendService\bin\MathNet.Numerics.dll
 C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\FrontendService\bin\MathNet.Numerics.pdb
 C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\FrontendService\bin\MathNet.Numerics.xml
+C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\FrontendService\bin\SoundFingerprinting.Audio.Bass.dll
+C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\FrontendService\bin\Bass.Net.dll

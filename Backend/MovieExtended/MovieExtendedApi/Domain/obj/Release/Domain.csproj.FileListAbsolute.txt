@@ -7,14 +7,6 @@ C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\Domain\bin\Release
 C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\Domain\obj\Release\Domain.csprojResolveAssemblyReference.cache
 C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\Domain\obj\Release\Domain.dll
 C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\Domain\obj\Release\Domain.pdb
-C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\Domain\bin\Release\Newtonsoft.Json.dll
-C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\Domain\bin\Release\System.Net.Http.Formatting.dll
-C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\Domain\bin\Release\System.Web.Http.dll
-C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\Domain\bin\Release\Newtonsoft.Json.xml
-C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\Domain\bin\Release\System.Net.Http.Formatting.xml
-C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\Domain\bin\Release\System.Web.Http.xml
-C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\Domain\bin\Release\ru\System.Net.Http.Formatting.resources.dll
-C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\Domain\bin\Release\ru\System.Web.Http.resources.dll
 C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\Domain\bin\Release\Journalist.LanguageExtensions.dll
 C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\Domain\bin\Release\x64\bass.dll
 C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\Domain\bin\Release\x64\basscd.dll
@@ -42,7 +34,6 @@ C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\Domain\bin\Release
 C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\Domain\bin\Release\x86\tags.dll
 C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\Domain\bin\Release\Bass.Net.dll
 C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\Domain\bin\Release\MathNet.Numerics.dll
-C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\Domain\bin\Release\MathNet.Numerics.IO.dll
 C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\Domain\bin\Release\NAudio.dll
 C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\Domain\bin\Release\Ninject.dll
 C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\Domain\bin\Release\SoundFingerprinting.Audio.Bass.dll
@@ -50,9 +41,10 @@ C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\Domain\bin\Release
 C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\Domain\bin\Release\SoundFingerprinting.Audio.NAudio.dll
 C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\Domain\bin\Release\SoundFingerprinting.dll
 C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\Domain\bin\Release\SoundFingerprinting.Infrastructure.dll
-C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\Domain\bin\Release\MathNet.Numerics.pdb
 C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\Domain\bin\Release\MathNet.Numerics.xml
-C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\Domain\bin\Release\MathNet.Numerics.IO.pdb
-C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\Domain\bin\Release\MathNet.Numerics.IO.xml
 C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\Domain\bin\Release\NAudio.xml
 C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\Domain\bin\Release\Ninject.xml
+C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\Domain\bin\Release\MathNet.Numerics.IO.dll
+C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\Domain\bin\Release\MathNet.Numerics.pdb
+C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\Domain\bin\Release\MathNet.Numerics.IO.pdb
+C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\Domain\bin\Release\MathNet.Numerics.IO.xml

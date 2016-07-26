@@ -65,15 +65,10 @@ C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\CompanyRepositoryT
 C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\CompanyRepositoryTests\bin\Debug\Journalist.LanguageExtensions.dll
 C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\CompanyRepositoryTests\bin\Debug\SoundFingerprinting.Audio.NAudio.dll
 C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\CompanyRepositoryTests\bin\Debug\SoundFingerprinting.Infrastructure.dll
-C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\CompanyRepositoryTests\bin\Debug\Ninject.dll
-C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\CompanyRepositoryTests\bin\Debug\MathNet.Numerics.dll
 C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\CompanyRepositoryTests\bin\Debug\Domain.pdb
 C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\CompanyRepositoryTests\bin\Debug\Infrastructure.pdb
 C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\CompanyRepositoryTests\bin\Debug\Iesi.Collections.xml
 C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\CompanyRepositoryTests\bin\Debug\NHibernate.xml
-C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\CompanyRepositoryTests\bin\Debug\Ninject.xml
-C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\CompanyRepositoryTests\bin\Debug\MathNet.Numerics.pdb
-C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\CompanyRepositoryTests\bin\Debug\MathNet.Numerics.xml
 C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\CompanyRepositoryTests\bin\Debug\ru\Microsoft.VisualStudio.QualityTools.UnitTestFramework.resources.dll
 C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\CompanyRepositoryTests\obj\Debug\CompanyRepositoryTests.csprojResolveAssemblyReference.cache
 C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\CompanyRepositoryTests\obj\Debug\CompanyRepositoryTests.dll

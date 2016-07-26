@@ -8,7 +8,6 @@ using Domain.Models.Entities;
 using Domain.Models.FrontendEntities;
 using Domain.Repository;
 using Journalist;
-using NHibernate.Mapping;
 
 namespace FrontendService.Controllers.AndroidClient
 {

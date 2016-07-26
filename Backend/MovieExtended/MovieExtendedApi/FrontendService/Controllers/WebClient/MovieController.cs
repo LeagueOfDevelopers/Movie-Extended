@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Dynamic;
 using System.Web.Http;
 using Domain.Models.Entities;
 using Domain.Repository;

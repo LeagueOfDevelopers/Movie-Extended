@@ -32,13 +32,8 @@ C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\UnitTestProject1\b
 C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\UnitTestProject1\bin\Debug\Journalist.LanguageExtensions.dll
 C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\UnitTestProject1\bin\Debug\SoundFingerprinting.Audio.NAudio.dll
 C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\UnitTestProject1\bin\Debug\SoundFingerprinting.Infrastructure.dll
-C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\UnitTestProject1\bin\Debug\Ninject.dll
-C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\UnitTestProject1\bin\Debug\MathNet.Numerics.dll
 C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\UnitTestProject1\bin\Debug\Domain.pdb
 C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\UnitTestProject1\bin\Debug\Infrastructure.pdb
-C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\UnitTestProject1\bin\Debug\Ninject.xml
-C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\UnitTestProject1\bin\Debug\MathNet.Numerics.pdb
-C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\UnitTestProject1\bin\Debug\MathNet.Numerics.xml
 C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\UnitTestProject1\bin\Debug\ru\Microsoft.VisualStudio.QualityTools.UnitTestFramework.resources.dll
 C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\UnitTestProject1\obj\Debug\CinemaRepositoryTest.csprojResolveAssemblyReference.cache
 C:\AndroidNew\Projects\Backend\MovieExtended\MovieExtendedApi\UnitTestProject1\obj\Debug\UnitTestProject1.dll
