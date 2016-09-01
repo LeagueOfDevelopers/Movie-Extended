@@ -16,7 +16,7 @@ body {
 	height: 100%;
     width: 100%;
     background: rgba(132, 137, 136, 1);
-    font-size: 0;
+    /*font-size: 0;*/
 
 }
 
@@ -361,7 +361,7 @@ span{
 }
 
 .addCinemaButton{
-  display: block;
+  display: inline-block;
   width: 150px;
 }
 

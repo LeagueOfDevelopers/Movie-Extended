@@ -71,5 +71,12 @@ angular.module('app.commonCtrl',
            }
 
       })
+}])
 
-}]);
+.controller('addMovieCtrl',
+    ['$scope', '$state', '$http',
+    function($scope, $state, $http){
+        getMovies('/api/movies');
+
+    }
+    ]);
