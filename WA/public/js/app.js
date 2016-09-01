@@ -75,4 +75,14 @@ angular.module('meApp',
          }
         })
 
+        .state('addcinema', {
+         url: '/addcinema',
+         views: {
+           'account_content' : {
+             templateUrl: 'partials/account/cinema_add.html'
+              }
+         }
+        })
+
+
      }]);

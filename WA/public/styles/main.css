@@ -144,7 +144,8 @@ span {
   padding-top: 100px; }
 
 .sideMenu_menuItem {
-  padding: 20px; }
+  padding: 20px;
+  cursor: pointer; }
 
 .sideMenu_menuItem p {
   font-family: Helvetica, sans-serif;
@@ -279,5 +280,25 @@ span {
   width: 150px; }
 
 .addMovieCancel {
+  display: inline-block;
+  width: 150px; }
+
+.addCinemaName {
+  display: inline-block;
+  font-family: Helvetica, sans-serif;
+  font-size: 17px; }
+
+.addCinemaAddress {
+  display: block;
+  width: 95%;
+  height: 100px;
+  font-family: Helvetica, sans-serif;
+  font-size: 15px; }
+
+.addCinemaButton {
+  display: block;
+  width: 150px; }
+
+.addCinemaCancel {
   display: inline-block;
   width: 150px; }
